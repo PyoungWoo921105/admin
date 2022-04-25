@@ -25,7 +25,6 @@ const OutlineComponent = observer(() => {
       <LoadingAnimationComponentFrame className="LoadingAnimationComponentFrame">
         <LoadingAnimationComponent className="LoadingAnimationComponent" src={Loading} />
       </LoadingAnimationComponentFrame>
-      ;
     </RootFrame>
   );
 });
