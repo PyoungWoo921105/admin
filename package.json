@@ -20,8 +20,11 @@
   },
   "scripts": {
     "start": "dotenv -e env/.env.develop react-scripts start",
+    "start:develop": "set \"GENERATE_SOURCEMAP=false\" && dotenv -e env/.env.develop react-scripts start",
     "build:develop": "set \"GENERATE_SOURCEMAP=false\" && dotenv -e env/.env.develop react-scripts build",
+    "start:qa": "set \"GENERATE_SOURCEMAP=false\" && dotenv -e env/.env.qa react-scripts start",
     "build:qa": "set \"GENERATE_SOURCEMAP=false\" && dotenv -e env/.env.qa react-scripts build",
+    "start:production": "set \"GENERATE_SOURCEMAP=false\" && dotenv -e env/.env.production react-scripts start",
     "build:production": "set \"GENERATE_SOURCEMAP=false\" && dotenv -e env/.env.production react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
