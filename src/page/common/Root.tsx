@@ -21,9 +21,9 @@ const LoadingAnimationComponent = styled.img`
 
 const OutlineComponent = observer(() => {
   return (
-    <RootFrame className="RootFrame">
-      <LoadingAnimationComponentFrame className="LoadingAnimationComponentFrame">
-        <LoadingAnimationComponent className="LoadingAnimationComponent" src={Loading} />
+    <RootFrame>
+      <LoadingAnimationComponentFrame>
+        <LoadingAnimationComponent src={Loading} />
       </LoadingAnimationComponentFrame>
     </RootFrame>
   );

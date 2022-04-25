@@ -4,7 +4,7 @@ import './App.css'; */
 
 import { BrowserRouter } from 'react-router-dom';
 
-import Root from './components/common/Root';
+import Root from 'page/common/Root';
 
 function App() {
   return (

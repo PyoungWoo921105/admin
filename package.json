@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@craco/craco": "^6.4.3",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^13.2.1",
@@ -12,6 +13,7 @@
     "@types/react-dom": "^18.0.0",
     "@types/react-router-dom": "^5.1.2",
     "@types/styled-components": "^5.1.14",
+    "babel-plugin-styled-components": "^2.0.7",
     "dot-env": "^0.0.1",
     "dotenv-cli": "^5.1.0",
     "eslint-config-react-app": "^7.0.1",
@@ -26,10 +28,10 @@
     "web-vitals": "^2.1.0"
   },
   "scripts": {
-    "start": "dotenv -e env/.env.develop react-scripts start",
+    "start": "dotenv -e env/.env.develop craco start",
     "start:develop": "set \"GENERATE_SOURCEMAP=false\" && dotenv -e env/.env.develop react-scripts start",
     "build:develop": "set \"GENERATE_SOURCEMAP=false\" && dotenv -e env/.env.develop react-scripts build",
-    "start:qa": "set \"GENERATE_SOURCEMAP=false\" && dotenv -e env/.env.qa react-scripts start",
+    "start:qa": "set \"GENERATE_SOURCEMAP=false\" && dotenv -e env/.env.qa craco start",
     "build:qa": "set \"GENERATE_SOURCEMAP=false\" && dotenv -e env/.env.qa react-scripts build",
     "start:production": "set \"GENERATE_SOURCEMAP=false\" && dotenv -e env/.env.production react-scripts start",
     "build:production": "set \"GENERATE_SOURCEMAP=false\" && dotenv -e env/.env.production react-scripts build",
@@ -57,6 +59,7 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.20.0",
     "@typescript-eslint/parser": "^5.20.0",
+    "craco-alias": "^3.0.1",
     "eslint": "^7.11.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.5.0",
