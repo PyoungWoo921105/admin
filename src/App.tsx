@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 /* import logo from './logo.svg';
 import './App.css'; */
 
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter } from 'react-router-dom';
 
-import Root from "../src/components/common/Root";
+import Root from './components/common/Root';
 
 function App() {
   return (
@@ -25,7 +25,7 @@ function App() {
       </header>
     </div> */
     <BrowserRouter>
-      <Root></Root>
+      <Root />
     </BrowserRouter>
   );
 }

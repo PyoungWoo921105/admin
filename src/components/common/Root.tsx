@@ -1,8 +1,8 @@
-import React from "react";
-import { observer } from "mobx-react";
-import styled from "styled-components";
+import React from 'react';
+import { observer } from 'mobx-react';
+import styled from 'styled-components';
 
-import Loading from "assets/animations/Loading.svg";
+import Loading from 'assets/animations/Loading.svg';
 
 const RootFrame = styled.div`
   position: fixed;
@@ -23,7 +23,7 @@ const OutlineComponent = observer(() => {
   return (
     <RootFrame className="RootFrame">
       <LoadingAnimationComponentFrame className="LoadingAnimationComponentFrame">
-        <LoadingAnimationComponent className="LoadingAnimationComponent" src={Loading}></LoadingAnimationComponent>
+        <LoadingAnimationComponent className="LoadingAnimationComponent" src={Loading} />
       </LoadingAnimationComponentFrame>
       ;
     </RootFrame>
