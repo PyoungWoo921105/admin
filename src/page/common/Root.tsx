@@ -1,32 +1,22 @@
 import React from 'react';
 import { observer } from 'mobx-react';
-import styled from 'styled-components';
 
-import Loading from 'assets/animations/Loading.svg';
+import { useStore } from 'data/useStore';
 
-const RootFrame = styled.div`
-  position: fixed;
-  height: 100%;
-  width: 100%;
-  overflow: overlay;
-`;
+import { RootFrame } from 'styles/components/common/Frame';
 
-const LoadingAnimationComponentFrame = styled.div`
-  position: fixed;
-  color: transparent;
-`;
-const LoadingAnimationComponent = styled.img`
-  color: transparent;
-`;
+import Loading from 'components/loading/Loading';
+import PopUp from 'components/popup/PopUp';
 
-const OutlineComponent = observer(() => {
+const Root = observer(() => {
+  const { CommonData } = useStore();
+
   return (
     <RootFrame>
-      <LoadingAnimationComponentFrame>
-        <LoadingAnimationComponent src={Loading} />
-      </LoadingAnimationComponentFrame>
+      {CommonData.LoadingFlag ? <Loading /> : null}
+      {CommonData.PopUpFlag ? <PopUp /> : null}
     </RootFrame>
   );
 });
 
-export default OutlineComponent;
+export default Root;
