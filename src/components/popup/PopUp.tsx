@@ -17,7 +17,10 @@ import {
   PopUpBorderComponent,
   PopUpMiddleFrame,
   PopUpMiddleComponent,
+  PopUpMiddleContentFrame,
   PopUpMiddleContentComponent,
+  PopUpMiddleContentTextFrame,
+  PopUpMiddleContentTextComponent,
   PopUpBottomFrame,
   PopUpBottomComponent,
   PopUpBottomButtonComponent,
@@ -48,9 +51,15 @@ const PopUp = observer(() => {
     };
   }, [keyDownEvent]);
 
+  const onClickAction = (props: (() => void) | undefined) => {
+    if (props) {
+      props();
+    }
+  };
+
   return (
     <PopUpFrame>
-      <PopUpComponent minWidth="400px">
+      <PopUpComponent minWidth="300px">
         <PopUpTopFrame>
           <PopUpTopComponent>
             <PopUpTopTitleComponent>
@@ -71,26 +80,44 @@ const PopUp = observer(() => {
               : ''
           }
         >
-          <PopUpMiddleComponent>
-            {CommonData.PopUpData?.Contents.map(Content => {
-              return (
-                <PopUpMiddleContentComponent key={Content}>{Content}</PopUpMiddleContentComponent>
-              );
-            })}
+          <PopUpMiddleComponent padding="0px 20px 0px 20px">
+            <PopUpMiddleContentFrame>
+              <PopUpMiddleContentComponent flexDirection="column">
+                {CommonData.PopUpData?.Contents.map(Content => {
+                  return (
+                    <PopUpMiddleContentTextFrame key={Content} margin="5px 0px 5px 0px">
+                      <PopUpMiddleContentTextComponent>{Content}</PopUpMiddleContentTextComponent>
+                    </PopUpMiddleContentTextFrame>
+                  );
+                })}
+              </PopUpMiddleContentComponent>
+            </PopUpMiddleContentFrame>
           </PopUpMiddleComponent>
         </PopUpMiddleFrame>
         {CommonData.PopUpData?.Actions.length === 1 ? (
           <PopUpBottomFrame>
             <PopUpBottomComponent>
-              <PopUpBottomButtonComponent>돌아가기</PopUpBottomButtonComponent>
+              <PopUpBottomButtonComponent
+                onClick={() => onClickAction(CommonData.PopUpData?.Actions[0].Action)}
+              >
+                {CommonData.PopUpData?.Actions[0].Choice}
+              </PopUpBottomButtonComponent>
             </PopUpBottomComponent>
           </PopUpBottomFrame>
         ) : null}
         {CommonData.PopUpData?.Actions.length === 2 ? (
           <PopUpBottomFrame>
             <PopUpBottomComponent>
-              <PopUpBottomButtonLeftComponent>아니오</PopUpBottomButtonLeftComponent>
-              <PopUpBottomButtonRightComponent>네</PopUpBottomButtonRightComponent>
+              <PopUpBottomButtonLeftComponent
+                onClick={() => onClickAction(CommonData.PopUpData?.Actions[0].Action)}
+              >
+                {CommonData.PopUpData?.Actions[0].Choice}
+              </PopUpBottomButtonLeftComponent>
+              <PopUpBottomButtonRightComponent
+                onClick={() => onClickAction(CommonData.PopUpData?.Actions[1].Action)}
+              >
+                {CommonData.PopUpData?.Actions[1].Choice}
+              </PopUpBottomButtonRightComponent>
             </PopUpBottomComponent>
           </PopUpBottomFrame>
         ) : null}

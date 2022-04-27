@@ -18,7 +18,6 @@ export const PopUpComponent = styled.div<CustomProps>`
   position: absolute;
   min-width: ${props => (props.minWidth ? props.minWidth : '')};
   min-height: ${props => (props.minHeight ? props.minHeight : '')};
-  box-sizing: border-box;
   background-color: ${props => (props.backgroundColor ? props.backgroundColor : '#ffffff')};
   border-radius: 10px 10px 10px 10px;
 `;
@@ -72,14 +71,23 @@ export const PopUpMiddleFrame = styled.div<CustomProps>`
   justify-content: ${props => (props.justifyContent ? props.justifyContent : '')};
   align-items: ${props => (props.alignItems ? props.alignItems : '')};
   width: 100%;
-  min-height: 40px;
+  min-height: 70px;
   background-color: ${props => (props.backgroundColor ? props.backgroundColor : '#ffffff')};
   border-radius: ${props => (props.borderRadius ? props.borderRadius : '')};
 `;
 export const PopUpMiddleComponent = styled.div<CustomProps>`
   position: relative;
   display: flex;
-  flex-direction: row;
+  flex-direction: ${props => (props.flexDirection ? props.flexDirection : '')};
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: ${props => (props.padding ? props.padding : '')};
+`;
+export const PopUpMiddleContentFrame = styled.div<CustomProps>`
+  display: flex;
+  flex-direction: ${props => (props.flexDirection ? props.flexDirection : '')};
+  justify-content: center;
   align-items: center;
   width: 100%;
   height: 100%;
@@ -91,6 +99,22 @@ export const PopUpMiddleContentComponent = styled.div<CustomProps>`
   align-items: center;
   width: 100%;
   height: 100%;
+`;
+export const PopUpMiddleContentTextFrame = styled.div<CustomProps>`
+  display: flex;
+  flex-direction: ${props => (props.flexDirection ? props.flexDirection : '')};
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin: ${props => (props.margin ? props.margin : '')};
+`;
+export const PopUpMiddleContentTextComponent = styled.span<CustomProps>`
+  font-family: 'Spoqa Han Sans Neo';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  color: #000000;
 `;
 /*  */
 export const PopUpBottomFrame = styled.div<CustomProps>`
