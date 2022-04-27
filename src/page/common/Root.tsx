@@ -10,6 +10,7 @@ import Loading from 'components/loading/Loading';
 import PopUp from 'components/popup/PopUp';
 
 import LogIn from 'page/login/LogIn';
+import Common from 'page/common/Common';
 
 import { PostAuthLogIn } from 'services/login/PostAuthLogIn';
 
@@ -29,7 +30,7 @@ const Root = observer(() => {
     if (response.status === 201) {
       sessionStorage.setItem('LogInUserID', AdminData.LogInUserID);
       sessionStorage.setItem('LogInUserPassword', AdminData.LogInUserPassword);
-      history.push({ pathname: '/home' });
+      history.push({ pathname: history.location.pathname });
     } else {
       const PopUpData = {
         Category: 'ERROR',
@@ -54,11 +55,16 @@ const Root = observer(() => {
     }
   }, []);
 
+  console.log(history.location.pathname);
+
   return (
     <RootFrame>
       {CommonData.LoadingFlag ? <Loading /> : null}
       {CommonData.PopUpFlag ? <PopUp /> : null}
       <Route exact path="/login" component={LogIn} />
+      <Route
+        render={({ location }) => (location.pathname.indexOf('/login') === -1 ? <Common /> : null)}
+      />
     </RootFrame>
   );
 });

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const LoadingFrame = styled.div`
+export const LoadingFrame = styled.div`
   position: fixed;
   top: 0px;
   right: 0px;
@@ -12,14 +12,12 @@ const LoadingFrame = styled.div`
   align-items: center;
   justify-content: center;
 `;
-const LoadingComponent = styled.div`
+export const LoadingComponent = styled.div`
   position: fixed;
   width: 300px;
   height: 300px;
 `;
-const LoadingImageComponent = styled.img`
+export const LoadingImageComponent = styled.img`
   width: 100%;
   height: 100%;
 `;
-
-export { LoadingFrame, LoadingComponent, LoadingImageComponent };

@@ -6,5 +6,6 @@ export const RootFrame = styled.div`
   width: 100%;
   overflow: overlay;
 `;
+export const CommonFrame = styled.div``;
 
-export default { RootFrame };
+export const BoardFrame = styled.div``;
