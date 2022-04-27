@@ -1,11 +1,12 @@
 import { observable } from 'mobx';
 
+/* Pop Up */
 export interface PopUpDataType {
   Category: string;
   Name: string;
   Title: string;
   Contents: string[];
-  Actions: string[];
+  Actions: { Choice: string; Action: () => void }[];
 }
 
 export interface CommonDataType {
