@@ -55,8 +55,6 @@ const Root = observer(() => {
     }
   }, []);
 
-  console.log(history.location.pathname);
-
   return (
     <RootFrame>
       {CommonData.LoadingFlag ? <Loading /> : null}

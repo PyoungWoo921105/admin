@@ -3,13 +3,13 @@ import { observer } from 'mobx-react';
 
 import { CommonFrame } from 'styles/components/common/Frame';
 
-/* import { GlobalNavigationBar } from 'components/common/GlobalNavigationBar'; */
+import GlobalNavigationBar from 'components/common/GlobalNavigationBar';
 import Board from 'components/common/Board';
 
 const Common = observer(() => {
   return (
     <CommonFrame>
-      {/* <GlobalNavigationBar /> */}
+      <GlobalNavigationBar />
       <Board />
     </CommonFrame>
   );
