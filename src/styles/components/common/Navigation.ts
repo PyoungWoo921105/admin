@@ -20,57 +20,79 @@ export const GlobalNavigationBarTitleFrame = styled.div`
   height: 40px;
 `;
 export const GlobalNavigationBarTitleComponent = styled.div`
-  position: relative;
   width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
+`;
+export const GlobalNavigationBarTitleMainFrame = styled.div`
+  display: flex;
+  width: 100%;
+`;
+export const GlobalNavigationBarTitleSubFrame = styled.div`
+  display: flex;
+  width: 50px;
 `;
 export const GlobalNavigationBarLogoImageFrame = styled.div`
   display: flex;
   align-content: center;
   justify-content: center;
-  width: 100px;
-
+  width: 120px;
+  min-width: 120px;
+  max-width: 120px;
+  height: 100%;
   margin: 0px 10px 0px 10px;
 `;
 export const GlobalNavigationBarLogoImageComponent = styled.img`
   width: 100%;
-  height: 100%;
+`;
+export const GlobalNavigationBarTitleTextFrame = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  min-width: 50px;
+  margin: 0px 0px 0px 10px;
 `;
 export const GlobalNavigationBarTitleTextComponent = styled.span`
-  min-width: 50px;
   font-family: 'Spoqa Han Sans Neo';
   font-style: normal;
   font-weight: normal;
   font-size: 12px;
   color: #393939;
-  margin: 0px 10px 0px 10px;
 `;
 export const GlobalNavigationBarShowContentImageFrame = styled.button`
-  width: 20px;
-  height: 20px;
-  margin: 0px 10px 0px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  min-width: 30px;
+  height: 30px;
+  min-height: 30px;
   background-color: transparent;
   border: none;
-  padding: 0px 0px 0px 0px;
   cursor: pointer;
+  margin: 0px 10px 0px 0px;
 `;
 export const GlobalNavigationBarShowContentImageComponent = styled.img`
   width: 100%;
-  height: 100%;
 `;
 export const GlobalNavigationBarShortCutFrame = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin: 0px 60px 0px 60px;
+  margin: 0px 10px 0px 10px;
 `;
 export const GlobalNavigationBarShortCutComponent = styled.div`
   display: flex;
   flex-direction: row;
+  justify-content: center;
   align-items: center;
-  margin: 0px 20px 0px 20px;
+  width: 60px;
+  min-width: 60px;
+  margin: 0px 10px 0px 10px;
 `;
 export const GlobalNavigationBarShortCutTextComponent = styled.span<CustomProps>`
   font-family: 'Spoqa Han Sans Neo';
@@ -98,7 +120,6 @@ export const GlobalNavigationBarContentOpeningComponent = styled.div`
   justify-content: center;
   align-items: center;
   padding: 10px 0px 10px 0px;
-  margin: 10px 0px 10px 0px;
   animation: ${GlobalNavigationBarContentComponentAnimation} 0.3s linear 0s 1 normal forwards;
   background: #393939;
   z-index: 10;
@@ -131,7 +152,6 @@ export const GlobalNavigationBarContentTitleComponent = styled.button<CustomProp
   justify-content: center;
   align-items: center;
   padding: 10px 0px 10px 0px;
-  margin: 0px 10px 0px 10px;
   background-color: ${props => (props.backgroundColor ? props.backgroundColor : '#393939')};
   border-radius: ${props => (props.borderRadius ? props.borderRadius : '')};
   border: none;
@@ -146,17 +166,18 @@ export const GlobalNavigationBarContentTitleTextComponent = styled.span`
   text-decoration: none;
 `;
 export const GlobalNavigationBarLogoutImageFrame = styled.button`
-  position: absolute;
-  right: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 30px;
+  min-width: 30px;
   height: 30px;
-  margin: 0px 10px 0px 10px;
+  min-height: 30px;
   background-color: transparent;
   border: none;
-  padding: 0px 0px 0px 0px;
   cursor: pointer;
+  margin: 0px 10px 0px 10px;
 `;
 export const GlobalNavigationBarLogoutImageComponent = styled.img`
   width: 100%;
-  height: 100%;
 `;

@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { observer } from 'mobx-react';
 
 import { useStore } from 'data/useStore';
+import useWindowDimensions from 'styles/device/useWindowDimensions';
 import { useHistory, useLocation } from 'react-router-dom';
 
 import LogoIcon from 'assets/icons/LogoIcon.png';
@@ -13,8 +14,11 @@ import {
   GlobalNavigationBarFrame,
   GlobalNavigationBarTitleFrame,
   GlobalNavigationBarTitleComponent,
+  GlobalNavigationBarTitleMainFrame,
+  GlobalNavigationBarTitleSubFrame,
   GlobalNavigationBarLogoImageFrame,
   GlobalNavigationBarLogoImageComponent,
+  GlobalNavigationBarTitleTextFrame,
   GlobalNavigationBarTitleTextComponent,
   GlobalNavigationBarShowContentImageFrame,
   GlobalNavigationBarShowContentImageComponent,
@@ -35,6 +39,8 @@ const GlobalNavigationBar = observer(() => {
   const { CommonData } = useStore();
   const history = useHistory();
   const location = useLocation();
+
+  const { width } = useWindowDimensions();
 
   const GlobalNavigationBarTitleList = [
     [{ name: '홈', path: '/home' }],
@@ -134,205 +140,214 @@ const GlobalNavigationBar = observer(() => {
   const onClickLogout = () => {
     PostAuthLogOutFunction();
   };
-  /* console.log(GlobalNavigationBarTitleList[1][2].path); */
 
   return (
     <GlobalNavigationBarFrame>
       <GlobalNavigationBarTitleFrame>
         <GlobalNavigationBarTitleComponent>
-          <GlobalNavigationBarLogoImageFrame>
-            <GlobalNavigationBarLogoImageComponent src={LogoIcon} />
-          </GlobalNavigationBarLogoImageFrame>
-          <GlobalNavigationBarTitleTextComponent>관리자용</GlobalNavigationBarTitleTextComponent>
-          <GlobalNavigationBarShowContentImageFrame
-            onClick={() => {
-              // eslint-disable-next-line no-unused-expressions
-              GlobalNavigationBarState === 'CLOSE' || GlobalNavigationBarState === 'CLOSING'
-                ? setGlobalNavigationBarState('OPENING')
-                : setGlobalNavigationBarState('CLOSING');
-            }}
-          >
-            <GlobalNavigationBarShowContentImageComponent
-              src={
+          <GlobalNavigationBarTitleMainFrame>
+            <GlobalNavigationBarLogoImageFrame>
+              <GlobalNavigationBarLogoImageComponent src={LogoIcon} />
+            </GlobalNavigationBarLogoImageFrame>
+            <GlobalNavigationBarTitleTextFrame>
+              <GlobalNavigationBarTitleTextComponent>
+                관리자용
+              </GlobalNavigationBarTitleTextComponent>
+            </GlobalNavigationBarTitleTextFrame>
+            <GlobalNavigationBarShowContentImageFrame
+              onClick={() => {
+                // eslint-disable-next-line no-unused-expressions
                 GlobalNavigationBarState === 'CLOSE' || GlobalNavigationBarState === 'CLOSING'
-                  ? PlusIcon
-                  : MinusIcon
-              }
-            />
-          </GlobalNavigationBarShowContentImageFrame>
-          <GlobalNavigationBarShortCutFrame>
-            <GlobalNavigationBarShortCutComponent>
-              <GlobalNavigationBarShortCutTextComponent
-                color={
-                  location.pathname.indexOf(GlobalNavigationBarTitleList[1][2].path) !== -1
-                    ? '#00B264'
-                    : '#393939'
+                  ? setGlobalNavigationBarState('OPENING')
+                  : setGlobalNavigationBarState('CLOSING');
+              }}
+            >
+              <GlobalNavigationBarShowContentImageComponent
+                src={
+                  GlobalNavigationBarState === 'CLOSE' || GlobalNavigationBarState === 'CLOSING'
+                    ? PlusIcon
+                    : MinusIcon
                 }
-                textDecoration={
-                  location.pathname.indexOf(GlobalNavigationBarTitleList[1][2].path) !== -1
-                    ? 'underline'
-                    : ''
-                }
-                onClick={() =>
-                  location.pathname.indexOf(GlobalNavigationBarTitleList[1][2].path) === -1
-                    ? history.push({
-                        pathname: GlobalNavigationBarTitleList[1][2].path,
-                        state: { initiate: true },
-                      })
-                    : {}
-                }
-              >
-                병원 관리
-              </GlobalNavigationBarShortCutTextComponent>
-            </GlobalNavigationBarShortCutComponent>
-            <GlobalNavigationBarShortCutComponent>
-              <GlobalNavigationBarShortCutTextComponent
-                color={
-                  location.pathname.indexOf(GlobalNavigationBarTitleList[1][3].path) !== -1
-                    ? '#00B264'
-                    : '#393939'
-                }
-                textDecoration={
-                  location.pathname.indexOf(GlobalNavigationBarTitleList[1][3].path) !== -1
-                    ? 'underline'
-                    : ''
-                }
-                onClick={() =>
-                  location.pathname.indexOf(GlobalNavigationBarTitleList[1][3].path) === -1
-                    ? history.push({
-                        pathname: GlobalNavigationBarTitleList[1][3].path,
-                        state: { initiate: true },
-                      })
-                    : {}
-                }
-              >
-                약국 관리
-              </GlobalNavigationBarShortCutTextComponent>
-            </GlobalNavigationBarShortCutComponent>
-            <GlobalNavigationBarShortCutComponent>
-              <GlobalNavigationBarShortCutTextComponent
-                color={
-                  location.pathname.indexOf(GlobalNavigationBarTitleList[1][1].path) !== -1
-                    ? '#00B264'
-                    : '#393939'
-                }
-                textDecoration={
-                  location.pathname.indexOf(GlobalNavigationBarTitleList[1][1].path) !== -1
-                    ? 'underline'
-                    : ''
-                }
-                onClick={() =>
-                  location.pathname.indexOf(GlobalNavigationBarTitleList[1][1].path) === -1
-                    ? history.push({
-                        pathname: GlobalNavigationBarTitleList[1][1].path,
-                        state: { initiate: true },
-                      })
-                    : {}
-                }
-              >
-                의사 관리
-              </GlobalNavigationBarShortCutTextComponent>
-            </GlobalNavigationBarShortCutComponent>
-            <GlobalNavigationBarShortCutComponent>
-              <GlobalNavigationBarShortCutTextComponent
-                color={
-                  location.pathname.indexOf(GlobalNavigationBarTitleList[2][0].path) !== -1
-                    ? '#00B264'
-                    : '#393939'
-                }
-                textDecoration={
-                  location.pathname.indexOf(GlobalNavigationBarTitleList[2][0].path) !== -1
-                    ? 'underline'
-                    : ''
-                }
-                onClick={() =>
-                  location.pathname.indexOf(GlobalNavigationBarTitleList[2][0].path) === -1
-                    ? history.push({
-                        pathname: GlobalNavigationBarTitleList[2][0].path,
-                        state: { initiate: true },
-                      })
-                    : {}
-                }
-              >
-                진료 관리
-              </GlobalNavigationBarShortCutTextComponent>
-            </GlobalNavigationBarShortCutComponent>
-            <GlobalNavigationBarShortCutComponent>
-              <GlobalNavigationBarShortCutTextComponent
-                color={
-                  location.pathname.indexOf(GlobalNavigationBarTitleList[2][1].path) !== -1
-                    ? '#00B264'
-                    : '#393939'
-                }
-                textDecoration={
-                  location.pathname.indexOf(GlobalNavigationBarTitleList[2][1].path) !== -1
-                    ? 'underline'
-                    : ''
-                }
-                onClick={() =>
-                  location.pathname.indexOf(GlobalNavigationBarTitleList[2][1].path) === -1
-                    ? history.push({
-                        pathname: GlobalNavigationBarTitleList[2][1].path,
-                        state: { initiate: true },
-                      })
-                    : {}
-                }
-              >
-                조제 관리
-              </GlobalNavigationBarShortCutTextComponent>
-            </GlobalNavigationBarShortCutComponent>
-            <GlobalNavigationBarShortCutComponent>
-              <GlobalNavigationBarShortCutTextComponent
-                color={
-                  location.pathname.indexOf(GlobalNavigationBarTitleList[2][2].path) !== -1
-                    ? '#00B264'
-                    : '#393939'
-                }
-                textDecoration={
-                  location.pathname.indexOf(GlobalNavigationBarTitleList[2][2].path) !== -1
-                    ? 'underline'
-                    : ''
-                }
-                onClick={() =>
-                  location.pathname.indexOf(GlobalNavigationBarTitleList[2][2].path) === -1
-                    ? history.push({
-                        pathname: GlobalNavigationBarTitleList[2][2].path,
-                        state: { initiate: true },
-                      })
-                    : {}
-                }
-              >
-                배달 관리
-              </GlobalNavigationBarShortCutTextComponent>
-            </GlobalNavigationBarShortCutComponent>
-            <GlobalNavigationBarShortCutComponent>
-              <GlobalNavigationBarShortCutTextComponent
-                color={
-                  location.pathname.indexOf(GlobalNavigationBarTitleList[3][3].path) !== -1
-                    ? '#00B264'
-                    : '#393939'
-                }
-                textDecoration={
-                  location.pathname.indexOf(GlobalNavigationBarTitleList[3][3].path) !== -1
-                    ? 'underline'
-                    : ''
-                }
-                onClick={() =>
-                  location.pathname.indexOf(GlobalNavigationBarTitleList[3][3].path) === -1
-                    ? history.push({
-                        pathname: GlobalNavigationBarTitleList[3][3].path,
-                        state: { initiate: true },
-                      })
-                    : {}
-                }
-              >
-                리뷰 관리
-              </GlobalNavigationBarShortCutTextComponent>
-            </GlobalNavigationBarShortCutComponent>
-          </GlobalNavigationBarShortCutFrame>
-          <GlobalNavigationBarLogoutImageFrame onClick={onClickLogout}>
-            <GlobalNavigationBarLogoutImageComponent src={LogOutIcon} />
-          </GlobalNavigationBarLogoutImageFrame>
+              />
+            </GlobalNavigationBarShowContentImageFrame>
+            {width >= 1024 ? (
+              <GlobalNavigationBarShortCutFrame>
+                <GlobalNavigationBarShortCutComponent>
+                  <GlobalNavigationBarShortCutTextComponent
+                    color={
+                      location.pathname.indexOf(GlobalNavigationBarTitleList[1][2].path) !== -1
+                        ? '#00B264'
+                        : '#393939'
+                    }
+                    textDecoration={
+                      location.pathname.indexOf(GlobalNavigationBarTitleList[1][2].path) !== -1
+                        ? 'underline'
+                        : ''
+                    }
+                    onClick={() =>
+                      location.pathname.indexOf(GlobalNavigationBarTitleList[1][2].path) === -1
+                        ? history.push({
+                            pathname: GlobalNavigationBarTitleList[1][2].path,
+                            state: { initiate: true },
+                          })
+                        : {}
+                    }
+                  >
+                    병원 관리
+                  </GlobalNavigationBarShortCutTextComponent>
+                </GlobalNavigationBarShortCutComponent>
+                <GlobalNavigationBarShortCutComponent>
+                  <GlobalNavigationBarShortCutTextComponent
+                    color={
+                      location.pathname.indexOf(GlobalNavigationBarTitleList[1][3].path) !== -1
+                        ? '#00B264'
+                        : '#393939'
+                    }
+                    textDecoration={
+                      location.pathname.indexOf(GlobalNavigationBarTitleList[1][3].path) !== -1
+                        ? 'underline'
+                        : ''
+                    }
+                    onClick={() =>
+                      location.pathname.indexOf(GlobalNavigationBarTitleList[1][3].path) === -1
+                        ? history.push({
+                            pathname: GlobalNavigationBarTitleList[1][3].path,
+                            state: { initiate: true },
+                          })
+                        : {}
+                    }
+                  >
+                    약국 관리
+                  </GlobalNavigationBarShortCutTextComponent>
+                </GlobalNavigationBarShortCutComponent>
+                <GlobalNavigationBarShortCutComponent>
+                  <GlobalNavigationBarShortCutTextComponent
+                    color={
+                      location.pathname.indexOf(GlobalNavigationBarTitleList[1][1].path) !== -1
+                        ? '#00B264'
+                        : '#393939'
+                    }
+                    textDecoration={
+                      location.pathname.indexOf(GlobalNavigationBarTitleList[1][1].path) !== -1
+                        ? 'underline'
+                        : ''
+                    }
+                    onClick={() =>
+                      location.pathname.indexOf(GlobalNavigationBarTitleList[1][1].path) === -1
+                        ? history.push({
+                            pathname: GlobalNavigationBarTitleList[1][1].path,
+                            state: { initiate: true },
+                          })
+                        : {}
+                    }
+                  >
+                    의사 관리
+                  </GlobalNavigationBarShortCutTextComponent>
+                </GlobalNavigationBarShortCutComponent>
+                <GlobalNavigationBarShortCutComponent>
+                  <GlobalNavigationBarShortCutTextComponent
+                    color={
+                      location.pathname.indexOf(GlobalNavigationBarTitleList[2][0].path) !== -1
+                        ? '#00B264'
+                        : '#393939'
+                    }
+                    textDecoration={
+                      location.pathname.indexOf(GlobalNavigationBarTitleList[2][0].path) !== -1
+                        ? 'underline'
+                        : ''
+                    }
+                    onClick={() =>
+                      location.pathname.indexOf(GlobalNavigationBarTitleList[2][0].path) === -1
+                        ? history.push({
+                            pathname: GlobalNavigationBarTitleList[2][0].path,
+                            state: { initiate: true },
+                          })
+                        : {}
+                    }
+                  >
+                    진료 관리
+                  </GlobalNavigationBarShortCutTextComponent>
+                </GlobalNavigationBarShortCutComponent>
+                <GlobalNavigationBarShortCutComponent>
+                  <GlobalNavigationBarShortCutTextComponent
+                    color={
+                      location.pathname.indexOf(GlobalNavigationBarTitleList[2][1].path) !== -1
+                        ? '#00B264'
+                        : '#393939'
+                    }
+                    textDecoration={
+                      location.pathname.indexOf(GlobalNavigationBarTitleList[2][1].path) !== -1
+                        ? 'underline'
+                        : ''
+                    }
+                    onClick={() =>
+                      location.pathname.indexOf(GlobalNavigationBarTitleList[2][1].path) === -1
+                        ? history.push({
+                            pathname: GlobalNavigationBarTitleList[2][1].path,
+                            state: { initiate: true },
+                          })
+                        : {}
+                    }
+                  >
+                    조제 관리
+                  </GlobalNavigationBarShortCutTextComponent>
+                </GlobalNavigationBarShortCutComponent>
+                <GlobalNavigationBarShortCutComponent>
+                  <GlobalNavigationBarShortCutTextComponent
+                    color={
+                      location.pathname.indexOf(GlobalNavigationBarTitleList[2][2].path) !== -1
+                        ? '#00B264'
+                        : '#393939'
+                    }
+                    textDecoration={
+                      location.pathname.indexOf(GlobalNavigationBarTitleList[2][2].path) !== -1
+                        ? 'underline'
+                        : ''
+                    }
+                    onClick={() =>
+                      location.pathname.indexOf(GlobalNavigationBarTitleList[2][2].path) === -1
+                        ? history.push({
+                            pathname: GlobalNavigationBarTitleList[2][2].path,
+                            state: { initiate: true },
+                          })
+                        : {}
+                    }
+                  >
+                    배달 관리
+                  </GlobalNavigationBarShortCutTextComponent>
+                </GlobalNavigationBarShortCutComponent>
+                <GlobalNavigationBarShortCutComponent>
+                  <GlobalNavigationBarShortCutTextComponent
+                    color={
+                      location.pathname.indexOf(GlobalNavigationBarTitleList[3][3].path) !== -1
+                        ? '#00B264'
+                        : '#393939'
+                    }
+                    textDecoration={
+                      location.pathname.indexOf(GlobalNavigationBarTitleList[3][3].path) !== -1
+                        ? 'underline'
+                        : ''
+                    }
+                    onClick={() =>
+                      location.pathname.indexOf(GlobalNavigationBarTitleList[3][3].path) === -1
+                        ? history.push({
+                            pathname: GlobalNavigationBarTitleList[3][3].path,
+                            state: { initiate: true },
+                          })
+                        : {}
+                    }
+                  >
+                    리뷰 관리
+                  </GlobalNavigationBarShortCutTextComponent>
+                </GlobalNavigationBarShortCutComponent>
+              </GlobalNavigationBarShortCutFrame>
+            ) : null}
+          </GlobalNavigationBarTitleMainFrame>
+          <GlobalNavigationBarTitleSubFrame>
+            <GlobalNavigationBarLogoutImageFrame onClick={onClickLogout}>
+              <GlobalNavigationBarLogoutImageComponent src={LogOutIcon} />
+            </GlobalNavigationBarLogoutImageFrame>
+          </GlobalNavigationBarTitleSubFrame>
         </GlobalNavigationBarTitleComponent>
       </GlobalNavigationBarTitleFrame>
       {GlobalNavigationBarState === 'OPENING' ? (
