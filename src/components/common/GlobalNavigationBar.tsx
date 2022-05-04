@@ -32,7 +32,7 @@ import {
   GlobalNavigationBarContentTitleTextComponent,
   GlobalNavigationBarLogoutImageFrame,
   GlobalNavigationBarLogoutImageComponent,
-} from 'styles/components/common/Navigation';
+} from 'styles/components/common/GlobalNavigation';
 import { PostAuthLogout } from 'services/login/PostAuthLogOut';
 
 const GlobalNavigationBar = observer(() => {

@@ -18,7 +18,6 @@ export const BoardFrame = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 10px 0px 10px 0px;
   position: absolute;
   top: 60px;
   width: 100%;

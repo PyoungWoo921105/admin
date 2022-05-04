@@ -27,6 +27,7 @@ export const GlobalNavigationBarTitleComponent = styled.div`
   width: 100%;
 `;
 export const GlobalNavigationBarTitleMainFrame = styled.div`
+  align-items: center;
   display: flex;
   width: 100%;
 `;
@@ -99,7 +100,7 @@ export const GlobalNavigationBarShortCutTextComponent = styled.span<CustomProps>
   color: ${props => (props.color ? props.color : '#393939')};
   cursor: pointer;
   font-family: 'Spoqa Han Sans Neo';
-  font-size: 15px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 700;
   text-decoration-line: ${props => (props.textDecoration ? props.textDecoration : '')};
