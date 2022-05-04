@@ -9,12 +9,12 @@ import { RootFrame } from 'styles/components/common/Frame';
 import Loading from 'components/loading/Loading';
 import PopUp from 'components/popup/PopUp';
 
-import LogIn from 'page/login/LogIn';
+import LogInPage from 'page/login/LogInPage';
 import Common from 'page/common/Common';
 
 import { PostAuthLogIn } from 'services/login/PostAuthLogIn';
 
-const Root = observer(() => {
+const RootPage = observer(() => {
   const { CommonData, AdminData } = useStore();
 
   const history = useHistory();
@@ -59,7 +59,7 @@ const Root = observer(() => {
     <RootFrame>
       {CommonData.LoadingFlag ? <Loading /> : null}
       {CommonData.PopUpFlag ? <PopUp /> : null}
-      <Route exact path="/login" component={LogIn} />
+      <Route exact path="/login" component={LogInPage} />
       <Route
         render={({ location }) => (location.pathname.indexOf('/login') === -1 ? <Common /> : null)}
       />
@@ -67,4 +67,4 @@ const Root = observer(() => {
   );
 });
 
-export default Root;
+export default RootPage;

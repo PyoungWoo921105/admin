@@ -4,7 +4,7 @@ import './App.css'; */
 
 import { BrowserRouter } from 'react-router-dom';
 
-import Root from 'page/common/Root';
+import RootPage from 'page/common/RootPage';
 
 function App() {
   return (
@@ -25,7 +25,7 @@ function App() {
       </header>
     </div> */
     <BrowserRouter>
-      <Root />
+      <RootPage />
     </BrowserRouter>
   );
 }

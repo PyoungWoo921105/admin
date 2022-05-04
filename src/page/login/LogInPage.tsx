@@ -35,7 +35,7 @@ import {
 import { PostAuthLogIn } from 'services/login/PostAuthLogIn';
 import { useHistory } from 'react-router-dom';
 
-const LogIn = observer(() => {
+const LogInPage = observer(() => {
   const { CommonData, AdminData } = useStore();
 
   const onClickPrivateFlag = () => {
@@ -189,4 +189,4 @@ const LogIn = observer(() => {
   );
 });
 
-export default LogIn;
+export default LogInPage;

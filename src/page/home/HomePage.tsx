@@ -6,7 +6,7 @@ import LogoIcon from 'assets/icons/LogoIcon.png';
 
 import { HomeFrame, LogoImageIconFrame, LogoImageIconComponent } from 'styles/components/home/Home';
 
-const Home = observer(() => {
+const HomePage = observer(() => {
   return (
     <HomeFrame className="HomeFrame">
       <LogoImageIconFrame
@@ -21,4 +21,4 @@ const Home = observer(() => {
   );
 });
 
-export default Home;
+export default HomePage;
