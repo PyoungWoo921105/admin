@@ -24,6 +24,7 @@ export const LogoImageIconFrame = styled.div`
   min-width: 100px;
   max-width: 400px;
   padding: 0px 20px 0px 20px;
+  cursor: pointer;
 `;
 export const LogoImageIconComponent = styled.img`
   width: 100%;

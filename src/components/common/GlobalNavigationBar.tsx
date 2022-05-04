@@ -146,7 +146,14 @@ const GlobalNavigationBar = observer(() => {
       <GlobalNavigationBarTitleFrame>
         <GlobalNavigationBarTitleComponent>
           <GlobalNavigationBarTitleMainFrame>
-            <GlobalNavigationBarLogoImageFrame>
+            <GlobalNavigationBarLogoImageFrame
+              onClick={() =>
+                history.push({
+                  pathname: GlobalNavigationBarTitleList[0][0].path,
+                  state: { initiate: true },
+                })
+              }
+            >
               <GlobalNavigationBarLogoImageComponent src={LogoIcon} />
             </GlobalNavigationBarLogoImageFrame>
             <GlobalNavigationBarTitleTextFrame>

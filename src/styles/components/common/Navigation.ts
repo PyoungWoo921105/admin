@@ -43,6 +43,7 @@ export const GlobalNavigationBarLogoImageFrame = styled.div`
   max-width: 120px;
   height: 100%;
   margin: 0px 10px 0px 10px;
+  cursor: pointer;
 `;
 export const GlobalNavigationBarLogoImageComponent = styled.img`
   width: 100%;

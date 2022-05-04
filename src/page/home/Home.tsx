@@ -9,7 +9,12 @@ import { HomeFrame, LogoImageIconFrame, LogoImageIconComponent } from 'styles/co
 const Home = observer(() => {
   return (
     <HomeFrame className="HomeFrame">
-      <LogoImageIconFrame className="LogoImageIconFrame">
+      <LogoImageIconFrame
+        className="LogoImageIconFrame"
+        onClick={() => {
+          window.open('https://www.notion.so/MEDIR-aefcafb8bb1a45c79fdfcf58de8b9962');
+        }}
+      >
         <LogoImageIconComponent className="LogoImageIconComponent" src={LogoIcon} />
       </LogoImageIconFrame>
     </HomeFrame>
