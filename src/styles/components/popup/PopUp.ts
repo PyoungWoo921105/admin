@@ -3,190 +3,190 @@ import styled from 'styled-components';
 import { CustomProps } from 'styles/interface/CustomProps';
 
 export const PopUpFrame = styled.div`
-  position: fixed;
-  top: 0px;
-  right: 0px;
-  bottom: 0px;
-  left: 0px;
-  z-index: 99;
-  background-color: rgba(102, 102, 102, 0.5);
-  display: flex;
   align-items: center;
+  background-color: rgba(102, 102, 102, 0.5);
+  bottom: 0px;
+  display: flex;
   justify-content: center;
+  left: 0px;
+  position: fixed;
+  right: 0px;
+  top: 0px;
+  z-index: 99;
 `;
 export const PopUpComponent = styled.div<CustomProps>`
-  position: absolute;
-  min-width: ${props => (props.minWidth ? props.minWidth : '')};
-  min-height: ${props => (props.minHeight ? props.minHeight : '')};
   background-color: ${props => (props.backgroundColor ? props.backgroundColor : '#ffffff')};
   border-radius: 10px 10px 10px 10px;
   margin: 0px 10px 0px 10px;
+  min-height: ${props => (props.minHeight ? props.minHeight : '')};
+  min-width: ${props => (props.minWidth ? props.minWidth : '')};
+  position: absolute;
 `;
 /*  */
 export const PopUpTopFrame = styled.div<CustomProps>`
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: 40px;
   background-color: ${props => (props.backgroundColor ? props.backgroundColor : '#ffffff')};
   border-radius: 10px 10px 0px 0px;
+  display: flex;
+  flex-direction: row;
+  height: 40px;
+  width: 100%;
 `;
 export const PopUpTopComponent = styled.div<CustomProps>`
-  position: relative;
+  align-items: center;
   display: flex;
   flex-direction: row;
-  align-items: center;
-  width: 100%;
   height: 100%;
+  position: relative;
+  width: 100%;
 `;
 export const PopUpTopTitleComponent = styled.div<CustomProps>`
+  align-items: center;
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
   height: 100%;
+  justify-content: center;
+  width: 100%;
 `;
 export const PopUpTopTitleTextComponent = styled.span<CustomProps>`
+  color: #000000;
   font-family: 'Spoqa Han Sans Neo';
+  font-size: 15px;
   font-style: normal;
   font-weight: normal;
-  font-size: 15px;
-  color: #000000;
 `;
 export const PopUpTopExitComponent = styled.div<CustomProps>`
+  cursor: pointer;
+  height: 100%;
   position: absolute;
   right: 20px;
   width: 15px;
-  height: 100%;
-  cursor: pointer;
 `;
 export const PopUpTopExitImageComponent = styled.img<CustomProps>`
-  width: 100%;
   height: 100%;
+  width: 100%;
 `;
 /*  */
 export const PopUpMiddleFrame = styled.div<CustomProps>`
+  align-items: ${props => (props.alignItems ? props.alignItems : '')};
+  background-color: ${props => (props.backgroundColor ? props.backgroundColor : '#ffffff')};
+  border-radius: ${props => (props.borderRadius ? props.borderRadius : '')};
   display: flex;
   flex-direction: row;
   justify-content: ${props => (props.justifyContent ? props.justifyContent : '')};
-  align-items: ${props => (props.alignItems ? props.alignItems : '')};
-  width: 100%;
   min-height: 70px;
-  background-color: ${props => (props.backgroundColor ? props.backgroundColor : '#ffffff')};
-  border-radius: ${props => (props.borderRadius ? props.borderRadius : '')};
+  width: 100%;
 `;
 export const PopUpMiddleComponent = styled.div<CustomProps>`
-  position: relative;
+  align-items: center;
   display: flex;
   flex-direction: ${props => (props.flexDirection ? props.flexDirection : '')};
-  align-items: center;
-  width: 100%;
   height: 100%;
   padding: ${props => (props.padding ? props.padding : '')};
+  position: relative;
+  width: 100%;
 `;
 export const PopUpMiddleContentFrame = styled.div<CustomProps>`
+  align-items: center;
   display: flex;
   flex-direction: ${props => (props.flexDirection ? props.flexDirection : '')};
-  justify-content: center;
-  align-items: center;
-  width: 100%;
   height: 100%;
+  justify-content: center;
+  width: 100%;
 `;
 export const PopUpMiddleContentComponent = styled.div<CustomProps>`
+  align-items: center;
   display: flex;
   flex-direction: ${props => (props.flexDirection ? props.flexDirection : '')};
-  justify-content: center;
-  align-items: center;
-  width: 100%;
   height: 100%;
+  justify-content: center;
+  width: 100%;
 `;
 export const PopUpMiddleContentTextFrame = styled.div<CustomProps>`
+  align-items: center;
   display: flex;
   flex-direction: ${props => (props.flexDirection ? props.flexDirection : '')};
-  justify-content: center;
-  align-items: center;
-  width: 100%;
   height: 100%;
+  justify-content: center;
   margin: ${props => (props.margin ? props.margin : '')};
+  width: 100%;
 `;
 export const PopUpMiddleContentTextComponent = styled.span<CustomProps>`
+  color: #000000;
   font-family: 'Spoqa Han Sans Neo';
+  font-size: 14px;
   font-style: normal;
   font-weight: normal;
-  font-size: 14px;
-  color: #000000;
 `;
 /*  */
 export const PopUpBottomFrame = styled.div<CustomProps>`
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: 40px;
   background-color: ${props => (props.backgroundColor ? props.backgroundColor : '#ffffff')};
   border-radius: 0px 0px 10px 10px;
+  display: flex;
+  flex-direction: row;
+  height: 40px;
+  width: 100%;
 `;
 export const PopUpBottomComponent = styled.div<CustomProps>`
-  position: relative;
+  align-items: center;
   display: flex;
   flex-direction: row;
-  align-items: center;
-  width: 100%;
   height: 100%;
+  position: relative;
+  width: 100%;
 `;
 export const PopUpBottomButtonComponent = styled.button<CustomProps>`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 100%;
+  background-color: ${props =>
+    props.backgroundColor ? props.backgroundColor : 'rgb(0, 178, 100)'};
   border: none;
   border-radius: 0px 0px 10px 10px;
-  background-color: ${props =>
-    props.backgroundColor ? props.backgroundColor : 'rgb(0, 178, 100)'};
+  color: ${props => (props.color ? props.color : '#ffffff')};
   cursor: pointer;
+  display: flex;
+  flex-direction: row;
   font-family: 'Spoqa Han Sans Neo';
+  font-size: 15px;
   font-style: normal;
   font-weight: normal;
-  font-size: 15px;
-  color: ${props => (props.color ? props.color : '#ffffff')};
+  height: 100%;
+  justify-content: center;
+  width: 100%;
 `;
 export const PopUpBottomButtonLeftComponent = styled.button<CustomProps>`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 100%;
-  border: none;
-  border-radius: 0px 0px 0px 10px;
   background-color: ${props =>
     props.backgroundColor ? props.backgroundColor : 'rgb(100, 100, 100)'};
-  cursor: pointer;
-  font-family: 'Spoqa Han Sans Neo';
-  font-style: normal;
-  font-weight: normal;
-  font-size: 15px;
+  border: none;
+  border-radius: 0px 0px 0px 10px;
   color: ${props => (props.color ? props.color : '#ffffff')};
-`;
-export const PopUpBottomButtonRightComponent = styled.button<CustomProps>`
+  cursor: pointer;
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  border: none;
-  border-radius: 0px 0px 10px 0px;
-  background-color: ${props =>
-    props.backgroundColor ? props.backgroundColor : 'rgb(0, 178, 100)'};
-  cursor: pointer;
   font-family: 'Spoqa Han Sans Neo';
+  font-size: 15px;
   font-style: normal;
   font-weight: normal;
-  font-size: 15px;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+`;
+export const PopUpBottomButtonRightComponent = styled.button<CustomProps>`
+  align-items: center;
+  background-color: ${props =>
+    props.backgroundColor ? props.backgroundColor : 'rgb(0, 178, 100)'};
+  border: none;
+  border-radius: 0px 0px 10px 0px;
   color: ${props => (props.color ? props.color : '#ffffff')};
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 15px;
+  font-style: normal;
+  font-weight: normal;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
 `;
 /*  */
 export const PopUpBorderComponent = styled.div`

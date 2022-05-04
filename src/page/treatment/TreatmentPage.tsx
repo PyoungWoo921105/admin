@@ -4,8 +4,6 @@ import { observer } from 'mobx-react';
 
 import { TreatmentFrame } from 'styles/components/treatment/Treatment';
 
-const TreatmentPage = observer(() => {
-  return <TreatmentFrame />;
-});
+const TreatmentPage = observer(() => <TreatmentFrame />);
 
 export default TreatmentPage;

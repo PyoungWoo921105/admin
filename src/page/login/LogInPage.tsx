@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { observer } from 'mobx-react';
 
 import { useStore } from 'data/useStore';
@@ -54,11 +54,11 @@ const LogInPage = observer(() => {
     } else {
       AdminData.setLogInValidateFlag(false);
     }
-  }, [AdminData.LogInUserID, AdminData.LogInUserPassword]);
+  }, [AdminData, AdminData.LogInUserID, AdminData.LogInUserPassword]);
 
   const history = useHistory();
 
-  const PostAuthLogInFunction = async () => {
+  const PostAuthLogInFunction = useCallback(async () => {
     const PostAuthLogInData = {
       username: AdminData.LogInUserID,
       password: AdminData.LogInUserPassword,
@@ -84,7 +84,7 @@ const LogInPage = observer(() => {
       CommonData.setPopUpFlag(true);
       AdminData.setLogInMessage(response.data.message);
     }
-  };
+  }, [AdminData, CommonData, history]);
 
   const onClickLogInButton = async () => {
     const LogInUserPasswordRegex =
@@ -96,13 +96,13 @@ const LogInPage = observer(() => {
         '비밀번호는 영문자, 숫자, 특수문자를 모두 포함하여 최소 8자리 이상이어야 합니다.'
       );
     } else {
-      PostAuthLogInFunction();
+      await PostAuthLogInFunction().finally(undefined);
     }
   };
 
-  const onKeyPressLogInButton = (e: any) => {
+  const onKeyPressLogInButton = (e: { key: string }) => {
     if (e.key === 'Enter') {
-      onClickLogInButton();
+      onClickLogInButton().finally(undefined);
     }
   };
 

@@ -3,69 +3,69 @@ import styled, { keyframes } from 'styled-components';
 import { CustomProps } from 'styles/interface/CustomProps';
 
 export const LogInFrame = styled.div`
-  position: relative;
-  height: 100vh;
-  width: fit-content;
-  margin: 0 auto;
+  align-items: center;
   display: flex;
   flex-direction: column;
+  height: 100vh;
   justify-content: center;
-  align-items: center;
+  margin: 0 auto;
+  position: relative;
+  width: fit-content;
 `;
 export const LogInComponent = styled.div<CustomProps>`
-  width: ${props => (props.width ? props.width : '')};
-  min-width: ${props => (props.minWidth ? props.minWidth : '')};
-  max-width: ${props => (props.maxWidth ? props.maxWidth : '')};
-  height: ${props => (props.height ? props.height : '')};
-  min-height: ${props => (props.minHeight ? props.minHeight : '')};
   background-color: ${props => (props.backgroundColor ? props.backgroundColor : '')};
+  height: ${props => (props.height ? props.height : '')};
+  max-width: ${props => (props.maxWidth ? props.maxWidth : '')};
+  min-height: ${props => (props.minHeight ? props.minHeight : '')};
+  min-width: ${props => (props.minWidth ? props.minWidth : '')};
+  width: ${props => (props.width ? props.width : '')};
 `;
 /*  */
 export const LogInTopFrame = styled.div<CustomProps>`
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: 40px;
   background-color: ${props => (props.backgroundColor ? props.backgroundColor : '')};
   border-radius: 10px 10px 0px 0px;
+  display: flex;
+  flex-direction: row;
+  height: 40px;
   padding: 10px 0px 10px 0px;
+  width: 100%;
 `;
 export const LogInTopComponent = styled.div<CustomProps>`
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
   align-items: center;
-  width: 100%;
-  height: 100%;
+  display: flex;
   filter: drop-shadow(rgba(0, 0, 0, 0.25) 0px 4px 4px);
+  flex-direction: row;
+  height: 100%;
+  justify-content: space-evenly;
+  position: relative;
+  width: 100%;
 `;
 export const LogInTopTitleImageFrame = styled.div<CustomProps>`
+  align-items: center;
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: center;
   height: 100%;
+  justify-content: center;
   min-width: 190px;
 `;
 export const LogInTopTitleImageComponent = styled.img<CustomProps>`
-  width: 100%;
   height: 100%;
+  width: 100%;
 `;
 export const LogInTopContentTextFrame = styled.div<CustomProps>`
+  align-items: center;
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: center;
   height: 100%;
+  justify-content: center;
   min-width: 60px;
 `;
 export const LogInTopContentTextComponent = styled.span<CustomProps>`
+  color: rgb(57, 57, 57);
   font-family: 'Spoqa Han Sans Neo';
+  font-size: 15px;
   font-style: normal;
   font-weight: normal;
-  font-size: 15px;
-  color: rgb(57, 57, 57);
 `;
 /*  */
 const ComponentFrameAnimation = keyframes`
@@ -75,144 +75,144 @@ const ComponentFrameAnimation = keyframes`
     transform: translateX(0);}
 `;
 export const LogInMiddleFrame = styled.div<CustomProps>`
-  display: flex;
-  flex-direction: row;
-  width: 100%;
+  animation: ${ComponentFrameAnimation} 0.3s linear 0s 1 normal forwards;
   background-color: ${props => (props.backgroundColor ? props.backgroundColor : '')};
   border-radius: 10px 10px 0px 0px;
-  padding: 10px 0px 10px 0px;
-  animation: ${ComponentFrameAnimation} 0.3s linear 0s 1 normal forwards;
-`;
-export const LogInMiddleComponent = styled.div<CustomProps>`
-  position: relative;
   display: flex;
   flex-direction: row;
-  align-items: center;
+  padding: 10px 0px 10px 0px;
   width: 100%;
+`;
+export const LogInMiddleComponent = styled.div<CustomProps>`
+  align-items: center;
+  display: flex;
+  flex-direction: row;
   height: 100%;
+  position: relative;
+  width: 100%;
 `;
 export const LogInMiddleContentComponent = styled.div<CustomProps>`
+  align-items: center;
   display: flex;
   flex-direction: ${props => (props.flexDirection ? props.flexDirection : '')};
-  justify-content: center;
-  align-items: center;
-  width: 100%;
   height: 100%;
+  justify-content: center;
   padding: 0px 10px 0px 10px;
+  width: 100%;
 `;
 export const LogInMiddleContentInputFrame = styled.div<CustomProps>`
-  position: relative;
   display: flex;
-  width: 100%;
   height: 100%;
+  position: relative;
+  width: 100%;
 `;
 export const LogInMiddleContentInputComponent = styled.input<CustomProps>`
-  width: 100%;
+  border: 1px solid rgb(224, 224, 224);
+  border-radius: 4px;
+  box-sizing: border-box;
   height: 50px;
   margin: 5px 0px 5px 0px;
-  box-sizing: border-box;
-  border: 1px solid rgb(224, 224, 224);
   padding: 15px;
-  border-radius: 4px;
+  width: 100%;
   ::placeholder {
+    color: #a8a8a8;
     font-family: 'Spoqa Han Sans Neo';
+    font-size: 15px;
     font-style: normal;
     font-weight: normal;
-    font-size: 15px;
-    color: #a8a8a8;
   }
 `;
 export const LogInMiddleContentImageFrame = styled.div<CustomProps>`
-  position: absolute;
-  top: 20px;
-  right: 20px;
+  align-items: center;
+  cursor: pointer;
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: center;
   height: 20px;
-  cursor: pointer;
+  justify-content: center;
+  position: absolute;
+  right: 20px;
+  top: 20px;
 `;
 export const LogInMiddleContentImageComponent = styled.img<CustomProps>`
-  width: 100%;
   height: 100%;
+  width: 100%;
 `;
 export const LogInMiddleContentTextFrame = styled.div<CustomProps>`
   display: flex;
   flex-direction: column;
-  width: 100%;
-  min-height: 40px;
   margin: 5px 0px 5px 0px;
+  min-height: 40px;
   padding: 10px 0px 10px 0px;
+  width: 100%;
 `;
 export const LogInMiddleContentTextComponent = styled.span<CustomProps>`
+  color: rgb(255, 59, 48);
   font-family: 'Spoqa Han Sans Neo';
+  font-size: 13px;
   font-style: normal;
   font-weight: normal;
-  font-size: 13px;
-  color: rgb(255, 59, 48);
 `;
 /*  */
 export const LogInBottomFrame = styled.div<CustomProps>`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
   background-color: ${props => (props.backgroundColor ? props.backgroundColor : '')};
   border-radius: 10px 10px 0px 0px;
-  padding: 10px 0px 10px 0px;
-`;
-export const LogInBottomComponent = styled.div<CustomProps>`
-  position: relative;
   display: flex;
   flex-direction: column;
+  padding: 10px 0px 10px 0px;
+  width: 100%;
+`;
+export const LogInBottomComponent = styled.div<CustomProps>`
   align-items: center;
+  display: flex;
+  flex-direction: column;
   padding: 0px 10px 0px 10px;
+  position: relative;
 `;
 export const LogInBottomButtonFrame = styled.div<CustomProps>`
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  width: 100%;
   height: 100%;
+  justify-content: center;
   margin: ${props => (props.margin ? props.margin : '')};
+  width: 100%;
 `;
 export const LogInBottomButtonComponent = styled.button<CustomProps>`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 50px;
+  background-color: ${props => (props.backgroundColor ? props.backgroundColor : '')};
   border: none;
   border-radius: 10px 10px 10px 10px;
-  background-color: ${props => (props.backgroundColor ? props.backgroundColor : '')};
+  color: ${props => (props.color ? props.color : '#ffffff')};
   cursor: pointer;
+  display: flex;
+  flex-direction: row;
   font-family: 'Spoqa Han Sans Neo';
+  font-size: 15px;
   font-style: normal;
   font-weight: normal;
-  font-size: 15px;
-  color: ${props => (props.color ? props.color : '#ffffff')};
+  height: 50px;
+  justify-content: center;
   margin: 5px 0px 5px 0px;
+  width: 100%;
 `;
 export const LogInBottomTextFrame = styled.div<CustomProps>`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   flex-wrap: wrap;
-  width: 100%;
   height: 100%;
+  justify-content: space-between;
   margin: ${props => (props.margin ? props.margin : '')};
+  width: 100%;
 `;
 export const LogInBottomTextComponent = styled.span<CustomProps>`
-  position: relative;
+  align-items: center;
+  color: rgb(141, 141, 141);
   display: flex;
   flex-direction: row;
-  align-items: center;
-  min-width: ${props => (props.minWidth ? props.minWidth : '')};
-  margin: 5px 0px 5px 0px;
   font-family: 'Spoqa Han Sans Neo';
+  font-size: 14px;
   font-style: normal;
   font-weight: normal;
-  font-size: 14px;
-  color: rgb(141, 141, 141);
+  margin: 5px 0px 5px 0px;
+  min-width: ${props => (props.minWidth ? props.minWidth : '')};
+  position: relative;
 `;

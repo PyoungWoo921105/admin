@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { observer } from 'mobx-react';
 
 import { useStore } from 'data/useStore';
@@ -19,7 +19,7 @@ const RootPage = observer(() => {
 
   const history = useHistory();
 
-  const PostAuthLogInFunction = async () => {
+  const PostAuthLogInFunction = useCallback(async () => {
     const PostAuthLogInData = {
       username: sessionStorage.getItem('LogInUserID'),
       password: sessionStorage.getItem('LogInUserPassword'),
@@ -45,15 +45,15 @@ const RootPage = observer(() => {
       CommonData.setPopUpFlag(true);
       AdminData.setLogInMessage(response.data.message);
     }
-  };
+  }, [AdminData, CommonData, history]);
 
   useEffect(() => {
     if (sessionStorage.getItem('LogInUserID') && sessionStorage.getItem('LogInUserPassword')) {
-      PostAuthLogInFunction();
+      PostAuthLogInFunction().finally(undefined);
     } else {
       history.push({ pathname: '/login' });
     }
-  }, []);
+  }, [PostAuthLogInFunction, history]);
 
   return (
     <RootFrame>

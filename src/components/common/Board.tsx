@@ -8,8 +8,7 @@ import { BoardFrame } from 'styles/components/common/Frame';
 import HomePage from 'page/home/HomePage';
 import TreatmentPage from 'page/treatment/TreatmentPage';
 
-const Board = observer(() => {
-  return (
+const Board = observer(() => (
     <BoardFrame>
       <Route exact path="/home" component={HomePage} />
       <Route path="/treatment_management" component={TreatmentPage} />
@@ -20,7 +19,6 @@ const Board = observer(() => {
       <Route path="/settlement_management" component={SettelmentComponent} />
       <Route path="/review_management" component={ReviewComponent} /> */}
     </BoardFrame>
-  );
-});
+  ));
 
 export default Board;

@@ -82,7 +82,7 @@ const GlobalNavigationBar = observer(() => {
     }
   }, [GlobalNavigationBarState]);
 
-  const onClickGlobalNavigationBarMenu = (props: any) => {
+  const onClickGlobalNavigationBarMenu = (props: { firstKey: number; secondKey: number }) => {
     const { firstKey, secondKey } = props;
     if (location.pathname.indexOf(GlobalNavigationBarTitleList[firstKey][secondKey].path) !== -1) {
       /* history.push({ pathname: "/home" }); */
@@ -116,7 +116,7 @@ const GlobalNavigationBar = observer(() => {
     };
   }, [keyDownEvent]);
 
-  const PostAuthLogOutFunction = async () => {
+  const PostAuthLogOutFunction = useCallback(async () => {
     CommonData.setLoadingFlag(true);
     const response = await PostAuthLogout();
     CommonData.setLoadingFlag(false);
@@ -135,10 +135,10 @@ const GlobalNavigationBar = observer(() => {
       CommonData.setPopUpData(PopUpData);
       CommonData.setPopUpFlag(true);
     }
-  };
+  }, [CommonData, history]);
 
   const onClickLogout = () => {
-    PostAuthLogOutFunction();
+    PostAuthLogOutFunction().finally(undefined);
   };
 
   return (
@@ -359,81 +359,77 @@ const GlobalNavigationBar = observer(() => {
       </GlobalNavigationBarTitleFrame>
       {GlobalNavigationBarState === 'OPENING' ? (
         <GlobalNavigationBarContentOpeningComponent>
-          {GlobalNavigationBarTitleList.map((globalNavigationBarTitleNames, firstKey) => {
-            return firstKey !== 0 ? (
+          {GlobalNavigationBarTitleList.map((globalNavigationBarTitleNames, firstKey) =>
+            firstKey !== 0 ? (
               <GlobalNavigationBarContentTitlesComponent
                 // eslint-disable-next-line react/no-array-index-key
                 key={firstKey}
               >
-                {globalNavigationBarTitleNames.map((globalNavigationBarTitleName, secondKey) => {
-                  return (
-                    <GlobalNavigationBarContentTitleComponent
-                      // eslint-disable-next-line react/no-array-index-key
-                      key={secondKey}
-                      onClick={() => onClickGlobalNavigationBarMenu({ firstKey, secondKey })}
-                      backgroundColor={
-                        location.pathname.indexOf(
-                          GlobalNavigationBarTitleList[firstKey][secondKey].path
-                        ) !== -1
-                          ? '#000000'
-                          : '#393939'
-                      }
-                      borderRadius={
-                        location.pathname.indexOf(
-                          GlobalNavigationBarTitleList[firstKey][secondKey].path
-                        ) !== -1
-                          ? '10px'
-                          : '0px'
-                      }
-                    >
-                      <GlobalNavigationBarContentTitleTextComponent>
-                        {globalNavigationBarTitleName.name}
-                      </GlobalNavigationBarContentTitleTextComponent>
-                    </GlobalNavigationBarContentTitleComponent>
-                  );
-                })}
+                {globalNavigationBarTitleNames.map((globalNavigationBarTitleName, secondKey) => (
+                  <GlobalNavigationBarContentTitleComponent
+                    // eslint-disable-next-line react/no-array-index-key
+                    key={secondKey}
+                    onClick={() => onClickGlobalNavigationBarMenu({ firstKey, secondKey })}
+                    backgroundColor={
+                      location.pathname.indexOf(
+                        GlobalNavigationBarTitleList[firstKey][secondKey].path
+                      ) !== -1
+                        ? '#000000'
+                        : '#393939'
+                    }
+                    borderRadius={
+                      location.pathname.indexOf(
+                        GlobalNavigationBarTitleList[firstKey][secondKey].path
+                      ) !== -1
+                        ? '10px'
+                        : '0px'
+                    }
+                  >
+                    <GlobalNavigationBarContentTitleTextComponent>
+                      {globalNavigationBarTitleName.name}
+                    </GlobalNavigationBarContentTitleTextComponent>
+                  </GlobalNavigationBarContentTitleComponent>
+                ))}
               </GlobalNavigationBarContentTitlesComponent>
-            ) : null;
-          })}
+            ) : null
+          )}
         </GlobalNavigationBarContentOpeningComponent>
       ) : GlobalNavigationBarState === 'CLOSING' ? (
         <GlobalNavigationBarContentClosingComponent>
-          {GlobalNavigationBarTitleList.map((globalNavigationBarTitleNames, firstKey) => {
-            return firstKey !== 0 ? (
+          {GlobalNavigationBarTitleList.map((globalNavigationBarTitleNames, firstKey) =>
+            firstKey !== 0 ? (
               <GlobalNavigationBarContentTitlesComponent
                 // eslint-disable-next-line react/no-array-index-key
                 key={firstKey}
               >
-                {globalNavigationBarTitleNames.map((globalNavigationBarTitleName, secondKey) => {
-                  return (
-                    <GlobalNavigationBarContentTitleComponent
-                      // eslint-disable-next-line react/no-array-index-key
-                      key={secondKey}
-                      onClick={() => onClickGlobalNavigationBarMenu({ firstKey, secondKey })}
-                      backgroundColor={
-                        location.pathname.indexOf(
-                          GlobalNavigationBarTitleList[firstKey][secondKey].path
-                        ) !== -1
-                          ? '#000000'
-                          : '#393939'
-                      }
-                      borderRadius={
-                        location.pathname.indexOf(
-                          GlobalNavigationBarTitleList[firstKey][secondKey].path
-                        ) !== -1
-                          ? '10px'
-                          : '0px'
-                      }
-                    >
-                      <GlobalNavigationBarContentTitleTextComponent>
-                        {globalNavigationBarTitleName.name}
-                      </GlobalNavigationBarContentTitleTextComponent>
-                    </GlobalNavigationBarContentTitleComponent>
-                  );
-                })}
+                {globalNavigationBarTitleNames.map((globalNavigationBarTitleName, secondKey) => (
+                  <GlobalNavigationBarContentTitleComponent
+                    // eslint-disable-next-line react/no-array-index-key
+                    key={secondKey}
+                    onClick={() => onClickGlobalNavigationBarMenu({ firstKey, secondKey })}
+                    backgroundColor={
+                      location.pathname.indexOf(
+                        GlobalNavigationBarTitleList[firstKey][secondKey].path
+                      ) !== -1
+                        ? '#000000'
+                        : '#393939'
+                    }
+                    borderRadius={
+                      location.pathname.indexOf(
+                        GlobalNavigationBarTitleList[firstKey][secondKey].path
+                      ) !== -1
+                        ? '10px'
+                        : '0px'
+                    }
+                  >
+                    <GlobalNavigationBarContentTitleTextComponent>
+                      {globalNavigationBarTitleName.name}
+                    </GlobalNavigationBarContentTitleTextComponent>
+                  </GlobalNavigationBarContentTitleComponent>
+                ))}
               </GlobalNavigationBarContentTitlesComponent>
-            ) : null;
-          })}
+            ) : null
+          )}
         </GlobalNavigationBarContentClosingComponent>
       ) : null}
     </GlobalNavigationBarFrame>

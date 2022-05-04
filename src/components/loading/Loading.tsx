@@ -9,14 +9,12 @@ import {
   LoadingImageComponent,
 } from 'styles/components/loading/Loading';
 
-const Loading = observer(() => {
-  return (
+const Loading = observer(() => (
     <LoadingFrame>
       <LoadingComponent>
         <LoadingImageComponent src={LoadingAnimation} />
       </LoadingComponent>
     </LoadingFrame>
-  );
-});
+  ));
 
 export default Loading;

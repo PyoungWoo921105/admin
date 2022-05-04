@@ -7,9 +7,11 @@ export const PostAuthLogIn = async (data: { username: string | null; password: s
     const response = await customAxios.post('/auth/login', null, {
       params: { username, password },
     });
-    return response;
-  } catch (error: any) {
-    return error.response;
+    const metaResponse = response as { status: number; data: { message: string } };
+    return metaResponse;
+  } catch (error: unknown) {
+    const metaError = error as { response: { status: number; data: { message: string } } };
+    return metaError.response;
   }
 };
 

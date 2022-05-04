@@ -12,19 +12,19 @@ export const HomeFrameAnimation = keyframes`
 `;
 
 export const HomeFrame = styled.div`
-  width: 100%;
-  height: 100%;
+  align-items: center;
   display: flex;
   flex-direction: column;
+  height: 100%;
   justify-content: center;
-  align-items: center;
+  width: 100%;
 `;
 export const LogoImageIconFrame = styled.div`
   animation: ${HomeFrameAnimation} 0.3s linear 0s 1 normal forwards;
-  min-width: 100px;
-  max-width: 400px;
-  padding: 0px 20px 0px 20px;
   cursor: pointer;
+  max-width: 400px;
+  min-width: 100px;
+  padding: 0px 20px 0px 20px;
 `;
 export const LogoImageIconComponent = styled.img`
   width: 100%;

@@ -3,28 +3,28 @@ import styled, { keyframes } from 'styled-components';
 import { CustomProps } from 'styles/interface/CustomProps';
 
 export const GlobalNavigationBarFrame = styled.div`
-  position: absolute;
-  width: 100%;
-  top: 0px;
+  align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   padding: 10px 0px 10px 0px;
+  position: absolute;
+  top: 0px;
+  width: 100%;
 `;
 export const GlobalNavigationBarTitleFrame = styled.div`
-  width: 100%;
+  align-items: center;
   display: flex;
   flex-direction: row;
-  align-items: center;
   height: 40px;
+  width: 100%;
 `;
 export const GlobalNavigationBarTitleComponent = styled.div`
-  width: 100%;
+  align-items: center;
   display: flex;
   flex-direction: row;
-  align-items: center;
   justify-content: space-between;
+  width: 100%;
 `;
 export const GlobalNavigationBarTitleMainFrame = styled.div`
   display: flex;
@@ -35,74 +35,74 @@ export const GlobalNavigationBarTitleSubFrame = styled.div`
   width: 50px;
 `;
 export const GlobalNavigationBarLogoImageFrame = styled.div`
-  display: flex;
   align-content: center;
-  justify-content: center;
-  width: 120px;
-  min-width: 120px;
-  max-width: 120px;
-  height: 100%;
-  margin: 0px 10px 0px 10px;
   cursor: pointer;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  margin: 0px 10px 0px 10px;
+  max-width: 120px;
+  min-width: 120px;
+  width: 120px;
 `;
 export const GlobalNavigationBarLogoImageComponent = styled.img`
   width: 100%;
 `;
 export const GlobalNavigationBarTitleTextFrame = styled.div`
+  align-items: center;
   display: flex;
   justify-content: center;
-  align-items: center;
-  width: 50px;
-  min-width: 50px;
   margin: 0px 0px 0px 10px;
+  min-width: 50px;
+  width: 50px;
 `;
 export const GlobalNavigationBarTitleTextComponent = styled.span`
+  color: #393939;
   font-family: 'Spoqa Han Sans Neo';
+  font-size: 12px;
   font-style: normal;
   font-weight: normal;
-  font-size: 12px;
-  color: #393939;
 `;
 export const GlobalNavigationBarShowContentImageFrame = styled.button`
-  display: flex;
-  justify-content: center;
   align-items: center;
-  width: 30px;
-  min-width: 30px;
-  height: 30px;
-  min-height: 30px;
   background-color: transparent;
   border: none;
   cursor: pointer;
+  display: flex;
+  height: 30px;
+  justify-content: center;
   margin: 0px 10px 0px 0px;
+  min-height: 30px;
+  min-width: 30px;
+  width: 30px;
 `;
 export const GlobalNavigationBarShowContentImageComponent = styled.img`
   width: 100%;
 `;
 export const GlobalNavigationBarShortCutFrame = styled.div`
-  width: 100%;
+  align-items: center;
   display: flex;
   flex-direction: row;
-  align-items: center;
   margin: 0px 10px 0px 10px;
+  width: 100%;
 `;
 export const GlobalNavigationBarShortCutComponent = styled.div`
+  align-items: center;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
-  width: 60px;
-  min-width: 60px;
   margin: 0px 10px 0px 10px;
+  min-width: 60px;
+  width: 60px;
 `;
 export const GlobalNavigationBarShortCutTextComponent = styled.span<CustomProps>`
+  color: ${props => (props.color ? props.color : '#393939')};
+  cursor: pointer;
   font-family: 'Spoqa Han Sans Neo';
+  font-size: 15px;
   font-style: normal;
   font-weight: 700;
-  font-size: 15px;
-  color: ${props => (props.color ? props.color : '#393939')};
   text-decoration-line: ${props => (props.textDecoration ? props.textDecoration : '')};
-  cursor: pointer;
 `;
 export const GlobalNavigationBarContentComponentAnimation = keyframes`
   from{ 
@@ -115,69 +115,69 @@ export const GlobalNavigationBarContentComponentAnimation = keyframes`
     }
 `;
 export const GlobalNavigationBarContentOpeningComponent = styled.div`
-  width: 100%;
+  align-items: center;
+  animation: ${GlobalNavigationBarContentComponentAnimation} 0.3s linear 0s 1 normal forwards;
+  background: #393939;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   padding: 10px 0px 10px 0px;
-  animation: ${GlobalNavigationBarContentComponentAnimation} 0.3s linear 0s 1 normal forwards;
-  background: #393939;
+  width: 100%;
   z-index: 10;
 `;
 export const GlobalNavigationBarContentClosingComponent = styled.div`
-  width: 100%;
+  align-items: center;
+  animation: ${GlobalNavigationBarContentComponentAnimation} 0.3s linear 0s 1 reverse forwards;
+  background: #393939;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   padding: 10px 0px 10px 0px;
-  animation: ${GlobalNavigationBarContentComponentAnimation} 0.3s linear 0s 1 reverse forwards;
-  background: #393939;
+  width: 100%;
   z-index: 10;
 `;
 export const GlobalNavigationBarContentTitlesComponent = styled.div`
-  width: 100%;
-  height: 100%;
+  align-items: center;
   display: flex;
   flex-direction: row;
+  height: 100%;
   justify-content: space-evenly;
-  align-items: center;
+  width: 100%;
 `;
 export const GlobalNavigationBarContentTitleComponent = styled.button<CustomProps>`
-  width: 100%;
-  height: 100%;
-  min-height: 35px;
+  align-items: center;
+  background-color: ${props => (props.backgroundColor ? props.backgroundColor : '#393939')};
+  border: none;
+  border-radius: ${props => (props.borderRadius ? props.borderRadius : '')};
+  cursor: pointer;
   display: flex;
   flex-direction: row;
+  height: 100%;
   justify-content: center;
-  align-items: center;
+  min-height: 35px;
   padding: 10px 0px 10px 0px;
-  background-color: ${props => (props.backgroundColor ? props.backgroundColor : '#393939')};
-  border-radius: ${props => (props.borderRadius ? props.borderRadius : '')};
-  border: none;
-  cursor: pointer;
+  width: 100%;
 `;
 export const GlobalNavigationBarContentTitleTextComponent = styled.span`
+  color: #ffffff;
   font-family: 'Spoqa Han Sans Neo';
+  font-size: 12px;
   font-style: normal;
   font-weight: normal;
-  font-size: 12px;
-  color: #ffffff;
   text-decoration: none;
 `;
 export const GlobalNavigationBarLogoutImageFrame = styled.button`
-  display: flex;
-  justify-content: center;
   align-items: center;
-  width: 30px;
-  min-width: 30px;
-  height: 30px;
-  min-height: 30px;
   background-color: transparent;
   border: none;
   cursor: pointer;
+  display: flex;
+  height: 30px;
+  justify-content: center;
   margin: 0px 10px 0px 10px;
+  min-height: 30px;
+  min-width: 30px;
+  width: 30px;
 `;
 export const GlobalNavigationBarLogoutImageComponent = styled.img`
   width: 100%;

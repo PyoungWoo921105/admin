@@ -83,13 +83,11 @@ const PopUp = observer(() => {
           <PopUpMiddleComponent padding="0px 20px 0px 20px">
             <PopUpMiddleContentFrame>
               <PopUpMiddleContentComponent flexDirection="column">
-                {CommonData.PopUpData?.Contents.map(Content => {
-                  return (
+                {CommonData.PopUpData?.Contents.map(Content => (
                     <PopUpMiddleContentTextFrame key={Content} margin="5px 0px 5px 0px">
                       <PopUpMiddleContentTextComponent>{Content}</PopUpMiddleContentTextComponent>
                     </PopUpMiddleContentTextFrame>
-                  );
-                })}
+                  ))}
               </PopUpMiddleContentComponent>
             </PopUpMiddleContentFrame>
           </PopUpMiddleComponent>
