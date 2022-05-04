@@ -59,7 +59,7 @@ const PopUp = observer(() => {
 
   return (
     <PopUpFrame>
-      <PopUpComponent minWidth="300px">
+      <PopUpComponent minWidth="280px">
         <PopUpTopFrame>
           <PopUpTopComponent>
             <PopUpTopTitleComponent>

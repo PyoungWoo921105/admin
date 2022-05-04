@@ -20,6 +20,7 @@ export const PopUpComponent = styled.div<CustomProps>`
   min-height: ${props => (props.minHeight ? props.minHeight : '')};
   background-color: ${props => (props.backgroundColor ? props.backgroundColor : '#ffffff')};
   border-radius: 10px 10px 10px 10px;
+  margin: 0px 10px 0px 10px;
 `;
 /*  */
 export const PopUpTopFrame = styled.div<CustomProps>`
