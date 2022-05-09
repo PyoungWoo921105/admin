@@ -91,7 +91,7 @@ const LogInPage = observer(() => {
       /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[~!@#$%^&*()_+|<>?:{};])(?=.{8,})/;
     if (AdminData.LogInUserID.length < 6 || AdminData.LogInUserID.length > 20) {
       AdminData.setLogInMessage('아이디는 6~20자의 영문 소문자, 숫자만 사용 가능합니다.');
-    } else if (!AdminData.LogInUserPassword.match(LogInUserPasswordRegex)) {
+    } else if (!RegExp(LogInUserPasswordRegex).exec(AdminData.LogInUserPassword)) {
       AdminData.setLogInMessage(
         '비밀번호는 영문자, 숫자, 특수문자를 모두 포함하여 최소 8자리 이상이어야 합니다.'
       );
