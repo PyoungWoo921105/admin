@@ -51,15 +51,18 @@ module.exports = {
     ],
 
     'no-use-before-define': 0,
+
+    'consistent-return': 0,
+
+    'react/prop-types': 0,
+    'react/require-default-props': 0,
+
+    'import/no-cycle': 0,
+
+    '@typescript-eslint/no-empty-interface': 0,
+
+    '@typescript-eslint/explicit-module-boundary-types': ['off'],
   },
-  overrides: [
-    {
-      files: ['src/**/*Store.ts'],
-      rules: {
-        'import/no-cycle': 'off',
-      },
-    },
-  ],
   settings: {
     'import/parsers': {
       '@typescript-eslint/parser': ['.ts', '.tsx'],
