@@ -20,32 +20,32 @@ import {
   LocationNavigationBarContentTextComponent,
 } from 'styles/components/common/LocationNavigation';
 
-const TreatmentLeftNavigationBar = observer(() => {
+const TreatmentNavigationBar = observer(() => {
   const history = useHistory();
   const location = useLocation<LocationState>();
 
-  const LeftNavigationBarTitleList = [{ name: '진료 내역', path: '/treatment_management/history' }];
+  const NavigationBarTitleList = [{ name: '진료 내역', path: '/treatment_management/history' }];
 
-  const onClickLeftNavigationBarMenu = (props: { key: number }) => {
+  const onClickNavigationBarMenu = (props: { key: number }) => {
     const { key } = props;
-    /* if (location.pathname === LeftNavigationBarTitleList[key].path) {
+    /* if (location.pathname === NavigationBarTitleList[key].path) {
       history.push({
         pathname: "/treatment_management",
       });
     } else {
       history.push({
-        pathname: LeftNavigationBarTitleList[key].path,
+        pathname: NavigationBarTitleList[key].path,
       });
     } */
     history.push({
-      pathname: LeftNavigationBarTitleList[key].path,
+      pathname: NavigationBarTitleList[key].path,
     });
   };
 
   useEffect(() => {
     if (typeof location.state !== 'undefined' && location.state.initiate === true) {
       history.push({
-        pathname: LeftNavigationBarTitleList[0].path,
+        pathname: NavigationBarTitleList[0].path,
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -63,17 +63,17 @@ const TreatmentLeftNavigationBar = observer(() => {
         </LocationNavigationBarTitleComponent>
       </LocationNavigationBarTitleFrame>
       <LocationNavigationBarContentFrame>
-        {LeftNavigationBarTitleList.map((LeftNavigationBarTitle, key) => (
+        {NavigationBarTitleList.map((NavigationBarTitle, key) => (
           <LocationNavigationBarContentComponent
-            key={LeftNavigationBarTitle.name}
+            key={NavigationBarTitle.name}
             backgroundColor={
-              LeftNavigationBarTitleList[key].path === location.pathname ? '#0d985b' : '#14C276'
+              NavigationBarTitleList[key].path === location.pathname ? '#0d985b' : '#14C276'
             }
-            onClick={() => onClickLeftNavigationBarMenu({ key })}
+            onClick={() => onClickNavigationBarMenu({ key })}
           >
             <LocationNavigationBarContentTextFrame>
               <LocationNavigationBarContentTextComponent>
-                {LeftNavigationBarTitle.name}
+                {NavigationBarTitle.name}
               </LocationNavigationBarContentTextComponent>
             </LocationNavigationBarContentTextFrame>
           </LocationNavigationBarContentComponent>
@@ -83,4 +83,4 @@ const TreatmentLeftNavigationBar = observer(() => {
   );
 });
 
-export default TreatmentLeftNavigationBar;
+export default TreatmentNavigationBar;
