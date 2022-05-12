@@ -1,45 +1,67 @@
-import styled, { keyframes } from 'styled-components';
+/*
+ * Copyright (c) 2022 Medir Inc.
+ */
+
+import styled from 'styled-components';
 
 import { CustomProps } from 'styles/interface/CustomProps';
 
+export interface LocationState {
+  initiate: boolean;
+}
 export const LocationNavigationBarFrame = styled.div`
-  align-items: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  width: 80px;
 `;
 export const LocationNavigationBarTitleFrame = styled.div`
-  align-items: center;
-  background: #00b264;
-  display: flex;
-  min-height: 40px;
-  width: 80px;
-`;
-export const LocationNavigationBarContentFrame = styled.div`
-  align-items: center;
-  background: #14c276;
-  display: flex;
-  height: 100%;
+  background-color: #00b264;
   width: 80px;
 `;
 export const LocationNavigationBarTitleComponent = styled.div`
   display: flex;
-  flex-direction: row;
-  height: 100%;
+  flex-direction: column;
+  height: 40px;
   width: 100%;
 `;
 export const LocationNavigationBarTitleTextFrame = styled.div`
   align-items: center;
   display: flex;
+  height: 40px;
+  justify-content: center;
+  width: 100%;
+`;
+export const LocationNavigationBarTitleTextComponent = styled.span`
+  color: #ffffff;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 12px;
+  font-style: normal;
+  font-weight: normal;
+`;
+export const LocationNavigationBarContentFrame = styled.div`
+  background: #14c276;
+  height: 100%;
+  width: 80px;
+`;
+export const LocationNavigationBarContentComponent = styled.div<CustomProps>`
+  background-color: ${props => (props.backgroundColor ? props.backgroundColor : '')};
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  height: 40px;
+  width: 100%;
+`;
+export const LocationNavigationBarContentTextFrame = styled.div<CustomProps>`
+  align-items: center;
+  display: flex;
   height: 100%;
   justify-content: center;
   width: 100%;
 `;
-export const LocationNavigationBarTitleTextComponent = styled.div`
+export const LocationNavigationBarContentTextComponent = styled.span`
   color: #ffffff;
   font-family: 'Spoqa Han Sans Neo';
-  font-size: 14px;
+  font-size: 12px;
   font-style: normal;
-  font-weight: 500;
+  font-weight: normal;
 `;

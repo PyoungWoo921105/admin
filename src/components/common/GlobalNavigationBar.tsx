@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2022 Medir Inc.
+ */
+
 import React, { useCallback, useEffect, useState } from 'react';
 import { observer } from 'mobx-react';
 
@@ -72,7 +76,6 @@ const GlobalNavigationBar = observer(() => {
 
   const [GlobalNavigationBarState, setGlobalNavigationBarState] = useState('CLOSE');
 
-  // eslint-disable-next-line consistent-return
   useEffect(() => {
     if (GlobalNavigationBarState === 'CLOSING') {
       const interval = setInterval(() => {

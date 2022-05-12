@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2022 Medir Inc.
+ */
+
 import styled, { keyframes } from 'styled-components';
 
 import { CustomProps } from 'styles/interface/CustomProps';
@@ -89,20 +93,20 @@ export const GlobalNavigationBarShortCutFrame = styled.div`
 `;
 export const GlobalNavigationBarShortCutComponent = styled.div`
   align-items: center;
+  cursor: pointer;
   display: flex;
   flex-direction: row;
   justify-content: center;
   margin: 0px 10px 0px 10px;
-  min-width: 60px;
-  width: 60px;
+  min-width: 55px;
+  width: 55px;
 `;
 export const GlobalNavigationBarShortCutTextComponent = styled.span<CustomProps>`
   color: ${props => (props.color ? props.color : '#393939')};
-  cursor: pointer;
   font-family: 'Spoqa Han Sans Neo';
-  font-size: 14px;
+  font-size: 12px;
   font-style: normal;
-  font-weight: 700;
+  font-weight: normal;
   text-decoration-line: ${props => (props.textDecoration ? props.textDecoration : '')};
 `;
 export const GlobalNavigationBarContentComponentAnimation = keyframes`
