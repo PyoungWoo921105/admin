@@ -180,7 +180,7 @@ const GlobalNavigationBar = observer(() => {
                 }
               />
             </GlobalNavigationBarShowContentImageFrame>
-            {width >= 1024 ? (
+            {width >= 768 ? (
               <GlobalNavigationBarShortCutFrame>
                 <GlobalNavigationBarShortCutComponent>
                   <GlobalNavigationBarShortCutTextComponent

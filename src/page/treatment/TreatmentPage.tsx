@@ -6,14 +6,16 @@ import React from 'react';
 
 import { observer } from 'mobx-react';
 
-import { TreatmentFrame } from 'styles/components/treatment/Treatment';
+import { LocalFrame } from 'styles/components/common/Frame';
 
 import TreatmentNavigationBar from 'page/treatment/TreatmentNavigationBar';
+import TreatmentManagementBoard from 'page/treatment/TreatmentManagementBoard';
 
 const TreatmentPage = observer(() => (
-  <TreatmentFrame>
+  <LocalFrame>
     <TreatmentNavigationBar />
-  </TreatmentFrame>
+    <TreatmentManagementBoard />
+  </LocalFrame>
 ));
 
 export default TreatmentPage;

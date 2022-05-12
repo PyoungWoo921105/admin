@@ -7,20 +7,19 @@ import styled, { keyframes } from 'styled-components';
 import { CustomProps } from 'styles/interface/CustomProps';
 
 export const GlobalNavigationBarFrame = styled.div`
-  align-items: center;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 10px 0px 10px 0px;
+  height: 50px;
+  left: 0px;
+  min-height: 50px;
   position: absolute;
-  top: 0px;
-  width: 100%;
+  right: 0px;
+  top: 0px; ;
 `;
 export const GlobalNavigationBarTitleFrame = styled.div`
-  align-items: center;
   display: flex;
   flex-direction: row;
-  height: 40px;
+  height: 100%;
+  margin: 0px 10px 0px 10px;
   width: 100%;
 `;
 export const GlobalNavigationBarTitleComponent = styled.div`
@@ -36,8 +35,9 @@ export const GlobalNavigationBarTitleMainFrame = styled.div`
   width: 100%;
 `;
 export const GlobalNavigationBarTitleSubFrame = styled.div`
+  align-items: center;
   display: flex;
-  width: 50px;
+  width: 40px;
 `;
 export const GlobalNavigationBarLogoImageFrame = styled.div`
   align-content: center;
@@ -45,7 +45,7 @@ export const GlobalNavigationBarLogoImageFrame = styled.div`
   display: flex;
   height: 100%;
   justify-content: center;
-  margin: 0px 10px 0px 10px;
+  margin: 0px 5px 0px 5px;
   max-width: 120px;
   min-width: 120px;
   width: 120px;
@@ -57,7 +57,7 @@ export const GlobalNavigationBarTitleTextFrame = styled.div`
   align-items: center;
   display: flex;
   justify-content: center;
-  margin: 0px 0px 0px 10px;
+  margin: 0px 0px 0px 5px;
   min-width: 50px;
   width: 50px;
 `;
@@ -76,7 +76,7 @@ export const GlobalNavigationBarShowContentImageFrame = styled.button`
   display: flex;
   height: 30px;
   justify-content: center;
-  margin: 0px 10px 0px 0px;
+  margin: 0px 5px 0px 0px;
   min-height: 30px;
   min-width: 30px;
   width: 30px;
@@ -88,7 +88,7 @@ export const GlobalNavigationBarShortCutFrame = styled.div`
   align-items: center;
   display: flex;
   flex-direction: row;
-  margin: 0px 10px 0px 10px;
+  margin: 0px 5px 0px 5px;
   width: 100%;
 `;
 export const GlobalNavigationBarShortCutComponent = styled.div`
@@ -97,7 +97,7 @@ export const GlobalNavigationBarShortCutComponent = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin: 0px 10px 0px 10px;
+  margin: 0px 5px 0px 0px;
   min-width: 55px;
   width: 55px;
 `;
@@ -127,6 +127,8 @@ export const GlobalNavigationBarContentOpeningComponent = styled.div`
   flex-direction: column;
   justify-content: center;
   padding: 10px 0px 10px 0px;
+  position: absolute;
+  top: 50px;
   width: 100%;
   z-index: 10;
 `;
@@ -138,6 +140,8 @@ export const GlobalNavigationBarContentClosingComponent = styled.div`
   flex-direction: column;
   justify-content: center;
   padding: 10px 0px 10px 0px;
+  position: absolute;
+  top: 50px;
   width: 100%;
   z-index: 10;
 `;
@@ -179,7 +183,7 @@ export const GlobalNavigationBarLogoutImageFrame = styled.button`
   display: flex;
   height: 30px;
   justify-content: center;
-  margin: 0px 10px 0px 10px;
+  margin: 0px 5px 0px 5px;
   min-height: 30px;
   min-width: 30px;
   width: 30px;

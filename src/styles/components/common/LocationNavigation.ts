@@ -12,10 +12,11 @@ export interface LocationState {
 export const LocationNavigationBarFrame = styled.div`
   display: flex;
   flex-direction: column;
+  height: 100%;
+  min-width: 80px;
 `;
 export const LocationNavigationBarTitleFrame = styled.div`
   background-color: #00b264;
-  width: 80px;
 `;
 export const LocationNavigationBarTitleComponent = styled.div`
   display: flex;
@@ -40,7 +41,6 @@ export const LocationNavigationBarTitleTextComponent = styled.span`
 export const LocationNavigationBarContentFrame = styled.div`
   background: #14c276;
   height: 100%;
-  width: 80px;
 `;
 export const LocationNavigationBarContentComponent = styled.div<CustomProps>`
   background-color: ${props => (props.backgroundColor ? props.backgroundColor : '')};
