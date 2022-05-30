@@ -13,7 +13,7 @@ export const LocationNavigationBarFrame = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
-  min-width: 80px;
+  min-width: 90px;
 `;
 export const LocationNavigationBarTitleFrame = styled.div`
   background-color: #00b264;
@@ -34,7 +34,7 @@ export const LocationNavigationBarTitleTextFrame = styled.div`
 export const LocationNavigationBarTitleTextComponent = styled.span`
   color: #ffffff;
   font-family: 'Spoqa Han Sans Neo';
-  font-size: 12px;
+  font-size: 10px;
   font-style: normal;
   font-weight: normal;
 `;
@@ -61,7 +61,7 @@ export const LocationNavigationBarContentTextFrame = styled.div<CustomProps>`
 export const LocationNavigationBarContentTextComponent = styled.span`
   color: #ffffff;
   font-family: 'Spoqa Han Sans Neo';
-  font-size: 12px;
+  font-size: 10px;
   font-style: normal;
   font-weight: normal;
 `;
