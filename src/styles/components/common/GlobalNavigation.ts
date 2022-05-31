@@ -64,7 +64,7 @@ export const GlobalNavigationBarTitleTextFrame = styled.div`
 export const GlobalNavigationBarTitleTextComponent = styled.span`
   color: #393939;
   font-family: 'Spoqa Han Sans Neo';
-  font-size: 10px;
+  font-size: 13px;
   font-style: normal;
   font-weight: normal;
 `;
@@ -97,14 +97,14 @@ export const GlobalNavigationBarShortCutComponent = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin: 0px 5px 0px 0px;
+  margin: 0px 10px 0px 0px;
   min-width: 55px;
   width: 55px;
 `;
 export const GlobalNavigationBarShortCutTextComponent = styled.span<CustomProps>`
   color: ${props => (props.color ? props.color : '#393939')};
   font-family: 'Spoqa Han Sans Neo';
-  font-size: 10px;
+  font-size: 13px;
   font-style: normal;
   font-weight: normal;
   text-decoration-line: ${props => (props.textDecoration ? props.textDecoration : '')};
@@ -170,7 +170,7 @@ export const GlobalNavigationBarContentTitleComponent = styled.button<CustomProp
 export const GlobalNavigationBarContentTitleTextComponent = styled.span`
   color: #ffffff;
   font-family: 'Spoqa Han Sans Neo';
-  font-size: 10px;
+  font-size: 13px;
   font-style: normal;
   font-weight: normal;
   text-decoration: none;

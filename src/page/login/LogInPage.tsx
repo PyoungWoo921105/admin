@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2022 Medir Inc.
+ */
+
 import React, { useCallback, useEffect } from 'react';
 import { observer } from 'mobx-react';
 
@@ -175,10 +179,10 @@ const LogInPage = observer(() => {
               </LogInBottomButtonComponent>
             </LogInBottomButtonFrame>
             <LogInBottomTextFrame margin="5px 0px 0px 0px">
-              <LogInBottomTextComponent minWidth="190px">
+              <LogInBottomTextComponent margin="5px 20px 5px 0px">
                 제휴 문의 | 010-5561-5147
               </LogInBottomTextComponent>
-              <LogInBottomTextComponent minWidth="215px">
+              <LogInBottomTextComponent margin="5px 0px 5px 0px">
                 시스템 관련 문의 | 02-555-0774
               </LogInBottomTextComponent>
             </LogInBottomTextFrame>

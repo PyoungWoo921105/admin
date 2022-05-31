@@ -4,11 +4,8 @@
 
 import styled from 'styled-components';
 
-export const RootFrame = styled.div`
-  height: 100%;
-  overflow: overlay;
-  position: fixed;
-  width: 100%;
+export const TitleFrame = styled.div`
+  position: absolute;
 `;
 
 export const GlobalFrame = styled.div`

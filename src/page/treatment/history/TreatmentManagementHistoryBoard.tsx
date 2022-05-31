@@ -8,6 +8,12 @@ import { observer } from 'mobx-react';
 
 import { LocalBoardFrame } from 'styles/components/common/Frame';
 
-const TreatmentManagementHistoryBoard = observer(() => <LocalBoardFrame>s</LocalBoardFrame>);
+import TreatmentManagementHistoryTitle from './TreatmentManagementHistoryTitle';
+
+const TreatmentManagementHistoryBoard = observer(() => (
+  <LocalBoardFrame>
+    <TreatmentManagementHistoryTitle />
+  </LocalBoardFrame>
+));
 
 export default TreatmentManagementHistoryBoard;

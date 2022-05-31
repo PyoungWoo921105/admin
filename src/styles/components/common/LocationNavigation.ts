@@ -34,7 +34,7 @@ export const LocationNavigationBarTitleTextFrame = styled.div`
 export const LocationNavigationBarTitleTextComponent = styled.span`
   color: #ffffff;
   font-family: 'Spoqa Han Sans Neo';
-  font-size: 10px;
+  font-size: 13px;
   font-style: normal;
   font-weight: normal;
 `;
@@ -61,7 +61,7 @@ export const LocationNavigationBarContentTextFrame = styled.div<CustomProps>`
 export const LocationNavigationBarContentTextComponent = styled.span`
   color: #ffffff;
   font-family: 'Spoqa Han Sans Neo';
-  font-size: 10px;
+  font-size: 13px;
   font-style: normal;
   font-weight: normal;
 `;

@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2022 Medir Inc.
+ */
+
 import styled from 'styled-components';
 
 import { CustomProps } from 'styles/interface/CustomProps';
@@ -50,7 +54,7 @@ export const PopUpTopTitleComponent = styled.div<CustomProps>`
 export const PopUpTopTitleTextComponent = styled.span<CustomProps>`
   color: #000000;
   font-family: 'Spoqa Han Sans Neo';
-  font-size: 15px;
+  font-size: 13px;
   font-style: normal;
   font-weight: normal;
 `;
@@ -113,7 +117,7 @@ export const PopUpMiddleContentTextFrame = styled.div<CustomProps>`
 export const PopUpMiddleContentTextComponent = styled.span<CustomProps>`
   color: #000000;
   font-family: 'Spoqa Han Sans Neo';
-  font-size: 14px;
+  font-size: 13px;
   font-style: normal;
   font-weight: normal;
 `;
@@ -145,7 +149,7 @@ export const PopUpBottomButtonComponent = styled.button<CustomProps>`
   display: flex;
   flex-direction: row;
   font-family: 'Spoqa Han Sans Neo';
-  font-size: 15px;
+  font-size: 13px;
   font-style: normal;
   font-weight: normal;
   height: 100%;
@@ -163,7 +167,7 @@ export const PopUpBottomButtonLeftComponent = styled.button<CustomProps>`
   display: flex;
   flex-direction: row;
   font-family: 'Spoqa Han Sans Neo';
-  font-size: 15px;
+  font-size: 13px;
   font-style: normal;
   font-weight: normal;
   height: 100%;
@@ -181,7 +185,7 @@ export const PopUpBottomButtonRightComponent = styled.button<CustomProps>`
   display: flex;
   flex-direction: row;
   font-family: 'Spoqa Han Sans Neo';
-  font-size: 15px;
+  font-size: 13px;
   font-style: normal;
   font-weight: normal;
   height: 100%;

@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2022 Medir Inc.
+ */
+
 import styled, { keyframes } from 'styled-components';
 
 import { CustomProps } from 'styles/interface/CustomProps';
@@ -33,7 +37,6 @@ export const LogInTopFrame = styled.div<CustomProps>`
 export const LogInTopComponent = styled.div<CustomProps>`
   align-items: center;
   display: flex;
-  filter: drop-shadow(rgba(0, 0, 0, 0.25) 0px 4px 4px);
   flex-direction: row;
   height: 100%;
   justify-content: space-evenly;
@@ -46,11 +49,9 @@ export const LogInTopTitleImageFrame = styled.div<CustomProps>`
   flex-direction: row;
   height: 100%;
   justify-content: center;
-  min-width: 190px;
 `;
 export const LogInTopTitleImageComponent = styled.img<CustomProps>`
   height: 100%;
-  width: 100%;
 `;
 export const LogInTopContentTextFrame = styled.div<CustomProps>`
   align-items: center;
@@ -58,12 +59,11 @@ export const LogInTopContentTextFrame = styled.div<CustomProps>`
   flex-direction: row;
   height: 100%;
   justify-content: center;
-  min-width: 60px;
 `;
 export const LogInTopContentTextComponent = styled.span<CustomProps>`
   color: rgb(57, 57, 57);
   font-family: 'Spoqa Han Sans Neo';
-  font-size: 15px;
+  font-size: 13px;
   font-style: normal;
   font-weight: normal;
 `;
@@ -117,7 +117,7 @@ export const LogInMiddleContentInputComponent = styled.input<CustomProps>`
   ::placeholder {
     color: #a8a8a8;
     font-family: 'Spoqa Han Sans Neo';
-    font-size: 15px;
+    font-size: 13px;
     font-style: normal;
     font-weight: normal;
   }
@@ -132,6 +132,7 @@ export const LogInMiddleContentImageFrame = styled.div<CustomProps>`
   position: absolute;
   right: 20px;
   top: 20px;
+  width: 20px;
 `;
 export const LogInMiddleContentImageComponent = styled.img<CustomProps>`
   height: 100%;
@@ -186,7 +187,7 @@ export const LogInBottomButtonComponent = styled.button<CustomProps>`
   display: flex;
   flex-direction: row;
   font-family: 'Spoqa Han Sans Neo';
-  font-size: 15px;
+  font-size: 13px;
   font-style: normal;
   font-weight: normal;
   height: 50px;
@@ -209,10 +210,10 @@ export const LogInBottomTextComponent = styled.span<CustomProps>`
   display: flex;
   flex-direction: row;
   font-family: 'Spoqa Han Sans Neo';
-  font-size: 14px;
+  font-size: 13px;
   font-style: normal;
   font-weight: normal;
-  margin: 5px 0px 5px 0px;
+  margin: ${props => (props.margin ? props.margin : '')};
   min-width: ${props => (props.minWidth ? props.minWidth : '')};
   position: relative;
 `;
