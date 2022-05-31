@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2022 Medir Inc.
+ */
+
 import { observable } from 'mobx';
 
 /* Pop Up */
@@ -10,6 +14,11 @@ export interface PopUpDataType {
 }
 
 export interface CommonDataType {
+  /* API */
+  ResponseTempData: any;
+  setResponseTempData: (e: any) => void;
+  ResponseData: any;
+  setResponseData: (e: any) => void;
   /* Loading */
   LoadingFlag: boolean;
   setLoadingFlag: (e: boolean) => void;
@@ -22,6 +31,15 @@ export interface CommonDataType {
 }
 
 const CommonData = observable<CommonDataType>({
+  /* API */
+  ResponseTempData: null,
+  setResponseTempData(e: any) {
+    this.ResponseTempData = e;
+  },
+  ResponseData: null,
+  setResponseData(e: any) {
+    this.ResponseData = e;
+  },
   /* Loading */
   LoadingFlag: false,
   setLoadingFlag(e: boolean) {

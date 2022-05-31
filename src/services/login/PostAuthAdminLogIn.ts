@@ -2,12 +2,15 @@
  * Copyright (c) 2022 Medir Inc.
  */
 
-import { customAxios } from 'services/common/CreateAxios';
+import { customAxios } from 'services/common/CreateAxiosTemp';
 
-export const PostAuthLogIn = async (data: { username: string | null; password: string | null }) => {
+export const PostAuthAdminLogIn = async (data: {
+  username: string | null;
+  password: string | null;
+}) => {
   try {
     /* axios.post(url[, data[, config]]) */
-    const response = await customAxios.post('/auth/login', data);
+    const response = await customAxios.post('/auth/admin/login', data);
     const metaResponse = response as { status: number; data: { message: string } };
     return metaResponse;
   } catch (error: unknown) {
@@ -16,4 +19,4 @@ export const PostAuthLogIn = async (data: { username: string | null; password: s
   }
 };
 
-export default PostAuthLogIn;
+export default PostAuthAdminLogIn;

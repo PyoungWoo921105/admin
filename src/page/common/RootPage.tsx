@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2022 Medir Inc.
+ */
+
 import React, { useCallback, useEffect } from 'react';
 import { observer } from 'mobx-react';
 
@@ -13,6 +17,7 @@ import LogInPage from 'page/login/LogInPage';
 import Common from 'page/common/Common';
 
 import { PostAuthLogIn } from 'services/login/PostAuthLogIn';
+import { PostAuthAdminLogIn } from 'services/login/PostAuthAdminLogIn';
 
 const RootPage = observer(() => {
   const { CommonData, AdminData } = useStore();
@@ -25,11 +30,15 @@ const RootPage = observer(() => {
       password: sessionStorage.getItem('LogInUserPassword'),
     };
     CommonData.setLoadingFlag(true);
+
+    const responseTemp = await PostAuthAdminLogIn(PostAuthLogInData);
+    CommonData.setResponseTempData(responseTemp);
+
     const response = await PostAuthLogIn(PostAuthLogInData);
+    CommonData.setResponseData(response);
+
     CommonData.setLoadingFlag(false);
     if (response.status === 201) {
-      sessionStorage.setItem('LogInUserID', AdminData.LogInUserID);
-      sessionStorage.setItem('LogInUserPassword', AdminData.LogInUserPassword);
       history.push({ pathname: history.location.pathname });
     } else {
       const PopUpData = {
@@ -49,11 +58,13 @@ const RootPage = observer(() => {
 
   useEffect(() => {
     if (sessionStorage.getItem('LogInUserID') && sessionStorage.getItem('LogInUserPassword')) {
-      PostAuthLogInFunction().finally(undefined);
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
+      PostAuthLogInFunction();
     } else {
       history.push({ pathname: '/login' });
     }
-  }, [PostAuthLogInFunction, history]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <RootFrame>

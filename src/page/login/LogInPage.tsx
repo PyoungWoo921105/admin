@@ -2,7 +2,7 @@
  * Copyright (c) 2022 Medir Inc.
  */
 
-import React, { useCallback, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { observer } from 'mobx-react';
 
 import { useStore } from 'data/useStore';
@@ -39,6 +39,7 @@ import {
 } from 'styles/components/login/LogIn';
 import { PostAuthLogIn } from 'services/login/PostAuthLogIn';
 import { useHistory } from 'react-router-dom';
+import { PostAuthAdminLogIn } from 'services/login/PostAuthAdminLogIn';
 
 const LogInPage = observer(() => {
   const { CommonData, AdminData } = useStore();
@@ -65,34 +66,6 @@ const LogInPage = observer(() => {
 
   const history = useHistory();
 
-  const PostAuthLogInFunction = useCallback(async () => {
-    const PostAuthLogInData = {
-      username: AdminData.LogInUserID,
-      password: AdminData.LogInUserPassword,
-    };
-    CommonData.setLoadingFlag(true);
-    const response = await PostAuthLogIn(PostAuthLogInData);
-    CommonData.setLoadingFlag(false);
-    if (response.status === 201) {
-      sessionStorage.setItem('LogInUserID', AdminData.LogInUserID);
-      sessionStorage.setItem('LogInUserPassword', AdminData.LogInUserPassword);
-      history.push({ pathname: '/home' });
-    } else {
-      const PopUpData = {
-        Category: 'ERROR',
-        Name: 'POST_AUTH_LOGIN',
-        Title: '관리자 로그인 실패',
-        Contents: response.data.message
-          ? [response.data.message]
-          : ['일시적인 서버 오류가 발생하였습니다.', '다음에 다시 시도해주세요.'],
-        Actions: [{ Choice: '돌아가기', Action: () => CommonData.setPopUpFlag(false) }],
-      };
-      CommonData.setPopUpData(PopUpData);
-      CommonData.setPopUpFlag(true);
-      AdminData.setLogInMessage(response.data.message);
-    }
-  }, [AdminData, CommonData, history]);
-
   const onClickLogInButton = async () => {
     const LogInUserPasswordRegex =
       /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[~!@#$%^&*()_+|<>?:{};])(?=.{8,})/;
@@ -103,7 +76,38 @@ const LogInPage = observer(() => {
         '비밀번호는 영문자, 숫자, 특수문자를 모두 포함하여 최소 8자리 이상이어야 합니다.'
       );
     } else {
-      await PostAuthLogInFunction().finally(undefined);
+      CommonData.setLoadingFlag(true);
+      const PostAuthLogInData = {
+        username: AdminData.LogInUserID,
+        password: AdminData.LogInUserPassword,
+      };
+
+      const responseTemp = await PostAuthAdminLogIn(PostAuthLogInData);
+      CommonData.setResponseTempData(responseTemp);
+
+      const response = await PostAuthLogIn(PostAuthLogInData);
+      CommonData.setResponseData(response);
+
+      CommonData.setLoadingFlag(false);
+
+      if (response.status === 201) {
+        sessionStorage.setItem('LogInUserID', AdminData.LogInUserID);
+        sessionStorage.setItem('LogInUserPassword', AdminData.LogInUserPassword);
+        history.push({ pathname: '/home' });
+      } else {
+        const PopUpData = {
+          Category: 'ERROR',
+          Name: 'POST_AUTH_LOGIN',
+          Title: '관리자 로그인 실패',
+          Contents: response.data.message
+            ? [response.data.message]
+            : ['일시적인 서버 오류가 발생하였습니다.', '다음에 다시 시도해주세요.'],
+          Actions: [{ Choice: '돌아가기', Action: () => CommonData.setPopUpFlag(false) }],
+        };
+        CommonData.setPopUpData(PopUpData);
+        CommonData.setPopUpFlag(true);
+        AdminData.setLogInMessage(response.data.message);
+      }
     }
   };
 
