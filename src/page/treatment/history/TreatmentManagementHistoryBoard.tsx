@@ -8,11 +8,11 @@ import { observer } from 'mobx-react';
 
 import { LocalBoardFrame } from 'styles/components/common/Frame';
 
-import TreatmentManagementHistoryTitle from './TreatmentManagementHistoryTitle';
+import BoardTitle from '../../../components/common/BoardTitle';
 
 const TreatmentManagementHistoryBoard = observer(() => (
   <LocalBoardFrame>
-    <TreatmentManagementHistoryTitle />
+    <BoardTitle title="진료 내역" />
   </LocalBoardFrame>
 ));
 
