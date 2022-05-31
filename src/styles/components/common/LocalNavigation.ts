@@ -6,43 +6,43 @@ import styled from 'styled-components';
 
 import { CustomProps } from 'styles/interface/CustomProps';
 
-export interface LocationState {
+export interface LocalState {
   initiate: boolean;
 }
-export const LocationNavigationBarFrame = styled.div`
+export const LocalNavigationBarFrame = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
   min-width: 90px;
 `;
-export const LocationNavigationBarTitleFrame = styled.div`
+export const LocalNavigationBarTitleFrame = styled.div`
   background-color: #00b264;
 `;
-export const LocationNavigationBarTitleComponent = styled.div`
+export const LocalNavigationBarTitleComponent = styled.div`
   display: flex;
   flex-direction: column;
   height: 40px;
   width: 100%;
 `;
-export const LocationNavigationBarTitleTextFrame = styled.div`
+export const LocalNavigationBarTitleTextFrame = styled.div`
   align-items: center;
   display: flex;
   height: 40px;
   justify-content: center;
   width: 100%;
 `;
-export const LocationNavigationBarTitleTextComponent = styled.span`
+export const LocalNavigationBarTitleTextComponent = styled.span`
   color: #ffffff;
   font-family: 'Spoqa Han Sans Neo';
   font-size: 13px;
   font-style: normal;
   font-weight: normal;
 `;
-export const LocationNavigationBarContentFrame = styled.div`
+export const LocalNavigationBarContentFrame = styled.div`
   background: #14c276;
   height: 100%;
 `;
-export const LocationNavigationBarContentComponent = styled.div<CustomProps>`
+export const LocalNavigationBarContentComponent = styled.div<CustomProps>`
   background-color: ${props => (props.backgroundColor ? props.backgroundColor : '')};
   border-radius: 10px;
   cursor: pointer;
@@ -51,14 +51,14 @@ export const LocationNavigationBarContentComponent = styled.div<CustomProps>`
   height: 40px;
   width: 100%;
 `;
-export const LocationNavigationBarContentTextFrame = styled.div<CustomProps>`
+export const LocalNavigationBarContentTextFrame = styled.div<CustomProps>`
   align-items: center;
   display: flex;
   height: 100%;
   justify-content: center;
   width: 100%;
 `;
-export const LocationNavigationBarContentTextComponent = styled.span`
+export const LocalNavigationBarContentTextComponent = styled.span`
   color: #ffffff;
   font-family: 'Spoqa Han Sans Neo';
   font-size: 13px;
