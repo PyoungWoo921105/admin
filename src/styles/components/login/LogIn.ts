@@ -141,8 +141,8 @@ export const LogInMiddleContentImageComponent = styled.img<CustomProps>`
 export const LogInMiddleContentTextFrame = styled.div<CustomProps>`
   display: flex;
   flex-direction: column;
+  height: ${props => (props.height ? props.height : '')};
   margin: 5px 0px 5px 0px;
-  min-height: 40px;
   padding: 10px 0px 10px 0px;
   width: 100%;
 `;

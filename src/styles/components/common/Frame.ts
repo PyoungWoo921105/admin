@@ -43,5 +43,6 @@ export const LocalBoardFrame = styled.div`
   display: flex;
   flex-direction: row;
   height: 100%;
+  min-width: 220px;
   width: 100%;
 `;

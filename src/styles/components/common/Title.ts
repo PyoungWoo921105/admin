@@ -5,40 +5,30 @@
 import styled from 'styled-components';
 
 export const TitleFrame = styled.div`
-  position: absolute;
-`;
-
-export const GlobalFrame = styled.div`
-  bottom: 0px;
-  display: flex;
-  flex-direction: column;
-  left: 0px;
-  min-width: 320px;
-  position: absolute;
-  right: 0px;
-  top: 0px;
-`;
-
-export const GlobalBoardFrame = styled.div`
-  bottom: 0px;
-  display: flex;
-  left: 0px;
-  min-height: 100px;
-  position: absolute;
-  right: 0px;
-  top: 50px;
-`;
-
-export const LocalFrame = styled.div`
-  display: flex;
-  flex-direction: row;
-  height: 100%;
+  background-color: #e5f7ef;
+  height: 40px;
   width: 100%;
 `;
 
-export const LocalBoardFrame = styled.div`
+export const TitleComponent = styled.div`
+  display: flex;
+  height: 40px;
+  width: 100%;
+`;
+
+export const TitleTextFrame = styled.div`
+  align-items: center;
   display: flex;
   flex-direction: row;
-  height: 100%;
+  height: 40px;
+  padding: 0px 10px 0px 10px;
   width: 100%;
+`;
+
+export const TitleTextComponent = styled.span`
+  color: #000000;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 13px;
+  font-style: normal;
+  font-weight: normal;
 `;

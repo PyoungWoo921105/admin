@@ -6,6 +6,7 @@ import React, { useCallback, useEffect } from 'react';
 import { observer } from 'mobx-react';
 
 import { useStore } from 'data/useStore';
+import useWindowDimensions from 'styles/device/useWindowDimensions';
 
 import LogoIcon from 'assets/icons/LogoIcon.png';
 import OnPrivateIcon from 'assets/icons/OnPrivateIcon.svg';
@@ -41,6 +42,8 @@ import { useHistory } from 'react-router-dom';
 
 const LogInPage = observer(() => {
   const { CommonData, AdminData } = useStore();
+
+  const { width } = useWindowDimensions();
 
   const onClickPrivateFlag = () => {
     AdminData.setLogInPrivateFlag(!AdminData.LogInPrivateFlag);
@@ -116,7 +119,7 @@ const LogInPage = observer(() => {
 
   return (
     <LogInFrame>
-      <LogInComponent width="100%" minWidth="280px" maxWidth="425px">
+      <LogInComponent width={width >= 768 ? '425px' : '280px'}>
         <LogInTopFrame>
           <LogInTopComponent>
             <LogInTopTitleImageFrame>
@@ -158,7 +161,7 @@ const LogInPage = observer(() => {
                   </LogInMiddleContentImageFrame>
                 </LogInMiddleContentInputFrame>
               </form>
-              <LogInMiddleContentTextFrame>
+              <LogInMiddleContentTextFrame height={width >= 768 ? '40px' : '55px'}>
                 <LogInMiddleContentTextComponent>
                   {AdminData.LogInMessage}
                 </LogInMiddleContentTextComponent>

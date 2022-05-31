@@ -14,9 +14,12 @@ export const LocalNavigationBarFrame = styled.div`
   flex-direction: column;
   height: 100%;
   min-width: 90px;
+  width: 90px;
 `;
 export const LocalNavigationBarTitleFrame = styled.div`
   background-color: #00b264;
+  height: 40px;
+  width: 100%;
 `;
 export const LocalNavigationBarTitleComponent = styled.div`
   display: flex;
@@ -41,6 +44,7 @@ export const LocalNavigationBarTitleTextComponent = styled.span`
 export const LocalNavigationBarContentFrame = styled.div`
   background: #14c276;
   height: 100%;
+  width: 100%;
 `;
 export const LocalNavigationBarContentComponent = styled.div<CustomProps>`
   background-color: ${props => (props.backgroundColor ? props.backgroundColor : '')};
