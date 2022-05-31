@@ -41,7 +41,7 @@ export const LocalFrame = styled.div`
 
 export const LocalBoardFrame = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   height: 100%;
   min-width: 220px;
   width: 100%;
