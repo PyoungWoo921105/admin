@@ -156,6 +156,16 @@ const TreatmentManagementHistoryFilter = observer(() => {
   const onChangePatientPhoneNumber = (event: { target: { value: string } }) => {
     setPatientPhoneNumber(ConvertContactNumber(AllowNumber(event.target.value)));
   };
+  /* 병원 이름 */
+  const [HospitalName, setHospitalName] = useState('');
+  const onChangeHospitalName = (event: { target: { value: string } }) => {
+    setHospitalName(event.target.value);
+  };
+  /* 의사 이름 */
+  const [DoctorName, setDoctorName] = useState('');
+  const onChangeDoctorName = (event: { target: { value: string } }) => {
+    setDoctorName(event.target.value);
+  };
   return (
     <FilterFrame>
       <FilterComponent>
@@ -432,6 +442,46 @@ const TreatmentManagementHistoryFilter = observer(() => {
                   value={PatientPhoneNumber}
                   onChange={onChangePatientPhoneNumber}
                   placeholder="숫자만 입력해 주세요."
+                />
+              </FilterElementBoardComponent>
+            </FilterElementBoardFrame>
+          </FilterElementComponent>
+        </FilterElementFrame>
+        {/*  */}
+        {/* SINGLE INPUT */}
+        <FilterElementFrame>
+          <FilterElementComponent>
+            <FilterElementTitleFrame minWidth="100px" width="100px">
+              <FilterElementTitleComponent>
+                <FilterElementTitleTextComponent>병원 이름</FilterElementTitleTextComponent>
+              </FilterElementTitleComponent>
+            </FilterElementTitleFrame>
+            <FilterElementBoardFrame minWidth="120px" width="120px">
+              <FilterElementBoardComponent>
+                <FilterElementBoardInputComponent
+                  width="100%"
+                  value={HospitalName}
+                  onChange={onChangeHospitalName}
+                />
+              </FilterElementBoardComponent>
+            </FilterElementBoardFrame>
+          </FilterElementComponent>
+        </FilterElementFrame>
+        {/*  */}
+        {/* SINGLE INPUT */}
+        <FilterElementFrame>
+          <FilterElementComponent>
+            <FilterElementTitleFrame minWidth="100px" width="100px">
+              <FilterElementTitleComponent>
+                <FilterElementTitleTextComponent>의사 이름</FilterElementTitleTextComponent>
+              </FilterElementTitleComponent>
+            </FilterElementTitleFrame>
+            <FilterElementBoardFrame minWidth="120px" width="120px">
+              <FilterElementBoardComponent>
+                <FilterElementBoardInputComponent
+                  width="100%"
+                  value={DoctorName}
+                  onChange={onChangeDoctorName}
                 />
               </FilterElementBoardComponent>
             </FilterElementBoardFrame>
