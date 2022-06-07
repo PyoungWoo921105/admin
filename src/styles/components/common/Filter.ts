@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { CustomProps } from 'styles/interface/CustomProps';
 
 export const FilterFrame = styled.div`
-  background-color: #00b264;
+  background-color: #e5f7ef;
   width: 100%;
 `;
 export const FilterComponent = styled.div`
@@ -19,6 +19,8 @@ export const FilterComponent = styled.div`
 export const FilterElementFrame = styled.div<CustomProps>`
   align-items: center;
   background-color: #00b264;
+  border: 1px solid #e5f7ef;
+  box-sizing: border-box;
   display: flex;
   flex-direction: row;
   height: 40px;
@@ -76,7 +78,6 @@ export const FilterElementBoardComponent = styled.div<CustomProps>`
   padding: 0px 10px 0px 10px;
   width: 100%;
 `;
-
 export const FilterElementBoardInputComponent = styled.input<CustomProps>`
   align-items: center;
   border: none;
