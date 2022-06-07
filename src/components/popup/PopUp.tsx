@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2022 Medir Inc.
+ */
+
 import React, { useCallback, useEffect } from 'react';
 import { observer } from 'mobx-react';
 
@@ -59,7 +63,7 @@ const PopUp = observer(() => {
 
   return (
     <PopUpFrame>
-      <PopUpComponent minWidth="280px">
+      <PopUpComponent>
         <PopUpTopFrame>
           <PopUpTopComponent>
             <PopUpTopTitleComponent>
@@ -84,10 +88,10 @@ const PopUp = observer(() => {
             <PopUpMiddleContentFrame>
               <PopUpMiddleContentComponent flexDirection="column">
                 {CommonData.PopUpData?.Contents.map(Content => (
-                    <PopUpMiddleContentTextFrame key={Content} margin="5px 0px 5px 0px">
-                      <PopUpMiddleContentTextComponent>{Content}</PopUpMiddleContentTextComponent>
-                    </PopUpMiddleContentTextFrame>
-                  ))}
+                  <PopUpMiddleContentTextFrame key={Content} margin="5px 0px 5px 0px">
+                    <PopUpMiddleContentTextComponent>{Content}</PopUpMiddleContentTextComponent>
+                  </PopUpMiddleContentTextFrame>
+                ))}
               </PopUpMiddleContentComponent>
             </PopUpMiddleContentFrame>
           </PopUpMiddleComponent>

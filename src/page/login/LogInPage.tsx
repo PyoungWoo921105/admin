@@ -12,6 +12,8 @@ import LogoIcon from 'assets/icons/LogoIcon.png';
 import OnPrivateIcon from 'assets/icons/OnPrivateIcon.svg';
 import OffPrivateIcon from 'assets/icons/OffPrivateIcon.svg';
 
+import { GlobalFrame } from 'styles/components/common/Frame';
+
 import {
   LogInFrame,
   LogInComponent,
@@ -122,81 +124,83 @@ const LogInPage = observer(() => {
   };
 
   return (
-    <LogInFrame>
-      <LogInComponent width={width >= 768 ? '425px' : '280px'}>
-        <LogInTopFrame>
-          <LogInTopComponent>
-            <LogInTopTitleImageFrame>
-              <LogInTopTitleImageComponent src={LogoIcon} />
-            </LogInTopTitleImageFrame>
-            <LogInTopContentTextFrame>
-              <LogInTopContentTextComponent> 관리자용</LogInTopContentTextComponent>
-            </LogInTopContentTextFrame>
-          </LogInTopComponent>
-        </LogInTopFrame>
-        <LogInMiddleFrame>
-          <LogInMiddleComponent>
-            <LogInMiddleContentComponent flexDirection="column">
-              <LogInMiddleContentInputFrame>
-                <LogInMiddleContentInputComponent
-                  placeholder="관리자 아이디"
-                  type="text"
-                  onChange={onChangeUserID}
-                  value={AdminData.LogInUserID}
-                  id="id"
-                  onKeyPress={onKeyPressLogInButton}
-                />
-              </LogInMiddleContentInputFrame>
-              <form style={{ width: '100%' }} onSubmit={onSubmit}>
+    <GlobalFrame>
+      <LogInFrame>
+        <LogInComponent width={width >= 768 ? '425px' : '280px'}>
+          <LogInTopFrame>
+            <LogInTopComponent>
+              <LogInTopTitleImageFrame>
+                <LogInTopTitleImageComponent src={LogoIcon} />
+              </LogInTopTitleImageFrame>
+              <LogInTopContentTextFrame>
+                <LogInTopContentTextComponent> 관리자용</LogInTopContentTextComponent>
+              </LogInTopContentTextFrame>
+            </LogInTopComponent>
+          </LogInTopFrame>
+          <LogInMiddleFrame>
+            <LogInMiddleComponent>
+              <LogInMiddleContentComponent flexDirection="column">
                 <LogInMiddleContentInputFrame>
                   <LogInMiddleContentInputComponent
-                    placeholder="비밀번호"
-                    type={AdminData.LogInPrivateFlag ? 'password' : 'text'}
-                    onChange={onChangeUserPassword}
-                    value={AdminData.LogInUserPassword}
-                    autoComplete="on"
-                    id="pw"
+                    placeholder="관리자 아이디"
+                    type="text"
+                    onChange={onChangeUserID}
+                    value={AdminData.LogInUserID}
+                    id="id"
                     onKeyPress={onKeyPressLogInButton}
                   />
-                  <LogInMiddleContentImageFrame onClick={onClickPrivateFlag}>
-                    <LogInMiddleContentImageComponent
-                      src={AdminData.LogInPrivateFlag ? OffPrivateIcon : OnPrivateIcon}
-                    />
-                  </LogInMiddleContentImageFrame>
                 </LogInMiddleContentInputFrame>
-              </form>
-              <LogInMiddleContentTextFrame height={width >= 768 ? '40px' : '55px'}>
-                <LogInMiddleContentTextComponent>
-                  {AdminData.LogInMessage}
-                </LogInMiddleContentTextComponent>
-              </LogInMiddleContentTextFrame>
-            </LogInMiddleContentComponent>
-          </LogInMiddleComponent>
-        </LogInMiddleFrame>
-        <LogInBottomFrame>
-          <LogInBottomComponent>
-            <LogInBottomButtonFrame margin="0px 0px 5px 0px">
-              <LogInBottomButtonComponent
-                backgroundColor={
-                  AdminData.LogInValidateFlag ? 'rgb(0, 178, 100)' : 'rgb(224, 224, 224);'
-                }
-                onClick={onClickLogInButton}
-              >
-                로그인하기
-              </LogInBottomButtonComponent>
-            </LogInBottomButtonFrame>
-            <LogInBottomTextFrame margin="5px 0px 0px 0px">
-              <LogInBottomTextComponent margin="5px 20px 5px 0px">
-                제휴 문의 | 010-5561-5147
-              </LogInBottomTextComponent>
-              <LogInBottomTextComponent margin="5px 0px 5px 0px">
-                시스템 관련 문의 | 02-555-0774
-              </LogInBottomTextComponent>
-            </LogInBottomTextFrame>
-          </LogInBottomComponent>
-        </LogInBottomFrame>
-      </LogInComponent>
-    </LogInFrame>
+                <form style={{ width: '100%' }} onSubmit={onSubmit}>
+                  <LogInMiddleContentInputFrame>
+                    <LogInMiddleContentInputComponent
+                      placeholder="비밀번호"
+                      type={AdminData.LogInPrivateFlag ? 'password' : 'text'}
+                      onChange={onChangeUserPassword}
+                      value={AdminData.LogInUserPassword}
+                      autoComplete="on"
+                      id="pw"
+                      onKeyPress={onKeyPressLogInButton}
+                    />
+                    <LogInMiddleContentImageFrame onClick={onClickPrivateFlag}>
+                      <LogInMiddleContentImageComponent
+                        src={AdminData.LogInPrivateFlag ? OffPrivateIcon : OnPrivateIcon}
+                      />
+                    </LogInMiddleContentImageFrame>
+                  </LogInMiddleContentInputFrame>
+                </form>
+                <LogInMiddleContentTextFrame height={width >= 768 ? '40px' : '55px'}>
+                  <LogInMiddleContentTextComponent>
+                    {AdminData.LogInMessage}
+                  </LogInMiddleContentTextComponent>
+                </LogInMiddleContentTextFrame>
+              </LogInMiddleContentComponent>
+            </LogInMiddleComponent>
+          </LogInMiddleFrame>
+          <LogInBottomFrame>
+            <LogInBottomComponent>
+              <LogInBottomButtonFrame margin="0px 0px 5px 0px">
+                <LogInBottomButtonComponent
+                  backgroundColor={
+                    AdminData.LogInValidateFlag ? 'rgb(0, 178, 100)' : 'rgb(224, 224, 224);'
+                  }
+                  onClick={onClickLogInButton}
+                >
+                  로그인하기
+                </LogInBottomButtonComponent>
+              </LogInBottomButtonFrame>
+              <LogInBottomTextFrame margin="5px 0px 0px 0px">
+                <LogInBottomTextComponent margin="5px 20px 5px 0px">
+                  제휴 문의 | 010-5561-5147
+                </LogInBottomTextComponent>
+                <LogInBottomTextComponent margin="5px 0px 5px 0px">
+                  시스템 관련 문의 | 02-555-0774
+                </LogInBottomTextComponent>
+              </LogInBottomTextFrame>
+            </LogInBottomComponent>
+          </LogInBottomFrame>
+        </LogInComponent>
+      </LogInFrame>
+    </GlobalFrame>
   );
 });
 

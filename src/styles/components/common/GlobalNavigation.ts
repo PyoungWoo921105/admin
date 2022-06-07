@@ -11,7 +11,6 @@ export const GlobalNavigationBarFrame = styled.div`
   height: 50px;
   left: 0px;
   min-height: 50px;
-  min-width: 320px;
   position: absolute;
   right: 0px;
   top: 0px;

@@ -13,8 +13,8 @@ export const LocalNavigationBarFrame = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
-  min-width: 90px;
-  width: 90px;
+  min-width: 100px;
+  width: 100px;
 `;
 export const LocalNavigationBarTitleFrame = styled.div`
   background-color: #00b264;
