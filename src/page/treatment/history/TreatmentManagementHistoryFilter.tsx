@@ -173,12 +173,12 @@ const TreatmentManagementHistoryFilter = observer(() => {
         {/* SINGLE INPUT */}
         <FilterElementFrame>
           <FilterElementComponent>
-            <FilterElementTitleFrame minWidth="100px" width="100px">
+            <FilterElementTitleFrame minWidth="65px" width="65px">
               <FilterElementTitleComponent>
                 <FilterElementTitleTextComponent>진료 번호</FilterElementTitleTextComponent>
               </FilterElementTitleComponent>
             </FilterElementTitleFrame>
-            <FilterElementBoardFrame minWidth="120px" width="120px">
+            <FilterElementBoardFrame minWidth="155px" width="155px">
               <FilterElementBoardComponent>
                 <FilterElementBoardInputComponent
                   width="100%"
@@ -193,12 +193,12 @@ const TreatmentManagementHistoryFilter = observer(() => {
         {/* SELECT & OPTION */}
         <FilterElementFrame>
           <FilterElementComponent>
-            <FilterElementTitleFrame minWidth="100px" width="100px">
+            <FilterElementTitleFrame minWidth="75px" width="75px">
               <FilterElementTitleComponent>
                 <FilterElementTitleTextComponent>처방전 유무</FilterElementTitleTextComponent>
               </FilterElementTitleComponent>
             </FilterElementTitleFrame>
-            <FilterElementBoardFrame minWidth="120px" width="120px">
+            <FilterElementBoardFrame minWidth="145px" width="145px">
               <FilterElementBoardComponent>
                 <FilterElementBoardSelectComponent
                   width="100%"
@@ -246,12 +246,12 @@ const TreatmentManagementHistoryFilter = observer(() => {
         {/* SINGLE INPUT */}
         <FilterElementFrame>
           <FilterElementComponent>
-            <FilterElementTitleFrame minWidth="100px" width="100px">
+            <FilterElementTitleFrame minWidth="65px" width="65px">
               <FilterElementTitleComponent>
                 <FilterElementTitleTextComponent>접수 항목</FilterElementTitleTextComponent>
               </FilterElementTitleComponent>
             </FilterElementTitleFrame>
-            <FilterElementBoardFrame minWidth="120px" width="120px">
+            <FilterElementBoardFrame minWidth="155px" width="155px">
               <FilterElementBoardComponent>
                 <FilterElementBoardInputComponent
                   width="100%"
@@ -266,12 +266,12 @@ const TreatmentManagementHistoryFilter = observer(() => {
         {/* SELECT & OPTION */}
         <FilterElementFrame>
           <FilterElementComponent>
-            <FilterElementTitleFrame minWidth="100px" width="100px">
+            <FilterElementTitleFrame minWidth="80px" width="80px">
               <FilterElementTitleComponent>
                 <FilterElementTitleTextComponent>약 수령 방법</FilterElementTitleTextComponent>
               </FilterElementTitleComponent>
             </FilterElementTitleFrame>
-            <FilterElementBoardFrame minWidth="120px" width="120px">
+            <FilterElementBoardFrame minWidth="140px" width="140px">
               <FilterElementBoardComponent>
                 <FilterElementBoardSelectComponent
                   width="100%"
@@ -288,12 +288,12 @@ const TreatmentManagementHistoryFilter = observer(() => {
             </FilterElementBoardFrame>
           </FilterElementComponent>
           <FilterElementComponent>
-            <FilterElementTitleFrame minWidth="100px" width="100px">
+            <FilterElementTitleFrame minWidth="105px" width="105px">
               <FilterElementTitleComponent>
                 <FilterElementTitleTextComponent>약 수령 방법 선택</FilterElementTitleTextComponent>
               </FilterElementTitleComponent>
             </FilterElementTitleFrame>
-            <FilterElementBoardFrame minWidth="120px" width="100%">
+            <FilterElementBoardFrame minWidth="115px" width="100%">
               <FilterElementBoardComponent>
                 {DeliveryMethod.map((element, key) => (
                   <FilterElementBoardSelectedComponent
@@ -319,12 +319,12 @@ const TreatmentManagementHistoryFilter = observer(() => {
         {/* DOUBLE INPUT */}
         <FilterElementFrame>
           <FilterElementComponent>
-            <FilterElementTitleFrame minWidth="100px" width="100px">
+            <FilterElementTitleFrame minWidth="90px" width="90px">
               <FilterElementTitleComponent>
                 <FilterElementTitleTextComponent>시작 조회 기간</FilterElementTitleTextComponent>
               </FilterElementTitleComponent>
             </FilterElementTitleFrame>
-            <FilterElementBoardFrame minWidth="120px" width="120px">
+            <FilterElementBoardFrame minWidth="130px" width="130px">
               <FilterElementBoardComponent>
                 <FilterElementBoardInputComponent
                   width="100%"
@@ -338,12 +338,12 @@ const TreatmentManagementHistoryFilter = observer(() => {
             </FilterElementBoardFrame>
           </FilterElementComponent>
           <FilterElementComponent>
-            <FilterElementTitleFrame minWidth="100px" width="100px">
+            <FilterElementTitleFrame minWidth="90px" width="90px">
               <FilterElementTitleComponent>
                 <FilterElementTitleTextComponent>종료 조회 기간</FilterElementTitleTextComponent>
               </FilterElementTitleComponent>
             </FilterElementTitleFrame>
-            <FilterElementBoardFrame minWidth="120px" width="120px">
+            <FilterElementBoardFrame minWidth="130px" width="130px">
               <FilterElementBoardComponent>
                 <FilterElementBoardInputComponent
                   width="100%"
@@ -361,12 +361,12 @@ const TreatmentManagementHistoryFilter = observer(() => {
         {/* SELECT & OPTION */}
         <FilterElementFrame>
           <FilterElementComponent>
-            <FilterElementTitleFrame minWidth="100px" width="100px">
+            <FilterElementTitleFrame minWidth="65px" width="65px">
               <FilterElementTitleComponent>
                 <FilterElementTitleTextComponent>진료 상태</FilterElementTitleTextComponent>
               </FilterElementTitleComponent>
             </FilterElementTitleFrame>
-            <FilterElementBoardFrame minWidth="120px" width="120px">
+            <FilterElementBoardFrame minWidth="155px" width="155px">
               <FilterElementBoardComponent>
                 <FilterElementBoardSelectComponent
                   width="100%"
@@ -383,12 +383,12 @@ const TreatmentManagementHistoryFilter = observer(() => {
             </FilterElementBoardFrame>
           </FilterElementComponent>
           <FilterElementComponent>
-            <FilterElementTitleFrame minWidth="100px" width="100px">
+            <FilterElementTitleFrame minWidth="90px" width="90px">
               <FilterElementTitleComponent>
                 <FilterElementTitleTextComponent>진료 상태 선택</FilterElementTitleTextComponent>
               </FilterElementTitleComponent>
             </FilterElementTitleFrame>
-            <FilterElementBoardFrame minWidth="120px" width="100%">
+            <FilterElementBoardFrame minWidth="130px" width="100%">
               <FilterElementBoardComponent>
                 {TreatmentState.map((element, key) => (
                   <FilterElementBoardSelectedComponent
@@ -414,12 +414,12 @@ const TreatmentManagementHistoryFilter = observer(() => {
         {/* DOUBLE INPUT */}
         <FilterElementFrame>
           <FilterElementComponent>
-            <FilterElementTitleFrame minWidth="100px" width="100px">
+            <FilterElementTitleFrame minWidth="65px" width="65px">
               <FilterElementTitleComponent>
                 <FilterElementTitleTextComponent>환자 이름</FilterElementTitleTextComponent>
               </FilterElementTitleComponent>
             </FilterElementTitleFrame>
-            <FilterElementBoardFrame minWidth="120px" width="120px">
+            <FilterElementBoardFrame minWidth="155px" width="155px">
               <FilterElementBoardComponent>
                 <FilterElementBoardInputComponent
                   width="100%"
@@ -430,12 +430,12 @@ const TreatmentManagementHistoryFilter = observer(() => {
             </FilterElementBoardFrame>
           </FilterElementComponent>
           <FilterElementComponent>
-            <FilterElementTitleFrame minWidth="100px" width="100px">
+            <FilterElementTitleFrame minWidth="85px" width="85px">
               <FilterElementTitleComponent>
                 <FilterElementTitleTextComponent>환자 전화번호</FilterElementTitleTextComponent>
               </FilterElementTitleComponent>
             </FilterElementTitleFrame>
-            <FilterElementBoardFrame minWidth="120px" width="120px">
+            <FilterElementBoardFrame minWidth="135px" width="135px">
               <FilterElementBoardComponent>
                 <FilterElementBoardInputComponent
                   width="100%"
@@ -451,12 +451,12 @@ const TreatmentManagementHistoryFilter = observer(() => {
         {/* SINGLE INPUT */}
         <FilterElementFrame>
           <FilterElementComponent>
-            <FilterElementTitleFrame minWidth="100px" width="100px">
+            <FilterElementTitleFrame minWidth="65px" width="65px">
               <FilterElementTitleComponent>
                 <FilterElementTitleTextComponent>병원 이름</FilterElementTitleTextComponent>
               </FilterElementTitleComponent>
             </FilterElementTitleFrame>
-            <FilterElementBoardFrame minWidth="120px" width="120px">
+            <FilterElementBoardFrame minWidth="155px" width="155px">
               <FilterElementBoardComponent>
                 <FilterElementBoardInputComponent
                   width="100%"
@@ -471,12 +471,12 @@ const TreatmentManagementHistoryFilter = observer(() => {
         {/* SINGLE INPUT */}
         <FilterElementFrame>
           <FilterElementComponent>
-            <FilterElementTitleFrame minWidth="100px" width="100px">
+            <FilterElementTitleFrame minWidth="65px" width="65px">
               <FilterElementTitleComponent>
                 <FilterElementTitleTextComponent>의사 이름</FilterElementTitleTextComponent>
               </FilterElementTitleComponent>
             </FilterElementTitleFrame>
-            <FilterElementBoardFrame minWidth="120px" width="120px">
+            <FilterElementBoardFrame minWidth="155px" width="155px">
               <FilterElementBoardComponent>
                 <FilterElementBoardInputComponent
                   width="100%"
