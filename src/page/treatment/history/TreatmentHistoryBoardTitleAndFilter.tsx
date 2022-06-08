@@ -177,7 +177,7 @@ const BoardTitleAndFilter = observer(() => {
     setDoctorName(event.target.value);
   };
   /* 처방전 유무 */
-  const PrescriptionStateList = ['선택', '전체', '있음', '없음'];
+  const PrescriptionStateList = ['선택', '전체', 'Y', 'N'];
   const [PrescriptionState, setPrescriptionState] = useState<string[]>(['전체']);
   const onChangePrescriptionState = (event: { target: { value: string } }) => {
     if (event.target.value === '전체') {
@@ -233,6 +233,16 @@ const BoardTitleAndFilter = observer(() => {
   /* 데이터 */
   const GetTreatmentListFunction = useCallback(async () => {
     CommonData.setLoadingFlag(true);
+    const TempPrescriptionState = [];
+    if (PrescriptionState.length !== 0 && PrescriptionState[0] !== '전체') {
+      for (let i = 0; i < PrescriptionState.length; i += 1) {
+        if (PrescriptionState[i] === 'Y') {
+          TempPrescriptionState.push('있음');
+        } else if (PrescriptionState[i] === 'N') {
+          TempPrescriptionState.push('없음');
+        }
+      }
+    }
     const GetTreatmentListData = {
       treatCode: null || TreatmentCode,
       receptionCategory: null || DiseaseAndDepartment,
@@ -243,7 +253,7 @@ const BoardTitleAndFilter = observer(() => {
       patientPhoneNum: null || PatientPhoneNumber,
       hospitalName: null || HospitalName,
       doctorName: null || DoctorName,
-      prescriptionState: null || PrescriptionState[0] === '전체' ? null : PrescriptionState,
+      prescriptionState: null || PrescriptionState[0] === '전체' ? null : TempPrescriptionState,
       medicineReceiveWay: null || DeliveryMethod[0] === '전체' ? null : DeliveryMethod,
 
       page: null || TreatmentData.NavigationPage - 1,

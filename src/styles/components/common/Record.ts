@@ -133,3 +133,21 @@ export const DataElementContentTextComponent = styled.span`
   text-overflow: ellipsis;
   white-space: nowrap;
 `;
+export const DataElementContentButtonComponent = styled.button<CustomProps>`
+  align-items: center;
+  background-color: ${props => (props.backgroundColor ? props.backgroundColor : '')};
+  border: none;
+  border-radius: 10px 10px 10px 10px;
+  color: ${props => (props.color ? props.color : '')};
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 11px;
+  font-style: normal;
+  font-weight: normal;
+  justify-content: center;
+  min-height: 30px;
+  min-width: 80px;
+  overflow: hidden;
+  padding: 0px 10px 0px 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+`;

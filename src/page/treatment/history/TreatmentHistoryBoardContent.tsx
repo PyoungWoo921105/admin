@@ -32,6 +32,7 @@ import {
   DataElementContentFrame,
   DataElementContentComponent,
   DataElementContentTextComponent,
+  DataElementContentButtonComponent,
 } from 'styles/components/common/Record';
 /*  */
 
@@ -123,9 +124,34 @@ const BoardContent = observer(() => {
                       width={`${CategoryList[2].width}%`}
                     >
                       <DataElementContentComponent justifyContent="center">
-                        <DataElementContentTextComponent>
+                        <DataElementContentButtonComponent
+                          backgroundColor={
+                            element?.status === '접수 대기'
+                              ? 'rgb(0,0,0)'
+                              : element?.status === '진료 대기'
+                              ? 'rgb(0,0,0)'
+                              : element?.status === '진료 중'
+                              ? 'rgb(0,0,0)'
+                              : element?.status === '처방 및 수납'
+                              ? 'rgb(0,0,0)'
+                              : element?.status === '결제 대기'
+                              ? 'rgb(0,0,0)'
+                              : element?.status === '결제 실패'
+                              ? 'rgb(192,0,0)'
+                              : element?.status === '완료'
+                              ? 'rgb(112,173,71)'
+                              : element?.status === '진료 거절'
+                              ? 'rgb(192,0,0)'
+                              : element?.status === '진료 취소'
+                              ? 'rgb(192,0,0)'
+                              : element?.status === '진료 시스템 취소'
+                              ? 'rgb(192,0,0)'
+                              : 'rgb(0,0,0)'
+                          }
+                          color="#ffffff"
+                        >
                           {element?.status || '-'}
-                        </DataElementContentTextComponent>
+                        </DataElementContentButtonComponent>
                       </DataElementContentComponent>
                     </DataElementContentFrame>
                     {/*  */}
