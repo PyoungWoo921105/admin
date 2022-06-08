@@ -49,28 +49,28 @@ const GlobalNavigationBar = observer(() => {
   const GlobalNavigationBarTitleList = [
     [{ name: '홈', path: '/home' }],
     [
-      { name: '환자 관리', path: '/patient_management' },
-      { name: '의사 관리', path: '/doctor_management' },
-      { name: '병원 관리', path: '/hospital_management' },
-      { name: '약국 관리', path: '/pharmacy_management' },
+      { name: '환자 관리', path: '/patient' },
+      { name: '의사 관리', path: '/doctor' },
+      { name: '병원 관리', path: '/hospital' },
+      { name: '약국 관리', path: '/pharmacy' },
     ],
     [
-      { name: '진료 관리', path: '/treatment_management' },
-      { name: '조제 관리', path: '/medicine_management' },
-      { name: '배달 관리', path: '/delivery_management' },
-      { name: '결제 관리', path: '/payment_management' },
+      { name: '진료 관리', path: '/treatment' },
+      { name: '조제 관리', path: '/medicine' },
+      { name: '배달 관리', path: '/delivery' },
+      { name: '결제 관리', path: '/payment' },
     ],
     [
-      { name: '정산 관리', path: '/settlement_management' },
-      { name: '마케팅 관리', path: '/marketing_management' },
-      { name: '광고 관리', path: '/advertisement_management' },
-      { name: '리뷰 관리', path: '/review_management' },
+      { name: '정산 관리', path: '/settlement' },
+      { name: '마케팅 관리', path: '/marketing' },
+      { name: '광고 관리', path: '/advertisement' },
+      { name: '리뷰 관리', path: '/review' },
     ],
     [
-      { name: '지표 관리', path: '/indicator_management' },
-      { name: '공지사항 관리', path: '/notice_management' },
-      { name: '계정 관리', path: '/account_management' },
-      { name: '시스템 관리', path: '/system_management' },
+      { name: '지표 관리', path: '/indicator' },
+      { name: '공지사항 관리', path: '/notice' },
+      { name: '계정 관리', path: '/account' },
+      { name: '시스템 관리', path: '/system' },
     ],
   ];
 
@@ -130,9 +130,9 @@ const GlobalNavigationBar = observer(() => {
         Category: 'ERROR',
         Name: 'POST_AUTH_LOGOUT',
         Title: '관리자 로그아웃 실패',
-        Contents: response.data.message
-          ? [response.data.message]
-          : ['일시적인 서버 오류가 발생하였습니다.', '다음에 다시 시도해주세요.'],
+        Contents: ['일시적인 서버 오류가 발생하였습니다.', '다음에 다시 시도해주세요.'] || [
+          response?.data?.message,
+        ],
         Actions: [{ Choice: '돌아가기', Action: () => CommonData.setPopUpFlag(false) }],
       };
       CommonData.setPopUpData(PopUpData);
@@ -140,8 +140,8 @@ const GlobalNavigationBar = observer(() => {
     }
   }, [CommonData, history]);
 
-  const onClickLogout = () => {
-    PostAuthLogOutFunction().finally(undefined);
+  const onClickLogout = async () => {
+    await PostAuthLogOutFunction();
   };
 
   return (

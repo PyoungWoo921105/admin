@@ -101,9 +101,9 @@ const LogInPage = observer(() => {
           Category: 'ERROR',
           Name: 'POST_AUTH_LOGIN',
           Title: '관리자 로그인 실패',
-          Contents: response.data.message
-            ? [response.data.message]
-            : ['일시적인 서버 오류가 발생하였습니다.', '다음에 다시 시도해주세요.'],
+          Contents: ['일시적인 서버 오류가 발생하였습니다.', '다음에 다시 시도해주세요.'] || [
+            response?.data?.message,
+          ],
           Actions: [{ Choice: '돌아가기', Action: () => CommonData.setPopUpFlag(false) }],
         };
         CommonData.setPopUpData(PopUpData);

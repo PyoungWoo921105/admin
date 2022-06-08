@@ -24,13 +24,13 @@ const TreatmentNavigationBar = observer(() => {
   const history = useHistory();
   const location = useLocation<LocalState>();
 
-  const NavigationBarTitleList = [{ name: '진료 내역', path: '/treatment_management/history' }];
+  const NavigationBarTitleList = [{ name: '진료 내역', path: '/treatment/history' }];
 
   const onClickNavigationBarMenu = (props: { key: number }) => {
     const { key } = props;
     /* if (location.pathname === NavigationBarTitleList[key].path) {
       history.push({
-        pathname: "/treatment_management",
+        pathname: "/treatment",
       });
     } else {
       history.push({

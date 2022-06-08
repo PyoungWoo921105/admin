@@ -9,12 +9,12 @@ import { observer } from 'mobx-react';
 import { LocalFrame } from 'styles/components/common/Frame';
 
 import TreatmentNavigationBar from 'page/treatment/TreatmentNavigationBar';
-import TreatmentManagementBoard from 'page/treatment/TreatmentManagementBoard';
+import TreatmentBoard from 'page/treatment/TreatmentBoard';
 
 const TreatmentPage = observer(() => (
   <LocalFrame>
     <TreatmentNavigationBar />
-    <TreatmentManagementBoard />
+    <TreatmentBoard />
   </LocalFrame>
 ));
 

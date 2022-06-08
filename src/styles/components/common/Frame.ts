@@ -48,12 +48,19 @@ export const LocalBoardFrame = styled.div`
 `;
 
 export const BoardFrame = styled.div`
+  display: flex;
+  flex-direction: column;
   height: 100%;
   width: 100%;
 `;
 export const BoardTitleAndFilterFrame = styled.div`
+  background-color: #e5f7ef;
+  overflow-y: overlay;
   width: 100%;
 `;
 export const BoardContentFrame = styled.div`
+  flex-grow: 1;
+  height: 0px;
+  overflow-y: overlay;
   width: 100%;
 `;

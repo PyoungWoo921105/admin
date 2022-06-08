@@ -6,7 +6,6 @@ import styled from 'styled-components';
 import { CustomProps } from 'styles/interface/CustomProps';
 
 export const FilterFrame = styled.div`
-  background-color: #e5f7ef;
   width: 100%;
 `;
 export const FilterComponent = styled.div`

@@ -15,13 +15,13 @@ import TreatmentPage from 'page/treatment/TreatmentPage';
 const Board = observer(() => (
   <GlobalBoardFrame>
     <Route exact path="/home" component={HomePage} />
-    <Route path="/treatment_management" component={TreatmentPage} />
-    {/* <Route path="/medicine_management" component={MedicineComponent} />
-      <Route path="/hospital_management" component={HospitalComponent} />
-      <Route path="/pharmacy_management" component={PharmacyComponent} />
-      <Route path="/doctor_management" component={DoctorComponent} />
-      <Route path="/settlement_management" component={SettelmentComponent} />
-      <Route path="/review_management" component={ReviewComponent} /> */}
+    <Route path="/treatment" component={TreatmentPage} />
+    {/* <Route path="/medicine" component={MedicineComponent} />
+      <Route path="/hospital" component={HospitalComponent} />
+      <Route path="/pharmacy" component={PharmacyComponent} />
+      <Route path="/doctor" component={DoctorComponent} />
+      <Route path="/settlement" component={SettelmentComponent} />
+      <Route path="/review" component={ReviewComponent} /> */}
   </GlobalBoardFrame>
 ));
 

@@ -2,7 +2,7 @@
  * Copyright (c) 2022 Medir Inc.
  */
 
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import { observer } from 'mobx-react';
 
@@ -63,9 +63,11 @@ import ExitIcon from 'assets/icons/ExitIcon.svg';
 
 import { AllowNumber } from 'libraries/constraint/AllowNumber';
 import { ConvertContactNumber } from 'libraries/conversion/ConvertContactNumber';
+
+import { GetTreatmentList } from 'services/treatment/GetTreatmentList';
 /*  */
 const BoardTitleAndFilter = observer(() => {
-  const { AdminData } = useStore();
+  const { CommonData, AdminData, TreatmentData } = useStore();
   /* 필터 스위치 */
   const onChangeFilterSwitchFlag = () => {
     AdminData.setFilterSwitchFlag(!AdminData.FilterSwitchFlag);
@@ -90,7 +92,8 @@ const BoardTitleAndFilter = observer(() => {
   };
   /* 검색 */
   const onClickSearch = () => {
-    /* TODO */
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
+    GetTreatmentListFunction();
   };
   /* 필터 */
   /* 진료 번호 */
@@ -98,64 +101,10 @@ const BoardTitleAndFilter = observer(() => {
   const onChangeTreatmentCode = (event: { target: { value: string } }) => {
     setTreatmentCode(event.target.value);
   };
-  /* 처방전 유무 */
-  const PrescriptionStateList = ['선택', '전체', '있음', '없음'];
-  const [PrescriptionState, setPrescriptionState] = useState<string[]>(['전체']);
-  const onChangePrescriptionState = (event: { target: { value: string } }) => {
-    if (event.target.value === '전체') {
-      setPrescriptionState([event.target.value]);
-    } else if (PrescriptionState.indexOf(event.target.value) === -1) {
-      if (PrescriptionState.indexOf('전체') === -1) {
-        /* setPrescriptionState([event.target.value]); */
-        setPrescriptionState([...PrescriptionState, event.target.value]);
-      } else {
-        setPrescriptionState([event.target.value]);
-      }
-    } else if (PrescriptionState.length === 1) {
-      setPrescriptionState(['전체']);
-    } else {
-      setPrescriptionState(PrescriptionState.filter(element => element !== event.target.value));
-    }
-  };
-  const onClickDeletePrescriptionState = (props: { key: any }) => {
-    const { key } = props;
-    if (PrescriptionState.length === 1 && PrescriptionState[0] === key) {
-      setPrescriptionState(['전체']);
-    } else {
-      setPrescriptionState(PrescriptionState.filter(element => element !== key));
-    }
-  };
   /* 접수 항목 */
   const [DiseaseAndDepartment, setDiseaseAndDepartment] = useState('');
   const onChangeDiseaseAndDepartment = (event: { target: { value: string } }) => {
     setDiseaseAndDepartment(event.target.value);
-  };
-  /* 약 수령 방법 유무 */
-  const DeliveryMethodList = ['선택', '전체', '배달', '방문', '없음'];
-  const [DeliveryMethod, setDeliveryMethod] = useState<string[]>(['전체']);
-  const onChangeDeliveryMethod = (event: { target: { value: string } }) => {
-    if (event.target.value === '전체') {
-      setDeliveryMethod([event.target.value]);
-    } else if (DeliveryMethod.indexOf(event.target.value) === -1) {
-      if (DeliveryMethod.indexOf('전체') === -1) {
-        /* setDeliveryMethod([event.target.value]); */
-        setDeliveryMethod([...DeliveryMethod, event.target.value]);
-      } else {
-        setDeliveryMethod([event.target.value]);
-      }
-    } else if (DeliveryMethod.length === 1) {
-      setDeliveryMethod(['전체']);
-    } else {
-      setDeliveryMethod(DeliveryMethod.filter(element => element !== event.target.value));
-    }
-  };
-  const onClickDeleteDeliveryMethod = (props: { key: any }) => {
-    const { key } = props;
-    if (DeliveryMethod.length === 1 && DeliveryMethod[0] === key) {
-      setDeliveryMethod(['전체']);
-    } else {
-      setDeliveryMethod(DeliveryMethod.filter(element => element !== key));
-    }
   };
   /* 시작 조회 기간 */
   const [StartInquiryPeriod, setStartInquiryPeriod] = useState('');
@@ -227,6 +176,117 @@ const BoardTitleAndFilter = observer(() => {
   const onChangeDoctorName = (event: { target: { value: string } }) => {
     setDoctorName(event.target.value);
   };
+  /* 처방전 유무 */
+  const PrescriptionStateList = ['선택', '전체', '있음', '없음'];
+  const [PrescriptionState, setPrescriptionState] = useState<string[]>(['전체']);
+  const onChangePrescriptionState = (event: { target: { value: string } }) => {
+    if (event.target.value === '전체') {
+      setPrescriptionState([event.target.value]);
+    } else if (PrescriptionState.indexOf(event.target.value) === -1) {
+      if (PrescriptionState.indexOf('전체') === -1) {
+        /* setPrescriptionState([event.target.value]); */
+        setPrescriptionState([...PrescriptionState, event.target.value]);
+      } else {
+        setPrescriptionState([event.target.value]);
+      }
+    } else if (PrescriptionState.length === 1) {
+      setPrescriptionState(['전체']);
+    } else {
+      setPrescriptionState(PrescriptionState.filter(element => element !== event.target.value));
+    }
+  };
+  const onClickDeletePrescriptionState = (props: { key: any }) => {
+    const { key } = props;
+    if (PrescriptionState.length === 1 && PrescriptionState[0] === key) {
+      setPrescriptionState(['전체']);
+    } else {
+      setPrescriptionState(PrescriptionState.filter(element => element !== key));
+    }
+  };
+  /* 약 수령 방법 유무 */
+  const DeliveryMethodList = ['선택', '전체', '배달', '방문', '없음'];
+  const [DeliveryMethod, setDeliveryMethod] = useState<string[]>(['전체']);
+  const onChangeDeliveryMethod = (event: { target: { value: string } }) => {
+    if (event.target.value === '전체') {
+      setDeliveryMethod([event.target.value]);
+    } else if (DeliveryMethod.indexOf(event.target.value) === -1) {
+      if (DeliveryMethod.indexOf('전체') === -1) {
+        /* setDeliveryMethod([event.target.value]); */
+        setDeliveryMethod([...DeliveryMethod, event.target.value]);
+      } else {
+        setDeliveryMethod([event.target.value]);
+      }
+    } else if (DeliveryMethod.length === 1) {
+      setDeliveryMethod(['전체']);
+    } else {
+      setDeliveryMethod(DeliveryMethod.filter(element => element !== event.target.value));
+    }
+  };
+  const onClickDeleteDeliveryMethod = (props: { key: any }) => {
+    const { key } = props;
+    if (DeliveryMethod.length === 1 && DeliveryMethod[0] === key) {
+      setDeliveryMethod(['전체']);
+    } else {
+      setDeliveryMethod(DeliveryMethod.filter(element => element !== key));
+    }
+  };
+  /* 데이터 */
+  const GetTreatmentListFunction = useCallback(async () => {
+    CommonData.setLoadingFlag(true);
+    const GetTreatmentListData = {
+      treatCode: null || TreatmentCode,
+      receptionCategory: null || DiseaseAndDepartment,
+      startDate: null || StartInquiryPeriod,
+      endDate: null || EndInquiryPeriod,
+      statusList: null || TreatmentState[0] === '전체' ? null : TreatmentState,
+      patientName: null || PatientName,
+      patientPhoneNum: null || PatientPhoneNumber,
+      hospitalName: null || HospitalName,
+      doctorName: null || DoctorName,
+      prescriptionState: null || PrescriptionState[0] === '전체' ? null : PrescriptionState,
+      medicineReceiveWay: null || DeliveryMethod[0] === '전체' ? null : DeliveryMethod,
+
+      page: null || TreatmentData.NavigationPage - 1,
+    };
+    const response = await GetTreatmentList(GetTreatmentListData);
+    CommonData.setLoadingFlag(false);
+    if (response.status === 200) {
+      /*  */
+    } else {
+      const metaError = response as { status: number; data: { message: string } };
+      const PopUpData = {
+        Category: 'ERROR',
+        Name: 'GET_TREATMENT_LIST',
+        Title: '진료 내역 불러오기 실패',
+        Contents: ['일시적인 서버 오류가 발생하였습니다.', '다음에 다시 시도해주세요.'] || [
+          metaError?.data?.message,
+        ],
+        Actions: [{ Choice: '돌아가기', Action: () => CommonData.setPopUpFlag(false) }],
+      };
+      CommonData.setPopUpData(PopUpData);
+      CommonData.setPopUpFlag(true);
+    }
+  }, [
+    CommonData,
+    DeliveryMethod,
+    DiseaseAndDepartment,
+    DoctorName,
+    EndInquiryPeriod,
+    HospitalName,
+    PatientName,
+    PatientPhoneNumber,
+    PrescriptionState,
+    StartInquiryPeriod,
+    TreatmentCode,
+    TreatmentData.NavigationPage,
+    TreatmentState,
+  ]);
+
+  useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
+    GetTreatmentListFunction();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <BoardTitleAndFilterFrame>

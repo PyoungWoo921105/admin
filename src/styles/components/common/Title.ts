@@ -6,7 +6,6 @@ import styled from 'styled-components';
 
 /* 내용 */
 export const TitleFrame = styled.div`
-  background-color: #e5f7ef;
   width: 100%;
 `;
 
