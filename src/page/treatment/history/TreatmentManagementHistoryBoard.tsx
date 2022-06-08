@@ -6,16 +6,14 @@ import React from 'react';
 
 import { observer } from 'mobx-react';
 
-import { LocalBoardFrame } from 'styles/components/common/Frame';
+import { BoardFrame } from 'styles/components/common/Frame';
 
-import BoardTitle from '../../../components/common/BoardTitle';
-import TreatmentManagementHistoryFilter from './TreatmentManagementHistoryFilter';
+import BoardTitleAndFilter from 'page/treatment/history/TreatmentManagementHistoryBoardTitleAndFilter';
 
 const TreatmentManagementHistoryBoard = observer(() => (
-  <LocalBoardFrame>
-    <BoardTitle title="진료 내역" />
-    <TreatmentManagementHistoryFilter />
-  </LocalBoardFrame>
+  <BoardFrame>
+    <BoardTitleAndFilter />
+  </BoardFrame>
 ));
 
 export default TreatmentManagementHistoryBoard;

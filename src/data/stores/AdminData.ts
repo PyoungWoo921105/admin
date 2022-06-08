@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2022 Medir Inc.
+ */
+
 import { observable } from 'mobx';
 
 export interface AdminDataType {
@@ -12,6 +16,9 @@ export interface AdminDataType {
   setLogInValidateFlag: (e: boolean) => void;
   LogInMessage: string;
   setLogInMessage: (e: string) => void;
+  /* Filter */
+  FilterSwitchFlag: boolean;
+  setFilterSwitchFlag: (e: boolean) => void;
 }
 
 const AdminData = observable<AdminDataType>({
@@ -35,6 +42,11 @@ const AdminData = observable<AdminDataType>({
   LogInMessage: '',
   setLogInMessage(e: string) {
     this.LogInMessage = e;
+  },
+  /* Filter */
+  FilterSwitchFlag: true,
+  setFilterSwitchFlag(e: boolean) {
+    this.FilterSwitchFlag = e;
   },
 });
 

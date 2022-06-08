@@ -46,3 +46,11 @@ export const LocalBoardFrame = styled.div`
   min-width: 220px;
   width: 100%;
 `;
+
+export const BoardFrame = styled.div`
+  height: 100%;
+  width: 100%;
+`;
+export const BoardTitleAndFilterFrame = styled.div`
+  width: 100%;
+`;
