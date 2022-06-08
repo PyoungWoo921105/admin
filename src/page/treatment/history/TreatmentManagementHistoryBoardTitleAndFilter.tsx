@@ -302,61 +302,6 @@ const BoardTitleAndFilter = observer(() => {
               </FilterElementComponent>
             </FilterElementFrame>
             {/*  */}
-            {/* SELECT & OPTION */}
-            <FilterElementFrame>
-              <FilterElementComponent>
-                <FilterElementTitleFrame minWidth="75px" width="75px">
-                  <FilterElementTitleComponent>
-                    <FilterElementTitleTextComponent>처방전 유무</FilterElementTitleTextComponent>
-                  </FilterElementTitleComponent>
-                </FilterElementTitleFrame>
-                <FilterElementBoardFrame minWidth="145px" width="145px">
-                  <FilterElementBoardComponent>
-                    <FilterElementBoardSelectComponent
-                      width="100%"
-                      value="선택"
-                      onChange={onChangePrescriptionState}
-                    >
-                      {PrescriptionStateList.map(element => (
-                        <FilterElementBoardOptionComponent key={element}>
-                          {element}
-                        </FilterElementBoardOptionComponent>
-                      ))}
-                    </FilterElementBoardSelectComponent>
-                  </FilterElementBoardComponent>
-                </FilterElementBoardFrame>
-              </FilterElementComponent>
-              <FilterElementComponent>
-                <FilterElementTitleFrame minWidth="100px" width="100px">
-                  <FilterElementTitleComponent>
-                    <FilterElementTitleTextComponent>
-                      처방전 유무 선택
-                    </FilterElementTitleTextComponent>
-                  </FilterElementTitleComponent>
-                </FilterElementTitleFrame>
-                <FilterElementBoardFrame minWidth="120px" width="100%">
-                  <FilterElementBoardComponent>
-                    {PrescriptionState.map((element, key) => (
-                      <FilterElementBoardSelectedComponent
-                        key={element}
-                        margin={key !== PrescriptionState.length - 1 ? '0px 5px 0px 0px' : ''}
-                        onClick={() => onClickDeletePrescriptionState({ key: element })}
-                      >
-                        <FilterElementBoardSelectedTextFrame>
-                          <FilterElementBoardSelectedTextComponent>
-                            {element}
-                          </FilterElementBoardSelectedTextComponent>
-                        </FilterElementBoardSelectedTextFrame>
-                        <FilterElementBoardSelectedImageFrame width="10px">
-                          <FilterElementBoardSelectedImageComponent src={ExitIcon} />
-                        </FilterElementBoardSelectedImageFrame>
-                      </FilterElementBoardSelectedComponent>
-                    ))}
-                  </FilterElementBoardComponent>
-                </FilterElementBoardFrame>
-              </FilterElementComponent>
-            </FilterElementFrame>
-            {/*  */}
             {/* SINGLE INPUT */}
             <FilterElementFrame>
               <FilterElementComponent>
@@ -372,61 +317,6 @@ const BoardTitleAndFilter = observer(() => {
                       value={DiseaseAndDepartment}
                       onChange={onChangeDiseaseAndDepartment}
                     />
-                  </FilterElementBoardComponent>
-                </FilterElementBoardFrame>
-              </FilterElementComponent>
-            </FilterElementFrame>
-            {/*  */}
-            {/* SELECT & OPTION */}
-            <FilterElementFrame>
-              <FilterElementComponent>
-                <FilterElementTitleFrame minWidth="80px" width="80px">
-                  <FilterElementTitleComponent>
-                    <FilterElementTitleTextComponent>약 수령 방법</FilterElementTitleTextComponent>
-                  </FilterElementTitleComponent>
-                </FilterElementTitleFrame>
-                <FilterElementBoardFrame minWidth="140px" width="140px">
-                  <FilterElementBoardComponent>
-                    <FilterElementBoardSelectComponent
-                      width="100%"
-                      value="선택"
-                      onChange={onChangeDeliveryMethod}
-                    >
-                      {DeliveryMethodList.map(element => (
-                        <FilterElementBoardOptionComponent key={element}>
-                          {element}
-                        </FilterElementBoardOptionComponent>
-                      ))}
-                    </FilterElementBoardSelectComponent>
-                  </FilterElementBoardComponent>
-                </FilterElementBoardFrame>
-              </FilterElementComponent>
-              <FilterElementComponent>
-                <FilterElementTitleFrame minWidth="105px" width="105px">
-                  <FilterElementTitleComponent>
-                    <FilterElementTitleTextComponent>
-                      약 수령 방법 선택
-                    </FilterElementTitleTextComponent>
-                  </FilterElementTitleComponent>
-                </FilterElementTitleFrame>
-                <FilterElementBoardFrame minWidth="115px" width="100%">
-                  <FilterElementBoardComponent>
-                    {DeliveryMethod.map((element, key) => (
-                      <FilterElementBoardSelectedComponent
-                        key={element}
-                        margin={key !== DeliveryMethod.length - 1 ? '0px 5px 0px 0px' : ''}
-                        onClick={() => onClickDeleteDeliveryMethod({ key: element })}
-                      >
-                        <FilterElementBoardSelectedTextFrame>
-                          <FilterElementBoardSelectedTextComponent>
-                            {element}
-                          </FilterElementBoardSelectedTextComponent>
-                        </FilterElementBoardSelectedTextFrame>
-                        <FilterElementBoardSelectedImageFrame width="10px">
-                          <FilterElementBoardSelectedImageComponent src={ExitIcon} />
-                        </FilterElementBoardSelectedImageFrame>
-                      </FilterElementBoardSelectedComponent>
-                    ))}
                   </FilterElementBoardComponent>
                 </FilterElementBoardFrame>
               </FilterElementComponent>
@@ -605,6 +495,116 @@ const BoardTitleAndFilter = observer(() => {
                       value={DoctorName}
                       onChange={onChangeDoctorName}
                     />
+                  </FilterElementBoardComponent>
+                </FilterElementBoardFrame>
+              </FilterElementComponent>
+            </FilterElementFrame>
+            {/*  */}
+            {/* SELECT & OPTION */}
+            <FilterElementFrame>
+              <FilterElementComponent>
+                <FilterElementTitleFrame minWidth="75px" width="75px">
+                  <FilterElementTitleComponent>
+                    <FilterElementTitleTextComponent>처방전 유무</FilterElementTitleTextComponent>
+                  </FilterElementTitleComponent>
+                </FilterElementTitleFrame>
+                <FilterElementBoardFrame minWidth="145px" width="145px">
+                  <FilterElementBoardComponent>
+                    <FilterElementBoardSelectComponent
+                      width="100%"
+                      value="선택"
+                      onChange={onChangePrescriptionState}
+                    >
+                      {PrescriptionStateList.map(element => (
+                        <FilterElementBoardOptionComponent key={element}>
+                          {element}
+                        </FilterElementBoardOptionComponent>
+                      ))}
+                    </FilterElementBoardSelectComponent>
+                  </FilterElementBoardComponent>
+                </FilterElementBoardFrame>
+              </FilterElementComponent>
+              <FilterElementComponent>
+                <FilterElementTitleFrame minWidth="100px" width="100px">
+                  <FilterElementTitleComponent>
+                    <FilterElementTitleTextComponent>
+                      처방전 유무 선택
+                    </FilterElementTitleTextComponent>
+                  </FilterElementTitleComponent>
+                </FilterElementTitleFrame>
+                <FilterElementBoardFrame minWidth="120px" width="100%">
+                  <FilterElementBoardComponent>
+                    {PrescriptionState.map((element, key) => (
+                      <FilterElementBoardSelectedComponent
+                        key={element}
+                        margin={key !== PrescriptionState.length - 1 ? '0px 5px 0px 0px' : ''}
+                        onClick={() => onClickDeletePrescriptionState({ key: element })}
+                      >
+                        <FilterElementBoardSelectedTextFrame>
+                          <FilterElementBoardSelectedTextComponent>
+                            {element}
+                          </FilterElementBoardSelectedTextComponent>
+                        </FilterElementBoardSelectedTextFrame>
+                        <FilterElementBoardSelectedImageFrame width="10px">
+                          <FilterElementBoardSelectedImageComponent src={ExitIcon} />
+                        </FilterElementBoardSelectedImageFrame>
+                      </FilterElementBoardSelectedComponent>
+                    ))}
+                  </FilterElementBoardComponent>
+                </FilterElementBoardFrame>
+              </FilterElementComponent>
+            </FilterElementFrame>
+            {/*  */}
+            {/* SELECT & OPTION */}
+            <FilterElementFrame>
+              <FilterElementComponent>
+                <FilterElementTitleFrame minWidth="80px" width="80px">
+                  <FilterElementTitleComponent>
+                    <FilterElementTitleTextComponent>약 수령 방법</FilterElementTitleTextComponent>
+                  </FilterElementTitleComponent>
+                </FilterElementTitleFrame>
+                <FilterElementBoardFrame minWidth="140px" width="140px">
+                  <FilterElementBoardComponent>
+                    <FilterElementBoardSelectComponent
+                      width="100%"
+                      value="선택"
+                      onChange={onChangeDeliveryMethod}
+                    >
+                      {DeliveryMethodList.map(element => (
+                        <FilterElementBoardOptionComponent key={element}>
+                          {element}
+                        </FilterElementBoardOptionComponent>
+                      ))}
+                    </FilterElementBoardSelectComponent>
+                  </FilterElementBoardComponent>
+                </FilterElementBoardFrame>
+              </FilterElementComponent>
+              <FilterElementComponent>
+                <FilterElementTitleFrame minWidth="105px" width="105px">
+                  <FilterElementTitleComponent>
+                    <FilterElementTitleTextComponent>
+                      약 수령 방법 선택
+                    </FilterElementTitleTextComponent>
+                  </FilterElementTitleComponent>
+                </FilterElementTitleFrame>
+                <FilterElementBoardFrame minWidth="115px" width="100%">
+                  <FilterElementBoardComponent>
+                    {DeliveryMethod.map((element, key) => (
+                      <FilterElementBoardSelectedComponent
+                        key={element}
+                        margin={key !== DeliveryMethod.length - 1 ? '0px 5px 0px 0px' : ''}
+                        onClick={() => onClickDeleteDeliveryMethod({ key: element })}
+                      >
+                        <FilterElementBoardSelectedTextFrame>
+                          <FilterElementBoardSelectedTextComponent>
+                            {element}
+                          </FilterElementBoardSelectedTextComponent>
+                        </FilterElementBoardSelectedTextFrame>
+                        <FilterElementBoardSelectedImageFrame width="10px">
+                          <FilterElementBoardSelectedImageComponent src={ExitIcon} />
+                        </FilterElementBoardSelectedImageFrame>
+                      </FilterElementBoardSelectedComponent>
+                    ))}
                   </FilterElementBoardComponent>
                 </FilterElementBoardFrame>
               </FilterElementComponent>
