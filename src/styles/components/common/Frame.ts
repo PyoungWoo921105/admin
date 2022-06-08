@@ -54,3 +54,6 @@ export const BoardFrame = styled.div`
 export const BoardTitleAndFilterFrame = styled.div`
   width: 100%;
 `;
+export const BoardContentFrame = styled.div`
+  width: 100%;
+`;

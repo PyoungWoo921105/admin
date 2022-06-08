@@ -9,10 +9,12 @@ import { observer } from 'mobx-react';
 import { BoardFrame } from 'styles/components/common/Frame';
 
 import BoardTitleAndFilter from 'page/treatment/history/TreatmentManagementHistoryBoardTitleAndFilter';
+import BoardContent from 'page/treatment/history/TreatmentManagementHistoryBoardContent';
 
 const TreatmentManagementHistoryBoard = observer(() => (
   <BoardFrame>
     <BoardTitleAndFilter />
+    <BoardContent />
   </BoardFrame>
 ));
 
