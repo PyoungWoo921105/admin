@@ -62,8 +62,8 @@ export const PopUpTopExitComponent = styled.div<CustomProps>`
   cursor: pointer;
   height: 100%;
   position: absolute;
-  right: 20px;
-  width: 15px;
+  right: 15px;
+  width: 10px;
 `;
 export const PopUpTopExitImageComponent = styled.img<CustomProps>`
   height: 100%;
