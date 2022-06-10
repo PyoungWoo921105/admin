@@ -151,6 +151,26 @@ export const DataElementContentButtonComponent = styled.button<CustomProps>`
   text-overflow: ellipsis;
   white-space: nowrap;
 `;
+export const DataElementContentExtraButtonComponent = styled.button<CustomProps>`
+  align-items: center;
+  background-color: ${props => (props.backgroundColor ? props.backgroundColor : '')};
+  border: none;
+  border-radius: 10px 10px 10px 10px;
+  color: ${props => (props.color ? props.color : '')};
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 11px;
+  font-style: normal;
+  font-weight: normal;
+  height: ${props => (props.height ? props.height : '')};
+  justify-content: center;
+  margin: 0px 0px 0px 5px;
+  min-height: ${props => (props.minHeight ? props.minHeight : '')};
+  min-width: ${props => (props.minWidth ? props.minWidth : '')};
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: ${props => (props.width ? props.width : '')};
+`;
 /* 네비게이션 */
 export const NavigationFrame = styled.div<CustomProps>`
   display: flex;

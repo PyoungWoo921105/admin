@@ -7,7 +7,14 @@ import { AdminData } from 'data/stores/AdminData';
 
 import { TreatmentData } from 'data/stores/TreatmentData';
 import { MedicineData } from 'data/stores/MedicineData';
+import { DeliveryData } from 'data/stores/DeliveryData';
 
-export const useStore = () => ({ CommonData, AdminData, TreatmentData, MedicineData });
+export const useStore = () => ({
+  CommonData,
+  AdminData,
+  TreatmentData,
+  MedicineData,
+  DeliveryData,
+});
 
 export default useStore;
