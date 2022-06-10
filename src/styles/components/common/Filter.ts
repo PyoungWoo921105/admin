@@ -31,6 +31,7 @@ export const FilterElementComponent = styled.div<CustomProps>`
   display: flex;
   flex-direction: row;
   height: 40px;
+  margin: ${props => (props.margin ? props.margin : '')};
   min-width: ${props => (props.minWidth ? props.minWidth : '')};
   width: ${props => (props.width ? props.width : '')};
 `;

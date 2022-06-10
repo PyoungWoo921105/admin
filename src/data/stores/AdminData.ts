@@ -19,6 +19,9 @@ export interface AdminDataType {
   /* Filter */
   FilterSwitchFlag: boolean;
   setFilterSwitchFlag: (e: boolean) => void;
+  /* Statistic */
+  StatisticSwitchFlag: boolean;
+  setStatisticSwitchFlag: (e: boolean) => void;
 }
 
 const AdminData = observable<AdminDataType>({
@@ -47,6 +50,11 @@ const AdminData = observable<AdminDataType>({
   FilterSwitchFlag: true,
   setFilterSwitchFlag(e: boolean) {
     this.FilterSwitchFlag = e;
+  },
+  /* Statistic */
+  StatisticSwitchFlag: true,
+  setStatisticSwitchFlag(e: boolean) {
+    this.StatisticSwitchFlag = e;
   },
 });
 

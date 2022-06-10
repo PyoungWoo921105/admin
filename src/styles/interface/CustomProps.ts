@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2022 Medir Inc.
+ */
+
 export interface CustomProps {
   position?: string;
 
@@ -24,6 +28,7 @@ export interface CustomProps {
   textAlign?: string;
   textDecoration?: string;
   fontSize?: string;
+  lineHeight?: string;
   wordBreak?: string;
   whiteSpace?: string;
   textOverflow?: string;

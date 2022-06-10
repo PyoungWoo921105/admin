@@ -62,6 +62,19 @@ import {
   FilterElementBoardSelectedImageFrame,
   FilterElementBoardSelectedImageComponent,
 } from 'styles/components/common/Filter';
+/* 통계 */
+import {
+  StatisticFrame,
+  StatisticComponent,
+  StatisticElementFrame,
+  StatisticElementComponent,
+  StatisticElementTitleFrame,
+  StatisticElementTitleComponent,
+  StatisticElementTitleTextComponent,
+  StatisticElementBoardFrame,
+  StatisticElementBoardComponent,
+  StatisticElementBoardTextComponent,
+} from 'styles/components/common/Statistic';
 
 import ExitIcon from 'assets/icons/ExitIcon.svg';
 
@@ -71,12 +84,17 @@ import { ConvertContactNumber } from 'libraries/conversion/ConvertContactNumber'
 import { GetTreatmentList } from 'services/treatment/GetTreatmentList';
 import { GetTreatmentListExport } from 'services/treatment/GetTreatmentListExport';
 import { GetCurrentTime } from 'libraries/time/GetCurrentTime';
+import ConvertCommaNumber from 'libraries/conversion/ConvertCommaNumber';
 /*  */
 const BoardTitleAndFilter = observer(() => {
   const { CommonData, AdminData, TreatmentData } = useStore();
   /* 필터 스위치 */
   const onChangeFilterSwitchFlag = () => {
     AdminData.setFilterSwitchFlag(!AdminData.FilterSwitchFlag);
+  };
+  /* 통계 스위치 */
+  const onChangeStatisticSwitchFlag = () => {
+    AdminData.setStatisticSwitchFlag(!AdminData.StatisticSwitchFlag);
   };
   /* 필터 초기화 */
   const onClickFilterRefresh = () => {
@@ -380,6 +398,21 @@ const BoardTitleAndFilter = observer(() => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [TreatmentData.PageNavigator]);
 
+  /* 통계 */
+  const StatisticsList = [
+    '전체',
+    '접수 대기',
+    '진료 대기',
+    '진료 중',
+    '처방 및 수납',
+    '결제 대기',
+    '완료',
+    '결제 실패',
+    '진료 거절',
+    '진료 취소',
+    '진료 시스템 취소',
+  ];
+
   return (
     <BoardTitleAndFilterFrame>
       <TitleFrame>
@@ -406,6 +439,19 @@ const BoardTitleAndFilter = observer(() => {
                 type="checkbox"
                 checked={AdminData.FilterSwitchFlag}
                 onChange={onChangeFilterSwitchFlag}
+              />
+            </TitleFilterButtonFrame>
+          </TitleFilterFrame>
+          {/* 통계 스위치 */}
+          <TitleFilterFrame>
+            <TitleFilterTextFrame>
+              <TitleFilterTextComponent>통계</TitleFilterTextComponent>
+            </TitleFilterTextFrame>
+            <TitleFilterButtonFrame>
+              <TitleFilterButtonComponent
+                type="checkbox"
+                checked={AdminData.StatisticSwitchFlag}
+                onChange={onChangeStatisticSwitchFlag}
               />
             </TitleFilterButtonFrame>
           </TitleFilterFrame>
@@ -487,7 +533,7 @@ const BoardTitleAndFilter = observer(() => {
             {/*  */}
             {/* DOUBLE INPUT */}
             <FilterElementFrame>
-              <FilterElementComponent>
+              <FilterElementComponent margin="0px 1px 0px 0px">
                 <FilterElementTitleFrame minWidth="90px" width="90px">
                   <FilterElementTitleComponent>
                     <FilterElementTitleTextComponent>
@@ -508,7 +554,7 @@ const BoardTitleAndFilter = observer(() => {
                   </FilterElementBoardComponent>
                 </FilterElementBoardFrame>
               </FilterElementComponent>
-              <FilterElementComponent>
+              <FilterElementComponent margin="0px 0px 0px 1px">
                 <FilterElementTitleFrame minWidth="90px" width="90px">
                   <FilterElementTitleComponent>
                     <FilterElementTitleTextComponent>
@@ -533,7 +579,7 @@ const BoardTitleAndFilter = observer(() => {
             {/*  */}
             {/* SELECT & OPTION */}
             <FilterElementFrame>
-              <FilterElementComponent>
+              <FilterElementComponent margin="0px 1px 0px 0px">
                 <FilterElementTitleFrame minWidth="65px" width="65px">
                   <FilterElementTitleComponent>
                     <FilterElementTitleTextComponent>진료 상태</FilterElementTitleTextComponent>
@@ -555,7 +601,7 @@ const BoardTitleAndFilter = observer(() => {
                   </FilterElementBoardComponent>
                 </FilterElementBoardFrame>
               </FilterElementComponent>
-              <FilterElementComponent>
+              <FilterElementComponent margin="0px 0px 0px 1px">
                 <FilterElementTitleFrame minWidth="90px" width="90px">
                   <FilterElementTitleComponent>
                     <FilterElementTitleTextComponent>
@@ -588,7 +634,7 @@ const BoardTitleAndFilter = observer(() => {
             {/*  */}
             {/* DOUBLE INPUT */}
             <FilterElementFrame>
-              <FilterElementComponent>
+              <FilterElementComponent margin="0px 1px 0px 0px">
                 <FilterElementTitleFrame minWidth="65px" width="65px">
                   <FilterElementTitleComponent>
                     <FilterElementTitleTextComponent>환자 이름</FilterElementTitleTextComponent>
@@ -604,7 +650,7 @@ const BoardTitleAndFilter = observer(() => {
                   </FilterElementBoardComponent>
                 </FilterElementBoardFrame>
               </FilterElementComponent>
-              <FilterElementComponent>
+              <FilterElementComponent margin="0px 0px 0px 1px">
                 <FilterElementTitleFrame minWidth="85px" width="85px">
                   <FilterElementTitleComponent>
                     <FilterElementTitleTextComponent>환자 전화번호</FilterElementTitleTextComponent>
@@ -665,7 +711,7 @@ const BoardTitleAndFilter = observer(() => {
             {/*  */}
             {/* SELECT & OPTION */}
             <FilterElementFrame>
-              <FilterElementComponent>
+              <FilterElementComponent margin="0px 1px 0px 0px">
                 <FilterElementTitleFrame minWidth="75px" width="75px">
                   <FilterElementTitleComponent>
                     <FilterElementTitleTextComponent>처방전 유무</FilterElementTitleTextComponent>
@@ -687,7 +733,7 @@ const BoardTitleAndFilter = observer(() => {
                   </FilterElementBoardComponent>
                 </FilterElementBoardFrame>
               </FilterElementComponent>
-              <FilterElementComponent>
+              <FilterElementComponent margin="0px 0px 0px 1px">
                 <FilterElementTitleFrame minWidth="100px" width="100px">
                   <FilterElementTitleComponent>
                     <FilterElementTitleTextComponent>
@@ -720,7 +766,7 @@ const BoardTitleAndFilter = observer(() => {
             {/*  */}
             {/* SELECT & OPTION */}
             <FilterElementFrame>
-              <FilterElementComponent>
+              <FilterElementComponent margin="0px 1px 0px 0px">
                 <FilterElementTitleFrame minWidth="80px" width="80px">
                   <FilterElementTitleComponent>
                     <FilterElementTitleTextComponent>약 수령 방법</FilterElementTitleTextComponent>
@@ -742,7 +788,7 @@ const BoardTitleAndFilter = observer(() => {
                   </FilterElementBoardComponent>
                 </FilterElementBoardFrame>
               </FilterElementComponent>
-              <FilterElementComponent>
+              <FilterElementComponent margin="0px 0px 0px 1px">
                 <FilterElementTitleFrame minWidth="105px" width="105px">
                   <FilterElementTitleComponent>
                     <FilterElementTitleTextComponent>
@@ -775,6 +821,164 @@ const BoardTitleAndFilter = observer(() => {
             {/*  */}
           </FilterComponent>
         </FilterFrame>
+      ) : null}
+      {AdminData.StatisticSwitchFlag ? (
+        <StatisticFrame>
+          <StatisticComponent>
+            {/*  */}
+            {StatisticsList.map(element => (
+              <StatisticElementFrame>
+                <StatisticElementComponent>
+                  <StatisticElementTitleFrame
+                    minWidth={`${element.length * 10 + 40}px`}
+                    width={`${element.length * 10 + 40}px`}
+                  >
+                    <StatisticElementTitleComponent>
+                      <StatisticElementTitleTextComponent
+                        width="100%"
+                        lineHeight="30px"
+                        /* TODO */
+                        color={
+                          element === '전체'
+                            ? '#000000'
+                            : element === '접수 대기'
+                            ? '#000000'
+                            : element === '진료 대기'
+                            ? '#000000'
+                            : element === '진료 중'
+                            ? '#000000'
+                            : element === '처방 및 수납'
+                            ? '#000000'
+                            : element === '결제 대기'
+                            ? '#000000'
+                            : element === '완료'
+                            ? 'rgb(112,173,71)'
+                            : element === '결제 실패'
+                            ? 'rgb(192,0,0)'
+                            : element === '진료 거절'
+                            ? 'rgb(192,0,0)'
+                            : element === '진료 취소'
+                            ? 'rgb(192,0,0)'
+                            : element === '진료 시스템 취소'
+                            ? 'rgb(192,0,0)'
+                            : '#000000'
+                        }
+                      >
+                        {element}
+                      </StatisticElementTitleTextComponent>
+                    </StatisticElementTitleComponent>
+                  </StatisticElementTitleFrame>
+                  <StatisticElementBoardFrame
+                    minWidth={`${220 - (element.length * 10 + 40)}px`}
+                    width={`${220 - (element.length * 10 + 40)}px`}
+                  >
+                    <StatisticElementBoardComponent>
+                      <StatisticElementBoardTextComponent
+                        width="100%"
+                        textAlign="right"
+                        lineHeight="30px"
+                        color={
+                          element === '전체'
+                            ? '#000000'
+                            : element === '접수 대기'
+                            ? '#000000'
+                            : element === '진료 대기'
+                            ? '#000000'
+                            : element === '진료 중'
+                            ? '#000000'
+                            : element === '처방 및 수납'
+                            ? '#000000'
+                            : element === '결제 대기'
+                            ? '#000000'
+                            : element === '완료'
+                            ? 'rgb(112,173,71)'
+                            : element === '결제 실패'
+                            ? 'rgb(192,0,0)'
+                            : element === '진료 거절'
+                            ? 'rgb(192,0,0)'
+                            : element === '진료 취소'
+                            ? 'rgb(192,0,0)'
+                            : element === '진료 시스템 취소'
+                            ? 'rgb(192,0,0)'
+                            : '#000000'
+                        }
+                      >
+                        {element === '전체'
+                          ? TreatmentData.TreatmentListData?.count?.total
+                            ? `${ConvertCommaNumber(
+                                TreatmentData.TreatmentListData?.count?.total.toString()
+                              )}건`
+                            : '0건'
+                          : element === '접수 대기'
+                          ? TreatmentData.TreatmentListData?.count?.waitReception
+                            ? `${ConvertCommaNumber(
+                                TreatmentData.TreatmentListData?.count?.waitReception.toString()
+                              )}건`
+                            : '0건'
+                          : element === '진료 대기'
+                          ? TreatmentData.TreatmentListData?.count?.waitTreat
+                            ? `${ConvertCommaNumber(
+                                TreatmentData.TreatmentListData?.count?.waitTreat.toString()
+                              )}건`
+                            : '0건'
+                          : element === '진료 중'
+                          ? TreatmentData.TreatmentListData?.count?.inTreat
+                            ? `${ConvertCommaNumber(
+                                TreatmentData.TreatmentListData?.count?.inTreat.toString()
+                              )}건`
+                            : '0건'
+                          : element === '처방 및 수납'
+                          ? TreatmentData.TreatmentListData?.count?.prescriptionAndReceipt
+                            ? `${ConvertCommaNumber(
+                                TreatmentData.TreatmentListData?.count?.prescriptionAndReceipt.toString()
+                              )}건`
+                            : '0건'
+                          : element === '결제 대기'
+                          ? TreatmentData.TreatmentListData?.count?.waitToPay
+                            ? `${ConvertCommaNumber(
+                                TreatmentData.TreatmentListData?.count?.waitToPay.toString()
+                              )}건`
+                            : '0건'
+                          : element === '완료'
+                          ? TreatmentData.TreatmentListData?.count?.completed
+                            ? `${ConvertCommaNumber(
+                                TreatmentData.TreatmentListData?.count?.completed.toString()
+                              )}건`
+                            : '0건'
+                          : element === '결제 실패'
+                          ? TreatmentData.TreatmentListData?.count?.failedToPay
+                            ? `${ConvertCommaNumber(
+                                TreatmentData.TreatmentListData?.count?.failedToPay.toString()
+                              )}건`
+                            : '0건'
+                          : element === '진료 거절'
+                          ? TreatmentData.TreatmentListData?.count?.declined
+                            ? `${ConvertCommaNumber(
+                                TreatmentData.TreatmentListData?.count?.declined.toString()
+                              )}건`
+                            : '0건'
+                          : element === '진료 취소'
+                          ? TreatmentData.TreatmentListData?.count?.canceled
+                            ? `${ConvertCommaNumber(
+                                TreatmentData.TreatmentListData?.count?.canceled.toString()
+                              )}건`
+                            : '0건'
+                          : element === '진료 시스템 취소'
+                          ? TreatmentData.TreatmentListData?.count?.systemCanceled
+                            ? `${ConvertCommaNumber(
+                                TreatmentData.TreatmentListData?.count?.systemCanceled.toString()
+                              )}건`
+                            : '0건'
+                          : '0건'}
+                      </StatisticElementBoardTextComponent>
+                    </StatisticElementBoardComponent>
+                  </StatisticElementBoardFrame>
+                </StatisticElementComponent>
+              </StatisticElementFrame>
+            ))}
+            {/*  */}
+          </StatisticComponent>
+        </StatisticFrame>
       ) : null}
     </BoardTitleAndFilterFrame>
   );
