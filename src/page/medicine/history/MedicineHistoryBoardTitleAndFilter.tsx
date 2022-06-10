@@ -801,7 +801,7 @@ const BoardTitleAndFilter = observer(() => {
           <StatisticComponent>
             {/*  */}
             {StatisticsList.map(element => (
-              <StatisticElementFrame>
+              <StatisticElementFrame key={element}>
                 <StatisticElementComponent>
                   <StatisticElementTitleFrame
                     minWidth={`${element.length * 10 + 40}px`}

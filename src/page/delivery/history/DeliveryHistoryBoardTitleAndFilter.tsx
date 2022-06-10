@@ -78,14 +78,17 @@ import {
 
 import ExitIcon from 'assets/icons/ExitIcon.svg';
 
-import { AllowNumber } from 'libraries/constraint/AllowNumber';
 import { GetDeliveryList } from 'services/delivery/GetDeliveryList';
 import { GetDeliveryListExport } from 'services/delivery/GetDeliveryListExport';
+
+import { GetRiderListBasic } from 'services/rider/GetRiderListBasic';
+
+import { AllowNumber } from 'libraries/constraint/AllowNumber';
 import { GetCurrentTime } from 'libraries/time/GetCurrentTime';
 import { ConvertCommaNumber } from 'libraries/conversion/ConvertCommaNumber';
 /*  */
 const BoardTitleAndFilter = observer(() => {
-  const { CommonData, AdminData, DeliveryData } = useStore();
+  const { CommonData, AdminData, DeliveryData, RiderData } = useStore();
   /* 필터 스위치 */
   const onChangeFilterSwitchFlag = () => {
     AdminData.setFilterSwitchFlag(!AdminData.FilterSwitchFlag);
@@ -102,7 +105,7 @@ const BoardTitleAndFilter = observer(() => {
     setStartInquiryPeriod('');
     setEndInquiryPeriod('');
     setDeliveryState(['전체']);
-    setDeliveryAgencyName(['전체']);
+    setDeliveryAgencyName([{ code: '', name: '전체' }]);
   };
   /* 데이터 다운로드 */
   const onClickFilterDownload = () => {
@@ -117,6 +120,8 @@ const BoardTitleAndFilter = observer(() => {
   const onClickSearch = () => {
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
     GetDeliveryListFunction();
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
+    GetRiderListBasicFunction();
     DeliveryData.setPageNavigator(1);
     DeliveryData.setParagraphNavigator(1);
   };
@@ -183,39 +188,36 @@ const BoardTitleAndFilter = observer(() => {
     }
   };
   /* 배송 업체 이름 */
-  const DeliveryAgencyNameList = [
-    '선택',
-    '전체',
-    '접수 대기',
-    '배차 대기',
-    '배차 완료',
-    '픽업 완료',
-    '완료',
-    '배달 취소',
-  ];
-  const [DeliveryAgencyName, setDeliveryAgencyName] = useState<string[]>(['전체']);
+  const [DeliveryAgencyName, setDeliveryAgencyName] = useState<{ code: string; name: string }[]>([
+    { code: '', name: '전체' },
+  ]);
   const onChangeDeliveryAgencyName = (event: { target: { value: string } }) => {
-    if (event.target.value === '전체') {
-      setDeliveryAgencyName([event.target.value]);
-    } else if (DeliveryAgencyName.indexOf(event.target.value) === -1) {
-      if (DeliveryAgencyName.indexOf('전체') === -1) {
-        /* setDeliveryAgencyName([event.target.value]); */
-        setDeliveryAgencyName([...DeliveryAgencyName, event.target.value]);
+    const TempDeliveryAgencyName = JSON.parse(event.target.value) as { code: string; name: string };
+    if (TempDeliveryAgencyName.name === '전체') {
+      setDeliveryAgencyName([TempDeliveryAgencyName]);
+    } else if (
+      DeliveryAgencyName.findIndex(element => element.code === TempDeliveryAgencyName.code) === -1
+    ) {
+      if (DeliveryAgencyName.findIndex(element => element.name === '전체') === -1) {
+        // setDeliveryAgencyName([TempDeliveryAgencyName]);
+        setDeliveryAgencyName([...DeliveryAgencyName, TempDeliveryAgencyName]);
       } else {
-        setDeliveryAgencyName([event.target.value]);
+        setDeliveryAgencyName([TempDeliveryAgencyName]);
       }
     } else if (DeliveryAgencyName.length === 1) {
-      setDeliveryAgencyName(['전체']);
+      setDeliveryAgencyName([{ code: '', name: '전체' }]);
     } else {
-      setDeliveryAgencyName(DeliveryAgencyName.filter(element => element !== event.target.value));
+      setDeliveryAgencyName(
+        DeliveryAgencyName.filter(element => element.code !== TempDeliveryAgencyName.code)
+      );
     }
   };
-  const onClickDeleteDeliveryAgencyName = (props: { key: any }) => {
-    const { key } = props;
-    if (DeliveryAgencyName.length === 1 && DeliveryAgencyName[0] === key) {
-      setDeliveryAgencyName(['전체']);
+  const onClickDeleteDeliveryAgencyName = (props: { object: { code: string; name: string } }) => {
+    const { object } = props;
+    if (DeliveryAgencyName.length === 1 && DeliveryAgencyName[0].code === object.code) {
+      setDeliveryAgencyName([{ code: '', name: '전체' }]);
     } else {
-      setDeliveryAgencyName(DeliveryAgencyName.filter(element => element !== key));
+      setDeliveryAgencyName(DeliveryAgencyName.filter(element => element.code !== object.code));
     }
   };
 
@@ -229,7 +231,9 @@ const BoardTitleAndFilter = observer(() => {
       startDate: null || StartInquiryPeriod,
       endDate: null || EndInquiryPeriod,
       statusList: null || DeliveryState[0] === '전체' ? null : DeliveryState,
-      riderCode: null || DeliveryAgencyName[0] === '전체' ? null : DeliveryAgencyName,
+      /* FUTUREWORK */
+      /* riderCode: null || DeliveryAgencyName[0].name === '전체' ? null : DeliveryAgencyName, */
+      riderCode: null || DeliveryAgencyName[0].name === '전체' ? null : DeliveryAgencyName[0].code,
 
       page: null || DeliveryData.PageNavigator - 1,
     };
@@ -272,7 +276,9 @@ const BoardTitleAndFilter = observer(() => {
       startDate: null || StartInquiryPeriod,
       endDate: null || EndInquiryPeriod,
       statusList: null || DeliveryState[0] === '전체' ? null : DeliveryState,
-      riderCode: null || DeliveryAgencyName[0] === '전체' ? null : DeliveryAgencyName,
+      /* FUTUREWORK */
+      /* riderCode: null || DeliveryAgencyName[0].name === '전체' ? null : DeliveryAgencyName, */
+      riderCode: null || DeliveryAgencyName[0].name === '전체' ? null : DeliveryAgencyName[0].code,
 
       /* page: null || DeliveryData.PageNavigator - 1, */
     };
@@ -305,10 +311,40 @@ const BoardTitleAndFilter = observer(() => {
     StartInquiryPeriod,
     TreatmentCode,
   ]);
+  const GetRiderListBasicFunction = useCallback(async () => {
+    CommonData.setLoadingFlag(true);
+    const response = await GetRiderListBasic();
+    CommonData.setLoadingFlag(false);
+    if (response.status === 200) {
+      /*  */
+      const RiderList = RiderData.RiderListBasicData?.riderList.slice();
+      if (RiderList) {
+        RiderList.unshift({ code: '', name: '전체' });
+        RiderList.unshift({ code: '', name: '선택' });
+        RiderData.setRiderListBasicData({ riderList: RiderList });
+      }
+    } else {
+      const MetaError = response as { status: number; data: { message: string } };
+      const PopUpData = {
+        Category: 'ERROR',
+        Name: 'GET_DELIVERY_LIST',
+        Title: '라이더 내역 불러오기 실패',
+        Contents: [MetaError?.data?.message] || [
+          '일시적인 서버 오류가 발생하였습니다.',
+          '다음에 다시 시도해주세요.',
+        ],
+        Actions: [{ Choice: '돌아가기', Action: () => CommonData.setPopUpFlag(false) }],
+      };
+      CommonData.setPopUpData(PopUpData);
+      CommonData.setPopUpFlag(true);
+    }
+  }, [CommonData, RiderData]);
 
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
     GetDeliveryListFunction();
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
+    GetRiderListBasicFunction();
     GetCurrentTime();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -316,6 +352,8 @@ const BoardTitleAndFilter = observer(() => {
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
     GetDeliveryListFunction();
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
+    GetRiderListBasicFunction();
     GetCurrentTime();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [DeliveryData.PageNavigator]);
@@ -590,12 +628,21 @@ const BoardTitleAndFilter = observer(() => {
                     <FilterElementBoardSelectComponent
                       width="100%"
                       value="선택"
-                      onChange={onChangeDeliveryAgencyName}
+                      onChange={event =>
+                        onChangeDeliveryAgencyName(
+                          event as unknown as { target: { value: string } }
+                        )
+                      }
                       onKeyPress={onKeyPressEnter}
                     >
-                      {DeliveryAgencyNameList.map(element => (
-                        <FilterElementBoardOptionComponent key={element}>
-                          {element}
+                      {RiderData?.RiderListBasicData?.riderList.map(element => (
+                        <FilterElementBoardOptionComponent
+                          key={`${element.name} (${element.code})`}
+                          value={JSON.stringify(element)}
+                        >
+                          {element.name !== '전체' && element.name !== '선택'
+                            ? `${element.name} (${element.code})`
+                            : `${element.name}`}
                         </FilterElementBoardOptionComponent>
                       ))}
                     </FilterElementBoardSelectComponent>
@@ -614,13 +661,13 @@ const BoardTitleAndFilter = observer(() => {
                   <FilterElementBoardComponent>
                     {DeliveryAgencyName.map((element, key) => (
                       <FilterElementBoardSelectedComponent
-                        key={element}
+                        key={element.code}
                         margin={key !== DeliveryAgencyName.length - 1 ? '0px 5px 0px 0px' : ''}
-                        onClick={() => onClickDeleteDeliveryAgencyName({ key: element })}
+                        onClick={() => onClickDeleteDeliveryAgencyName({ object: element })}
                       >
                         <FilterElementBoardSelectedTextFrame>
                           <FilterElementBoardSelectedTextComponent>
-                            {element}
+                            {element.name}
                           </FilterElementBoardSelectedTextComponent>
                         </FilterElementBoardSelectedTextFrame>
                         <FilterElementBoardSelectedImageFrame width="10px">
@@ -641,7 +688,7 @@ const BoardTitleAndFilter = observer(() => {
           <StatisticComponent>
             {/*  */}
             {StatisticsList.map(element => (
-              <StatisticElementFrame>
+              <StatisticElementFrame key={element}>
                 <StatisticElementComponent>
                   <StatisticElementTitleFrame
                     minWidth={`${element.length * 10 + 40}px`}
