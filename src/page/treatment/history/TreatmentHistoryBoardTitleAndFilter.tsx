@@ -84,7 +84,7 @@ import { ConvertContactNumber } from 'libraries/conversion/ConvertContactNumber'
 import { GetTreatmentList } from 'services/treatment/GetTreatmentList';
 import { GetTreatmentListExport } from 'services/treatment/GetTreatmentListExport';
 import { GetCurrentTime } from 'libraries/time/GetCurrentTime';
-import ConvertCommaNumber from 'libraries/conversion/ConvertCommaNumber';
+import { ConvertCommaNumber } from 'libraries/conversion/ConvertCommaNumber';
 /*  */
 const BoardTitleAndFilter = observer(() => {
   const { CommonData, AdminData, TreatmentData } = useStore();
