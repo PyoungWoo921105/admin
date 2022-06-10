@@ -189,8 +189,7 @@ const BoardContent = observer(() => {
                         <DataElementContentTextComponent>
                           {element?.rider?.name || '-'}
                         </DataElementContentTextComponent>
-                        {/* FUTUREWORK */}
-                        {/* {element?.hasNotificationToCheck ? (
+                        {element?.hasNotificationToCheck ? (
                           <DataElementContentExtraButtonComponent
                             backgroundColor="rgb(255,64,64)"
                             color="#ffffff"
@@ -201,7 +200,7 @@ const BoardContent = observer(() => {
                           >
                             !
                           </DataElementContentExtraButtonComponent>
-                        ) : null} */}
+                        ) : null}
                       </DataElementContentComponent>
                     </DataElementContentFrame>
                     {/*  */}
