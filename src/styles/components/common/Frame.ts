@@ -29,7 +29,7 @@ export const GlobalBoardFrame = styled.div`
   min-height: 100px;
   position: absolute;
   right: 0px;
-  top: 50px;
+  top: 40px;
 `;
 
 export const LocalFrame = styled.div`

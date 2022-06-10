@@ -8,9 +8,9 @@ import { CustomProps } from 'styles/interface/CustomProps';
 
 export const GlobalNavigationBarFrame = styled.div`
   display: flex;
-  height: 50px;
+  height: 40px;
   left: 0px;
-  min-height: 50px;
+  min-height: 40px;
   position: absolute;
   right: 0px;
   top: 0px;
@@ -128,7 +128,7 @@ export const GlobalNavigationBarContentOpeningComponent = styled.div`
   justify-content: center;
   padding: 10px 0px 10px 0px;
   position: absolute;
-  top: 50px;
+  top: 40px;
   width: 100%;
   z-index: 10;
 `;
@@ -141,7 +141,7 @@ export const GlobalNavigationBarContentClosingComponent = styled.div`
   justify-content: center;
   padding: 10px 0px 10px 0px;
   position: absolute;
-  top: 50px;
+  top: 40px;
   width: 100%;
   z-index: 10;
 `;
