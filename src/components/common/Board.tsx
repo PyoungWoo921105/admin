@@ -11,17 +11,19 @@ import { GlobalBoardFrame } from 'styles/components/common/Frame';
 
 import HomePage from 'page/home/HomePage';
 import TreatmentPage from 'page/treatment/TreatmentPage';
+import MedicinePage from 'page/medicine/MedicinePage';
 
 const Board = observer(() => (
   <GlobalBoardFrame>
     <Route exact path="/home" component={HomePage} />
     <Route path="/treatment" component={TreatmentPage} />
-    {/* <Route path="/medicine" component={MedicineComponent} />
-      <Route path="/hospital" component={HospitalComponent} />
-      <Route path="/pharmacy" component={PharmacyComponent} />
-      <Route path="/doctor" component={DoctorComponent} />
-      <Route path="/settlement" component={SettelmentComponent} />
-      <Route path="/review" component={ReviewComponent} /> */}
+    <Route path="/medicine" component={MedicinePage} />
+    {/* <Route path="/delivery" component={DeliveryPage} />
+    <Route path="/hospital" component={HospitalPage} />
+    <Route path="/pharmacy" component={PharmacyPage} />
+    <Route path="/doctor" component={DoctorPage} />
+    <Route path="/settlement" component={SettelmentPage} />
+    <Route path="/review" component={ReviewPage} /> */}
   </GlobalBoardFrame>
 ));
 
