@@ -32,6 +32,10 @@ import {
   TitleFilterRefreshFrame,
   TitleFilterRefreshButtonFrame,
   TitleFilterRefreshButtonComponent,
+  /* 데이터 다운로드 */
+  TitleFilterDownloadFrame,
+  TitleFilterDownloadButtonFrame,
+  TitleFilterDownloadButtonComponent,
   /* 검색 */
   TitleSearchFrame,
   TitleSearchButtonFrame,
@@ -65,6 +69,8 @@ import { AllowNumber } from 'libraries/constraint/AllowNumber';
 import { ConvertContactNumber } from 'libraries/conversion/ConvertContactNumber';
 
 import { GetTreatmentList } from 'services/treatment/GetTreatmentList';
+import { GetTreatmentListExport } from 'services/treatment/GetTreatmentListExport';
+import { GetCurrentTime } from 'libraries/time/GetCurrentTime';
 /*  */
 const BoardTitleAndFilter = observer(() => {
   const { CommonData, AdminData, TreatmentData } = useStore();
@@ -85,6 +91,11 @@ const BoardTitleAndFilter = observer(() => {
     setPatientPhoneNumber('');
     setHospitalName('');
     setDoctorName('');
+  };
+  /* 데이터 다운로드 */
+  const onClickFilterDownload = () => {
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
+    GetTreatmentListExportFunction();
   };
   /* 새로고침 */
   const onClickPageRefresh = () => {
@@ -265,13 +276,13 @@ const BoardTitleAndFilter = observer(() => {
     if (response.status === 200) {
       /*  */
     } else {
-      const metaError = response as { status: number; data: { message: string } };
+      const MetaError = response as { status: number; data: { message: string } };
       const PopUpData = {
         Category: 'ERROR',
         Name: 'GET_TREATMENT_LIST',
         Title: '진료 내역 불러오기 실패',
         Contents: ['일시적인 서버 오류가 발생하였습니다.', '다음에 다시 시도해주세요.'] || [
-          metaError?.data?.message,
+          MetaError?.data?.message,
         ],
         Actions: [{ Choice: '돌아가기', Action: () => CommonData.setPopUpFlag(false) }],
       };
@@ -293,14 +304,74 @@ const BoardTitleAndFilter = observer(() => {
     TreatmentData.PageNavigator,
     TreatmentState,
   ]);
+  const GetTreatmentListExportFunction = useCallback(async () => {
+    CommonData.setLoadingFlag(true);
+    const TempPrescriptionState = [];
+    if (PrescriptionState.length !== 0 && PrescriptionState[0] !== '전체') {
+      for (let i = 0; i < PrescriptionState.length; i += 1) {
+        if (PrescriptionState[i] === 'Y') {
+          TempPrescriptionState.push('있음');
+        } else if (PrescriptionState[i] === 'N') {
+          TempPrescriptionState.push('없음');
+        }
+      }
+    }
+    const GetTreatmentListData = {
+      treatCode: null || TreatmentCode,
+      receptionCategory: null || DiseaseAndDepartment,
+      startDate: null || StartInquiryPeriod,
+      endDate: null || EndInquiryPeriod,
+      statusList: null || TreatmentState[0] === '전체' ? null : TreatmentState,
+      patientName: null || PatientName,
+      patientPhoneNum: null || PatientPhoneNumber,
+      hospitalName: null || HospitalName,
+      doctorName: null || DoctorName,
+      prescriptionState: null || PrescriptionState[0] === '전체' ? null : TempPrescriptionState,
+      medicineReceiveWay: null || DeliveryMethod[0] === '전체' ? null : DeliveryMethod,
+
+      /* page: null || TreatmentData.PageNavigator - 1, */
+    };
+    const response = await GetTreatmentListExport(GetTreatmentListData);
+    CommonData.setLoadingFlag(false);
+    if (response.status === 200) {
+      /*  */
+    } else {
+      const MetaError = response as { status: number; data: { message: string } };
+      const PopUpData = {
+        Category: 'ERROR',
+        Name: 'GET_TREATMENT_EXPORT_LIST',
+        Title: '진료 내역 데이터 다운로드 실패',
+        Contents: ['일시적인 서버 오류가 발생하였습니다.', '다음에 다시 시도해주세요.'] || [
+          MetaError?.data?.message,
+        ],
+        Actions: [{ Choice: '돌아가기', Action: () => CommonData.setPopUpFlag(false) }],
+      };
+      CommonData.setPopUpData(PopUpData);
+      CommonData.setPopUpFlag(true);
+    }
+  }, [
+    CommonData,
+    DeliveryMethod,
+    DiseaseAndDepartment,
+    DoctorName,
+    EndInquiryPeriod,
+    HospitalName,
+    PatientName,
+    PatientPhoneNumber,
+    PrescriptionState,
+    StartInquiryPeriod,
+    TreatmentCode,
+    /* TreatmentData.PageNavigator, */
+    TreatmentState,
+  ]);
 
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
     GetTreatmentListFunction();
+    GetCurrentTime();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  /* TODO */
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
     GetTreatmentListFunction();
@@ -344,6 +415,17 @@ const BoardTitleAndFilter = observer(() => {
                 <TitleFilterRefreshButtonComponent>필터 초기화</TitleFilterRefreshButtonComponent>
               </TitleFilterRefreshButtonFrame>
             </TitleFilterRefreshFrame>
+          ) : null}
+          {/*  */}
+          {/* 데이터 다운로드 */}
+          {AdminData.FilterSwitchFlag ? (
+            <TitleFilterDownloadFrame>
+              <TitleFilterDownloadButtonFrame onClick={onClickFilterDownload}>
+                <TitleFilterDownloadButtonComponent>
+                  데이터 다운로드
+                </TitleFilterDownloadButtonComponent>
+              </TitleFilterDownloadButtonFrame>
+            </TitleFilterDownloadFrame>
           ) : null}
           {/*  */}
           {/* 검색 */}

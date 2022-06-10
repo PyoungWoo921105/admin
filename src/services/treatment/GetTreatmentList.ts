@@ -10,12 +10,12 @@ export const GetTreatmentList = async (data: any) => {
   try {
     /* axios.get(url[, config]) */
     const response = await customAxios.get('/treat/list', { params: data });
-    const metaResponse = response as { status: number; data: any };
-    TreatmentData.setTreatmentListData(metaResponse.data);
-    return metaResponse;
+    const MetaResponse = response as { status: number; data: any };
+    TreatmentData.setTreatmentListData(MetaResponse.data);
+    return MetaResponse;
   } catch (error: unknown) {
-    const metaError = error as { response: { status: number; data: { message: string } } };
-    return metaError.response;
+    const MetaError = error as { response: { status: number; data: { message: string } } };
+    return MetaError.response;
   }
 };
 

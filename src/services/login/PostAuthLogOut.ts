@@ -4,11 +4,11 @@ export const PostAuthLogout = async () => {
   try {
     /* axios.post(url[, data[, config]]) */
     const response = await customAxios.post('/auth/logout', null);
-    const metaResponse = response as { status: number; data: { message: string } };
-    return metaResponse;
+    const MetaResponse = response as { status: number; data: { message: string } };
+    return MetaResponse;
   } catch (error: unknown) {
-    const metaError = error as { response: { status: number; data: { message: string } } };
-    return metaError.response;
+    const MetaError = error as { response: { status: number; data: { message: string } } };
+    return MetaError.response;
   }
 };
 

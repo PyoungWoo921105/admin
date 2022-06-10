@@ -67,40 +67,6 @@ export const TitleFilterButtonComponent = styled.input`
   height: 15px;
   width: 15px;
 `;
-/* 필터 초기화 */
-export const TitleFilterRefreshFrame = styled.div`
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  height: 40px;
-  justify-content: center;
-  padding: 0px 10px 0px 10px;
-`;
-export const TitleFilterRefreshButtonFrame = styled.div`
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  height: 40px;
-  justify-content: center;
-  padding: 0px 0px 0px 0px;
-`;
-export const TitleFilterRefreshButtonComponent = styled.button`
-  align-items: center;
-  background-color: rgb(0, 178, 100);
-  border: none;
-  border-radius: 10px 10px 10px 10px;
-  color: #ffffff;
-  cursor: pointer;
-  display: flex;
-  flex-direction: row;
-  font-family: 'Spoqa Han Sans Neo';
-  font-size: 11px;
-  font-style: normal;
-  font-weight: normal;
-  height: 30px;
-  justify-content: center;
-  padding: 0px 10px 0px 10px;
-`;
 /* 페이지 새로고침 */
 export const TitlePageRefreshFrame = styled.div`
   align-items: center;
@@ -135,7 +101,74 @@ export const TitlePageRefreshButtonComponent = styled.button`
   justify-content: center;
   padding: 0px 10px 0px 10px;
 `;
-
+/* 필터 초기화 */
+export const TitleFilterRefreshFrame = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  height: 40px;
+  justify-content: center;
+  padding: 0px 10px 0px 10px;
+`;
+export const TitleFilterRefreshButtonFrame = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  height: 40px;
+  justify-content: center;
+  padding: 0px 0px 0px 0px;
+`;
+export const TitleFilterRefreshButtonComponent = styled.button`
+  align-items: center;
+  background-color: rgb(0, 178, 100);
+  border: none;
+  border-radius: 10px 10px 10px 10px;
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 11px;
+  font-style: normal;
+  font-weight: normal;
+  height: 30px;
+  justify-content: center;
+  padding: 0px 10px 0px 10px;
+`;
+/* 데이터 다운로드 */
+export const TitleFilterDownloadFrame = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  height: 40px;
+  justify-content: center;
+  padding: 0px 10px 0px 10px;
+`;
+export const TitleFilterDownloadButtonFrame = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  height: 40px;
+  justify-content: center;
+  padding: 0px 0px 0px 0px;
+`;
+export const TitleFilterDownloadButtonComponent = styled.button`
+  align-items: center;
+  background-color: rgb(0, 178, 100);
+  border: none;
+  border-radius: 10px 10px 10px 10px;
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 11px;
+  font-style: normal;
+  font-weight: normal;
+  height: 30px;
+  justify-content: center;
+  padding: 0px 10px 0px 10px;
+`;
 /* 검색 */
 export const TitleSearchFrame = styled.div`
   align-items: center;

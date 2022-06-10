@@ -28,6 +28,9 @@ export interface CommonDataType {
 
   PopUpData: PopUpDataType | null;
   setPopUpData: (e: PopUpDataType) => void;
+  /* Time */
+  CurrentTime: string;
+  setCurrentTime: (e: string) => void;
 }
 
 const CommonData = observable<CommonDataType>({
@@ -54,6 +57,11 @@ const CommonData = observable<CommonDataType>({
   PopUpData: null,
   setPopUpData(e: PopUpDataType) {
     this.PopUpData = e;
+  },
+  /* Time */
+  CurrentTime: '',
+  setCurrentTime(e: string) {
+    this.CurrentTime = e;
   },
 });
 
