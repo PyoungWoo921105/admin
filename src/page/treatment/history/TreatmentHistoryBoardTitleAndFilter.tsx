@@ -412,6 +412,13 @@ const BoardTitleAndFilter = observer(() => {
     '진료 시스템 취소',
   ];
 
+  /* ENTER */
+  const onKeyPressEnter = (e: { key: string }) => {
+    if (e.key === 'Enter') {
+      onClickSearch();
+    }
+  };
+
   return (
     <BoardTitleAndFilterFrame>
       <TitleFrame>
@@ -504,6 +511,7 @@ const BoardTitleAndFilter = observer(() => {
                       width="100%"
                       value={TreatmentCode}
                       onChange={onChangeTreatmentCode}
+                      onKeyPress={onKeyPressEnter}
                     />
                   </FilterElementBoardComponent>
                 </FilterElementBoardFrame>
@@ -524,6 +532,7 @@ const BoardTitleAndFilter = observer(() => {
                       width="100%"
                       value={DiseaseAndDepartment}
                       onChange={onChangeDiseaseAndDepartment}
+                      onKeyPress={onKeyPressEnter}
                     />
                   </FilterElementBoardComponent>
                 </FilterElementBoardFrame>
@@ -549,6 +558,7 @@ const BoardTitleAndFilter = observer(() => {
                       placeholder="YYYYMMDD"
                       textAlign="center"
                       maxLength={8}
+                      onKeyPress={onKeyPressEnter}
                     />
                   </FilterElementBoardComponent>
                 </FilterElementBoardFrame>
@@ -570,6 +580,7 @@ const BoardTitleAndFilter = observer(() => {
                       placeholder="YYYYMMDD"
                       textAlign="center"
                       maxLength={8}
+                      onKeyPress={onKeyPressEnter}
                     />
                   </FilterElementBoardComponent>
                 </FilterElementBoardFrame>
@@ -590,6 +601,7 @@ const BoardTitleAndFilter = observer(() => {
                       width="100%"
                       value="선택"
                       onChange={onChangeTreatmentState}
+                      onKeyPress={onKeyPressEnter}
                     >
                       {TreatmentStateList.map(element => (
                         <FilterElementBoardOptionComponent key={element}>
@@ -645,6 +657,7 @@ const BoardTitleAndFilter = observer(() => {
                       width="100%"
                       value={PatientName}
                       onChange={onChangePatientName}
+                      onKeyPress={onKeyPressEnter}
                     />
                   </FilterElementBoardComponent>
                 </FilterElementBoardFrame>
@@ -662,6 +675,7 @@ const BoardTitleAndFilter = observer(() => {
                       value={PatientPhoneNumber}
                       onChange={onChangePatientPhoneNumber}
                       placeholder="숫자만 입력해 주세요."
+                      onKeyPress={onKeyPressEnter}
                     />
                   </FilterElementBoardComponent>
                 </FilterElementBoardFrame>
@@ -682,6 +696,7 @@ const BoardTitleAndFilter = observer(() => {
                       width="100%"
                       value={HospitalName}
                       onChange={onChangeHospitalName}
+                      onKeyPress={onKeyPressEnter}
                     />
                   </FilterElementBoardComponent>
                 </FilterElementBoardFrame>
@@ -702,6 +717,7 @@ const BoardTitleAndFilter = observer(() => {
                       width="100%"
                       value={DoctorName}
                       onChange={onChangeDoctorName}
+                      onKeyPress={onKeyPressEnter}
                     />
                   </FilterElementBoardComponent>
                 </FilterElementBoardFrame>
@@ -722,6 +738,7 @@ const BoardTitleAndFilter = observer(() => {
                       width="100%"
                       value="선택"
                       onChange={onChangePrescriptionState}
+                      onKeyPress={onKeyPressEnter}
                     >
                       {PrescriptionStateList.map(element => (
                         <FilterElementBoardOptionComponent key={element}>
@@ -777,6 +794,7 @@ const BoardTitleAndFilter = observer(() => {
                       width="100%"
                       value="선택"
                       onChange={onChangeDeliveryMethod}
+                      onKeyPress={onKeyPressEnter}
                     >
                       {DeliveryMethodList.map(element => (
                         <FilterElementBoardOptionComponent key={element}>
