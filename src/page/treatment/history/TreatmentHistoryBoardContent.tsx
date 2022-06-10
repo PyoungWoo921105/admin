@@ -299,7 +299,8 @@ const BoardContent = observer(() => {
                 ? Math.floor((Number(TreatmentData.TreatmentListData?.count.total) - 1) / 20) + 1
                 : 1) ? (
                 <NavigationPageButtonComponent
-                  key={element}
+                  // eslint-disable-next-line react/no-array-index-key
+                  key={key}
                   cursor="pointer"
                   backgroundColor={
                     (TreatmentData.ParagraphNavigator - 1) * 10 + key + 1 ===
@@ -314,7 +315,6 @@ const BoardContent = observer(() => {
                   }}
                 >
                   <NavigationTextComponent
-                    key={element}
                     color={
                       (TreatmentData.ParagraphNavigator - 1) * 10 + key + 1 ===
                       TreatmentData.PageNavigator
@@ -334,7 +334,8 @@ const BoardContent = observer(() => {
                   </NavigationTextComponent>
                 </NavigationPageButtonComponent>
               ) : (
-                <NavigationPageEmptyComponent key={element} />
+                // eslint-disable-next-line react/no-array-index-key
+                <NavigationPageEmptyComponent key={key} />
               )
             )}
           </NavigationButtonFrame>
