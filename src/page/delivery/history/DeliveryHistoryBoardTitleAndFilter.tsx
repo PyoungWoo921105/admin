@@ -192,15 +192,20 @@ const BoardTitleAndFilter = observer(() => {
     { code: '', name: '전체' },
   ]);
   const onChangeDeliveryAgencyName = (event: { target: { value: string } }) => {
-    const TempDeliveryAgencyName = JSON.parse(event.target.value) as { code: string; name: string };
+    /* FUTUREWORK */
+    const TempDeliveryAgencyName = JSON.parse(event.target.value) as {
+      code: string;
+      name: string;
+    };
     if (TempDeliveryAgencyName.name === '전체') {
       setDeliveryAgencyName([TempDeliveryAgencyName]);
     } else if (
       DeliveryAgencyName.findIndex(element => element.code === TempDeliveryAgencyName.code) === -1
     ) {
       if (DeliveryAgencyName.findIndex(element => element.name === '전체') === -1) {
-        // setDeliveryAgencyName([TempDeliveryAgencyName]);
-        setDeliveryAgencyName([...DeliveryAgencyName, TempDeliveryAgencyName]);
+        setDeliveryAgencyName([TempDeliveryAgencyName]);
+        /* FUTUREWORK */
+        /* setDeliveryAgencyName([...DeliveryAgencyName, TempDeliveryAgencyName]); */
       } else {
         setDeliveryAgencyName([TempDeliveryAgencyName]);
       }
