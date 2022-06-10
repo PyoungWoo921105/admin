@@ -151,3 +151,90 @@ export const DataElementContentButtonComponent = styled.button<CustomProps>`
   text-overflow: ellipsis;
   white-space: nowrap;
 `;
+/* 네비게이션 */
+export const NavigationFrame = styled.div<CustomProps>`
+  display: flex;
+  justify-content: center;
+  min-width: ${props => (props.minWidth ? props.minWidth : '')};
+`;
+export const NavigationComponent = styled.div`
+  display: flex;
+  flex-direction: row;
+  height: 40px;
+  min-height: 40px;
+`;
+/*  */
+export const NavigationButtonFrame = styled.div`
+  align-items: center;
+  display: flex;
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+`;
+export const NavigationPluralParagraphButtonComponent = styled.button<CustomProps>`
+  align-items: center;
+  background-color: ${props => (props.backgroundColor ? props.backgroundColor : '')};
+  border: none;
+  border-radius: 10px;
+  box-sizing: border-box;
+  cursor: ${props => (props.cursor ? props.cursor : '')};
+  display: flex;
+  flex-direction: row;
+  height: 30px;
+  justify-content: center;
+  margin: 0px 5px 0px 5px;
+  position: relative;
+  width: 50px;
+`;
+export const NavigationSingularParagraphButtonComponent = styled.button<CustomProps>`
+  align-items: center;
+  background-color: ${props => (props.backgroundColor ? props.backgroundColor : '')};
+  border: none;
+  border-radius: 10px;
+  box-sizing: border-box;
+  cursor: ${props => (props.cursor ? props.cursor : '')};
+  display: flex;
+  flex-direction: row;
+  height: 30px;
+  justify-content: center;
+  margin: 0px 5px 0px 5px;
+  position: relative;
+  width: 50px;
+`;
+export const NavigationPageButtonComponent = styled.button<CustomProps>`
+  align-items: center;
+  background-color: ${props => (props.backgroundColor ? props.backgroundColor : '')};
+  border: none;
+  border-radius: 10px;
+  box-sizing: border-box;
+  cursor: ${props => (props.cursor ? props.cursor : '')};
+  display: flex;
+  flex-direction: row;
+  height: 30px;
+  justify-content: center;
+  margin: 0px 5px 0px 5px;
+  position: relative;
+  width: 50px;
+`;
+export const NavigationPageEmptyComponent = styled.div`
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  border-radius: 10px;
+  box-sizing: border-box;
+  cursor: none;
+  display: flex;
+  flex-direction: row;
+  height: 30px;
+  justify-content: center;
+  margin: 0px 5px 0px 5px;
+  position: relative;
+  width: 50px;
+`;
+export const NavigationTextComponent = styled.span<CustomProps>`
+  color: ${props => (props.color ? props.color : '')};
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 12px;
+  font-style: normal;
+  font-weight: normal;
+`;

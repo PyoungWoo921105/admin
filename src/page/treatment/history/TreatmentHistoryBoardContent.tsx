@@ -33,6 +33,16 @@ import {
   DataElementContentComponent,
   DataElementContentTextComponent,
   DataElementContentButtonComponent,
+  /* 네비게이션 */
+  NavigationFrame,
+  NavigationComponent,
+  /*  */
+  NavigationButtonFrame,
+  NavigationPluralParagraphButtonComponent,
+  NavigationSingularParagraphButtonComponent,
+  NavigationPageButtonComponent,
+  NavigationPageEmptyComponent,
+  NavigationTextComponent,
 } from 'styles/components/common/Record';
 /*  */
 
@@ -43,7 +53,6 @@ const BoardContent = observer(() => {
   const { TreatmentData } = useStore();
   /* 카테고리 */
   const CategoryList = [
-    /* TODO */
     { title: '진료 번호', width: 120 },
     { title: '생성 일시', width: 140 },
     { title: '진료 상태', width: 110 },
@@ -251,6 +260,137 @@ const BoardContent = observer(() => {
           </DataFrame>
         </RecordComponent>
       </RecordFrame>
+      <NavigationFrame
+        minWidth={`${CategoryList.map(element => element.width).reduce(
+          (previousValue, currentValue) => previousValue + currentValue,
+          0
+        )}px`}
+      >
+        <NavigationComponent>
+          {/*  */}
+          <NavigationButtonFrame>
+            <NavigationPluralParagraphButtonComponent
+              backgroundColor="#14C276"
+              cursor="pointer"
+              onClick={() => {
+                /* TreatmentData.setPageNavigator(1); */
+                TreatmentData.setParagraphNavigator(1);
+              }}
+            >
+              <NavigationTextComponent color="#ffffff">{'<<'}</NavigationTextComponent>
+            </NavigationPluralParagraphButtonComponent>
+            <NavigationSingularParagraphButtonComponent
+              backgroundColor="#14C276"
+              cursor="pointer"
+              onClick={() =>
+                TreatmentData.ParagraphNavigator > 1
+                  ? TreatmentData.setParagraphNavigator(TreatmentData.ParagraphNavigator - 1)
+                  : {}
+              }
+            >
+              <NavigationTextComponent color="#ffffff">{'<'}</NavigationTextComponent>
+            </NavigationSingularParagraphButtonComponent>
+          </NavigationButtonFrame>
+          <NavigationButtonFrame>
+            {[...Array(10)].map((element, key) =>
+              (TreatmentData.ParagraphNavigator - 1) * 10 + key + 1 <=
+              (TreatmentData.TreatmentListData?.count &&
+              TreatmentData.TreatmentListData?.count.total
+                ? Math.floor((Number(TreatmentData.TreatmentListData?.count.total) - 1) / 20) + 1
+                : 1) ? (
+                <NavigationPageButtonComponent
+                  key={element}
+                  cursor="pointer"
+                  backgroundColor={
+                    (TreatmentData.ParagraphNavigator - 1) * 10 + key + 1 ===
+                    TreatmentData.PageNavigator
+                      ? '#3C9E3F'
+                      : '#14C276'
+                  }
+                  onClick={() => {
+                    TreatmentData.setPageNavigator(
+                      (TreatmentData.ParagraphNavigator - 1) * 10 + key + 1
+                    );
+                  }}
+                >
+                  <NavigationTextComponent
+                    key={element}
+                    color={
+                      (TreatmentData.ParagraphNavigator - 1) * 10 + key + 1 ===
+                      TreatmentData.PageNavigator
+                        ? '#ffffff'
+                        : '#ffffff'
+                    }
+                  >
+                    {(TreatmentData.ParagraphNavigator - 1) * 10 + key + 1 <=
+                    (TreatmentData.TreatmentListData?.count &&
+                    TreatmentData.TreatmentListData?.count.total
+                      ? Math.floor(
+                          (Number(TreatmentData.TreatmentListData?.count.total) - 1) / 20
+                        ) + 1
+                      : 1)
+                      ? (TreatmentData.ParagraphNavigator - 1) * 10 + key + 1
+                      : ''}
+                  </NavigationTextComponent>
+                </NavigationPageButtonComponent>
+              ) : (
+                <NavigationPageEmptyComponent key={element} />
+              )
+            )}
+          </NavigationButtonFrame>
+          <NavigationButtonFrame>
+            <NavigationSingularParagraphButtonComponent
+              backgroundColor="#14C276"
+              cursor="pointer"
+              onClick={() =>
+                TreatmentData.TreatmentListData?.count &&
+                TreatmentData.TreatmentListData?.count.total
+                  ? Math.ceil(
+                      (Number(TreatmentData.TreatmentListData?.count.total) - 1) / 20 / 10
+                    ) > TreatmentData.ParagraphNavigator
+                    ? TreatmentData.setParagraphNavigator(TreatmentData.ParagraphNavigator + 1)
+                    : {}
+                  : {}
+              }
+            >
+              <NavigationTextComponent color="#ffffff">{'>'}</NavigationTextComponent>
+            </NavigationSingularParagraphButtonComponent>
+            <NavigationPluralParagraphButtonComponent
+              backgroundColor="#14C276"
+              cursor="pointer"
+              onClick={() => {
+                /* TreatmentData.setPageNavigator(
+                  TreatmentData.TreatmentListData?.count &&
+                    TreatmentData.TreatmentListData?.count.total
+                    ? Math.floor((Number(TreatmentData.TreatmentListData?.count.total) - 1) / 20) +
+                        1
+                    : 1
+                ); */
+                TreatmentData.setParagraphNavigator(
+                  parseInt(
+                    (
+                      ((TreatmentData.TreatmentListData?.count &&
+                      TreatmentData.TreatmentListData?.count.total
+                        ? Math.floor(
+                            (Number(TreatmentData.TreatmentListData?.count.total) - 1) / 20
+                          )
+                        : 0) +
+                        1 -
+                        1) /
+                        10 +
+                      1
+                    ).toString(),
+                    10
+                  )
+                );
+              }}
+            >
+              <NavigationTextComponent color="#ffffff">{'>>'}</NavigationTextComponent>
+            </NavigationPluralParagraphButtonComponent>
+          </NavigationButtonFrame>
+          {/*  */}
+        </NavigationComponent>
+      </NavigationFrame>
     </BoardContentFrame>
   );
 });

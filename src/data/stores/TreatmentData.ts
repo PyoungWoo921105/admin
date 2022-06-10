@@ -54,8 +54,10 @@ export interface TreatmentListDataType {
 
 export interface TreatmentDataType {
   /* 페이지 */
-  NavigationPage: number;
-  setNavigationPage: (e: number) => void;
+  PageNavigator: number;
+  setPageNavigator: (e: number) => void;
+  ParagraphNavigator: number;
+  setParagraphNavigator: (e: number) => void;
   /*  */
   /* 진료 내역 */
   /* GET /treat/list */
@@ -66,9 +68,13 @@ export interface TreatmentDataType {
 
 const TreatmentData = observable<TreatmentDataType>({
   /* 페이지 */
-  NavigationPage: 1,
-  setNavigationPage(e: number) {
-    this.NavigationPage = e;
+  PageNavigator: 1,
+  setPageNavigator(e: number) {
+    this.PageNavigator = e;
+  },
+  ParagraphNavigator: 1,
+  setParagraphNavigator(e: number) {
+    this.ParagraphNavigator = e;
   },
   /*  */
   /* 진료 내역 */

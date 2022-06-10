@@ -94,6 +94,8 @@ const BoardTitleAndFilter = observer(() => {
   const onClickSearch = () => {
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
     GetTreatmentListFunction();
+    TreatmentData.setPageNavigator(1);
+    TreatmentData.setParagraphNavigator(1);
   };
   /* 필터 */
   /* 진료 번호 */
@@ -256,7 +258,7 @@ const BoardTitleAndFilter = observer(() => {
       prescriptionState: null || PrescriptionState[0] === '전체' ? null : TempPrescriptionState,
       medicineReceiveWay: null || DeliveryMethod[0] === '전체' ? null : DeliveryMethod,
 
-      page: null || TreatmentData.NavigationPage - 1,
+      page: null || TreatmentData.PageNavigator - 1,
     };
     const response = await GetTreatmentList(GetTreatmentListData);
     CommonData.setLoadingFlag(false);
@@ -288,7 +290,7 @@ const BoardTitleAndFilter = observer(() => {
     PrescriptionState,
     StartInquiryPeriod,
     TreatmentCode,
-    TreatmentData.NavigationPage,
+    TreatmentData.PageNavigator,
     TreatmentState,
   ]);
 
@@ -297,6 +299,13 @@ const BoardTitleAndFilter = observer(() => {
     GetTreatmentListFunction();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  /* TODO */
+  useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
+    GetTreatmentListFunction();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [TreatmentData.PageNavigator]);
 
   return (
     <BoardTitleAndFilterFrame>
