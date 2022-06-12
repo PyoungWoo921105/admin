@@ -74,7 +74,7 @@ export interface TreatmentDataType {
   /* Socket */
   /* GET /admin/treat */
   SocketTreatmentData: SocketTreatmentDataType | null;
-  setSocketTreatmentData: (e: SocketTreatmentDataType) => void;
+  setSocketTreatmentData: (e: SocketTreatmentDataType | null) => void;
   /*  */
 }
 
@@ -98,7 +98,7 @@ const TreatmentData = observable<TreatmentDataType>({
   /* Socket */
   /* GET /admin/treat */
   SocketTreatmentData: null,
-  setSocketTreatmentData(e: SocketTreatmentDataType) {
+  setSocketTreatmentData(e: SocketTreatmentDataType | null) {
     this.SocketTreatmentData = e;
   },
   /*  */

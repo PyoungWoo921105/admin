@@ -351,22 +351,34 @@ const BoardTitleAndFilter = observer(() => {
   }, [CommonData, RiderData]);
 
   useEffect(() => {
+    GetCurrentTime();
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
     GetDeliveryListFunction();
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
     GetRiderListBasicFunction();
-    GetCurrentTime();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
+    GetCurrentTime();
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
     GetDeliveryListFunction();
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
     GetRiderListBasicFunction();
-    GetCurrentTime();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [DeliveryData.PageNavigator]);
+
+  /* Socket */
+  useEffect(() => {
+    if (DeliveryData.SocketDeliveryData?.deliveryList?.length !== 0) {
+      GetCurrentTime();
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
+      GetDeliveryListFunction();
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
+      GetRiderListBasicFunction();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [DeliveryData.SocketDeliveryData?.deliveryList]);
 
   /* 통계 */
   const StatisticsList = ['전체'];

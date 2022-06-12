@@ -76,7 +76,7 @@ export interface MedicineDataType {
   /* Socket */
   /* GET /admin/medicine */
   SocketMedicineData: SocketMedicineDataType | null;
-  setSocketMedicineData: (e: SocketMedicineDataType) => void;
+  setSocketMedicineData: (e: SocketMedicineDataType | null) => void;
   /*  */
 }
 
@@ -100,7 +100,7 @@ const MedicineData = observable<MedicineDataType>({
   /* Socket */
   /* GET /admin/medicine */
   SocketMedicineData: null,
-  setSocketMedicineData(e: SocketMedicineDataType) {
+  setSocketMedicineData(e: SocketMedicineDataType | null) {
     this.SocketMedicineData = e;
   },
   /*  */

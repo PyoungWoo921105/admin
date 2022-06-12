@@ -354,18 +354,28 @@ const BoardTitleAndFilter = observer(() => {
   ]);
 
   useEffect(() => {
+    GetCurrentTime();
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
     GetMedicineListFunction();
-    GetCurrentTime();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
+    GetCurrentTime();
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
     GetMedicineListFunction();
-    GetCurrentTime();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [MedicineData.PageNavigator]);
+
+  /* Socket */
+  useEffect(() => {
+    if (MedicineData.SocketMedicineData?.medicineList?.length !== 0) {
+      GetCurrentTime();
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
+      GetMedicineListFunction();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [MedicineData.SocketMedicineData]);
 
   /* 통계 */
   const StatisticsList = [

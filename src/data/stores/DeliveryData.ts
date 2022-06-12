@@ -62,7 +62,7 @@ export interface DeliveryDataType {
   /* Socket */
   /* GET /admin/delivery */
   SocketDeliveryData: SocketDeliveryDataType | null;
-  setSocketDeliveryData: (e: SocketDeliveryDataType) => void;
+  setSocketDeliveryData: (e: SocketDeliveryDataType | null) => void;
   /*  */
 }
 
@@ -86,7 +86,7 @@ const DeliveryData = observable<DeliveryDataType>({
   /* Socket */
   /* GET /admin/delivery */
   SocketDeliveryData: null,
-  setSocketDeliveryData(e: SocketDeliveryDataType) {
+  setSocketDeliveryData(e: SocketDeliveryDataType | null) {
     this.SocketDeliveryData = e;
   },
   /*  */
