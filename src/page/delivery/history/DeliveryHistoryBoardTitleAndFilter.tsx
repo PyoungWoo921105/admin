@@ -168,8 +168,9 @@ const BoardTitleAndFilter = observer(() => {
       setDeliveryState([event.target.value]);
     } else if (DeliveryState.indexOf(event.target.value) === -1) {
       if (DeliveryState.indexOf('전체') === -1) {
-        /* setDeliveryState([event.target.value]); */
-        setDeliveryState([...DeliveryState, event.target.value]);
+        setDeliveryState([event.target.value]);
+        /* FUTUREWORK */
+        /* setDeliveryState([...DeliveryState, event.target.value]); */
       } else {
         setDeliveryState([event.target.value]);
       }
@@ -235,7 +236,9 @@ const BoardTitleAndFilter = observer(() => {
       medicineCode: null || MedicineCode,
       startDate: null || StartInquiryPeriod,
       endDate: null || EndInquiryPeriod,
-      statusList: null || DeliveryState[0] === '전체' ? null : DeliveryState,
+      /* FUTUREWORK */
+      /* statusList: null || DeliveryState[0] === '전체' ? null : DeliveryState, */
+      status: null || DeliveryState[0] === '전체' ? null : DeliveryState[0],
       /* FUTUREWORK */
       /* riderCode: null || DeliveryAgencyName[0].name === '전체' ? null : DeliveryAgencyName, */
       riderCode: null || DeliveryAgencyName[0].name === '전체' ? null : DeliveryAgencyName[0].code,
@@ -280,7 +283,9 @@ const BoardTitleAndFilter = observer(() => {
       medicineCode: null || MedicineCode,
       startDate: null || StartInquiryPeriod,
       endDate: null || EndInquiryPeriod,
-      statusList: null || DeliveryState[0] === '전체' ? null : DeliveryState,
+      /* FUTUREWORK */
+      /* statusList: null || DeliveryState[0] === '전체' ? null : DeliveryState, */
+      status: null || DeliveryState[0] === '전체' ? null : DeliveryState[0],
       /* FUTUREWORK */
       /* riderCode: null || DeliveryAgencyName[0].name === '전체' ? null : DeliveryAgencyName, */
       riderCode: null || DeliveryAgencyName[0].name === '전체' ? null : DeliveryAgencyName[0].code,
