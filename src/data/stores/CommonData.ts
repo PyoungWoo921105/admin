@@ -4,6 +4,8 @@
 
 import { observable } from 'mobx';
 
+import { Socket } from 'socket.io-client';
+
 /* Pop Up */
 export interface PopUpDataType {
   Category: string;
@@ -31,6 +33,9 @@ export interface CommonDataType {
   /* Time */
   CurrentTime: string;
   setCurrentTime: (e: string) => void;
+  /* Socket */
+  Socket: Socket | null;
+  setSocket: (e: any) => void;
 }
 
 const CommonData = observable<CommonDataType>({
@@ -62,6 +67,14 @@ const CommonData = observable<CommonDataType>({
   CurrentTime: '',
   setCurrentTime(e: string) {
     this.CurrentTime = e;
+  },
+  /* Socket */
+  Socket: null,
+  setSocket(e: Socket) {
+    if (this.Socket) {
+      this.Socket.disconnect();
+    }
+    this.Socket = e;
   },
 });
 

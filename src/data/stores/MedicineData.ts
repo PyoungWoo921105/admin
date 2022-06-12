@@ -52,6 +52,14 @@ export interface MedicineListDataType {
     deliveryList: string[];
   }[];
 }
+/* Socket */
+export interface SocketMedicineDataType {
+  from: string;
+  medicineList: {
+    medicineCode: string;
+    status: string;
+  }[];
+}
 /*  */
 
 export interface MedicineDataType {
@@ -65,6 +73,10 @@ export interface MedicineDataType {
   /* GET /medicine/list */
   MedicineListData: undefined | MedicineListDataType;
   setMedicineListData: (e: MedicineListDataType) => void;
+  /* Socket */
+  /* GET /admin/medicine */
+  SocketMedicineData: SocketMedicineDataType | null;
+  setSocketMedicineData: (e: SocketMedicineDataType) => void;
   /*  */
 }
 
@@ -84,6 +96,12 @@ const MedicineData = observable<MedicineDataType>({
   MedicineListData: undefined,
   setMedicineListData(e: MedicineListDataType) {
     this.MedicineListData = e;
+  },
+  /* Socket */
+  /* GET /admin/medicine */
+  SocketMedicineData: null,
+  setSocketMedicineData(e: SocketMedicineDataType) {
+    this.SocketMedicineData = e;
   },
   /*  */
 });

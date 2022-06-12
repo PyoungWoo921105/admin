@@ -50,6 +50,14 @@ export interface TreatmentListDataType {
     medicineReceiveWay: string;
   }[];
 }
+/* Socket */
+export interface SocketTreatmentDataType {
+  from: string;
+  treatList: {
+    treatCode: string;
+    status: string;
+  }[];
+}
 /*  */
 
 export interface TreatmentDataType {
@@ -63,6 +71,10 @@ export interface TreatmentDataType {
   /* GET /treat/list */
   TreatmentListData: undefined | TreatmentListDataType;
   setTreatmentListData: (e: TreatmentListDataType) => void;
+  /* Socket */
+  /* GET /admin/treat */
+  SocketTreatmentData: SocketTreatmentDataType | null;
+  setSocketTreatmentData: (e: SocketTreatmentDataType) => void;
   /*  */
 }
 
@@ -82,6 +94,12 @@ const TreatmentData = observable<TreatmentDataType>({
   TreatmentListData: undefined,
   setTreatmentListData(e: TreatmentListDataType) {
     this.TreatmentListData = e;
+  },
+  /* Socket */
+  /* GET /admin/treat */
+  SocketTreatmentData: null,
+  setSocketTreatmentData(e: SocketTreatmentDataType) {
+    this.SocketTreatmentData = e;
   },
   /*  */
 });

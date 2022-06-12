@@ -37,6 +37,15 @@ export interface DeliveryListDataType {
     endDateTime: string;
   }[];
 }
+/* Socket */
+export interface SocketDeliveryDataType {
+  from: string;
+  deliveryList: {
+    medicineCode: string;
+    deliveryCode: string;
+    status: string;
+  }[];
+}
 /*  */
 
 export interface DeliveryDataType {
@@ -50,6 +59,10 @@ export interface DeliveryDataType {
   /* GET /delivery/list */
   DeliveryListData: undefined | DeliveryListDataType;
   setDeliveryListData: (e: DeliveryListDataType) => void;
+  /* Socket */
+  /* GET /admin/delivery */
+  SocketDeliveryData: SocketDeliveryDataType | null;
+  setSocketDeliveryData: (e: SocketDeliveryDataType) => void;
   /*  */
 }
 
@@ -69,6 +82,12 @@ const DeliveryData = observable<DeliveryDataType>({
   DeliveryListData: undefined,
   setDeliveryListData(e: DeliveryListDataType) {
     this.DeliveryListData = e;
+  },
+  /* Socket */
+  /* GET /admin/delivery */
+  SocketDeliveryData: null,
+  setSocketDeliveryData(e: SocketDeliveryDataType) {
+    this.SocketDeliveryData = e;
   },
   /*  */
 });
