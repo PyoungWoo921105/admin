@@ -24,7 +24,10 @@ const DeliveryNavigationBar = observer(() => {
   const history = useHistory();
   const location = useLocation<LocalState>();
 
-  const NavigationBarTitleList = [{ name: '배달 내역', path: '/delivery/history' }];
+  const NavigationBarTitleList = [
+    { name: '배달 현황', path: '/delivery/live' },
+    { name: '배달 내역', path: '/delivery/history' },
+  ];
 
   const onClickNavigationBarMenu = (props: { key: number }) => {
     const { key } = props;
