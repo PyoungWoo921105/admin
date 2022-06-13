@@ -43,7 +43,7 @@ export const CategoryElementFrame = styled.div<CustomProps>`
 export const CategoryElementComponent = styled.div<CustomProps>`
   align-items: center;
   display: flex;
-  flex-direction: row;
+  flex-direction: ${props => (props.flexDirection ? props.flexDirection : '')};
   height: 100%;
   width: 100%;
 `;
@@ -65,6 +65,33 @@ export const CategoryElementTitleComponent = styled.div<CustomProps>`
   width: 100%;
 `;
 export const CategoryElementTitleTextComponent = styled.span`
+  color: #ffffff;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 11px;
+  font-style: normal;
+  font-weight: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+`;
+export const CategoryElementContentFrame = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: 100%;
+`;
+export const CategoryElementContentComponent = styled.div<CustomProps>`
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  justify-content: ${props => (props.justifyContent ? props.justifyContent : '')};
+  overflow: hidden;
+  padding: 0px 10px 0px 10px;
+  width: 100%;
+`;
+export const CategoryElementContentTextComponent = styled.span`
   color: #ffffff;
   font-family: 'Spoqa Han Sans Neo';
   font-size: 11px;

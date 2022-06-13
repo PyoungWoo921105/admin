@@ -86,7 +86,7 @@ const BoardContent = observer(() => {
                   minWidth={`${element?.width}px`}
                   width={`${element?.width}%`}
                 >
-                  <CategoryElementComponent>
+                  <CategoryElementComponent flexDirection="row">
                     <CategoryElementTitleFrame>
                       <CategoryElementTitleComponent justifyContent="center">
                         <CategoryElementTitleTextComponent>

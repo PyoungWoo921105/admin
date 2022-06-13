@@ -27,6 +27,7 @@ const DeliveryNavigationBar = observer(() => {
   const NavigationBarTitleList = [
     { name: '배달 현황', path: '/delivery/live' },
     { name: '배달 내역', path: '/delivery/history' },
+    { name: '배달 운영', path: '/delivery/operation' },
   ];
 
   const onClickNavigationBarMenu = (props: { key: number }) => {
