@@ -150,8 +150,9 @@ export const DataElementContentComponent = styled.div<CustomProps>`
   padding: 0px 10px 0px 10px;
   width: 100%;
 `;
-export const DataElementContentTextComponent = styled.span`
-  color: #000000;
+export const DataElementContentTextComponent = styled.span<CustomProps>`
+  color: ${props => (props.color ? props.color : '#000000')};
+  cursor: ${props => (props.cursor ? props.cursor : '')};
   font-family: 'Spoqa Han Sans Neo';
   font-size: 11px;
   font-style: normal;

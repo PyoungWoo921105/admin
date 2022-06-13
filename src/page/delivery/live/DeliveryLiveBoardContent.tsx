@@ -114,7 +114,7 @@ const BoardContent = observer(() => {
                       width={`${CategoryList[0].width}%`}
                     >
                       <DataElementContentComponent justifyContent="center">
-                        <DataElementContentTextComponent>
+                        <DataElementContentTextComponent color="blue" cursor="pointer">
                           {element?.deliveryCode || '-'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
