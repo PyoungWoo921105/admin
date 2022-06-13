@@ -201,9 +201,9 @@ const BoardTitleAndFilter = observer(() => {
     if (TempDeliveryAgencyName.name === '전체') {
       setDeliveryAgencyName([TempDeliveryAgencyName]);
     } else if (
-      DeliveryAgencyName.findIndex(element => element.code === TempDeliveryAgencyName.code) === -1
+      DeliveryAgencyName.findIndex(element => element?.code === TempDeliveryAgencyName.code) === -1
     ) {
-      if (DeliveryAgencyName.findIndex(element => element.name === '전체') === -1) {
+      if (DeliveryAgencyName.findIndex(element => element?.name === '전체') === -1) {
         setDeliveryAgencyName([TempDeliveryAgencyName]);
         /* FUTUREWORK */
         /* setDeliveryAgencyName([...DeliveryAgencyName, TempDeliveryAgencyName]); */
@@ -214,7 +214,7 @@ const BoardTitleAndFilter = observer(() => {
       setDeliveryAgencyName([{ code: '', name: '전체' }]);
     } else {
       setDeliveryAgencyName(
-        DeliveryAgencyName.filter(element => element.code !== TempDeliveryAgencyName.code)
+        DeliveryAgencyName.filter(element => element?.code !== TempDeliveryAgencyName.code)
       );
     }
   };
@@ -223,7 +223,7 @@ const BoardTitleAndFilter = observer(() => {
     if (DeliveryAgencyName.length === 1 && DeliveryAgencyName[0].code === object.code) {
       setDeliveryAgencyName([{ code: '', name: '전체' }]);
     } else {
-      setDeliveryAgencyName(DeliveryAgencyName.filter(element => element.code !== object.code));
+      setDeliveryAgencyName(DeliveryAgencyName.filter(element => element?.code !== object.code));
     }
   };
 
@@ -659,12 +659,12 @@ const BoardTitleAndFilter = observer(() => {
                     >
                       {RiderData?.RiderListBasicData?.riderList.map(element => (
                         <FilterElementBoardOptionComponent
-                          key={`${element.name} (${element.code})`}
+                          key={`${element?.name} (${element?.code})`}
                           value={JSON.stringify(element)}
                         >
-                          {element.name !== '전체' && element.name !== '선택'
-                            ? `${element.name} (${element.code})`
-                            : `${element.name}`}
+                          {element?.name !== '전체' && element?.name !== '선택'
+                            ? `${element?.name} (${element?.code})`
+                            : `${element?.name}`}
                         </FilterElementBoardOptionComponent>
                       ))}
                     </FilterElementBoardSelectComponent>
@@ -683,13 +683,13 @@ const BoardTitleAndFilter = observer(() => {
                   <FilterElementBoardComponent>
                     {DeliveryAgencyName.map((element, key) => (
                       <FilterElementBoardSelectedComponent
-                        key={element.code}
+                        key={element?.code}
                         margin={key !== DeliveryAgencyName.length - 1 ? '0px 5px 0px 0px' : ''}
                         onClick={() => onClickDeleteDeliveryAgencyName({ object: element })}
                       >
                         <FilterElementBoardSelectedTextFrame>
                           <FilterElementBoardSelectedTextComponent>
-                            {element.name}
+                            {element?.name}
                           </FilterElementBoardSelectedTextComponent>
                         </FilterElementBoardSelectedTextFrame>
                         <FilterElementBoardSelectedImageFrame width="10px">

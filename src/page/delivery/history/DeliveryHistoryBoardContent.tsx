@@ -82,9 +82,9 @@ const BoardContent = observer(() => {
               {/*  */}
               {CategoryList.map(element => (
                 <CategoryElementFrame
-                  key={element.title}
-                  minWidth={`${element.width}px`}
-                  width={`${element.width}%`}
+                  key={element?.title}
+                  minWidth={`${element?.width}px`}
+                  width={`${element?.width}%`}
                 >
                   <CategoryElementComponent>
                     <CategoryElementTitleFrame>
@@ -105,8 +105,8 @@ const BoardContent = observer(() => {
           <DataFrame>
             <DataComponent>
               {/*  */}
-              {DeliveryData.DeliveryListData?.deliveryList.map(element => (
-                <DataElementFrame key={element.deliveryCode}>
+              {DeliveryData.DeliveryListData?.deliveryList?.map(element => (
+                <DataElementFrame key={element?.deliveryCode}>
                   <DataElementComponent>
                     {/*  */}
                     <DataElementContentFrame
@@ -168,11 +168,11 @@ const BoardContent = observer(() => {
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentTextComponent>
-                          {element.requestedDateTime
+                          {element?.requestedDateTime
                             ? `${ConvertCommaNumber(
                                 GetTimeCost({
-                                  prev: element.requestedDateTime,
-                                  next: element.endDateTime,
+                                  prev: element?.requestedDateTime,
+                                  next: element?.endDateTime,
                                   temp: CommonData.CurrentTime,
                                 })
                               )}분`
@@ -270,8 +270,8 @@ const BoardContent = observer(() => {
                           {element?.requestedDateTime
                             ? `${ConvertDate(element?.requestedDateTime)}/${ConvertCommaNumber(
                                 GetTimeCost({
-                                  prev: element.requestedDateTime,
-                                  next: element.pickUpDateTime,
+                                  prev: element?.requestedDateTime,
+                                  next: element?.pickUpDateTime,
                                   temp: CommonData.CurrentTime,
                                 })
                               )}분`
@@ -288,8 +288,8 @@ const BoardContent = observer(() => {
                           {element?.pickUpDateTime
                             ? `${ConvertDate(element?.pickUpDateTime)}/${ConvertCommaNumber(
                                 GetTimeCost({
-                                  prev: element.pickUpDateTime,
-                                  next: element.endDateTime,
+                                  prev: element?.pickUpDateTime,
+                                  next: element?.endDateTime,
                                   temp: CommonData.CurrentTime,
                                 })
                               )}분`
@@ -317,7 +317,7 @@ const BoardContent = observer(() => {
         </RecordComponent>
       </RecordFrame>
       <NavigationFrame
-        minWidth={`${CategoryList.map(element => element.width).reduce(
+        minWidth={`${CategoryList.map(element => element?.width).reduce(
           (previousValue, currentValue) => previousValue + currentValue,
           0
         )}px`}

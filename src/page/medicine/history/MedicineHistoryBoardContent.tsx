@@ -78,9 +78,9 @@ const BoardContent = observer(() => {
               {/*  */}
               {CategoryList.map(element => (
                 <CategoryElementFrame
-                  key={element.title}
-                  minWidth={`${element.width}px`}
-                  width={`${element.width}%`}
+                  key={element?.title}
+                  minWidth={`${element?.width}px`}
+                  width={`${element?.width}%`}
                 >
                   <CategoryElementComponent>
                     <CategoryElementTitleFrame>
@@ -101,8 +101,8 @@ const BoardContent = observer(() => {
           <DataFrame>
             <DataComponent>
               {/*  */}
-              {MedicineData.MedicineListData?.medicineList.map(element => (
-                <DataElementFrame key={element.medicineCode}>
+              {MedicineData.MedicineListData?.medicineList?.map(element => (
+                <DataElementFrame key={element?.medicineCode}>
                   <DataElementComponent>
                     {/*  */}
                     <DataElementContentFrame
@@ -279,7 +279,7 @@ const BoardContent = observer(() => {
         </RecordComponent>
       </RecordFrame>
       <NavigationFrame
-        minWidth={`${CategoryList.map(element => element.width).reduce(
+        minWidth={`${CategoryList.map(element => element?.width).reduce(
           (previousValue, currentValue) => previousValue + currentValue,
           0
         )}px`}
