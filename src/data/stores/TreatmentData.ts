@@ -69,12 +69,12 @@ export interface TreatmentDataType {
   /*  */
   /* 진료 내역 */
   /* GET /treat/list */
-  TreatmentListData: undefined | TreatmentListDataType;
-  setTreatmentListData: (e: TreatmentListDataType) => void;
+  TreatmentListData: null | TreatmentListDataType;
+  setTreatmentListData: (e: null | TreatmentListDataType) => void;
   /* Socket */
   /* GET /admin/treat */
-  SocketTreatmentData: SocketTreatmentDataType | null;
-  setSocketTreatmentData: (e: SocketTreatmentDataType | null) => void;
+  SocketTreatmentData: null | SocketTreatmentDataType;
+  setSocketTreatmentData: (e: null | SocketTreatmentDataType) => void;
   /*  */
 }
 
@@ -91,14 +91,14 @@ const TreatmentData = observable<TreatmentDataType>({
   /*  */
   /* 진료 내역 */
   /* GET /treat/list */
-  TreatmentListData: undefined,
-  setTreatmentListData(e: TreatmentListDataType) {
+  TreatmentListData: null,
+  setTreatmentListData(e: null | TreatmentListDataType) {
     this.TreatmentListData = e;
   },
   /* Socket */
   /* GET /admin/treat */
   SocketTreatmentData: null,
-  setSocketTreatmentData(e: SocketTreatmentDataType | null) {
+  setSocketTreatmentData(e: null | SocketTreatmentDataType) {
     this.SocketTreatmentData = e;
   },
   /*  */

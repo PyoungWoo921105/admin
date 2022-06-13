@@ -46,6 +46,29 @@ export interface SocketDeliveryDataType {
     status: string;
   }[];
 }
+/* 배달 운영 */
+/* GET /delivery/link/list */
+export interface DeliveryLinkListDataType {
+  count: {
+    total: number;
+  };
+  linkList: {
+    pharmacy: {
+      code: string;
+      name: string;
+      location: {
+        latitude: number;
+        longitude: number;
+      };
+      address: string;
+      phoneNum: string;
+    };
+    rider: {
+      code: string;
+      name: string;
+    };
+  }[];
+}
 /*  */
 
 export interface DeliveryDataType {
@@ -57,12 +80,17 @@ export interface DeliveryDataType {
   /*  */
   /* 배달 내역 */
   /* GET /delivery/list */
-  DeliveryListData: undefined | DeliveryListDataType;
-  setDeliveryListData: (e: DeliveryListDataType) => void;
+  DeliveryListData: null | DeliveryListDataType;
+  setDeliveryListData: (e: null | DeliveryListDataType) => void;
   /* Socket */
   /* GET /admin/delivery */
-  SocketDeliveryData: SocketDeliveryDataType | null;
-  setSocketDeliveryData: (e: SocketDeliveryDataType | null) => void;
+  SocketDeliveryData: null | SocketDeliveryDataType;
+  setSocketDeliveryData: (e: null | SocketDeliveryDataType) => void;
+  /*  */
+  /* 배달 운영 */
+  /* GET /delivery/link/list */
+  DeliveryLinkListData: null | DeliveryLinkListDataType;
+  setDeliveryLinkListData: (e: null | DeliveryLinkListDataType) => void;
   /*  */
 }
 
@@ -79,15 +107,22 @@ const DeliveryData = observable<DeliveryDataType>({
   /*  */
   /* 배달 내역 */
   /* GET /delivery/list */
-  DeliveryListData: undefined,
-  setDeliveryListData(e: DeliveryListDataType) {
+  DeliveryListData: null,
+  setDeliveryListData(e: null | DeliveryListDataType) {
     this.DeliveryListData = e;
   },
   /* Socket */
   /* GET /admin/delivery */
   SocketDeliveryData: null,
-  setSocketDeliveryData(e: SocketDeliveryDataType | null) {
+  setSocketDeliveryData(e: null | SocketDeliveryDataType) {
     this.SocketDeliveryData = e;
+  },
+  /*  */
+  /* 배달 운영 */
+  /* GET /delivery/link/list */
+  DeliveryLinkListData: null,
+  setDeliveryLinkListData(e: null | DeliveryLinkListDataType) {
+    this.DeliveryLinkListData = e;
   },
   /*  */
 });

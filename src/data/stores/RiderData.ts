@@ -20,8 +20,8 @@ export interface RiderDataType {
   /*  */
   /* 배달 내역 */
   /* GET /rider/list/basic */
-  RiderListBasicData: undefined | RiderListBasicDataType;
-  setRiderListBasicData: (e: RiderListBasicDataType) => void;
+  RiderListBasicData: null | RiderListBasicDataType;
+  setRiderListBasicData: (e: null | RiderListBasicDataType) => void;
   /*  */
 }
 
@@ -38,8 +38,8 @@ const RiderData = observable<RiderDataType>({
   /*  */
   /* 배달 내역 */
   /* GET /delivery/list */
-  RiderListBasicData: undefined,
-  setRiderListBasicData(e: RiderListBasicDataType) {
+  RiderListBasicData: null,
+  setRiderListBasicData(e: null | RiderListBasicDataType) {
     this.RiderListBasicData = e;
   },
   /*  */

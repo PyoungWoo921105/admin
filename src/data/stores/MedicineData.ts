@@ -71,12 +71,12 @@ export interface MedicineDataType {
   /*  */
   /* 조제 내역 */
   /* GET /medicine/list */
-  MedicineListData: undefined | MedicineListDataType;
-  setMedicineListData: (e: MedicineListDataType) => void;
+  MedicineListData: null | MedicineListDataType;
+  setMedicineListData: (e: null | MedicineListDataType) => void;
   /* Socket */
   /* GET /admin/medicine */
-  SocketMedicineData: SocketMedicineDataType | null;
-  setSocketMedicineData: (e: SocketMedicineDataType | null) => void;
+  SocketMedicineData: null | SocketMedicineDataType;
+  setSocketMedicineData: (e: null | SocketMedicineDataType) => void;
   /*  */
 }
 
@@ -93,14 +93,14 @@ const MedicineData = observable<MedicineDataType>({
   /*  */
   /* 조제 내역 */
   /* GET /medicine/list */
-  MedicineListData: undefined,
-  setMedicineListData(e: MedicineListDataType) {
+  MedicineListData: null,
+  setMedicineListData(e: null | MedicineListDataType) {
     this.MedicineListData = e;
   },
   /* Socket */
   /* GET /admin/medicine */
   SocketMedicineData: null,
-  setSocketMedicineData(e: SocketMedicineDataType | null) {
+  setSocketMedicineData(e: null | SocketMedicineDataType) {
     this.SocketMedicineData = e;
   },
   /*  */
