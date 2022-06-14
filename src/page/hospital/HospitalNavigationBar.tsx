@@ -25,7 +25,7 @@ const HospitalNavigationBar = observer(() => {
   const location = useLocation<LocalState>();
 
   const NavigationBarTitleList = [
-    { name: '병원 현황', path: '/hospital/live' },
+    /* { name: '병원 현황', path: '/hospital/live' }, */
     { name: '병원 내역', path: '/hospital/history' },
   ];
 

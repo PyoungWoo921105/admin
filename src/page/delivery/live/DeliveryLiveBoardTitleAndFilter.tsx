@@ -471,12 +471,12 @@ const BoardTitleAndFilter = observer(() => {
             {/* SINGLE INPUT */}
             <FilterElementFrame>
               <FilterElementComponent>
-                <FilterElementTitleFrame minWidth="65px" width="65px">
+                <FilterElementTitleFrame minWidth="70px" width="70px">
                   <FilterElementTitleComponent>
                     <FilterElementTitleTextComponent>배달 번호</FilterElementTitleTextComponent>
                   </FilterElementTitleComponent>
                 </FilterElementTitleFrame>
-                <FilterElementBoardFrame minWidth="155px" width="155px">
+                <FilterElementBoardFrame minWidth="150px" width="150px">
                   <FilterElementBoardComponent>
                     <FilterElementBoardInputComponent
                       width="100%"
@@ -492,12 +492,12 @@ const BoardTitleAndFilter = observer(() => {
             {/* SINGLE INPUT */}
             <FilterElementFrame>
               <FilterElementComponent>
-                <FilterElementTitleFrame minWidth="65px" width="65px">
+                <FilterElementTitleFrame minWidth="70px" width="70px">
                   <FilterElementTitleComponent>
                     <FilterElementTitleTextComponent>진료 번호</FilterElementTitleTextComponent>
                   </FilterElementTitleComponent>
                 </FilterElementTitleFrame>
-                <FilterElementBoardFrame minWidth="155px" width="155px">
+                <FilterElementBoardFrame minWidth="150px" width="150px">
                   <FilterElementBoardComponent>
                     <FilterElementBoardInputComponent
                       width="100%"
@@ -513,12 +513,12 @@ const BoardTitleAndFilter = observer(() => {
             {/* SINGLE INPUT */}
             <FilterElementFrame>
               <FilterElementComponent>
-                <FilterElementTitleFrame minWidth="65px" width="65px">
+                <FilterElementTitleFrame minWidth="70px" width="70px">
                   <FilterElementTitleComponent>
                     <FilterElementTitleTextComponent>조제 번호</FilterElementTitleTextComponent>
                   </FilterElementTitleComponent>
                 </FilterElementTitleFrame>
-                <FilterElementBoardFrame minWidth="155px" width="155px">
+                <FilterElementBoardFrame minWidth="150px" width="150px">
                   <FilterElementBoardComponent>
                     <FilterElementBoardInputComponent
                       width="100%"
@@ -534,14 +534,14 @@ const BoardTitleAndFilter = observer(() => {
             {/* DOUBLE INPUT */}
             <FilterElementFrame>
               <FilterElementComponent margin="0px 1px 0px 0px">
-                <FilterElementTitleFrame minWidth="90px" width="90px">
+                <FilterElementTitleFrame minWidth="95px" width="95px">
                   <FilterElementTitleComponent>
                     <FilterElementTitleTextComponent>
                       시작 조회 기간
                     </FilterElementTitleTextComponent>
                   </FilterElementTitleComponent>
                 </FilterElementTitleFrame>
-                <FilterElementBoardFrame minWidth="130px" width="130px">
+                <FilterElementBoardFrame minWidth="125px" width="125px">
                   <FilterElementBoardComponent>
                     <FilterElementBoardInputComponent
                       width="100%"
@@ -556,14 +556,14 @@ const BoardTitleAndFilter = observer(() => {
                 </FilterElementBoardFrame>
               </FilterElementComponent>
               <FilterElementComponent margin="0px 0px 0px 1px">
-                <FilterElementTitleFrame minWidth="90px" width="90px">
+                <FilterElementTitleFrame minWidth="95px" width="95px">
                   <FilterElementTitleComponent>
                     <FilterElementTitleTextComponent>
                       종료 조회 기간
                     </FilterElementTitleTextComponent>
                   </FilterElementTitleComponent>
                 </FilterElementTitleFrame>
-                <FilterElementBoardFrame minWidth="130px" width="130px">
+                <FilterElementBoardFrame minWidth="125px" width="125px">
                   <FilterElementBoardComponent>
                     <FilterElementBoardInputComponent
                       width="100%"
@@ -582,12 +582,12 @@ const BoardTitleAndFilter = observer(() => {
             {/* SELECT & OPTION */}
             <FilterElementFrame>
               <FilterElementComponent margin="0px 1px 0px 0px">
-                <FilterElementTitleFrame minWidth="65px" width="65px">
+                <FilterElementTitleFrame minWidth="70px" width="70px">
                   <FilterElementTitleComponent>
                     <FilterElementTitleTextComponent>배달 상태</FilterElementTitleTextComponent>
                   </FilterElementTitleComponent>
                 </FilterElementTitleFrame>
-                <FilterElementBoardFrame minWidth="155px" width="155px">
+                <FilterElementBoardFrame minWidth="150px" width="150px">
                   <FilterElementBoardComponent>
                     <FilterElementBoardSelectComponent
                       width="100%"
@@ -605,14 +605,14 @@ const BoardTitleAndFilter = observer(() => {
                 </FilterElementBoardFrame>
               </FilterElementComponent>
               <FilterElementComponent margin="0px 0px 0px 1px">
-                <FilterElementTitleFrame minWidth="90px" width="90px">
+                <FilterElementTitleFrame minWidth="95px" width="95px">
                   <FilterElementTitleComponent>
                     <FilterElementTitleTextComponent>
                       배달 상태 선택
                     </FilterElementTitleTextComponent>
                   </FilterElementTitleComponent>
                 </FilterElementTitleFrame>
-                <FilterElementBoardFrame minWidth="130px" width="100%">
+                <FilterElementBoardFrame minWidth="125px" width="125%">
                   <FilterElementBoardComponent>
                     {DeliveryState.map((element, key) => (
                       <FilterElementBoardSelectedComponent
@@ -638,14 +638,14 @@ const BoardTitleAndFilter = observer(() => {
             {/* SELECT & OPTION */}
             <FilterElementFrame>
               <FilterElementComponent margin="0px 1px 0px 0px">
-                <FilterElementTitleFrame minWidth="90px" width="90px">
+                <FilterElementTitleFrame minWidth="95px" width="95px">
                   <FilterElementTitleComponent>
                     <FilterElementTitleTextComponent>
                       배송 업체 이름
                     </FilterElementTitleTextComponent>
                   </FilterElementTitleComponent>
                 </FilterElementTitleFrame>
-                <FilterElementBoardFrame minWidth="130px" width="130px">
+                <FilterElementBoardFrame minWidth="125px" width="125px">
                   <FilterElementBoardComponent>
                     <FilterElementBoardSelectComponent
                       width="100%"
@@ -672,14 +672,14 @@ const BoardTitleAndFilter = observer(() => {
                 </FilterElementBoardFrame>
               </FilterElementComponent>
               <FilterElementComponent margin="0px 0px 0px 1px">
-                <FilterElementTitleFrame minWidth="110px" width="110px">
+                <FilterElementTitleFrame minWidth="120px" width="120px">
                   <FilterElementTitleComponent>
                     <FilterElementTitleTextComponent>
                       배송 업체 이름 선택
                     </FilterElementTitleTextComponent>
                   </FilterElementTitleComponent>
                 </FilterElementTitleFrame>
-                <FilterElementBoardFrame minWidth="110px" width="110%">
+                <FilterElementBoardFrame minWidth="100px" width="100%">
                   <FilterElementBoardComponent>
                     {DeliveryAgencyName.map((element, key) => (
                       <FilterElementBoardSelectedComponent

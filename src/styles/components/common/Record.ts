@@ -270,7 +270,6 @@ export const NavigationPageEmptyComponent = styled.div`
   border: none;
   border-radius: 10px;
   box-sizing: border-box;
-  cursor: none;
   display: flex;
   flex-direction: row;
   height: 30px;
