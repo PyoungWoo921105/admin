@@ -1,12 +1,12 @@
 /*
- * Copyright (c) 2022 Medir Inc.
+ * Copyright (c) 2number22 Medir Inc.
  */
 
 import { observable } from 'mobx';
 
-/* 병원 내역 */
-/* GET /hospital/list */
-export interface HospitalListDataType {
+/* 약국 내역 */
+/* GET /pharmacy/list */
+export interface PharmacyListDataType {
   count: {
     total: number;
     running: number;
@@ -16,7 +16,7 @@ export interface HospitalListDataType {
     registerRejected: number;
     blinded: number;
   };
-  hospitalList: {
+  pharmacyList: {
     code: string;
     state: string;
     registerState: string;
@@ -26,7 +26,7 @@ export interface HospitalListDataType {
     registerDateTime: string;
     openingTime: {
       day: string;
-      isOpen: boolean;
+      isOpen: true;
       startHour: string;
       startMinute: string;
       endHour: string;
@@ -36,34 +36,30 @@ export interface HospitalListDataType {
       lunchEndHour: string;
       lunchEndMinute: string;
     };
-    doctorList: {
-      code: string;
-      name: string;
-    }[];
-    pharmacyList: {
-      code: string;
-      name: string;
-    }[];
+    hospitalState: string;
+    hospitalList: { code: string; name: string }[];
     waitReceptionCount: number;
+    numMedicineBags: number;
+    numStickers: number;
   }[];
 }
 /*  */
 
-export interface HospitalDataType {
+export interface PharmacyDataType {
   /* 페이지 */
   PageNavigator: number;
   setPageNavigator: (e: number) => void;
   ParagraphNavigator: number;
   setParagraphNavigator: (e: number) => void;
   /*  */
-  /* 병원 내역 */
-  /* GET /hospital/list */
-  HospitalListData: null | HospitalListDataType;
-  setHospitalListData: (e: null | HospitalListDataType) => void;
+  /* 약국 내역 */
+  /* GET /pharmacy/list */
+  PharmacyListData: null | PharmacyListDataType;
+  setPharmacyListData: (e: null | PharmacyListDataType) => void;
   /*  */
 }
 
-const HospitalData = observable<HospitalDataType>({
+const PharmacyData = observable<PharmacyDataType>({
   /* 페이지 */
   PageNavigator: 1,
   setPageNavigator(e: number) {
@@ -75,12 +71,12 @@ const HospitalData = observable<HospitalDataType>({
   },
   /*  */
   /* 병원 내역 */
-  /* GET /hospital/list */
-  HospitalListData: null,
-  setHospitalListData(e: null | HospitalListDataType) {
-    this.HospitalListData = e;
+  /* GET /pharmacy/list */
+  PharmacyListData: null,
+  setPharmacyListData(e: null | PharmacyListDataType) {
+    this.PharmacyListData = e;
   },
   /*  */
 });
 
-export { HospitalData };
+export { PharmacyData };
