@@ -136,9 +136,7 @@ const BoardContent = observer(() => {
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentButtonComponent
                           backgroundColor={
-                            element?.reviewStatus === '전체'
-                              ? '#000000'
-                              : element?.reviewStatus === '정상'
+                            element?.reviewStatus === '정상'
                               ? 'rgb(112,173,71)'
                               : element?.reviewStatus === '블라인드'
                               ? 'rgb(192,0,0)'
@@ -147,15 +145,13 @@ const BoardContent = observer(() => {
                               : 'transparent'
                           }
                           color={
-                            element?.reviewStatus === '전체'
-                              ? '#ffffff'
-                              : element?.reviewStatus === '정상'
+                            element?.reviewStatus === '정상'
                               ? '#ffffff'
                               : element?.reviewStatus === '블라인드'
                               ? '#ffffff'
                               : element?.reviewStatus === '삭제'
                               ? '#ffffff'
-                              : 'transparent'
+                              : '#000000'
                           }
                         >
                           {element?.reviewStatus || '-'}

@@ -155,9 +155,31 @@ const BoardContent = observer(() => {
                               ? 'rgb(192,0,0)'
                               : element?.status === '진료 시스템 취소'
                               ? 'rgb(192,0,0)'
-                              : 'rgb(0,0,0)'
+                              : 'transparent'
                           }
-                          color="#ffffff"
+                          color={
+                            element?.status === '접수 대기'
+                              ? '#ffffff'
+                              : element?.status === '진료 대기'
+                              ? '#ffffff'
+                              : element?.status === '진료 중'
+                              ? '#ffffff'
+                              : element?.status === '처방 및 수납'
+                              ? '#ffffff'
+                              : element?.status === '결제 대기'
+                              ? '#ffffff'
+                              : element?.status === '결제 실패'
+                              ? '#ffffff'
+                              : element?.status === '완료'
+                              ? '#ffffff'
+                              : element?.status === '진료 거절'
+                              ? '#ffffff'
+                              : element?.status === '진료 취소'
+                              ? '#ffffff'
+                              : element?.status === '진료 시스템 취소'
+                              ? '#ffffff'
+                              : '#000000'
+                          }
                         >
                           {element?.status || '-'}
                         </DataElementContentButtonComponent>

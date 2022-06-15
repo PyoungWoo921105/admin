@@ -136,9 +136,7 @@ const BoardContent = observer(() => {
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentButtonComponent
                           backgroundColor={
-                            element?.status === '전체'
-                              ? 'rgb(0,0,0)'
-                              : element?.status === '접수 대기'
+                            element?.status === '접수 대기'
                               ? 'rgb(0,0,0)'
                               : element?.status === '조제 중'
                               ? 'rgb(0,0,0)'
@@ -160,9 +158,33 @@ const BoardContent = observer(() => {
                               ? 'rgb(192,0,0)'
                               : element?.status === '조제 시스템 취소'
                               ? 'rgb(192,0,0)'
-                              : 'rgb(0,0,0)'
+                              : 'transparent'
                           }
-                          color="#ffffff"
+                          color={
+                            element?.status === '접수 대기'
+                              ? '#ffffff'
+                              : element?.status === '조제 중'
+                              ? '#ffffff'
+                              : element?.status === '결제 실패'
+                              ? '#ffffff'
+                              : element?.status === '방문 대기'
+                              ? '#ffffff'
+                              : element?.status === '배차 대기'
+                              ? '#ffffff'
+                              : element?.status === '배차 완료'
+                              ? '#ffffff'
+                              : element?.status === '픽업 완료'
+                              ? '#ffffff'
+                              : element?.status === '완료'
+                              ? '#ffffff'
+                              : element?.status === '조제 거절'
+                              ? '#ffffff'
+                              : element?.status === '조제 취소'
+                              ? '#ffffff'
+                              : element?.status === '조제 시스템 취소'
+                              ? '#ffffff'
+                              : '#000000'
+                          }
                         >
                           {element?.status || '-'}
                         </DataElementContentButtonComponent>

@@ -127,9 +127,7 @@ const BoardContent = observer(() => {
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentButtonComponent
                           backgroundColor={
-                            element?.status === '전체'
-                              ? '#000000'
-                              : element?.status === '접수 대기'
+                            element?.status === '접수 대기'
                               ? 'rgb(255,64,64)'
                               : element?.status === '배차 대기'
                               ? 'rgb(255,192,0)'
@@ -141,9 +139,23 @@ const BoardContent = observer(() => {
                               ? 'rgb(112,173,71)'
                               : element?.status === '배달 취소'
                               ? 'rgb(255,64,64)'
+                              : 'transparent'
+                          }
+                          color={
+                            element?.status === '접수 대기'
+                              ? '#ffffff'
+                              : element?.status === '배차 대기'
+                              ? '#ffffff'
+                              : element?.status === '배차 완료'
+                              ? '#ffffff'
+                              : element?.status === '픽업 완료'
+                              ? '#ffffff'
+                              : element?.status === '완료'
+                              ? '#ffffff'
+                              : element?.status === '배달 취소'
+                              ? '#ffffff'
                               : '#000000'
                           }
-                          color="#ffffff"
                         >
                           {element?.status || '-'}
                         </DataElementContentButtonComponent>

@@ -478,23 +478,7 @@ const BoardTitleAndFilter = observer(() => {
                       <StatisticElementTitleTextComponent
                         width="100%"
                         lineHeight="30px"
-                        color={
-                          element === '전체'
-                            ? '#000000'
-                            : element === '접수 대기'
-                            ? 'rgb(255,64,64)'
-                            : element === '배차 대기'
-                            ? 'rgb(255,192,0)'
-                            : element === '배차 완료'
-                            ? 'rgb(0,0,0)'
-                            : element === '픽업 완료'
-                            ? 'rgb(237,125,49)'
-                            : element === '완료'
-                            ? 'rgb(112,173,71)'
-                            : element === '배달 취소'
-                            ? 'rgb(255,64,64)'
-                            : '#000000'
-                        }
+                        color={element === '전체' ? '#000000' : '#000000'}
                       >
                         {element}
                       </StatisticElementTitleTextComponent>
@@ -509,23 +493,7 @@ const BoardTitleAndFilter = observer(() => {
                         width="100%"
                         textAlign="right"
                         lineHeight="30px"
-                        color={
-                          element === '전체'
-                            ? '#000000'
-                            : element === '접수 대기'
-                            ? 'rgb(255,64,64)'
-                            : element === '배차 대기'
-                            ? 'rgb(255,192,0)'
-                            : element === '배차 완료'
-                            ? 'rgb(0,0,0)'
-                            : element === '픽업 완료'
-                            ? 'rgb(237,125,49)'
-                            : element === '완료'
-                            ? 'rgb(112,173,71)'
-                            : element === '배달 취소'
-                            ? 'rgb(255,64,64)'
-                            : '#000000'
-                        }
+                        color={element === '전체' ? '#000000' : '#000000'}
                       >
                         {element === '전체'
                           ? DeliveryData.DeliveryLinkListData?.count?.total
