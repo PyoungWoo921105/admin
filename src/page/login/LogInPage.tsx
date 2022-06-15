@@ -95,6 +95,7 @@ const LogInPage = observer(() => {
       if (response.status === 201) {
         sessionStorage.setItem('LogInUserID', AdminData.LogInUserID);
         sessionStorage.setItem('LogInUserPassword', AdminData.LogInUserPassword);
+        AdminData.setLogInMessage('');
         history.push({ pathname: '/home' });
       } else {
         const MetaError = response as { status: number; data: { message: string } };

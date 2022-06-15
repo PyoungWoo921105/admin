@@ -66,7 +66,13 @@ const PopUp = observer(() => {
       <PopUpComponent>
         <PopUpTopFrame>
           <PopUpTopComponent>
-            <PopUpTopTitleComponent>
+            <PopUpTopTitleComponent
+              minWidth={
+                CommonData.PopUpData?.Title && CommonData.PopUpData?.Title.length !== 0
+                  ? `${Number(CommonData.PopUpData?.Title.length) * 10 + 95}px`
+                  : ''
+              }
+            >
               <PopUpTopTitleTextComponent>{CommonData.PopUpData?.Title}</PopUpTopTitleTextComponent>
             </PopUpTopTitleComponent>
             <PopUpTopExitComponent onClick={onClickExit}>

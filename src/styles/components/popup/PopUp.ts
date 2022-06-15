@@ -49,6 +49,7 @@ export const PopUpTopTitleComponent = styled.div<CustomProps>`
   flex-direction: row;
   height: 100%;
   justify-content: center;
+  min-width: ${props => (props.minWidth ? props.minWidth : '')};
   width: 100%;
 `;
 export const PopUpTopTitleTextComponent = styled.span<CustomProps>`

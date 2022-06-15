@@ -39,6 +39,7 @@ const RootPage = observer(() => {
 
     CommonData.setLoadingFlag(false);
     if (response.status === 201) {
+      AdminData.setLogInMessage('');
       history.push({ pathname: history.location.pathname });
     } else {
       const MetaError = response as { status: number; data: { message: string } };
