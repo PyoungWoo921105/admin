@@ -734,7 +734,7 @@ const BoardTitleAndFilter = observer(() => {
                             : element === '운영 중'
                             ? 'rgb(112,173,71)'
                             : element === '운영 종료'
-                            ? 'rgb(112,173,71)'
+                            ? 'rgb(192,0,0)'
                             : '#000000'
                         }
                       >
@@ -765,7 +765,7 @@ const BoardTitleAndFilter = observer(() => {
                             : element === '운영 중'
                             ? 'rgb(112,173,71)'
                             : element === '운영 종료'
-                            ? 'rgb(112,173,71)'
+                            ? 'rgb(192,0,0)'
                             : '#000000'
                         }
                       >

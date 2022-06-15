@@ -12,6 +12,7 @@ import { RiderData } from 'data/stores/RiderData';
 import { HospitalData } from 'data/stores/HospitalData';
 import { PharmacyData } from 'data/stores/PharmacyData';
 import { DoctorData } from 'data/stores/DoctorData';
+import { ReviewData } from 'data/stores/ReviewData';
 
 export const useStore = () => ({
   CommonData,
@@ -23,6 +24,7 @@ export const useStore = () => ({
   HospitalData,
   PharmacyData,
   DoctorData,
+  ReviewData,
 });
 
 export default useStore;

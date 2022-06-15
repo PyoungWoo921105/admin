@@ -33,7 +33,6 @@ import {
   DataElementContentComponent,
   DataElementContentTextComponent,
   DataElementContentButtonComponent,
-  DataElementContentExtraButtonComponent,
   /* 네비게이션 */
   NavigationFrame,
   NavigationComponent,
@@ -49,26 +48,25 @@ import {
 
 import { ConvertDate } from 'libraries/conversion/ConvertDate';
 import { ConvertCommaNumber } from 'libraries/conversion/ConvertCommaNumber';
-import { GetTimeCost } from 'libraries/time/GetTimeCost';
-import { ConvertContactNumber } from 'libraries/conversion/ConvertContactNumber';
-import { AllowNumber } from 'libraries/constraint/AllowNumber';
 /*  */
 const BoardContent = observer(() => {
-  const { CommonData, DeliveryData } = useStore();
+  const { ReviewData } = useStore();
   /* 카테고리 */
   const CategoryList = [
-    { title: '배달 번호', width: 120 },
-    { title: '배달 상태', width: 110 },
-    { title: '전체 소요 시간', width: 90 },
-    { title: '배송 업체 이름', width: 90 },
-    { title: '약국 이름', width: 90 },
-    { title: '회원 이름', width: 90 },
+    { title: '진료 번호', width: 120 },
+    { title: '리뷰 작성 일시', width: 140 },
+    { title: '리뷰 상태', width: 110 },
+    { title: '병원 이름', width: 90 },
+    { title: '의사 이름', width: 90 },
     { title: '환자 이름', width: 90 },
-    { title: '회원 전화번호', width: 120 },
-    { title: '배달 주소', width: 260 },
-    { title: '배달 생성 시각 / 픽업 소요 시간', width: 140 },
-    { title: '픽업 완료 시각 / 배달 소요 시간', width: 140 },
-    { title: '배달 완료 시각', width: 140 },
+    { title: '리뷰 내용', width: 90 },
+    { title: '리뷰 점수', width: 90 },
+    { title: '리뷰 불만 사항 상태', width: 90 },
+    { title: '리뷰 블라인드 상태', width: 90 },
+    { title: '리뷰 블라인드 일시', width: 140 },
+    { title: '리뷰 공개 상태', width: 90 },
+    { title: '리뷰 댓글 상태', width: 90 },
+    { title: '리뷰 댓글 블라인드 일시', width: 140 },
   ];
 
   return (
@@ -105,8 +103,8 @@ const BoardContent = observer(() => {
           <DataFrame>
             <DataComponent>
               {/*  */}
-              {DeliveryData.DeliveryListData?.deliveryList?.map(element => (
-                <DataElementFrame key={element?.deliveryCode}>
+              {ReviewData.ReviewListData?.reviewList?.map(element => (
+                <DataElementFrame key={element?.code}>
                   <DataElementComponent>
                     {/*  */}
                     <DataElementContentFrame
@@ -115,7 +113,7 @@ const BoardContent = observer(() => {
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentTextComponent color="blue" cursor="pointer">
-                          {element?.deliveryCode || '-'}
+                          {element?.taskCode || '-'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
                     </DataElementContentFrame>
@@ -125,40 +123,9 @@ const BoardContent = observer(() => {
                       width={`${CategoryList[1].width}%`}
                     >
                       <DataElementContentComponent justifyContent="center">
-                        <DataElementContentButtonComponent
-                          backgroundColor={
-                            element?.status === '전체'
-                              ? '#000000'
-                              : element?.status === '접수 대기'
-                              ? 'rgb(255,64,64)'
-                              : element?.status === '배차 대기'
-                              ? 'rgb(255,192,0)'
-                              : element?.status === '배차 완료'
-                              ? 'rgb(0,0,0)'
-                              : element?.status === '픽업 완료'
-                              ? 'rgb(237,125,49)'
-                              : element?.status === '완료'
-                              ? 'rgb(112,173,71)'
-                              : element?.status === '배달 취소'
-                              ? 'rgb(255,64,64)'
-                              : '#000000'
-                          }
-                          color="#ffffff"
-                        >
-                          {element?.status || '-'}
-                        </DataElementContentButtonComponent>
-                        {element?.isExtraDelivery ? (
-                          <DataElementContentExtraButtonComponent
-                            backgroundColor="rgb(255,64,64)"
-                            color="#ffffff"
-                            minWidth="25px"
-                            width="25px"
-                            minHeight="25px"
-                            height="25px"
-                          >
-                            추
-                          </DataElementContentExtraButtonComponent>
-                        ) : null}
+                        <DataElementContentTextComponent>
+                          {element?.createdDateTime ? ConvertDate(element?.createdDateTime) : '-'}
+                        </DataElementContentTextComponent>
                       </DataElementContentComponent>
                     </DataElementContentFrame>
                     {/*  */}
@@ -167,17 +134,32 @@ const BoardContent = observer(() => {
                       width={`${CategoryList[2].width}%`}
                     >
                       <DataElementContentComponent justifyContent="center">
-                        <DataElementContentTextComponent>
-                          {element?.requestedDateTime
-                            ? `${ConvertCommaNumber(
-                                GetTimeCost({
-                                  prev: element?.requestedDateTime,
-                                  next: element?.endDateTime,
-                                  temp: CommonData.CurrentTime,
-                                })
-                              )}분`
-                            : '-'}
-                        </DataElementContentTextComponent>
+                        <DataElementContentButtonComponent
+                          backgroundColor={
+                            element?.reviewStatus === '전체'
+                              ? '#000000'
+                              : element?.reviewStatus === '정상'
+                              ? 'rgb(112,173,71)'
+                              : element?.reviewStatus === '블라인드'
+                              ? 'rgb(192,0,0)'
+                              : element?.reviewStatus === '삭제'
+                              ? 'rgb(192,0,0)'
+                              : 'transparent'
+                          }
+                          color={
+                            element?.reviewStatus === '전체'
+                              ? '#ffffff'
+                              : element?.reviewStatus === '정상'
+                              ? '#ffffff'
+                              : element?.reviewStatus === '블라인드'
+                              ? '#ffffff'
+                              : element?.reviewStatus === '삭제'
+                              ? '#ffffff'
+                              : 'transparent'
+                          }
+                        >
+                          {element?.reviewStatus || '-'}
+                        </DataElementContentButtonComponent>
                       </DataElementContentComponent>
                     </DataElementContentFrame>
                     {/*  */}
@@ -187,20 +169,8 @@ const BoardContent = observer(() => {
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentTextComponent>
-                          {element?.rider?.name || '-'}
+                          {element?.hospitalName || '-'}
                         </DataElementContentTextComponent>
-                        {element?.hasNotificationToCheck ? (
-                          <DataElementContentExtraButtonComponent
-                            backgroundColor="rgb(255,64,64)"
-                            color="#ffffff"
-                            minWidth="25px"
-                            width="25px"
-                            minHeight="25px"
-                            height="25px"
-                          >
-                            !
-                          </DataElementContentExtraButtonComponent>
-                        ) : null}
                       </DataElementContentComponent>
                     </DataElementContentFrame>
                     {/*  */}
@@ -210,7 +180,7 @@ const BoardContent = observer(() => {
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentTextComponent>
-                          {element?.pharmacy?.name || '-'}
+                          {element?.doctorName || '-'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
                     </DataElementContentFrame>
@@ -221,7 +191,7 @@ const BoardContent = observer(() => {
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentTextComponent>
-                          {element?.patient?.applicantName || '-'}
+                          {element?.patientName || '-'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
                     </DataElementContentFrame>
@@ -231,8 +201,8 @@ const BoardContent = observer(() => {
                       width={`${CategoryList[6].width}%`}
                     >
                       <DataElementContentComponent justifyContent="center">
-                        <DataElementContentTextComponent>
-                          {element?.patient?.name || '-'}
+                        <DataElementContentTextComponent color="blue" cursor="pointer">
+                          보기
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
                     </DataElementContentFrame>
@@ -243,21 +213,35 @@ const BoardContent = observer(() => {
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentTextComponent>
-                          {element?.patient?.phoneNum
-                            ? ConvertContactNumber(AllowNumber(element?.patient?.phoneNum))
-                            : '-'}
+                          {element?.rating ? ConvertCommaNumber(element?.rating.toString()) : '-'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
                     </DataElementContentFrame>
                     {/*  */}
+
                     <DataElementContentFrame
                       minWidth={`${CategoryList[8].width}px`}
                       width={`${CategoryList[8].width}%`}
                     >
                       <DataElementContentComponent justifyContent="center">
-                        <DataElementContentTextComponent>
-                          {element?.address || '-'}
-                        </DataElementContentTextComponent>
+                        <DataElementContentButtonComponent
+                          backgroundColor={
+                            element?.hasNegative === true
+                              ? 'rgb(192,0,0)'
+                              : element?.hasNegative === false
+                              ? 'rgb(112,173,71)'
+                              : 'transparent'
+                          }
+                          color={
+                            element?.hasNegative === true
+                              ? '#ffffff'
+                              : element?.hasNegative === false
+                              ? '#ffffff'
+                              : '#000000'
+                          }
+                        >
+                          {element?.hasNegative ? '있음' : '없음'}
+                        </DataElementContentButtonComponent>
                       </DataElementContentComponent>
                     </DataElementContentFrame>
                     {/*  */}
@@ -266,17 +250,40 @@ const BoardContent = observer(() => {
                       width={`${CategoryList[9].width}%`}
                     >
                       <DataElementContentComponent justifyContent="center">
-                        <DataElementContentTextComponent>
-                          {element?.requestedDateTime
-                            ? `${ConvertDate(element?.requestedDateTime)}/${ConvertCommaNumber(
-                                GetTimeCost({
-                                  prev: element?.requestedDateTime,
-                                  next: element?.pickUpDateTime,
-                                  temp: CommonData.CurrentTime,
-                                })
-                              )}분`
+                        <DataElementContentButtonComponent
+                          backgroundColor={
+                            element?.blind === ''
+                              ? 'rgb(112,173,71)'
+                              : element?.blind === '리뷰'
+                              ? 'rgb(192,0,0)'
+                              : element?.blind === '댓글'
+                              ? 'rgb(192,0,0)'
+                              : element?.blind === '리뷰, 댓글'
+                              ? 'rgb(192,0,0)'
+                              : 'transparent'
+                          }
+                          color={
+                            element?.blind === ''
+                              ? '#ffffff'
+                              : element?.blind === '리뷰'
+                              ? '#ffffff'
+                              : element?.blind === '댓글'
+                              ? '#ffffff'
+                              : element?.blind === '리뷰, 댓글'
+                              ? '#ffffff'
+                              : '#000000'
+                          }
+                        >
+                          {element?.blind === ''
+                            ? '없음'
+                            : element?.blind === '리뷰'
+                            ? '리뷰'
+                            : element?.blind === '댓글'
+                            ? '댓글'
+                            : element?.blind === '리뷰, 댓글'
+                            ? '리뷰, 댓글'
                             : '-'}
-                        </DataElementContentTextComponent>
+                        </DataElementContentButtonComponent>
                       </DataElementContentComponent>
                     </DataElementContentFrame>
                     {/*  */}
@@ -286,14 +293,8 @@ const BoardContent = observer(() => {
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentTextComponent>
-                          {element?.pickUpDateTime
-                            ? `${ConvertDate(element?.pickUpDateTime)}/${ConvertCommaNumber(
-                                GetTimeCost({
-                                  prev: element?.pickUpDateTime,
-                                  next: element?.endDateTime,
-                                  temp: CommonData.CurrentTime,
-                                })
-                              )}분`
+                          {element?.reviewBlindedDateTime
+                            ? ConvertDate(element?.reviewBlindedDateTime)
                             : '-'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
@@ -304,8 +305,62 @@ const BoardContent = observer(() => {
                       width={`${CategoryList[11].width}%`}
                     >
                       <DataElementContentComponent justifyContent="center">
+                        <DataElementContentButtonComponent
+                          backgroundColor={
+                            element?.isPublic === true
+                              ? 'rgb(192,0,0)'
+                              : element?.isPublic === false
+                              ? 'rgb(112,173,71)'
+                              : 'transparent'
+                          }
+                          color={
+                            element?.isPublic === true
+                              ? '#ffffff'
+                              : element?.isPublic === false
+                              ? '#ffffff'
+                              : '#000000'
+                          }
+                        >
+                          {element?.isPublic ? '공개' : '비공개'}
+                        </DataElementContentButtonComponent>
+                      </DataElementContentComponent>
+                    </DataElementContentFrame>
+                    {/*  */}
+                    <DataElementContentFrame
+                      minWidth={`${CategoryList[12].width}px`}
+                      width={`${CategoryList[12].width}%`}
+                    >
+                      <DataElementContentComponent justifyContent="center">
+                        <DataElementContentButtonComponent
+                          backgroundColor={
+                            element?.hasReply === true
+                              ? 'rgb(192,0,0)'
+                              : element?.hasReply === false
+                              ? 'rgb(112,173,71)'
+                              : 'transparent'
+                          }
+                          color={
+                            element?.hasReply === true
+                              ? '#ffffff'
+                              : element?.hasReply === false
+                              ? '#ffffff'
+                              : '#000000'
+                          }
+                        >
+                          {element?.hasReply ? '있음' : '없음'}
+                        </DataElementContentButtonComponent>
+                      </DataElementContentComponent>
+                    </DataElementContentFrame>
+                    {/*  */}
+                    <DataElementContentFrame
+                      minWidth={`${CategoryList[13].width}px`}
+                      width={`${CategoryList[13].width}%`}
+                    >
+                      <DataElementContentComponent justifyContent="center">
                         <DataElementContentTextComponent>
-                          {element?.endDateTime ? ConvertDate(element?.endDateTime) : '-'}
+                          {element?.replyBlindedDateTime
+                            ? ConvertDate(element?.replyBlindedDateTime)
+                            : '-'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
                     </DataElementContentFrame>
@@ -331,8 +386,8 @@ const BoardContent = observer(() => {
               backgroundColor="#14C276"
               cursor="pointer"
               onClick={() => {
-                /* DeliveryData.setPageNavigator(1); */
-                DeliveryData.setParagraphNavigator(1);
+                /* ReviewData.setPageNavigator(1); */
+                ReviewData.setParagraphNavigator(1);
               }}
             >
               <NavigationTextComponent color="#ffffff">{'<<'}</NavigationTextComponent>
@@ -341,8 +396,8 @@ const BoardContent = observer(() => {
               backgroundColor="#14C276"
               cursor="pointer"
               onClick={() =>
-                DeliveryData.ParagraphNavigator > 1
-                  ? DeliveryData.setParagraphNavigator(DeliveryData.ParagraphNavigator - 1)
+                ReviewData.ParagraphNavigator > 1
+                  ? ReviewData.setParagraphNavigator(ReviewData.ParagraphNavigator - 1)
                   : {}
               }
             >
@@ -351,41 +406,36 @@ const BoardContent = observer(() => {
           </NavigationButtonFrame>
           <NavigationButtonFrame>
             {[...Array(10)].map((element, key) =>
-              (DeliveryData.ParagraphNavigator - 1) * 10 + key + 1 <=
-              (DeliveryData.DeliveryListData?.count && DeliveryData.DeliveryListData?.count.total
-                ? Math.floor((Number(DeliveryData.DeliveryListData?.count.total) - 1) / 20) + 1
+              (ReviewData.ParagraphNavigator - 1) * 10 + key + 1 <=
+              (ReviewData.ReviewListData?.count && ReviewData.ReviewListData?.count.total
+                ? Math.floor((Number(ReviewData.ReviewListData?.count.total) - 1) / 20) + 1
                 : 1) ? (
                 <NavigationPageButtonComponent
                   // eslint-disable-next-line react/no-array-index-key
                   key={key}
                   cursor="pointer"
                   backgroundColor={
-                    (DeliveryData.ParagraphNavigator - 1) * 10 + key + 1 ===
-                    DeliveryData.PageNavigator
+                    (ReviewData.ParagraphNavigator - 1) * 10 + key + 1 === ReviewData.PageNavigator
                       ? '#3C9E3F'
                       : '#14C276'
                   }
                   onClick={() => {
-                    DeliveryData.setPageNavigator(
-                      (DeliveryData.ParagraphNavigator - 1) * 10 + key + 1
-                    );
+                    ReviewData.setPageNavigator((ReviewData.ParagraphNavigator - 1) * 10 + key + 1);
                   }}
                 >
                   <NavigationTextComponent
                     color={
-                      (DeliveryData.ParagraphNavigator - 1) * 10 + key + 1 ===
-                      DeliveryData.PageNavigator
+                      (ReviewData.ParagraphNavigator - 1) * 10 + key + 1 ===
+                      ReviewData.PageNavigator
                         ? '#ffffff'
                         : '#ffffff'
                     }
                   >
-                    {(DeliveryData.ParagraphNavigator - 1) * 10 + key + 1 <=
-                    (DeliveryData.DeliveryListData?.count &&
-                    DeliveryData.DeliveryListData?.count.total
-                      ? Math.floor((Number(DeliveryData.DeliveryListData?.count.total) - 1) / 20) +
-                        1
+                    {(ReviewData.ParagraphNavigator - 1) * 10 + key + 1 <=
+                    (ReviewData.ReviewListData?.count && ReviewData.ReviewListData?.count.total
+                      ? Math.floor((Number(ReviewData.ReviewListData?.count.total) - 1) / 20) + 1
                       : 1)
-                      ? (DeliveryData.ParagraphNavigator - 1) * 10 + key + 1
+                      ? (ReviewData.ParagraphNavigator - 1) * 10 + key + 1
                       : ''}
                   </NavigationTextComponent>
                 </NavigationPageButtonComponent>
@@ -400,10 +450,10 @@ const BoardContent = observer(() => {
               backgroundColor="#14C276"
               cursor="pointer"
               onClick={() =>
-                DeliveryData.DeliveryListData?.count && DeliveryData.DeliveryListData?.count.total
-                  ? Math.ceil((Number(DeliveryData.DeliveryListData?.count.total) - 1) / 20 / 10) >
-                    DeliveryData.ParagraphNavigator
-                    ? DeliveryData.setParagraphNavigator(DeliveryData.ParagraphNavigator + 1)
+                ReviewData.ReviewListData?.count && ReviewData.ReviewListData?.count.total
+                  ? Math.ceil((Number(ReviewData.ReviewListData?.count.total) - 1) / 20 / 10) >
+                    ReviewData.ParagraphNavigator
+                    ? ReviewData.setParagraphNavigator(ReviewData.ParagraphNavigator + 1)
                     : {}
                   : {}
               }
@@ -414,19 +464,18 @@ const BoardContent = observer(() => {
               backgroundColor="#14C276"
               cursor="pointer"
               onClick={() => {
-                /* DeliveryData.setPageNavigator(
-                  DeliveryData.DeliveryListData?.count &&
-                    DeliveryData.DeliveryListData?.count.total
-                    ? Math.floor((Number(DeliveryData.DeliveryListData?.count.total) - 1) / 20) +
+                /* ReviewData.setPageNavigator(
+                  ReviewData.ReviewListData?.count &&
+                    ReviewData.ReviewListData?.count.total
+                    ? Math.floor((Number(ReviewData.ReviewListData?.count.total) - 1) / 20) +
                         1
                     : 1
                 ); */
-                DeliveryData.setParagraphNavigator(
+                ReviewData.setParagraphNavigator(
                   parseInt(
                     (
-                      ((DeliveryData.DeliveryListData?.count &&
-                      DeliveryData.DeliveryListData?.count.total
-                        ? Math.floor((Number(DeliveryData.DeliveryListData?.count.total) - 1) / 20)
+                      ((ReviewData.ReviewListData?.count && ReviewData.ReviewListData?.count.total
+                        ? Math.floor((Number(ReviewData.ReviewListData?.count.total) - 1) / 20)
                         : 0) +
                         1 -
                         1) /
