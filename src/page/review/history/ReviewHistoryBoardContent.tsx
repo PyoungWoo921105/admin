@@ -209,7 +209,9 @@ const BoardContent = observer(() => {
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentTextComponent>
-                          {element?.rating ? ConvertCommaNumber(element?.rating.toString()) : '-'}
+                          {element?.rating
+                            ? `${ConvertCommaNumber(element?.rating.toString())}점`
+                            : '-'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
                     </DataElementContentFrame>

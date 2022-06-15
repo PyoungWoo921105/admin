@@ -70,9 +70,11 @@ import {
   StatisticElementComponent,
   StatisticElementTitleFrame,
   StatisticElementTitleComponent,
+  StatisticElementTitleTextFrame,
   StatisticElementTitleTextComponent,
   StatisticElementBoardFrame,
   StatisticElementBoardComponent,
+  StatisticElementBoardTextFrame,
   StatisticElementBoardTextComponent,
 } from 'styles/components/common/Statistic';
 
@@ -187,7 +189,7 @@ const BoardTitleAndFilter = observer(() => {
     setPatientName(event.target.value);
   };
   /* 점수 상태 */
-  const ReviewRatingStateList = ['선택', '전체', '5', '4', '3', '2', '1'];
+  const ReviewRatingStateList = ['선택', '전체', '5점', '4점', '3점', '2점', '1점'];
   const [ReviewRatingState, setReviewRatingState] = useState<string[]>(['전체']);
   const onChangeReviewRatingState = (event: { target: { value: string } }) => {
     if (event.target.value === '전체') {
@@ -457,11 +459,11 @@ const BoardTitleAndFilter = observer(() => {
     '리뷰',
     '댓글',
 
-    '5',
-    '4',
-    '3',
-    '2',
-    '1',
+    '5점',
+    '4점',
+    '3점',
+    '2점',
+    '1점',
   ];
 
   /* ENTER */
@@ -1027,156 +1029,219 @@ const BoardTitleAndFilter = observer(() => {
         <StatisticFrame>
           <StatisticComponent>
             {/*  */}
-            {StatisticsList.map(element => (
-              <StatisticElementFrame key={element}>
-                <StatisticElementComponent>
-                  <StatisticElementTitleFrame
-                    minWidth={`${element.length * 10 + 40}px`}
-                    width={`${element.length * 10 + 40}px`}
-                  >
-                    <StatisticElementTitleComponent>
-                      {/* TODO */}
-                      <StatisticElementTitleTextComponent
-                        width="100%"
-                        lineHeight="30px"
-                        color={
-                          element === '전체'
-                            ? '#000000'
-                            : element === '정상'
-                            ? 'rgb(112,173,71)'
-                            : element === '블라인드'
-                            ? 'rgb(192,0,0)'
-                            : element === '삭제'
-                            ? 'rgb(192,0,0)'
-                            : element === '리뷰'
-                            ? '#000000'
-                            : element === '댓글'
-                            ? '#000000'
-                            : element === '5'
-                            ? 'rgb(255, 192, 0)'
-                            : element === '4'
-                            ? 'rgb(255, 192, 0)'
-                            : element === '3'
-                            ? 'rgb(255, 192, 0)'
-                            : element === '2'
-                            ? 'rgb(255, 192, 0)'
-                            : element === '1'
-                            ? 'rgb(255, 192, 0)'
-                            : '#000000'
-                        }
-                      >
-                        {element}
-                      </StatisticElementTitleTextComponent>
-                    </StatisticElementTitleComponent>
-                  </StatisticElementTitleFrame>
-                  <StatisticElementBoardFrame
-                    minWidth={`${220 - (element.length * 10 + 40)}px`}
-                    width={`${220 - (element.length * 10 + 40)}px`}
-                  >
-                    <StatisticElementBoardComponent>
-                      <StatisticElementBoardTextComponent
-                        width="100%"
-                        textAlign="right"
-                        lineHeight="30px"
-                        color={
-                          element === '전체'
-                            ? '#000000'
-                            : element === '정상'
-                            ? 'rgb(112,173,71)'
-                            : element === '블라인드'
-                            ? 'rgb(192,0,0)'
-                            : element === '삭제'
-                            ? 'rgb(192,0,0)'
-                            : element === '리뷰'
-                            ? '#000000'
-                            : element === '댓글'
-                            ? '#000000'
-                            : element === '5'
-                            ? 'rgb(255, 192, 0)'
-                            : element === '4'
-                            ? 'rgb(255, 192, 0)'
-                            : element === '3'
-                            ? 'rgb(255, 192, 0)'
-                            : element === '2'
-                            ? 'rgb(255, 192, 0)'
-                            : element === '1'
-                            ? 'rgb(255, 192, 0)'
-                            : '#000000'
-                        }
-                      >
-                        {element === '전체'
-                          ? ReviewData.ReviewListData?.count?.total
-                            ? `${ConvertCommaNumber(
-                                ReviewData.ReviewListData?.count?.total.toString()
-                              )}건`
-                            : '0건'
-                          : element === '정상'
-                          ? ReviewData.ReviewListData?.count?.normalCnt
-                            ? `${ConvertCommaNumber(
-                                ReviewData.ReviewListData?.count?.normalCnt.toString()
-                              )}건`
-                            : '0건'
-                          : element === '블라인드'
-                          ? ReviewData.ReviewListData?.count?.blindedCnt
-                            ? `${ConvertCommaNumber(
-                                ReviewData.ReviewListData?.count?.blindedCnt.toString()
-                              )}건`
-                            : '0건'
-                          : element === '삭제'
-                          ? ReviewData.ReviewListData?.count?.deletedCnt
-                            ? `${ConvertCommaNumber(
-                                ReviewData.ReviewListData?.count?.deletedCnt.toString()
-                              )}건`
-                            : '0건'
-                          : element === '리뷰'
-                          ? ReviewData.ReviewListData?.count?.total
-                            ? `${ConvertCommaNumber(
-                                ReviewData.ReviewListData?.count?.total.toString()
-                              )}건`
-                            : '0건'
-                          : element === '댓글'
-                          ? ReviewData.ReviewListData?.count?.replyCnt
-                            ? `${ConvertCommaNumber(
-                                ReviewData.ReviewListData?.count?.replyCnt.toString()
-                              )}건`
-                            : '0건'
-                          : element === '5'
-                          ? ReviewData.ReviewListData?.count?.rating5
-                            ? `${ConvertCommaNumber(
-                                ReviewData.ReviewListData?.count?.rating5.toString()
-                              )}건`
-                            : '0건'
-                          : element === '4'
-                          ? ReviewData.ReviewListData?.count?.rating4
-                            ? `${ConvertCommaNumber(
-                                ReviewData.ReviewListData?.count?.rating4.toString()
-                              )}건`
-                            : '0건'
-                          : element === '3'
-                          ? ReviewData.ReviewListData?.count?.rating3
-                            ? `${ConvertCommaNumber(
-                                ReviewData.ReviewListData?.count?.rating3.toString()
-                              )}건`
-                            : '0건'
-                          : element === '2'
-                          ? ReviewData.ReviewListData?.count?.rating2
-                            ? `${ConvertCommaNumber(
-                                ReviewData.ReviewListData?.count?.rating2.toString()
-                              )}건`
-                            : '0건'
-                          : element === '1'
-                          ? ReviewData.ReviewListData?.count?.rating1
-                            ? `${ConvertCommaNumber(
-                                ReviewData.ReviewListData?.count?.rating1.toString()
-                              )}건`
-                            : '0건'
-                          : '0건'}
-                      </StatisticElementBoardTextComponent>
-                    </StatisticElementBoardComponent>
-                  </StatisticElementBoardFrame>
-                </StatisticElementComponent>
-              </StatisticElementFrame>
-            ))}
+            {StatisticsList.map(element =>
+              element === '전체' ||
+              element === '정상' ||
+              element === '블라인드' ||
+              element === '삭제' ||
+              element === '리뷰' ||
+              element === '댓글' ? (
+                <StatisticElementFrame key={element}>
+                  <StatisticElementComponent>
+                    <StatisticElementTitleFrame
+                      minWidth={`${element.length * 10 + 40}px`}
+                      width={`${element.length * 10 + 40}px`}
+                    >
+                      <StatisticElementTitleComponent>
+                        <StatisticElementTitleTextFrame>
+                          <StatisticElementTitleTextComponent
+                            width="100%"
+                            lineHeight="30px"
+                            color={
+                              element === '전체'
+                                ? '#000000'
+                                : element === '정상'
+                                ? 'rgb(112,173,71)'
+                                : element === '블라인드'
+                                ? 'rgb(192,0,0)'
+                                : element === '삭제'
+                                ? 'rgb(192,0,0)'
+                                : element === '리뷰'
+                                ? '#000000'
+                                : element === '댓글'
+                                ? '#000000'
+                                : '#000000'
+                            }
+                          >
+                            {element}
+                          </StatisticElementTitleTextComponent>
+                        </StatisticElementTitleTextFrame>
+                      </StatisticElementTitleComponent>
+                    </StatisticElementTitleFrame>
+                    <StatisticElementBoardFrame
+                      minWidth={`${220 - (element.length * 10 + 40)}px`}
+                      width={`${220 - (element.length * 10 + 40)}px`}
+                    >
+                      <StatisticElementBoardComponent>
+                        <StatisticElementBoardTextFrame>
+                          <StatisticElementBoardTextComponent
+                            width="100%"
+                            textAlign="right"
+                            lineHeight="30px"
+                            color={
+                              element === '전체'
+                                ? '#000000'
+                                : element === '정상'
+                                ? 'rgb(112,173,71)'
+                                : element === '블라인드'
+                                ? 'rgb(192,0,0)'
+                                : element === '삭제'
+                                ? 'rgb(192,0,0)'
+                                : element === '리뷰'
+                                ? '#000000'
+                                : element === '댓글'
+                                ? '#000000'
+                                : '#000000'
+                            }
+                          >
+                            {element === '전체'
+                              ? ReviewData.ReviewListData?.count?.total
+                                ? `${ConvertCommaNumber(
+                                    ReviewData.ReviewListData?.count?.total.toString()
+                                  )}건`
+                                : '0건'
+                              : element === '정상'
+                              ? ReviewData.ReviewListData?.count?.normalCnt
+                                ? `${ConvertCommaNumber(
+                                    ReviewData.ReviewListData?.count?.normalCnt.toString()
+                                  )}건`
+                                : '0건'
+                              : element === '블라인드'
+                              ? ReviewData.ReviewListData?.count?.blindedCnt
+                                ? `${ConvertCommaNumber(
+                                    ReviewData.ReviewListData?.count?.blindedCnt.toString()
+                                  )}건`
+                                : '0건'
+                              : element === '삭제'
+                              ? ReviewData.ReviewListData?.count?.deletedCnt
+                                ? `${ConvertCommaNumber(
+                                    ReviewData.ReviewListData?.count?.deletedCnt.toString()
+                                  )}건`
+                                : '0건'
+                              : element === '리뷰'
+                              ? ReviewData.ReviewListData?.count?.total
+                                ? `${ConvertCommaNumber(
+                                    ReviewData.ReviewListData?.count?.total.toString()
+                                  )}건`
+                                : '0건'
+                              : element === '댓글'
+                              ? ReviewData.ReviewListData?.count?.replyCnt
+                                ? `${ConvertCommaNumber(
+                                    ReviewData.ReviewListData?.count?.replyCnt.toString()
+                                  )}건`
+                                : '0건'
+                              : '0건'}
+                          </StatisticElementBoardTextComponent>
+                        </StatisticElementBoardTextFrame>
+                      </StatisticElementBoardComponent>
+                    </StatisticElementBoardFrame>
+                  </StatisticElementComponent>
+                </StatisticElementFrame>
+              ) : null
+            )}
+            {/*  */}
+          </StatisticComponent>
+          <StatisticComponent>
+            {/*  */}
+            {StatisticsList.map(element =>
+              element === '5점' ||
+              element === '4점' ||
+              element === '3점' ||
+              element === '2점' ||
+              element === '1점' ? (
+                <StatisticElementFrame key={element}>
+                  <StatisticElementComponent>
+                    <StatisticElementTitleFrame
+                      minWidth={`${element.length * 10 + 40}px`}
+                      width={`${element.length * 10 + 40}px`}
+                    >
+                      <StatisticElementTitleComponent>
+                        <StatisticElementTitleTextFrame>
+                          <StatisticElementTitleTextComponent
+                            width="100%"
+                            lineHeight="30px"
+                            color={
+                              element === '5점'
+                                ? 'rgb(255, 192, 0)'
+                                : element === '4점'
+                                ? 'rgb(255, 192, 0)'
+                                : element === '3점'
+                                ? 'rgb(255, 192, 0)'
+                                : element === '2점'
+                                ? 'rgb(255, 192, 0)'
+                                : element === '1점'
+                                ? 'rgb(255, 192, 0)'
+                                : '#000000'
+                            }
+                          >
+                            {element}
+                          </StatisticElementTitleTextComponent>
+                        </StatisticElementTitleTextFrame>
+                      </StatisticElementTitleComponent>
+                    </StatisticElementTitleFrame>
+                    <StatisticElementBoardFrame
+                      minWidth={`${220 - (element.length * 10 + 40)}px`}
+                      width={`${220 - (element.length * 10 + 40)}px`}
+                    >
+                      <StatisticElementBoardComponent>
+                        <StatisticElementBoardTextFrame>
+                          <StatisticElementBoardTextComponent
+                            width="100%"
+                            textAlign="right"
+                            lineHeight="30px"
+                            color={
+                              element === '5점'
+                                ? 'rgb(255, 192, 0)'
+                                : element === '4점'
+                                ? 'rgb(255, 192, 0)'
+                                : element === '3점'
+                                ? 'rgb(255, 192, 0)'
+                                : element === '2점'
+                                ? 'rgb(255, 192, 0)'
+                                : element === '1점'
+                                ? 'rgb(255, 192, 0)'
+                                : '#000000'
+                            }
+                          >
+                            {element === '5점'
+                              ? ReviewData.ReviewListData?.count?.rating5
+                                ? `${ConvertCommaNumber(
+                                    ReviewData.ReviewListData?.count?.rating5.toString()
+                                  )}건`
+                                : '0건'
+                              : element === '4점'
+                              ? ReviewData.ReviewListData?.count?.rating4
+                                ? `${ConvertCommaNumber(
+                                    ReviewData.ReviewListData?.count?.rating4.toString()
+                                  )}건`
+                                : '0건'
+                              : element === '3점'
+                              ? ReviewData.ReviewListData?.count?.rating3
+                                ? `${ConvertCommaNumber(
+                                    ReviewData.ReviewListData?.count?.rating3.toString()
+                                  )}건`
+                                : '0건'
+                              : element === '2점'
+                              ? ReviewData.ReviewListData?.count?.rating2
+                                ? `${ConvertCommaNumber(
+                                    ReviewData.ReviewListData?.count?.rating2.toString()
+                                  )}건`
+                                : '0건'
+                              : element === '1점'
+                              ? ReviewData.ReviewListData?.count?.rating1
+                                ? `${ConvertCommaNumber(
+                                    ReviewData.ReviewListData?.count?.rating1.toString()
+                                  )}건`
+                                : '0건'
+                              : '0건'}
+                          </StatisticElementBoardTextComponent>
+                        </StatisticElementBoardTextFrame>
+                      </StatisticElementBoardComponent>
+                    </StatisticElementBoardFrame>
+                  </StatisticElementComponent>
+                </StatisticElementFrame>
+              ) : null
+            )}
             {/*  */}
           </StatisticComponent>
         </StatisticFrame>

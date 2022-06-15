@@ -6,6 +6,8 @@ import styled from 'styled-components';
 import { CustomProps } from 'styles/interface/CustomProps';
 
 export const StatisticFrame = styled.div`
+  display: flex;
+  flex-direction: column;
   width: 100%;
 `;
 export const StatisticComponent = styled.div`
@@ -47,9 +49,14 @@ export const StatisticElementTitleComponent = styled.div<CustomProps>`
   display: flex;
   flex-direction: row;
   height: 100%;
+  justify-content: left;
   min-width: ${props => (props.minWidth ? props.minWidth : '')};
   padding: 0px 10px 0px 10px;
   width: 100%;
+`;
+export const StatisticElementTitleTextFrame = styled.div<CustomProps>`
+  min-width: ${props => (props.minWidth ? props.minWidth : '')};
+  width: ${props => (props.width ? props.width : '')};
 `;
 export const StatisticElementTitleTextComponent = styled.span<CustomProps>`
   align-items: center;
@@ -82,9 +89,14 @@ export const StatisticElementBoardComponent = styled.div<CustomProps>`
   display: flex;
   flex-direction: row;
   height: 100%;
+  justify-content: right;
   min-width: ${props => (props.minWidth ? props.minWidth : '')};
   padding: 0px 10px 0px 10px;
   width: 100%;
+`;
+export const StatisticElementBoardTextFrame = styled.div<CustomProps>`
+  min-width: ${props => (props.minWidth ? props.minWidth : '')};
+  width: ${props => (props.width ? props.width : '')};
 `;
 export const StatisticElementBoardTextComponent = styled.span<CustomProps>`
   align-items: center;

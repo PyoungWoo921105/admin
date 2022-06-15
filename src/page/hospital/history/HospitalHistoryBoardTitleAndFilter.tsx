@@ -70,9 +70,11 @@ import {
   StatisticElementComponent,
   StatisticElementTitleFrame,
   StatisticElementTitleComponent,
+  StatisticElementTitleTextFrame,
   StatisticElementTitleTextComponent,
   StatisticElementBoardFrame,
   StatisticElementBoardComponent,
+  StatisticElementBoardTextFrame,
   StatisticElementBoardTextComponent,
 } from 'styles/components/common/Statistic';
 
@@ -240,12 +242,12 @@ const BoardTitleAndFilter = observer(() => {
   const onChangeDiseaseName = (event: { target: { value: string } }) => {
     setDiseaseName(event.target.value);
   };
-  /* 의사 이름 */
+  /* 소속 의사 이름 */
   const [DoctorName, setDoctorName] = useState('');
   const onChangeDoctorName = (event: { target: { value: string } }) => {
     setDoctorName(event.target.value);
   };
-  /* 약국 이름 */
+  /* 연계 약국 이름 */
   const [PharmacyName, setPharmacyName] = useState('');
   const onChangePharmacyName = (event: { target: { value: string } }) => {
     setPharmacyName(event.target.value);
@@ -759,12 +761,14 @@ const BoardTitleAndFilter = observer(() => {
             {/* SINGLE INPUT */}
             <FilterElementFrame>
               <FilterElementComponent>
-                <FilterElementTitleFrame minWidth="70px" width="70px">
+                <FilterElementTitleFrame minWidth="95px" width="95px">
                   <FilterElementTitleComponent>
-                    <FilterElementTitleTextComponent>의사 이름</FilterElementTitleTextComponent>
+                    <FilterElementTitleTextComponent>
+                      소속 의사 이름
+                    </FilterElementTitleTextComponent>
                   </FilterElementTitleComponent>
                 </FilterElementTitleFrame>
-                <FilterElementBoardFrame minWidth="150px" width="150px">
+                <FilterElementBoardFrame minWidth="125px" width="125px">
                   <FilterElementBoardComponent>
                     <FilterElementBoardInputComponent
                       width="100%"
@@ -780,12 +784,14 @@ const BoardTitleAndFilter = observer(() => {
             {/* SINGLE INPUT */}
             <FilterElementFrame>
               <FilterElementComponent>
-                <FilterElementTitleFrame minWidth="70px" width="70px">
+                <FilterElementTitleFrame minWidth="95px" width="95px">
                   <FilterElementTitleComponent>
-                    <FilterElementTitleTextComponent>약국 이름</FilterElementTitleTextComponent>
+                    <FilterElementTitleTextComponent>
+                      연계 약국 이름
+                    </FilterElementTitleTextComponent>
                   </FilterElementTitleComponent>
                 </FilterElementTitleFrame>
-                <FilterElementBoardFrame minWidth="150px" width="150px">
+                <FilterElementBoardFrame minWidth="125px" width="125px">
                   <FilterElementBoardComponent>
                     <FilterElementBoardInputComponent
                       width="100%"
@@ -813,29 +819,31 @@ const BoardTitleAndFilter = observer(() => {
                     width={`${element.length * 10 + 40}px`}
                   >
                     <StatisticElementTitleComponent>
-                      <StatisticElementTitleTextComponent
-                        width="100%"
-                        lineHeight="30px"
-                        color={
-                          element === '전체'
-                            ? '#000000'
-                            : element === '활성'
-                            ? 'rgb(112,173,71)'
-                            : element === '등록 대기'
-                            ? 'rgb(255, 192, 0)'
-                            : element === '등록 반려'
-                            ? 'rgb(192,0,0)'
-                            : element === '블라인드'
-                            ? 'rgb(192,0,0)'
-                            : element === '운영 중'
-                            ? 'rgb(112,173,71)'
-                            : element === '운영 종료'
-                            ? 'rgb(192,0,0)'
-                            : '#000000'
-                        }
-                      >
-                        {element}
-                      </StatisticElementTitleTextComponent>
+                      <StatisticElementTitleTextFrame>
+                        <StatisticElementTitleTextComponent
+                          width="100%"
+                          lineHeight="30px"
+                          color={
+                            element === '전체'
+                              ? '#000000'
+                              : element === '활성'
+                              ? 'rgb(112,173,71)'
+                              : element === '등록 대기'
+                              ? 'rgb(255, 192, 0)'
+                              : element === '등록 반려'
+                              ? 'rgb(192,0,0)'
+                              : element === '블라인드'
+                              ? 'rgb(192,0,0)'
+                              : element === '운영 중'
+                              ? 'rgb(112,173,71)'
+                              : element === '운영 종료'
+                              ? 'rgb(192,0,0)'
+                              : '#000000'
+                          }
+                        >
+                          {element}
+                        </StatisticElementTitleTextComponent>
+                      </StatisticElementTitleTextFrame>
                     </StatisticElementTitleComponent>
                   </StatisticElementTitleFrame>
                   <StatisticElementBoardFrame
@@ -843,72 +851,74 @@ const BoardTitleAndFilter = observer(() => {
                     width={`${220 - (element.length * 10 + 40)}px`}
                   >
                     <StatisticElementBoardComponent>
-                      <StatisticElementBoardTextComponent
-                        width="100%"
-                        textAlign="right"
-                        lineHeight="30px"
-                        color={
-                          element === '전체'
-                            ? '#000000'
+                      <StatisticElementBoardTextFrame>
+                        <StatisticElementBoardTextComponent
+                          width="100%"
+                          textAlign="right"
+                          lineHeight="30px"
+                          color={
+                            element === '전체'
+                              ? '#000000'
+                              : element === '활성'
+                              ? 'rgb(112,173,71)'
+                              : element === '등록 대기'
+                              ? 'rgb(255, 192, 0)'
+                              : element === '등록 반려'
+                              ? 'rgb(192,0,0)'
+                              : element === '블라인드'
+                              ? 'rgb(192,0,0)'
+                              : element === '운영 중'
+                              ? 'rgb(112,173,71)'
+                              : element === '운영 종료'
+                              ? 'rgb(192,0,0)'
+                              : '#000000'
+                          }
+                        >
+                          {element === '전체'
+                            ? HospitalData.HospitalListData?.count?.total
+                              ? `${ConvertCommaNumber(
+                                  HospitalData.HospitalListData?.count?.total.toString()
+                                )}건`
+                              : '0건'
                             : element === '활성'
-                            ? 'rgb(112,173,71)'
+                            ? HospitalData.HospitalListData?.count?.active
+                              ? `${ConvertCommaNumber(
+                                  HospitalData.HospitalListData?.count?.active.toString()
+                                )}건`
+                              : '0건'
                             : element === '등록 대기'
-                            ? 'rgb(255, 192, 0)'
+                            ? HospitalData.HospitalListData?.count?.waitRegister
+                              ? `${ConvertCommaNumber(
+                                  HospitalData.HospitalListData?.count?.waitRegister.toString()
+                                )}건`
+                              : '0건'
                             : element === '등록 반려'
-                            ? 'rgb(192,0,0)'
+                            ? HospitalData.HospitalListData?.count?.registerRejected
+                              ? `${ConvertCommaNumber(
+                                  HospitalData.HospitalListData?.count?.registerRejected.toString()
+                                )}건`
+                              : '0건'
                             : element === '블라인드'
-                            ? 'rgb(192,0,0)'
+                            ? HospitalData.HospitalListData?.count?.blinded
+                              ? `${ConvertCommaNumber(
+                                  HospitalData.HospitalListData?.count?.blinded.toString()
+                                )}건`
+                              : '0건'
                             : element === '운영 중'
-                            ? 'rgb(112,173,71)'
+                            ? HospitalData.HospitalListData?.count?.running
+                              ? `${ConvertCommaNumber(
+                                  HospitalData.HospitalListData?.count?.running.toString()
+                                )}건`
+                              : '0건'
                             : element === '운영 종료'
-                            ? 'rgb(192,0,0)'
-                            : '#000000'
-                        }
-                      >
-                        {element === '전체'
-                          ? HospitalData.HospitalListData?.count?.total
-                            ? `${ConvertCommaNumber(
-                                HospitalData.HospitalListData?.count?.total.toString()
-                              )}건`
-                            : '0건'
-                          : element === '활성'
-                          ? HospitalData.HospitalListData?.count?.active
-                            ? `${ConvertCommaNumber(
-                                HospitalData.HospitalListData?.count?.active.toString()
-                              )}건`
-                            : '0건'
-                          : element === '등록 대기'
-                          ? HospitalData.HospitalListData?.count?.waitRegister
-                            ? `${ConvertCommaNumber(
-                                HospitalData.HospitalListData?.count?.waitRegister.toString()
-                              )}건`
-                            : '0건'
-                          : element === '등록 반려'
-                          ? HospitalData.HospitalListData?.count?.registerRejected
-                            ? `${ConvertCommaNumber(
-                                HospitalData.HospitalListData?.count?.registerRejected.toString()
-                              )}건`
-                            : '0건'
-                          : element === '블라인드'
-                          ? HospitalData.HospitalListData?.count?.blinded
-                            ? `${ConvertCommaNumber(
-                                HospitalData.HospitalListData?.count?.blinded.toString()
-                              )}건`
-                            : '0건'
-                          : element === '운영 중'
-                          ? HospitalData.HospitalListData?.count?.running
-                            ? `${ConvertCommaNumber(
-                                HospitalData.HospitalListData?.count?.running.toString()
-                              )}건`
-                            : '0건'
-                          : element === '운영 종료'
-                          ? HospitalData.HospitalListData?.count?.stop
-                            ? `${ConvertCommaNumber(
-                                HospitalData.HospitalListData?.count?.stop.toString()
-                              )}건`
-                            : '0건'
-                          : '0건'}
-                      </StatisticElementBoardTextComponent>
+                            ? HospitalData.HospitalListData?.count?.stop
+                              ? `${ConvertCommaNumber(
+                                  HospitalData.HospitalListData?.count?.stop.toString()
+                                )}건`
+                              : '0건'
+                            : '0건'}
+                        </StatisticElementBoardTextComponent>
+                      </StatisticElementBoardTextFrame>
                     </StatisticElementBoardComponent>
                   </StatisticElementBoardFrame>
                 </StatisticElementComponent>
