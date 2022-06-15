@@ -46,24 +46,22 @@ import {
 } from 'styles/components/common/Record';
 /*  */
 
-import { ConvertCommaNumber } from 'libraries/conversion/ConvertCommaNumber';
 import { ConvertContactNumber } from 'libraries/conversion/ConvertContactNumber';
 import { AllowNumber } from 'libraries/constraint/AllowNumber';
 /*  */
 const BoardContent = observer(() => {
-  const { HospitalData } = useStore();
+  const { DoctorData } = useStore();
   /* 카테고리 */
   const CategoryList = [
-    { title: '병원 번호', width: 120 },
-    { title: '병원 이름', width: 90 },
+    { title: '의사 번호', width: 120 },
+    { title: '의사 이름', width: 90 },
     { title: '등록 상태', width: 110 },
     { title: '운영 상태', width: 110 },
-    { title: '병원 주소', width: 260 },
-    { title: '병원 전화번호', width: 120 },
-    { title: '소속 의사 이름', width: 90 },
-    { title: '연계 약국 이름', width: 90 },
+    { title: '의사 전화번호', width: 120 },
+    { title: '진료과', width: 200 },
+    { title: '질환', width: 200 },
+    { title: '소속 병원 이름', width: 90 },
     { title: '병원 운영 시간 (점심 시간)', width: 140 },
-    { title: '접수 대기 건', width: 90 },
   ];
 
   return (
@@ -100,7 +98,7 @@ const BoardContent = observer(() => {
           <DataFrame>
             <DataComponent>
               {/*  */}
-              {HospitalData.HospitalListData?.hospitalList?.map(element => (
+              {DoctorData.DoctorListData?.doctorList?.map(element => (
                 <DataElementFrame key={element?.code}>
                   <DataElementComponent>
                     {/*  */}
@@ -133,40 +131,6 @@ const BoardContent = observer(() => {
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentButtonComponent
                           backgroundColor={
-                            element?.registerState === '활성'
-                              ? 'rgb(112,173,71)'
-                              : element?.registerState === '등록 대기'
-                              ? 'rgb(255, 192, 0)'
-                              : element?.registerState === '등록 반려'
-                              ? 'rgb(192,0,0)'
-                              : element?.registerState === '블라인드'
-                              ? 'rgb(192,0,0)'
-                              : 'transparent'
-                          }
-                          color={
-                            element?.registerState === '활성'
-                              ? '#ffffff'
-                              : element?.registerState === '등록 대기'
-                              ? '#ffffff'
-                              : element?.registerState === '등록 반려'
-                              ? '#ffffff'
-                              : element?.registerState === '블라인드'
-                              ? '#ffffff'
-                              : '#000000'
-                          }
-                        >
-                          {element?.registerState || '-'}
-                        </DataElementContentButtonComponent>
-                      </DataElementContentComponent>
-                    </DataElementContentFrame>
-                    {/*  */}
-                    <DataElementContentFrame
-                      minWidth={`${CategoryList[3].width}px`}
-                      width={`${CategoryList[3].width}%`}
-                    >
-                      <DataElementContentComponent justifyContent="center">
-                        <DataElementContentButtonComponent
-                          backgroundColor={
                             element?.state === '진료 가능'
                               ? 'rgb(112,173,71)'
                               : element?.state === '방문 가능'
@@ -195,19 +159,42 @@ const BoardContent = observer(() => {
                     </DataElementContentFrame>
                     {/*  */}
                     <DataElementContentFrame
-                      minWidth={`${CategoryList[4].width}px`}
-                      width={`${CategoryList[4].width}%`}
+                      minWidth={`${CategoryList[3].width}px`}
+                      width={`${CategoryList[3].width}%`}
                     >
                       <DataElementContentComponent justifyContent="center">
-                        <DataElementContentTextComponent>
-                          {element?.address || '-'}
-                        </DataElementContentTextComponent>
+                        <DataElementContentButtonComponent
+                          backgroundColor={
+                            element?.registerState === '활성'
+                              ? 'rgb(112,173,71)'
+                              : element?.registerState === '등록 대기'
+                              ? 'rgb(255, 192, 0)'
+                              : element?.registerState === '등록 반려'
+                              ? 'rgb(192,0,0)'
+                              : element?.registerState === '블라인드'
+                              ? 'rgb(192,0,0)'
+                              : 'transparent'
+                          }
+                          color={
+                            element?.registerState === '활성'
+                              ? '#ffffff'
+                              : element?.registerState === '등록 대기'
+                              ? '#ffffff'
+                              : element?.registerState === '등록 반려'
+                              ? '#ffffff'
+                              : element?.registerState === '블라인드'
+                              ? '#ffffff'
+                              : '#000000'
+                          }
+                        >
+                          {element?.registerState || '-'}
+                        </DataElementContentButtonComponent>
                       </DataElementContentComponent>
                     </DataElementContentFrame>
                     {/*  */}
                     <DataElementContentFrame
-                      minWidth={`${CategoryList[5].width}px`}
-                      width={`${CategoryList[5].width}%`}
+                      minWidth={`${CategoryList[4].width}px`}
+                      width={`${CategoryList[4].width}%`}
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentTextComponent>
@@ -219,13 +206,27 @@ const BoardContent = observer(() => {
                     </DataElementContentFrame>
                     {/*  */}
                     <DataElementContentFrame
+                      minWidth={`${CategoryList[5].width}px`}
+                      width={`${CategoryList[5].width}%`}
+                    >
+                      <DataElementContentComponent justifyContent="center">
+                        <DataElementContentTextComponent>
+                          {element?.departments && element?.departments.length !== 0
+                            ? element?.departments.join(', ')
+                            : '-'}
+                        </DataElementContentTextComponent>
+                      </DataElementContentComponent>
+                    </DataElementContentFrame>
+                    {/*  */}
+                    {/*  */}
+                    <DataElementContentFrame
                       minWidth={`${CategoryList[6].width}px`}
                       width={`${CategoryList[6].width}%`}
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentTextComponent>
-                          {element?.doctorList && element?.doctorList.length !== 0
-                            ? element?.doctorList.map(doctorName => doctorName?.name).join(', ')
+                          {element?.diseases && element?.diseases.length !== 0
+                            ? element?.diseases.join(', ')
                             : '-'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
@@ -237,11 +238,7 @@ const BoardContent = observer(() => {
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentTextComponent>
-                          {element?.pharmacyList && element?.pharmacyList.length !== 0
-                            ? element?.pharmacyList
-                                .map(pharmacyName => pharmacyName?.name)
-                                .join(', ')
-                            : '-'}
+                          {element?.hospital?.name || '-'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
                     </DataElementContentFrame>
@@ -268,19 +265,6 @@ const BoardContent = observer(() => {
                       </DataElementContentComponent>
                     </DataElementContentFrame>
                     {/*  */}
-                    <DataElementContentFrame
-                      minWidth={`${CategoryList[9].width}px`}
-                      width={`${CategoryList[9].width}%`}
-                    >
-                      <DataElementContentComponent justifyContent="center">
-                        <DataElementContentTextComponent>
-                          {element?.waitReceptionCount
-                            ? ConvertCommaNumber(element?.waitReceptionCount.toString())
-                            : '-'}
-                        </DataElementContentTextComponent>
-                      </DataElementContentComponent>
-                    </DataElementContentFrame>
-                    {/*  */}
                   </DataElementComponent>
                 </DataElementFrame>
               ))}
@@ -302,8 +286,8 @@ const BoardContent = observer(() => {
               backgroundColor="#14C276"
               cursor="pointer"
               onClick={() => {
-                /* HospitalData.setPageNavigator(1); */
-                HospitalData.setParagraphNavigator(1);
+                /* DoctorData.setPageNavigator(1); */
+                DoctorData.setParagraphNavigator(1);
               }}
             >
               <NavigationTextComponent color="#ffffff">{'<<'}</NavigationTextComponent>
@@ -312,8 +296,8 @@ const BoardContent = observer(() => {
               backgroundColor="#14C276"
               cursor="pointer"
               onClick={() =>
-                HospitalData.ParagraphNavigator > 1
-                  ? HospitalData.setParagraphNavigator(HospitalData.ParagraphNavigator - 1)
+                DoctorData.ParagraphNavigator > 1
+                  ? DoctorData.setParagraphNavigator(DoctorData.ParagraphNavigator - 1)
                   : {}
               }
             >
@@ -322,41 +306,36 @@ const BoardContent = observer(() => {
           </NavigationButtonFrame>
           <NavigationButtonFrame>
             {[...Array(10)].map((element, key) =>
-              (HospitalData.ParagraphNavigator - 1) * 10 + key + 1 <=
-              (HospitalData.HospitalListData?.count && HospitalData.HospitalListData?.count.total
-                ? Math.floor((Number(HospitalData.HospitalListData?.count.total) - 1) / 20) + 1
+              (DoctorData.ParagraphNavigator - 1) * 10 + key + 1 <=
+              (DoctorData.DoctorListData?.count && DoctorData.DoctorListData?.count.total
+                ? Math.floor((Number(DoctorData.DoctorListData?.count.total) - 1) / 20) + 1
                 : 1) ? (
                 <NavigationPageButtonComponent
                   // eslint-disable-next-line react/no-array-index-key
                   key={key}
                   cursor="pointer"
                   backgroundColor={
-                    (HospitalData.ParagraphNavigator - 1) * 10 + key + 1 ===
-                    HospitalData.PageNavigator
+                    (DoctorData.ParagraphNavigator - 1) * 10 + key + 1 === DoctorData.PageNavigator
                       ? '#3C9E3F'
                       : '#14C276'
                   }
                   onClick={() => {
-                    HospitalData.setPageNavigator(
-                      (HospitalData.ParagraphNavigator - 1) * 10 + key + 1
-                    );
+                    DoctorData.setPageNavigator((DoctorData.ParagraphNavigator - 1) * 10 + key + 1);
                   }}
                 >
                   <NavigationTextComponent
                     color={
-                      (HospitalData.ParagraphNavigator - 1) * 10 + key + 1 ===
-                      HospitalData.PageNavigator
+                      (DoctorData.ParagraphNavigator - 1) * 10 + key + 1 ===
+                      DoctorData.PageNavigator
                         ? '#ffffff'
                         : '#ffffff'
                     }
                   >
-                    {(HospitalData.ParagraphNavigator - 1) * 10 + key + 1 <=
-                    (HospitalData.HospitalListData?.count &&
-                    HospitalData.HospitalListData?.count.total
-                      ? Math.floor((Number(HospitalData.HospitalListData?.count.total) - 1) / 20) +
-                        1
+                    {(DoctorData.ParagraphNavigator - 1) * 10 + key + 1 <=
+                    (DoctorData.DoctorListData?.count && DoctorData.DoctorListData?.count.total
+                      ? Math.floor((Number(DoctorData.DoctorListData?.count.total) - 1) / 20) + 1
                       : 1)
-                      ? (HospitalData.ParagraphNavigator - 1) * 10 + key + 1
+                      ? (DoctorData.ParagraphNavigator - 1) * 10 + key + 1
                       : ''}
                   </NavigationTextComponent>
                 </NavigationPageButtonComponent>
@@ -371,10 +350,10 @@ const BoardContent = observer(() => {
               backgroundColor="#14C276"
               cursor="pointer"
               onClick={() =>
-                HospitalData.HospitalListData?.count && HospitalData.HospitalListData?.count.total
-                  ? Math.ceil((Number(HospitalData.HospitalListData?.count.total) - 1) / 20 / 10) >
-                    HospitalData.ParagraphNavigator
-                    ? HospitalData.setParagraphNavigator(HospitalData.ParagraphNavigator + 1)
+                DoctorData.DoctorListData?.count && DoctorData.DoctorListData?.count.total
+                  ? Math.ceil((Number(DoctorData.DoctorListData?.count.total) - 1) / 20 / 10) >
+                    DoctorData.ParagraphNavigator
+                    ? DoctorData.setParagraphNavigator(DoctorData.ParagraphNavigator + 1)
                     : {}
                   : {}
               }
@@ -385,19 +364,18 @@ const BoardContent = observer(() => {
               backgroundColor="#14C276"
               cursor="pointer"
               onClick={() => {
-                /* HospitalData.setPageNavigator(
-                  HospitalData.HospitalListData?.count &&
-                    HospitalData.HospitalListData?.count.total
-                    ? Math.floor((Number(HospitalData.HospitalListData?.count.total) - 1) / 20) +
+                /* DoctorData.setPageNavigator(
+                  DoctorData.DoctorListData?.count &&
+                    DoctorData.DoctorListData?.count.total
+                    ? Math.floor((Number(DoctorData.DoctorListData?.count.total) - 1) / 20) +
                         1
                     : 1
                 ); */
-                HospitalData.setParagraphNavigator(
+                DoctorData.setParagraphNavigator(
                   parseInt(
                     (
-                      ((HospitalData.HospitalListData?.count &&
-                      HospitalData.HospitalListData?.count.total
-                        ? Math.floor((Number(HospitalData.HospitalListData?.count.total) - 1) / 20)
+                      ((DoctorData.DoctorListData?.count && DoctorData.DoctorListData?.count.total
+                        ? Math.floor((Number(DoctorData.DoctorListData?.count.total) - 1) / 20)
                         : 0) +
                         1 -
                         1) /

@@ -15,6 +15,7 @@ import MedicinePage from 'page/medicine/MedicinePage';
 import DeliveryPage from 'page/delivery/DeliveryPage';
 import HospitalPage from 'page/hospital/HospitalPage';
 import PharmacyPage from 'page/pharmacy/PharmacyPage';
+import DoctorPage from 'page/doctor/DoctorPage';
 
 const Board = observer(() => (
   <GlobalBoardFrame>
@@ -24,8 +25,8 @@ const Board = observer(() => (
     <Route path="/delivery" component={DeliveryPage} />
     <Route path="/hospital" component={HospitalPage} />
     <Route path="/pharmacy" component={PharmacyPage} />
-    {/* <Route path="/doctor" component={DoctorPage} />
-    <Route path="/settlement" component={SettelmentPage} />
+    <Route path="/doctor" component={DoctorPage} />
+    {/*     <Route path="/settlement" component={SettelmentPage} />
     <Route path="/review" component={ReviewPage} /> */}
   </GlobalBoardFrame>
 ));

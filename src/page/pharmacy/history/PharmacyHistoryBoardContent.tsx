@@ -55,14 +55,14 @@ const BoardContent = observer(() => {
   /* 카테고리 */
   const CategoryList = [
     { title: '약국 번호', width: 120 },
-    { title: '운영 상태', width: 110 },
     { title: '약국 이름', width: 90 },
+    { title: '등록 상태', width: 110 },
+    { title: '운영 상태', width: 110 },
     { title: '약국 주소', width: 260 },
     { title: '약국 전화번호', width: 120 },
     { title: '연계 병원 이름', width: 90 },
     { title: '연계 병원 운영 상태', width: 110 },
-    { title: '등록 상태', width: 110 },
-    { title: '운영 시간 (점심 시간)', width: 140 },
+    { title: '약국 운영 시간 (점심 시간)', width: 140 },
     { title: '접수 대기 건', width: 90 },
     { title: '스티커/봉투', width: 90 },
   ];
@@ -121,36 +121,6 @@ const BoardContent = observer(() => {
                       width={`${CategoryList[1].width}%`}
                     >
                       <DataElementContentComponent justifyContent="center">
-                        <DataElementContentButtonComponent
-                          backgroundColor={
-                            element?.state === '조제 가능'
-                              ? 'rgb(112,173,71)'
-                              : element?.state === '일시 중단'
-                              ? 'rgb(255, 192, 0)'
-                              : element?.state === '조제 종료'
-                              ? 'rgb(192,0,0)'
-                              : 'transparent'
-                          }
-                          color={
-                            element?.state === '조제 가능'
-                              ? '#ffffff'
-                              : element?.state === '일시 중단'
-                              ? '#ffffff'
-                              : element?.state === '조제 종료'
-                              ? '#ffffff'
-                              : '#000000'
-                          }
-                        >
-                          {element?.state || '-'}
-                        </DataElementContentButtonComponent>
-                      </DataElementContentComponent>
-                    </DataElementContentFrame>
-                    {/*  */}
-                    <DataElementContentFrame
-                      minWidth={`${CategoryList[2].width}px`}
-                      width={`${CategoryList[2].width}%`}
-                    >
-                      <DataElementContentComponent justifyContent="center">
                         <DataElementContentTextComponent>
                           {element?.name || '-'}
                         </DataElementContentTextComponent>
@@ -158,81 +128,8 @@ const BoardContent = observer(() => {
                     </DataElementContentFrame>
                     {/*  */}
                     <DataElementContentFrame
-                      minWidth={`${CategoryList[3].width}px`}
-                      width={`${CategoryList[3].width}%`}
-                    >
-                      <DataElementContentComponent justifyContent="center">
-                        <DataElementContentTextComponent>
-                          {element?.address || '-'}
-                        </DataElementContentTextComponent>
-                      </DataElementContentComponent>
-                    </DataElementContentFrame>
-                    {/*  */}
-                    <DataElementContentFrame
-                      minWidth={`${CategoryList[4].width}px`}
-                      width={`${CategoryList[4].width}%`}
-                    >
-                      <DataElementContentComponent justifyContent="center">
-                        <DataElementContentTextComponent>
-                          {element?.phoneNum
-                            ? ConvertContactNumber(AllowNumber(element?.phoneNum))
-                            : '-'}
-                        </DataElementContentTextComponent>
-                      </DataElementContentComponent>
-                    </DataElementContentFrame>
-                    {/*  */}
-                    <DataElementContentFrame
-                      minWidth={`${CategoryList[5].width}px`}
-                      width={`${CategoryList[5].width}%`}
-                    >
-                      <DataElementContentComponent justifyContent="center">
-                        <DataElementContentTextComponent>
-                          {element?.hospitalList && element?.hospitalList.length !== 0
-                            ? element?.hospitalList
-                                .map(hospitalName => hospitalName?.name)
-                                .join(', ')
-                            : '-'}
-                        </DataElementContentTextComponent>
-                      </DataElementContentComponent>
-                    </DataElementContentFrame>
-                    {/*  */}
-                    <DataElementContentFrame
-                      minWidth={`${CategoryList[6].width}px`}
-                      width={`${CategoryList[6].width}%`}
-                    >
-                      <DataElementContentComponent justifyContent="center">
-                        <DataElementContentButtonComponent
-                          backgroundColor={
-                            element?.hospitalState === '진료 가능'
-                              ? 'rgb(112,173,71)'
-                              : element?.hospitalState === '방문 가능'
-                              ? 'rgb(112,173,71)'
-                              : element?.hospitalState === '점심 시간'
-                              ? 'rgb(255, 192, 0)'
-                              : element?.hospitalState === '진료 종료'
-                              ? 'rgb(192,0,0)'
-                              : 'transparent'
-                          }
-                          color={
-                            element?.hospitalState === '진료 가능'
-                              ? '#ffffff'
-                              : element?.hospitalState === '방문 가능'
-                              ? '#ffffff'
-                              : element?.hospitalState === '점심 시간'
-                              ? '#ffffff'
-                              : element?.hospitalState === '진료 종료'
-                              ? 'rgb(192,0,0)'
-                              : '#000000'
-                          }
-                        >
-                          {element?.hospitalState || '-'}
-                        </DataElementContentButtonComponent>
-                      </DataElementContentComponent>
-                    </DataElementContentFrame>
-                    {/*  */}
-                    <DataElementContentFrame
-                      minWidth={`${CategoryList[7].width}px`}
-                      width={`${CategoryList[7].width}%`}
+                      minWidth={`${CategoryList[2].width}px`}
+                      width={`${CategoryList[2].width}%`}
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentButtonComponent
@@ -260,6 +157,109 @@ const BoardContent = observer(() => {
                           }
                         >
                           {element?.registerState || '-'}
+                        </DataElementContentButtonComponent>
+                      </DataElementContentComponent>
+                    </DataElementContentFrame>
+                    {/*  */}
+                    <DataElementContentFrame
+                      minWidth={`${CategoryList[3].width}px`}
+                      width={`${CategoryList[3].width}%`}
+                    >
+                      <DataElementContentComponent justifyContent="center">
+                        <DataElementContentButtonComponent
+                          backgroundColor={
+                            element?.state === '조제 가능'
+                              ? 'rgb(112,173,71)'
+                              : element?.state === '일시 중단'
+                              ? 'rgb(255, 192, 0)'
+                              : element?.state === '조제 종료'
+                              ? 'rgb(192,0,0)'
+                              : 'transparent'
+                          }
+                          color={
+                            element?.state === '조제 가능'
+                              ? '#ffffff'
+                              : element?.state === '일시 중단'
+                              ? '#ffffff'
+                              : element?.state === '조제 종료'
+                              ? '#ffffff'
+                              : '#000000'
+                          }
+                        >
+                          {element?.state || '-'}
+                        </DataElementContentButtonComponent>
+                      </DataElementContentComponent>
+                    </DataElementContentFrame>
+                    {/*  */}
+                    <DataElementContentFrame
+                      minWidth={`${CategoryList[4].width}px`}
+                      width={`${CategoryList[4].width}%`}
+                    >
+                      <DataElementContentComponent justifyContent="center">
+                        <DataElementContentTextComponent>
+                          {element?.address || '-'}
+                        </DataElementContentTextComponent>
+                      </DataElementContentComponent>
+                    </DataElementContentFrame>
+                    {/*  */}
+                    <DataElementContentFrame
+                      minWidth={`${CategoryList[5].width}px`}
+                      width={`${CategoryList[5].width}%`}
+                    >
+                      <DataElementContentComponent justifyContent="center">
+                        <DataElementContentTextComponent>
+                          {element?.phoneNum
+                            ? ConvertContactNumber(AllowNumber(element?.phoneNum))
+                            : '-'}
+                        </DataElementContentTextComponent>
+                      </DataElementContentComponent>
+                    </DataElementContentFrame>
+                    {/*  */}
+                    <DataElementContentFrame
+                      minWidth={`${CategoryList[6].width}px`}
+                      width={`${CategoryList[6].width}%`}
+                    >
+                      <DataElementContentComponent justifyContent="center">
+                        <DataElementContentTextComponent>
+                          {element?.hospitalList && element?.hospitalList.length !== 0
+                            ? element?.hospitalList
+                                .map(hospitalName => hospitalName?.name)
+                                .join(', ')
+                            : '-'}
+                        </DataElementContentTextComponent>
+                      </DataElementContentComponent>
+                    </DataElementContentFrame>
+                    {/*  */}
+                    <DataElementContentFrame
+                      minWidth={`${CategoryList[7].width}px`}
+                      width={`${CategoryList[7].width}%`}
+                    >
+                      <DataElementContentComponent justifyContent="center">
+                        <DataElementContentButtonComponent
+                          backgroundColor={
+                            element?.hospitalState === '진료 가능'
+                              ? 'rgb(112,173,71)'
+                              : element?.hospitalState === '방문 가능'
+                              ? 'rgb(112,173,71)'
+                              : element?.hospitalState === '점심 시간'
+                              ? 'rgb(255, 192, 0)'
+                              : element?.hospitalState === '진료 종료'
+                              ? 'rgb(192,0,0)'
+                              : 'transparent'
+                          }
+                          color={
+                            element?.hospitalState === '진료 가능'
+                              ? '#ffffff'
+                              : element?.hospitalState === '방문 가능'
+                              ? '#ffffff'
+                              : element?.hospitalState === '점심 시간'
+                              ? '#ffffff'
+                              : element?.hospitalState === '진료 종료'
+                              ? 'rgb(192,0,0)'
+                              : '#000000'
+                          }
+                        >
+                          {element?.hospitalState || '-'}
                         </DataElementContentButtonComponent>
                       </DataElementContentComponent>
                     </DataElementContentFrame>

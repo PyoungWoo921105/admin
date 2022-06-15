@@ -3,19 +3,19 @@
  */
 
 import React from 'react';
-
 import { observer } from 'mobx-react';
 
-import { BoardFrame } from 'styles/components/common/Frame';
+import { Route } from 'react-router-dom';
 
-import BoardTitleAndFilter from 'page/pharmacy/history/PharmacyHistoryBoardTitleAndFilter';
-import BoardContent from 'page/pharmacy/history/PharmacyHistoryBoardContent';
+import { LocalBoardFrame } from 'styles/components/common/Frame';
+import PharmacyHistoryBoard from 'page/pharmacy/history/PharmacyHistoryBoard';
+/* import PharmacyLiveBoard from 'page/pharmacy/live/PharmacyLiveBoard'; */
 
-const PharmacyHistoryBoard = observer(() => (
-  <BoardFrame>
-    <BoardTitleAndFilter />
-    <BoardContent />
-  </BoardFrame>
+const PharmacyBoard = observer(() => (
+  <LocalBoardFrame>
+    <Route path="/pharmacy/history" component={PharmacyHistoryBoard} />
+    {/* <Route path="/pharmacy/live" component={PharmacyLiveBoard} /> */}
+  </LocalBoardFrame>
 ));
 
-export default PharmacyHistoryBoard;
+export default PharmacyBoard;
