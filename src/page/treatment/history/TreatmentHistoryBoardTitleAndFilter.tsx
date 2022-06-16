@@ -360,7 +360,7 @@ const BoardTitleAndFilter = observer(() => {
       const MetaError = response as { status: number; data: { message: string } };
       const PopUpData = {
         Category: 'ERROR',
-        Name: 'GET_TREATMENT_EXPORT_LIST',
+        Name: 'GET_TREATMENT_LIST_EXPORT',
         Title: '진료 내역 데이터 다운로드 실패',
         Contents: [MetaError?.data?.message] || [
           '일시적인 서버 오류가 발생하였습니다.',
