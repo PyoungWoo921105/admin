@@ -25,7 +25,7 @@ export const TitleTextFrame = styled.div`
 export const TitleTextComponent = styled.span`
   color: #000000;
   font-family: 'Spoqa Han Sans Neo';
-  font-size: 13px;
+  font-size: 11px;
   font-style: normal;
   font-weight: normal;
 `;

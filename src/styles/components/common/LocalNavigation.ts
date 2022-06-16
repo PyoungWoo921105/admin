@@ -65,7 +65,7 @@ export const LocalNavigationBarContentTextFrame = styled.div<CustomProps>`
 export const LocalNavigationBarContentTextComponent = styled.span`
   color: #ffffff;
   font-family: 'Spoqa Han Sans Neo';
-  font-size: 13px;
+  font-size: 11px;
   font-style: normal;
   font-weight: normal;
 `;
