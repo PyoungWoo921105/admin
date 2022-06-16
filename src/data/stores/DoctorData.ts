@@ -70,7 +70,7 @@ const DoctorData = observable<DoctorDataType>({
     this.ParagraphNavigator = e;
   },
   /*  */
-  /* 병원 내역 */
+  /* 의사 내역 */
   /* GET /doctor/list */
   DoctorListData: null,
   setDoctorListData(e: null | DoctorListDataType) {

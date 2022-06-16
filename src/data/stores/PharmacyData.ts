@@ -70,7 +70,7 @@ const PharmacyData = observable<PharmacyDataType>({
     this.ParagraphNavigator = e;
   },
   /*  */
-  /* 병원 내역 */
+  /* 약국 내역 */
   /* GET /pharmacy/list */
   PharmacyListData: null,
   setPharmacyListData(e: null | PharmacyListDataType) {
