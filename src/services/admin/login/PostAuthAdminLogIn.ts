@@ -2,10 +2,6 @@
  * Copyright (c) 2022 Medir Inc.
  */
 
-/*
- * Copyright (c) 2022 Medir Inc.
- */
-
 import { customAxios } from 'services/common/CreateAxiosTemp';
 
 export const PostAuthAdminLogIn = async (data: {
