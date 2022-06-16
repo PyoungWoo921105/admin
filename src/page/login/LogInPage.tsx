@@ -79,14 +79,18 @@ const LogInPage = observer(() => {
       );
     } else {
       CommonData.setLoadingFlag(true);
+
+      const PostAuthAdminLogInData = {
+        username: AdminData.LogInUserID,
+        password: AdminData.LogInUserPassword,
+      };
+      const responseTemp = await PostAuthAdminLogIn(PostAuthAdminLogInData);
+      CommonData.setResponseTempData(responseTemp);
+
       const PostAuthLogInData = {
         username: AdminData.LogInUserID,
         password: AdminData.LogInUserPassword,
       };
-
-      const responseTemp = await PostAuthAdminLogIn(PostAuthLogInData);
-      CommonData.setResponseTempData(responseTemp);
-
       const response = await PostAuthLogIn(PostAuthLogInData);
       CommonData.setResponseData(response);
 

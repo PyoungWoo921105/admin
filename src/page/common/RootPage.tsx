@@ -25,15 +25,19 @@ const RootPage = observer(() => {
   const history = useHistory();
 
   const PostAuthLogInFunction = useCallback(async () => {
+    CommonData.setLoadingFlag(true);
+
+    const PostAuthAdminLogInData = {
+      username: sessionStorage.getItem('LogInUserID'),
+      password: sessionStorage.getItem('LogInUserPassword'),
+    };
+    const responseTemp = await PostAuthAdminLogIn(PostAuthAdminLogInData);
+    CommonData.setResponseTempData(responseTemp);
+
     const PostAuthLogInData = {
       username: sessionStorage.getItem('LogInUserID'),
       password: sessionStorage.getItem('LogInUserPassword'),
     };
-    CommonData.setLoadingFlag(true);
-
-    const responseTemp = await PostAuthAdminLogIn(PostAuthLogInData);
-    CommonData.setResponseTempData(responseTemp);
-
     const response = await PostAuthLogIn(PostAuthLogInData);
     CommonData.setResponseData(response);
 
