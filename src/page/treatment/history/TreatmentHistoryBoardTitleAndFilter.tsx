@@ -129,7 +129,7 @@ const BoardTitleAndFilter = observer(() => {
     TreatmentData.setParagraphNavigator(1);
   };
   /* 필터 */
-  /* 진료 번호 */
+  /* 진료 코드 */
   const [TreatmentCode, setTreatmentCode] = useState('');
   const onChangeTreatmentCode = (event: { target: { value: string } }) => {
     setTreatmentCode(event.target.value);
@@ -505,7 +505,7 @@ const BoardTitleAndFilter = observer(() => {
               <FilterElementComponent>
                 <FilterElementTitleFrame minWidth="70px" width="70px">
                   <FilterElementTitleComponent>
-                    <FilterElementTitleTextComponent>진료 번호</FilterElementTitleTextComponent>
+                    <FilterElementTitleTextComponent>진료 코드</FilterElementTitleTextComponent>
                   </FilterElementTitleComponent>
                 </FilterElementTitleFrame>
                 <FilterElementBoardFrame minWidth="150px" width="150px">

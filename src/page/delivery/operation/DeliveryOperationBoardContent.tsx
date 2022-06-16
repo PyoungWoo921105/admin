@@ -55,7 +55,7 @@ const BoardContent = observer(() => {
   const { DeliveryData } = useStore();
   /* 카테고리 */
   const CategoryList = [
-    { title: '약국 번호', width: 120 },
+    { title: '약국 코드', width: 120 },
     { title: '약국 이름', width: 90 },
     { title: '약국 전화번호', width: 120 },
     { title: '약국 주소', width: 260 },

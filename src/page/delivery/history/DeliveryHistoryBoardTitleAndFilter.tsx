@@ -128,7 +128,7 @@ const BoardTitleAndFilter = observer(() => {
     DeliveryData.setParagraphNavigator(1);
   };
   /* 필터 */
-  /* 배달 번호 */
+  /* 배달 코드 */
   const [DeliveryCode, setDeliveryCode] = useState('');
   const onChangeDeliveryCode = (event: { target: { value: string } }) => {
     setDeliveryCode(event.target.value);
@@ -218,12 +218,12 @@ const BoardTitleAndFilter = observer(() => {
       setDeliveryAgencyName(DeliveryAgencyName.filter(element => element?.code !== object.code));
     }
   };
-  /* 진료 번호 */
+  /* 진료 코드 */
   const [TreatmentCode, setTreatmentCode] = useState('');
   const onChangeTreatmentCode = (event: { target: { value: string } }) => {
     setTreatmentCode(event.target.value);
   };
-  /* 조제 번호 */
+  /* 조제 코드 */
   const [MedicineCode, setMedicineCode] = useState('');
   const onChangeMedicineCode = (event: { target: { value: string } }) => {
     setMedicineCode(event.target.value);
@@ -462,7 +462,7 @@ const BoardTitleAndFilter = observer(() => {
               <FilterElementComponent>
                 <FilterElementTitleFrame minWidth="70px" width="70px">
                   <FilterElementTitleComponent>
-                    <FilterElementTitleTextComponent>배달 번호</FilterElementTitleTextComponent>
+                    <FilterElementTitleTextComponent>배달 코드</FilterElementTitleTextComponent>
                   </FilterElementTitleComponent>
                 </FilterElementTitleFrame>
                 <FilterElementBoardFrame minWidth="150px" width="150px">
@@ -653,7 +653,7 @@ const BoardTitleAndFilter = observer(() => {
               <FilterElementComponent>
                 <FilterElementTitleFrame minWidth="70px" width="70px">
                   <FilterElementTitleComponent>
-                    <FilterElementTitleTextComponent>진료 번호</FilterElementTitleTextComponent>
+                    <FilterElementTitleTextComponent>진료 코드</FilterElementTitleTextComponent>
                   </FilterElementTitleComponent>
                 </FilterElementTitleFrame>
                 <FilterElementBoardFrame minWidth="150px" width="150px">
@@ -674,7 +674,7 @@ const BoardTitleAndFilter = observer(() => {
               <FilterElementComponent>
                 <FilterElementTitleFrame minWidth="70px" width="70px">
                   <FilterElementTitleComponent>
-                    <FilterElementTitleTextComponent>조제 번호</FilterElementTitleTextComponent>
+                    <FilterElementTitleTextComponent>조제 코드</FilterElementTitleTextComponent>
                   </FilterElementTitleComponent>
                 </FilterElementTitleFrame>
                 <FilterElementBoardFrame minWidth="150px" width="150px">

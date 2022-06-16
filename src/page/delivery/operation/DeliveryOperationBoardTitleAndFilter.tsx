@@ -116,7 +116,7 @@ const BoardTitleAndFilter = observer(() => {
     DeliveryData.setParagraphNavigator(1);
   };
   /* 필터 */
-  /* 약국 번호 */
+  /* 약국 코드 */
   const [PharmacyCode, setPharmacyCode] = useState('');
   const onChangePharmacyCode = (event: { target: { value: string } }) => {
     setPharmacyCode(event.target.value);
@@ -339,7 +339,7 @@ const BoardTitleAndFilter = observer(() => {
               <FilterElementComponent>
                 <FilterElementTitleFrame minWidth="70px" width="70px">
                   <FilterElementTitleComponent>
-                    <FilterElementTitleTextComponent>약국 번호</FilterElementTitleTextComponent>
+                    <FilterElementTitleTextComponent>약국 코드</FilterElementTitleTextComponent>
                   </FilterElementTitleComponent>
                 </FilterElementTitleFrame>
                 <FilterElementBoardFrame minWidth="150px" width="150px">

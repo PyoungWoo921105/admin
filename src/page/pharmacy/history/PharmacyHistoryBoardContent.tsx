@@ -54,7 +54,7 @@ const BoardContent = observer(() => {
   const { PharmacyData } = useStore();
   /* 카테고리 */
   const CategoryList = [
-    { title: '약국 번호', width: 120 },
+    { title: '약국 코드', width: 120 },
     { title: '약국 이름', width: 90 },
     { title: '등록 상태', width: 110 },
     { title: '운영 상태', width: 110 },

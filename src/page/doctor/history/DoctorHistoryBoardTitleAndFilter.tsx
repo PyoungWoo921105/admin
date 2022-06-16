@@ -126,7 +126,7 @@ const BoardTitleAndFilter = observer(() => {
     DoctorData.setParagraphNavigator(1);
   };
   /* 필터 */
-  /* 의사 번호 */
+  /* 의사 코드 */
   const [DoctorCode, setDoctorCode] = useState('');
   const onChangeDoctorCode = (event: { target: { value: string } }) => {
     setDoctorCode(event.target.value);
@@ -436,7 +436,7 @@ const BoardTitleAndFilter = observer(() => {
               <FilterElementComponent>
                 <FilterElementTitleFrame minWidth="70px" width="70px">
                   <FilterElementTitleComponent>
-                    <FilterElementTitleTextComponent>의사 번호</FilterElementTitleTextComponent>
+                    <FilterElementTitleTextComponent>의사 코드</FilterElementTitleTextComponent>
                   </FilterElementTitleComponent>
                 </FilterElementTitleFrame>
                 <FilterElementBoardFrame minWidth="150px" width="150px">

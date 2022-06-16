@@ -130,7 +130,7 @@ const BoardTitleAndFilter = observer(() => {
     HospitalData.setParagraphNavigator(1);
   };
   /* 필터 */
-  /* 병원 번호 */
+  /* 병원 코드 */
   const [HospitalCode, setHospitalCode] = useState('');
   const onChangeHospitalCode = (event: { target: { value: string } }) => {
     setHospitalCode(event.target.value);
@@ -476,7 +476,7 @@ const BoardTitleAndFilter = observer(() => {
               <FilterElementComponent>
                 <FilterElementTitleFrame minWidth="70px" width="70px">
                   <FilterElementTitleComponent>
-                    <FilterElementTitleTextComponent>병원 번호</FilterElementTitleTextComponent>
+                    <FilterElementTitleTextComponent>병원 코드</FilterElementTitleTextComponent>
                   </FilterElementTitleComponent>
                 </FilterElementTitleFrame>
                 <FilterElementBoardFrame minWidth="150px" width="150px">

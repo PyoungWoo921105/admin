@@ -86,7 +86,7 @@ const BoardTitleAndFilter = observer(() => {
     window.location.replace(window.location.href);
   };
   /* 필터 */
-  /* 프로모션 번호 */
+  /* 프로모션 코드 */
   const [PromotionCode, setPromotionCode] = useState('');
   const onChangePromotionCode = (event: { target: { value: string } }) => {
     setPromotionCode(event.target.value);
@@ -123,9 +123,22 @@ const BoardTitleAndFilter = observer(() => {
   /* 데이터 */
   const GetPromotionListExportFunction = useCallback(async () => {
     CommonData.setLoadingFlag(true);
+    const TempPromotionParticipant = [];
+    if (PromotionParticipant.length !== 0 && PromotionParticipant[0] !== '전체') {
+      for (let i = 0; i < PromotionParticipant.length; i += 1) {
+        if (PromotionParticipant[i] === '환자') {
+          TempPromotionParticipant.push('patient');
+        } else if (PromotionParticipant[i] === '병원') {
+          TempPromotionParticipant.push('hospital');
+        } else if (PromotionParticipant[i] === '약국') {
+          TempPromotionParticipant.push('pharmacy');
+        }
+      }
+    }
     const GetPromotionListExportData = {
       promotionType: null || PromotionCode,
-      participantRole: null || PromotionParticipant,
+      participantRole:
+        null || PromotionParticipant[0] === '전체' ? null : TempPromotionParticipant[0],
     };
     const response = await GetPromotionListExport(GetPromotionListExportData);
     CommonData.setLoadingFlag(false);
@@ -221,7 +234,7 @@ const BoardTitleAndFilter = observer(() => {
               <FilterElementComponent>
                 <FilterElementTitleFrame minWidth="90px" width="90px">
                   <FilterElementTitleComponent>
-                    <FilterElementTitleTextComponent>프로모션 번호</FilterElementTitleTextComponent>
+                    <FilterElementTitleTextComponent>프로모션 코드</FilterElementTitleTextComponent>
                   </FilterElementTitleComponent>
                 </FilterElementTitleFrame>
                 <FilterElementBoardFrame minWidth="130px" width="130px">

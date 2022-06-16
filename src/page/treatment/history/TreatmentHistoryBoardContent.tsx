@@ -53,7 +53,7 @@ const BoardContent = observer(() => {
   const { TreatmentData } = useStore();
   /* 카테고리 */
   const CategoryList = [
-    { title: '진료 번호', width: 120 },
+    { title: '진료 코드', width: 120 },
     { title: '생성 일시', width: 140 },
     { title: '진료 상태', width: 110 },
     { title: '병원 이름', width: 90 },

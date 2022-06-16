@@ -54,7 +54,7 @@ const BoardContent = observer(() => {
   const { HospitalData } = useStore();
   /* 카테고리 */
   const CategoryList = [
-    { title: '병원 번호', width: 120 },
+    { title: '병원 코드', width: 120 },
     { title: '병원 이름', width: 90 },
     { title: '등록 상태', width: 110 },
     { title: '운영 상태', width: 110 },
