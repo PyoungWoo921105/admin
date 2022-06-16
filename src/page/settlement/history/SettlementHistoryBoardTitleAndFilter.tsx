@@ -51,7 +51,6 @@ import {
   FilterElementBoardComponent,
   FilterElementBoardInputComponent,
 } from 'styles/components/common/Filter';
-/* 통계 */
 
 import { AllowNumber } from 'libraries/constraint/AllowNumber';
 import { AllowDate } from 'libraries/constraint/AllowDate';

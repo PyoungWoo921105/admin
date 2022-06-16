@@ -62,7 +62,7 @@ const GlobalNavigationBar = observer(() => {
     ],
     [
       { name: '정산 관리', path: '/settlement' },
-      { name: '마케팅 관리', path: '/marketing' },
+      { name: '프로모션 관리', path: '/promotion' },
       { name: '광고 관리', path: '/advertisement' },
       { name: '리뷰 관리', path: '/review' },
     ],

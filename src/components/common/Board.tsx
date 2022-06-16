@@ -18,6 +18,7 @@ import PharmacyPage from 'page/pharmacy/PharmacyPage';
 import DoctorPage from 'page/doctor/DoctorPage';
 import ReviewPage from 'page/review/ReviewPage';
 import SettlementPage from 'page/settlement/SettlementPage';
+import PromotionPage from 'page/promotion/PromotionPage';
 
 const Board = observer(() => (
   <GlobalBoardFrame>
@@ -30,6 +31,7 @@ const Board = observer(() => (
     <Route path="/doctor" component={DoctorPage} />
     <Route path="/review" component={ReviewPage} />
     <Route path="/settlement" component={SettlementPage} />
+    <Route path="/promotion" component={PromotionPage} />
   </GlobalBoardFrame>
 ));
 
