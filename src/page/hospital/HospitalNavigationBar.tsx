@@ -27,6 +27,8 @@ const HospitalNavigationBar = observer(() => {
   const NavigationBarTitleList = [
     /* { name: '병원 현황', path: '/hospital/live' }, */
     { name: '병원 내역', path: '/hospital/history' },
+    { name: '주치의 인증 내역', path: '/hospital/certification' },
+    { name: '병원 추가 요청 내역', path: '/hospital/request' },
   ];
 
   const onClickNavigationBarMenu = (props: { key: number }) => {
