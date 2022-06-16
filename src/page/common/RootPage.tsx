@@ -17,7 +17,7 @@ import LogInPage from 'page/login/LogInPage';
 import Common from 'page/common/Common';
 
 import { PostAuthLogIn } from 'services/login/PostAuthLogIn';
-import { PostAuthAdminLogIn } from 'services/login/PostAuthAdminLogIn';
+import { PostAuthAdminLogIn } from 'services/admin/login/PostAuthAdminLogIn';
 
 const RootPage = observer(() => {
   const { CommonData, AdminData } = useStore();

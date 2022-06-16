@@ -41,7 +41,7 @@ import {
 } from 'styles/components/login/LogIn';
 import { PostAuthLogIn } from 'services/login/PostAuthLogIn';
 import { useHistory } from 'react-router-dom';
-import { PostAuthAdminLogIn } from 'services/login/PostAuthAdminLogIn';
+import { PostAuthAdminLogIn } from 'services/admin/login/PostAuthAdminLogIn';
 
 const LogInPage = observer(() => {
   const { CommonData, AdminData } = useStore();
