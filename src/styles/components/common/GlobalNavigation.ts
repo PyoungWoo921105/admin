@@ -126,7 +126,6 @@ export const GlobalNavigationBarContentOpeningComponent = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 10px 0px 10px 0px;
   position: absolute;
   top: 40px;
   width: 100%;
@@ -139,7 +138,6 @@ export const GlobalNavigationBarContentClosingComponent = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 10px 0px 10px 0px;
   position: absolute;
   top: 40px;
   width: 100%;
@@ -163,8 +161,7 @@ export const GlobalNavigationBarContentTitleComponent = styled.button<CustomProp
   flex-direction: row;
   height: 100%;
   justify-content: center;
-  min-height: 35px;
-  padding: 10px 0px 10px 0px;
+  min-height: 40px;
   width: 100%;
 `;
 export const GlobalNavigationBarContentTitleTextComponent = styled.span`
@@ -173,7 +170,6 @@ export const GlobalNavigationBarContentTitleTextComponent = styled.span`
   font-size: 13px;
   font-style: normal;
   font-weight: normal;
-  text-decoration: none;
 `;
 export const GlobalNavigationBarLogoutImageFrame = styled.button`
   align-items: center;
