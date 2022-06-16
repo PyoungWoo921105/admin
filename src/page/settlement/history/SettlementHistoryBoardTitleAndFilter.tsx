@@ -120,6 +120,11 @@ const BoardTitleAndFilter = observer(() => {
     } else if (type === '약국') {
       // eslint-disable-next-line @typescript-eslint/no-floating-promises
       GetSettlementPharmacyListFileFunction();
+    } else if (type === '전체') {
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
+      GetSettlementHospitalListFileFunction();
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
+      GetSettlementPharmacyListFileFunction();
     }
   };
   /* 새로고침 */
@@ -196,6 +201,13 @@ const BoardTitleAndFilter = observer(() => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  /* ENTER */
+  const onKeyPressEnter = (e: { key: string }) => {
+    if (e.key === 'Enter') {
+      onClickFilterDownload({ type: '전체' });
+    }
+  };
+
   return (
     <BoardTitleAndFilterFrame>
       <TitleFrame>
@@ -259,6 +271,18 @@ const BoardTitleAndFilter = observer(() => {
               </TitleFilterDownloadButtonFrame>
             </TitleFilterDownloadFrame>
           ) : null}
+          {/* 데이터 다운로드 */}
+          {AdminData.FilterSwitchFlag ? (
+            <TitleFilterDownloadFrame>
+              <TitleFilterDownloadButtonFrame
+                onClick={() => onClickFilterDownload({ type: '전체' })}
+              >
+                <TitleFilterDownloadButtonComponent>
+                  전체 정산 내역 데이터 다운로드
+                </TitleFilterDownloadButtonComponent>
+              </TitleFilterDownloadButtonFrame>
+            </TitleFilterDownloadFrame>
+          ) : null}
           {/*  */}
         </TitleComponent>
       </TitleFrame>
@@ -285,6 +309,7 @@ const BoardTitleAndFilter = observer(() => {
                       placeholder="YYYYMMDD"
                       textAlign="center"
                       maxLength={8}
+                      onKeyPress={onKeyPressEnter}
                     />
                   </FilterElementBoardComponent>
                 </FilterElementBoardFrame>
@@ -306,6 +331,7 @@ const BoardTitleAndFilter = observer(() => {
                       placeholder="YYYYMMDD"
                       textAlign="center"
                       maxLength={8}
+                      onKeyPress={onKeyPressEnter}
                     />
                   </FilterElementBoardComponent>
                 </FilterElementBoardFrame>
