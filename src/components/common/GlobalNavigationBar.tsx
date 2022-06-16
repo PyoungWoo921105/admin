@@ -49,25 +49,25 @@ const GlobalNavigationBar = observer(() => {
   const GlobalNavigationBarTitleList = [
     [{ name: '홈', path: '/home' }],
     [
-      { name: '환자 관리', path: '/patient' },
-      { name: '의사 관리', path: '/doctor' },
       { name: '병원 관리', path: '/hospital' },
       { name: '약국 관리', path: '/pharmacy' },
+      { name: '의사 관리', path: '/doctor' },
+      { name: '환자 관리', path: '/patient' },
     ],
     [
       { name: '진료 관리', path: '/treatment' },
       { name: '조제 관리', path: '/medicine' },
       { name: '배달 관리', path: '/delivery' },
-      { name: '결제 관리', path: '/payment' },
+      { name: '리뷰 관리', path: '/review' },
     ],
     [
       { name: '정산 관리', path: '/settlement' },
       { name: '프로모션 관리', path: '/promotion' },
-      { name: '광고 관리', path: '/advertisement' },
-      { name: '리뷰 관리', path: '/review' },
+      { name: '지표 관리', path: '/indicator' },
+      { name: '결제 관리', path: '/payment' },
     ],
     [
-      { name: '지표 관리', path: '/indicator' },
+      { name: '광고 관리', path: '/advertisement' },
       { name: '공지사항 관리', path: '/notice' },
       { name: '계정 관리', path: '/account' },
       { name: '시스템 관리', path: '/system' },
@@ -187,49 +187,25 @@ const GlobalNavigationBar = observer(() => {
                 <GlobalNavigationBarShortCutComponent>
                   <GlobalNavigationBarShortCutTextComponent
                     color={
-                      location.pathname.indexOf(GlobalNavigationBarTitleList[1][2].path) !== -1
+                      location.pathname.indexOf(GlobalNavigationBarTitleList[1][0].path) !== -1
                         ? '#00B264'
                         : '#393939'
                     }
                     textDecoration={
-                      location.pathname.indexOf(GlobalNavigationBarTitleList[1][2].path) !== -1
+                      location.pathname.indexOf(GlobalNavigationBarTitleList[1][0].path) !== -1
                         ? 'underline'
                         : ''
                     }
                     onClick={() =>
-                      location.pathname.indexOf(GlobalNavigationBarTitleList[1][2].path) === -1
+                      location.pathname.indexOf(GlobalNavigationBarTitleList[1][0].path) === -1
                         ? history.push({
-                            pathname: GlobalNavigationBarTitleList[1][2].path,
+                            pathname: GlobalNavigationBarTitleList[1][0].path,
                             state: { initiate: true },
                           })
                         : {}
                     }
                   >
                     병원 관리
-                  </GlobalNavigationBarShortCutTextComponent>
-                </GlobalNavigationBarShortCutComponent>
-                <GlobalNavigationBarShortCutComponent>
-                  <GlobalNavigationBarShortCutTextComponent
-                    color={
-                      location.pathname.indexOf(GlobalNavigationBarTitleList[1][3].path) !== -1
-                        ? '#00B264'
-                        : '#393939'
-                    }
-                    textDecoration={
-                      location.pathname.indexOf(GlobalNavigationBarTitleList[1][3].path) !== -1
-                        ? 'underline'
-                        : ''
-                    }
-                    onClick={() =>
-                      location.pathname.indexOf(GlobalNavigationBarTitleList[1][3].path) === -1
-                        ? history.push({
-                            pathname: GlobalNavigationBarTitleList[1][3].path,
-                            state: { initiate: true },
-                          })
-                        : {}
-                    }
-                  >
-                    약국 관리
                   </GlobalNavigationBarShortCutTextComponent>
                 </GlobalNavigationBarShortCutComponent>
                 <GlobalNavigationBarShortCutComponent>
@@ -248,6 +224,30 @@ const GlobalNavigationBar = observer(() => {
                       location.pathname.indexOf(GlobalNavigationBarTitleList[1][1].path) === -1
                         ? history.push({
                             pathname: GlobalNavigationBarTitleList[1][1].path,
+                            state: { initiate: true },
+                          })
+                        : {}
+                    }
+                  >
+                    약국 관리
+                  </GlobalNavigationBarShortCutTextComponent>
+                </GlobalNavigationBarShortCutComponent>
+                <GlobalNavigationBarShortCutComponent>
+                  <GlobalNavigationBarShortCutTextComponent
+                    color={
+                      location.pathname.indexOf(GlobalNavigationBarTitleList[1][2].path) !== -1
+                        ? '#00B264'
+                        : '#393939'
+                    }
+                    textDecoration={
+                      location.pathname.indexOf(GlobalNavigationBarTitleList[1][2].path) !== -1
+                        ? 'underline'
+                        : ''
+                    }
+                    onClick={() =>
+                      location.pathname.indexOf(GlobalNavigationBarTitleList[1][2].path) === -1
+                        ? history.push({
+                            pathname: GlobalNavigationBarTitleList[1][2].path,
                             state: { initiate: true },
                           })
                         : {}
@@ -331,19 +331,19 @@ const GlobalNavigationBar = observer(() => {
                 <GlobalNavigationBarShortCutComponent>
                   <GlobalNavigationBarShortCutTextComponent
                     color={
-                      location.pathname.indexOf(GlobalNavigationBarTitleList[3][3].path) !== -1
+                      location.pathname.indexOf(GlobalNavigationBarTitleList[2][3].path) !== -1
                         ? '#00B264'
                         : '#393939'
                     }
                     textDecoration={
-                      location.pathname.indexOf(GlobalNavigationBarTitleList[3][3].path) !== -1
+                      location.pathname.indexOf(GlobalNavigationBarTitleList[2][3].path) !== -1
                         ? 'underline'
                         : ''
                     }
                     onClick={() =>
-                      location.pathname.indexOf(GlobalNavigationBarTitleList[3][3].path) === -1
+                      location.pathname.indexOf(GlobalNavigationBarTitleList[2][3].path) === -1
                         ? history.push({
-                            pathname: GlobalNavigationBarTitleList[3][3].path,
+                            pathname: GlobalNavigationBarTitleList[2][3].path,
                             state: { initiate: true },
                           })
                         : {}
