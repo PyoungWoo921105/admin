@@ -8,13 +8,13 @@ import { observer } from 'mobx-react';
 import { Route } from 'react-router-dom';
 
 import { LocalBoardFrame } from 'styles/components/common/Frame';
-import PharmacyHistoryBoard from 'page/pharmacy/history/PharmacyHistoryBoard';
 /* import PharmacyLiveBoard from 'page/pharmacy/live/PharmacyLiveBoard'; */
+import PharmacyHistoryBoard from 'page/pharmacy/history/PharmacyHistoryBoard';
 
 const PharmacyBoard = observer(() => (
   <LocalBoardFrame>
-    <Route path="/pharmacy/history" component={PharmacyHistoryBoard} />
     {/* <Route path="/pharmacy/live" component={PharmacyLiveBoard} /> */}
+    <Route path="/pharmacy/history" component={PharmacyHistoryBoard} />
   </LocalBoardFrame>
 ));
 
