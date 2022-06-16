@@ -78,6 +78,25 @@ export const FilterElementBoardComponent = styled.div<CustomProps>`
   padding: 0px 10px 0px 10px;
   width: 100%;
 `;
+export const FilterElementBoardTextLinkComponent = styled.span<CustomProps>`
+  align-items: center;
+  border: none;
+  border-radius: 4px;
+  color: ${props => (props.color ? props.color : '')};
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 11px;
+  font-style: normal;
+  font-weight: normal;
+  height: 30px;
+  min-width: ${props => (props.minWidth ? props.minWidth : '')};
+  padding: 0px 10px 0px 10px;
+  text-align: ${props => (props.textAlign ? props.textAlign : '')};
+  white-space: ${props => (props.whiteSpace ? props.whiteSpace : '')};
+  width: ${props => (props.width ? props.width : '')};
+`;
 export const FilterElementBoardInputComponent = styled.input<CustomProps>`
   align-items: center;
   border: none;

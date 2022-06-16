@@ -49,6 +49,7 @@ import {
   FilterElementTitleTextComponent,
   FilterElementBoardFrame,
   FilterElementBoardComponent,
+  FilterElementBoardTextLinkComponent,
   FilterElementBoardInputComponent,
   FilterElementBoardSelectComponent,
   FilterElementBoardOptionComponent,
@@ -303,6 +304,33 @@ const BoardTitleAndFilter = observer(() => {
                         </FilterElementBoardSelectedImageFrame>
                       </FilterElementBoardSelectedComponent>
                     ))}
+                  </FilterElementBoardComponent>
+                </FilterElementBoardFrame>
+              </FilterElementComponent>
+            </FilterElementFrame>
+            {/*  */}
+            {/* SINGLE INPUT */}
+            <FilterElementFrame>
+              <FilterElementComponent>
+                <FilterElementTitleFrame minWidth="90px" width="90px">
+                  <FilterElementTitleComponent>
+                    <FilterElementTitleTextComponent>프로모션 참고</FilterElementTitleTextComponent>
+                  </FilterElementTitleComponent>
+                </FilterElementTitleFrame>
+                <FilterElementBoardFrame minWidth="130px" /* width="130px" */>
+                  <FilterElementBoardComponent>
+                    <FilterElementBoardTextLinkComponent
+                      width="100%"
+                      color="#1338BE"
+                      whiteSpace="pre"
+                      onClick={() => {
+                        window.open(
+                          'https://www.notion.so/104fb191c869499a90c11c6b25109444?v=ff3520eb190f4f1ebd30630bc92dc68b'
+                        );
+                      }}
+                    >
+                      https://www.notion.so/104fb191c869499a90c11c6b25109444?v=ff3520eb190f4f1ebd30630bc92dc68b
+                    </FilterElementBoardTextLinkComponent>
                   </FilterElementBoardComponent>
                 </FilterElementBoardFrame>
               </FilterElementComponent>
