@@ -199,6 +199,21 @@ export const DataElementContentExtraButtonComponent = styled.button<CustomProps>
   white-space: nowrap;
   width: ${props => (props.width ? props.width : '')};
 `;
+export const DataElementContentInputComponent = styled.input<CustomProps>`
+  color: ${props => (props.color ? props.color : '#000000')};
+  cursor: ${props => (props.cursor ? props.cursor : '')};
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 11px;
+  font-style: normal;
+  font-weight: normal;
+  height: ${props => (props.height ? props.height : '')};
+  min-height: ${props => (props.minHeight ? props.minHeight : '')};
+  min-width: ${props => (props.minWidth ? props.minWidth : '')};
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: ${props => (props.width ? props.width : '')};
+`;
 /* 네비게이션 */
 export const NavigationFrame = styled.div<CustomProps>`
   display: flex;

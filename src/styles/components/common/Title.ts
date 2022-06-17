@@ -203,3 +203,37 @@ export const TitleSearchButtonComponent = styled.button`
   justify-content: center;
   padding: 0px 10px 0px 10px;
 `;
+/* 알림 */
+export const TitleSendAlarmFrame = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  height: 40px;
+  justify-content: center;
+  padding: 0px 10px 0px 10px;
+`;
+export const TitleSendAlarmButtonFrame = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  height: 40px;
+  justify-content: center;
+  padding: 0px 0px 0px 0px;
+`;
+export const TitleSendAlarmButtonComponent = styled.button`
+  align-items: center;
+  background-color: rgb(0, 178, 100);
+  border: none;
+  border-radius: 10px 10px 10px 10px;
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 11px;
+  font-style: normal;
+  font-weight: normal;
+  height: 30px;
+  justify-content: center;
+  padding: 0px 10px 0px 10px;
+`;

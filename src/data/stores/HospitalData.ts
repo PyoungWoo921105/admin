@@ -93,6 +93,65 @@ export interface AdminVisitCheckSummaryDataType {
   };
 }
 /*  */
+/* 병원 추가 요청 내역 */
+/* GET /admin/hospitalAddition/details/list */
+export interface AdminHospitalAdditionDetailsListDataType {
+  count: {
+    total: number;
+  };
+  additionList: {
+    hospital: {
+      name: string;
+      sido: string;
+      sigungu: string;
+    };
+    address: {
+      jibunAddress: string;
+      roadAddress: string;
+      detailedAddress: string;
+    };
+    isAgreeNoti: boolean;
+    registeredHospital: {
+      code: string;
+      name: string;
+      phoneNum: string;
+    };
+    code: string;
+    createdAt: string;
+    isSendNoti: boolean;
+    timestamp: {
+      registeredDateTime: string;
+      notiDateTime: string;
+    };
+  }[];
+}
+/* POST /admin/hospitalAddition/notification */
+export interface AdminHospitalAdditionNotificationDataType {
+  hospital: {
+    name: string;
+    sido: string;
+    sigungu: string;
+  };
+  address: {
+    jibunAddress: string;
+    roadAddress: string;
+    detailedAddress: string;
+  };
+  isAgreeNoti: boolean;
+  registeredHospital: {
+    code: string;
+    name: string;
+    phoneNum: string;
+  };
+  code: string;
+  createdAt: string;
+  isSendNoti: boolean;
+  timestamp: {
+    registeredDateTime: string;
+    notiDateTime: string;
+  };
+}
+/*  */
 
 export interface HospitalDataType {
   /* 페이지 */
@@ -113,6 +172,18 @@ export interface HospitalDataType {
   /* GET /admin/visitCheck/summary */
   AdminVisitCheckSummaryData: null | AdminVisitCheckSummaryDataType;
   setAdminVisitCheckSummaryData: (e: null | AdminVisitCheckSummaryDataType) => void;
+  /*  */
+  /* 병원 추가 요청 내역 */
+  /* GET /admin/hospitalAddition/details/list */
+  AdminHospitalAdditionDetailsListData: null | AdminHospitalAdditionDetailsListDataType;
+  setAdminHospitalAdditionDetailsListData: (
+    e: null | AdminHospitalAdditionDetailsListDataType
+  ) => void;
+  /* POST /admin/hospitalAddition/notification */
+  AdminHospitalAdditionNotificationData: [] | AdminHospitalAdditionNotificationDataType[];
+  setAdminHospitalAdditionNotificationData: (
+    e: [] | AdminHospitalAdditionNotificationDataType[]
+  ) => void;
   /*  */
 }
 
@@ -144,6 +215,18 @@ const HospitalData = observable<HospitalDataType>({
   AdminVisitCheckSummaryData: null,
   setAdminVisitCheckSummaryData(e: null | AdminVisitCheckSummaryDataType) {
     this.AdminVisitCheckSummaryData = e;
+  },
+  /*  */
+  /* 병원 추가 요청 내역 */
+  /* GET /admin/hospitalAddition/details/list */
+  AdminHospitalAdditionDetailsListData: null,
+  setAdminHospitalAdditionDetailsListData(e: null | AdminHospitalAdditionDetailsListDataType) {
+    this.AdminHospitalAdditionDetailsListData = e;
+  },
+  /* POST /admin/hospitalAddition/notification */
+  AdminHospitalAdditionNotificationData: [],
+  setAdminHospitalAdditionNotificationData(e: [] | AdminHospitalAdditionNotificationDataType[]) {
+    this.AdminHospitalAdditionNotificationData = e;
   },
   /*  */
 });
