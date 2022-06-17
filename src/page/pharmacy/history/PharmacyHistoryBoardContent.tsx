@@ -255,7 +255,7 @@ const BoardContent = observer(() => {
                               : element?.hospitalState === '점심 시간'
                               ? '#ffffff'
                               : element?.hospitalState === '진료 종료'
-                              ? 'rgb(192,0,0)'
+                              ? '#ffffff'
                               : '#000000'
                           }
                         >
