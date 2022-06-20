@@ -128,7 +128,7 @@ const BoardTitleAndFilter = observer(() => {
     DeliveryData.setParagraphNavigator(1);
   };
   /* 필터 */
-  /* 배달 코드 */
+  /* 방문/배달 코드 */
   const [DeliveryCode, setDeliveryCode] = useState('');
   const onChangeDeliveryCode = (event: { target: { value: string } }) => {
     setDeliveryCode(event.target.value);
@@ -143,7 +143,7 @@ const BoardTitleAndFilter = observer(() => {
   const onChangeEndInquiryPeriod = (event: { target: { value: string } }) => {
     setEndInquiryPeriod(AllowNumber(event.target.value));
   };
-  /* 배달 상태 */
+  /* 방문/배달 상태 */
   const DeliveryStateList = [
     '선택',
     '전체',
@@ -255,7 +255,7 @@ const BoardTitleAndFilter = observer(() => {
       const PopUpData = {
         Category: 'ERROR',
         Name: 'GET_DELIVERY_LIST',
-        Title: '배달 내역 불러오기 실패',
+        Title: '방문/배달 내역 불러오기 실패',
         Contents: [MetaError?.data?.message] || [
           '일시적인 서버 오류가 발생하였습니다.',
           '다음에 다시 시도해주세요.',
@@ -302,7 +302,7 @@ const BoardTitleAndFilter = observer(() => {
       const PopUpData = {
         Category: 'ERROR',
         Name: 'GET_DELIVERY_LIST_EXPORT',
-        Title: '배달 내역 데이터 다운로드 실패',
+        Title: '방문/배달 내역 데이터 다운로드 실패',
         Contents: [MetaError?.data?.message] || [
           '일시적인 서버 오류가 발생하였습니다.',
           '다음에 다시 시도해주세요.',
@@ -385,7 +385,7 @@ const BoardTitleAndFilter = observer(() => {
         <TitleComponent>
           {/* 내용 */}
           <TitleTextFrame>
-            <TitleTextComponent>배달 내역</TitleTextComponent>
+            <TitleTextComponent>방문/배달 내역</TitleTextComponent>
           </TitleTextFrame>
           {/*  */}
           {/* 페이지 세로고침 */}
@@ -460,12 +460,14 @@ const BoardTitleAndFilter = observer(() => {
             {/* SINGLE INPUT */}
             <FilterElementFrame>
               <FilterElementComponent>
-                <FilterElementTitleFrame minWidth="70px" width="70px">
+                <FilterElementTitleFrame minWidth="95px" width="95px">
                   <FilterElementTitleComponent>
-                    <FilterElementTitleTextComponent>배달 코드</FilterElementTitleTextComponent>
+                    <FilterElementTitleTextComponent>
+                      방문/배달 코드
+                    </FilterElementTitleTextComponent>
                   </FilterElementTitleComponent>
                 </FilterElementTitleFrame>
-                <FilterElementBoardFrame minWidth="150px" width="150px">
+                <FilterElementBoardFrame minWidth="125px" width="125px">
                   <FilterElementBoardComponent>
                     <FilterElementBoardInputComponent
                       width="100%"
@@ -529,12 +531,14 @@ const BoardTitleAndFilter = observer(() => {
             {/* SELECT & OPTION */}
             <FilterElementFrame>
               <FilterElementComponent margin="0px 1px 0px 0px">
-                <FilterElementTitleFrame minWidth="70px" width="70px">
+                <FilterElementTitleFrame minWidth="95px" width="95px">
                   <FilterElementTitleComponent>
-                    <FilterElementTitleTextComponent>배달 상태</FilterElementTitleTextComponent>
+                    <FilterElementTitleTextComponent>
+                      방문/배달 상태
+                    </FilterElementTitleTextComponent>
                   </FilterElementTitleComponent>
                 </FilterElementTitleFrame>
-                <FilterElementBoardFrame minWidth="150px" width="150px">
+                <FilterElementBoardFrame minWidth="125px" width="125px">
                   <FilterElementBoardComponent>
                     <FilterElementBoardSelectComponent
                       width="100%"
@@ -552,14 +556,14 @@ const BoardTitleAndFilter = observer(() => {
                 </FilterElementBoardFrame>
               </FilterElementComponent>
               <FilterElementComponent margin="0px 0px 0px 1px">
-                <FilterElementTitleFrame minWidth="95px" width="95px">
+                <FilterElementTitleFrame minWidth="120px" width="120px">
                   <FilterElementTitleComponent>
                     <FilterElementTitleTextComponent>
-                      배달 상태 선택
+                      방문/배달 상태 선택
                     </FilterElementTitleTextComponent>
                   </FilterElementTitleComponent>
                 </FilterElementTitleFrame>
-                <FilterElementBoardFrame minWidth="125px" width="125%">
+                <FilterElementBoardFrame minWidth="100px" width="100%">
                   <FilterElementBoardComponent>
                     {DeliveryState.map((element, key) => (
                       <FilterElementBoardSelectedComponent

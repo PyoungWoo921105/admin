@@ -91,15 +91,15 @@ export const GlobalNavigationBarShortCutFrame = styled.div`
   margin: 0px 5px 0px 5px;
   width: 100%;
 `;
-export const GlobalNavigationBarShortCutComponent = styled.div`
+export const GlobalNavigationBarShortCutComponent = styled.div<CustomProps>`
   align-items: center;
   cursor: pointer;
   display: flex;
   flex-direction: row;
   justify-content: center;
   margin: 0px 10px 0px 0px;
-  min-width: 55px;
-  width: 55px;
+  min-width: ${props => (props.minWidth ? props.minWidth : '')};
+  width: ${props => (props.width ? props.width : '')};
 `;
 export const GlobalNavigationBarShortCutTextComponent = styled.span<CustomProps>`
   color: ${props => (props.color ? props.color : '#393939')};

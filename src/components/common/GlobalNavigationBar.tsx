@@ -57,7 +57,7 @@ const GlobalNavigationBar = observer(() => {
     [
       { name: '진료 관리', path: '/treatment' },
       { name: '조제 관리', path: '/medicine' },
-      { name: '배달 관리', path: '/delivery' },
+      { name: '방문/배달 관리', path: '/delivery' },
       { name: '리뷰 관리', path: '/review' },
     ],
     [
@@ -325,7 +325,7 @@ const GlobalNavigationBar = observer(() => {
                         : {}
                     }
                   >
-                    배달 관리
+                    방문/배달 관리
                   </GlobalNavigationBarShortCutTextComponent>
                 </GlobalNavigationBarShortCutComponent>
                 <GlobalNavigationBarShortCutComponent>

@@ -64,7 +64,7 @@ const BoardContent = observer(() => {
     { title: '접수 항목', width: 110 },
     { title: '결제 금액', width: 90 },
     { title: '약 수령 방법', width: 90 },
-    { title: '배달 코드', width: 120 },
+    { title: '방문/배달 코드', width: 120 },
   ];
 
   return (

@@ -243,7 +243,7 @@ const BoardTitleAndFilter = observer(() => {
       setDeliveryMethod(DeliveryMethod.filter(element => element !== key));
     }
   };
-  /* 배달 코드 */
+  /* 방문/배달 코드 */
   const [DeliveryCode, setDeliveryCode] = useState('');
   const onChangeDeliveryCode = (event: { target: { value: string } }) => {
     setDeliveryCode(event.target.value);
@@ -776,12 +776,14 @@ const BoardTitleAndFilter = observer(() => {
             {/* SINGLE INPUT */}
             <FilterElementFrame>
               <FilterElementComponent>
-                <FilterElementTitleFrame minWidth="70px" width="70px">
+                <FilterElementTitleFrame minWidth="95px" width="95px">
                   <FilterElementTitleComponent>
-                    <FilterElementTitleTextComponent>배달 코드</FilterElementTitleTextComponent>
+                    <FilterElementTitleTextComponent>
+                      방문/배달 코드
+                    </FilterElementTitleTextComponent>
                   </FilterElementTitleComponent>
                 </FilterElementTitleFrame>
-                <FilterElementBoardFrame minWidth="150px" width="150px">
+                <FilterElementBoardFrame minWidth="125px" width="125px">
                   <FilterElementBoardComponent>
                     <FilterElementBoardInputComponent
                       width="100%"

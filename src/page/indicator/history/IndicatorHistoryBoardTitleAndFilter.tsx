@@ -123,7 +123,7 @@ const BoardTitleAndFilter = observer(() => {
     } else if (type === '조제') {
       // eslint-disable-next-line @typescript-eslint/no-floating-promises
       GetMedicineListExportFunction();
-    } else if (type === '배달') {
+    } else if (type === '방문/배달') {
       // eslint-disable-next-line @typescript-eslint/no-floating-promises
       GetDeliveryListExportFunction();
     } else if (type === '병원') {
@@ -228,7 +228,7 @@ const BoardTitleAndFilter = observer(() => {
       const PopUpData = {
         Category: 'ERROR',
         Name: 'GET_DELIVERY_LIST_EXPORT',
-        Title: '배달 지표 내역 데이터 다운로드 실패',
+        Title: '방문/배달 지표 내역 데이터 다운로드 실패',
         Contents: [MetaError?.data?.message] || [
           '일시적인 서버 오류가 발생하였습니다.',
           '다음에 다시 시도해주세요.',
@@ -369,10 +369,10 @@ const BoardTitleAndFilter = observer(() => {
           {AdminData.FilterSwitchFlag ? (
             <TitleFilterDownloadFrame>
               <TitleFilterDownloadButtonFrame
-                onClick={() => onClickFilterDownload({ type: '배달' })}
+                onClick={() => onClickFilterDownload({ type: '방문/배달' })}
               >
                 <TitleFilterDownloadButtonComponent>
-                  배달 지표 내역 데이터 다운로드
+                  방문/배달 지표 내역 데이터 다운로드
                 </TitleFilterDownloadButtonComponent>
               </TitleFilterDownloadButtonFrame>
             </TitleFilterDownloadFrame>

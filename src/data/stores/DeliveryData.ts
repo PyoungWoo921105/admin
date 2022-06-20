@@ -4,7 +4,7 @@
 
 import { observable } from 'mobx';
 
-/* 배달 내역 */
+/* 방문/배달 내역 */
 /* GET /delivery/list */
 export interface DeliveryListDataType {
   count: {
@@ -78,7 +78,7 @@ export interface DeliveryDataType {
   ParagraphNavigator: number;
   setParagraphNavigator: (e: number) => void;
   /*  */
-  /* 배달 내역 */
+  /* 방문/배달 내역 */
   /* GET /delivery/list */
   DeliveryListData: null | DeliveryListDataType;
   setDeliveryListData: (e: null | DeliveryListDataType) => void;
@@ -105,7 +105,7 @@ const DeliveryData = observable<DeliveryDataType>({
     this.ParagraphNavigator = e;
   },
   /*  */
-  /* 배달 내역 */
+  /* 방문/배달 내역 */
   /* GET /delivery/list */
   DeliveryListData: null,
   setDeliveryListData(e: null | DeliveryListDataType) {

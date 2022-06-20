@@ -25,8 +25,8 @@ const DeliveryNavigationBar = observer(() => {
   const location = useLocation<LocalState>();
 
   const NavigationBarTitleList = [
-    { name: '배달 현황', path: '/delivery/live' },
-    { name: '배달 내역', path: '/delivery/history' },
+    { name: '방문/배달 현황', path: '/delivery/live' },
+    { name: '방문/배달 내역', path: '/delivery/history' },
     { name: '배달 운영', path: '/delivery/operation' },
   ];
 
@@ -60,7 +60,9 @@ const DeliveryNavigationBar = observer(() => {
       <LocalNavigationBarTitleFrame>
         <LocalNavigationBarTitleComponent>
           <LocalNavigationBarTitleTextFrame>
-            <LocalNavigationBarTitleTextComponent>배달 관리</LocalNavigationBarTitleTextComponent>
+            <LocalNavigationBarTitleTextComponent>
+              방문/배달 관리
+            </LocalNavigationBarTitleTextComponent>
           </LocalNavigationBarTitleTextFrame>
         </LocalNavigationBarTitleComponent>
       </LocalNavigationBarTitleFrame>

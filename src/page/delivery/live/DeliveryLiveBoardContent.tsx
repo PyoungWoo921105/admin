@@ -57,8 +57,8 @@ const BoardContent = observer(() => {
   const { CommonData, DeliveryData } = useStore();
   /* 카테고리 */
   const CategoryList = [
-    { title: '배달 코드', width: 120 },
-    { title: '배달 상태', width: 110 },
+    { title: '방문/배달 코드', width: 120 },
+    { title: '방문/배달 상태', width: 110 },
     { title: '전체 소요 시간', width: 90 },
     { title: '배송 업체 이름', width: 90 },
     { title: '약국 이름', width: 90 },
@@ -66,9 +66,9 @@ const BoardContent = observer(() => {
     { title: '환자 이름', width: 90 },
     { title: '회원 전화번호', width: 120 },
     { title: '배달 주소', width: 260 },
-    { title: '배달 생성 시각 / 픽업 소요 시간', width: 140 },
-    { title: '픽업 완료 시각 / 배달 소요 시간', width: 140 },
-    { title: '배달 완료 시각', width: 140 },
+    { title: '방문/배달 생성 시각 / 픽업 소요 시간', width: 160 },
+    { title: '픽업 완료 시각 / 방문/배달 소요 시간', width: 160 },
+    { title: '방문/배달 완료 시각', width: 140 },
   ];
 
   return (
