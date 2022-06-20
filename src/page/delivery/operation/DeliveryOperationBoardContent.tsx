@@ -146,7 +146,9 @@ const BoardContent = observer(() => {
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentTextComponent>
                           {element?.pharmacy?.phoneNum
-                            ? ConvertContactNumber(AllowNumber(element?.pharmacy?.phoneNum))
+                            ? AllowNumber(element?.pharmacy?.phoneNum)
+                              ? ConvertContactNumber(AllowNumber(element?.pharmacy?.phoneNum))
+                              : element?.pharmacy?.phoneNum
                             : '-'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
