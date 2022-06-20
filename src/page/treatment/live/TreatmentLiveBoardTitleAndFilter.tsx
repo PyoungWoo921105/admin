@@ -420,8 +420,8 @@ const BoardTitleAndFilter = observer(() => {
     '결제 대기',
     '완료',
     '결제 실패',
-    '진료 거절',
     '진료 취소',
+    '진료 거절',
     '진료 시스템 취소',
   ];
 
@@ -870,28 +870,36 @@ const BoardTitleAndFilter = observer(() => {
                           lineHeight="30px"
                           color={
                             element === '전체'
-                              ? '#000000'
+                              ? 'rgb(0,0,0)'
                               : element === '접수 대기'
-                              ? '#000000'
+                              ? 'rgb(0,0,0)'
                               : element === '진료 대기'
-                              ? '#000000'
+                              ? 'rgb(0,0,0)'
                               : element === '진료 중'
-                              ? '#000000'
-                              : element === '처방 및 수납'
-                              ? '#000000'
+                              ? 'rgb(0,0,0)'
                               : element === '결제 대기'
-                              ? '#000000'
+                              ? 'rgb(0,0,0)'
+                              : element === '처방 및 수납'
+                              ? 'rgb(0,0,0)'
+                              : element === '결제 실패'
+                              ? 'rgb(192,0,0)'
                               : element === '완료'
                               ? 'rgb(112,173,71)'
-                              : element === '결제 실패'
+                              : element === '진료 취소'
                               ? 'rgb(192,0,0)'
                               : element === '진료 거절'
                               ? 'rgb(192,0,0)'
-                              : element === '진료 취소'
-                              ? 'rgb(192,0,0)'
                               : element === '진료 시스템 취소'
                               ? 'rgb(192,0,0)'
-                              : '#000000'
+                              : /*  */
+                              element === '거절'
+                              ? 'rgb(192,0,0)'
+                              : element === '취소'
+                              ? 'rgb(192,0,0)'
+                              : element === '진료 완료'
+                              ? 'rgb(112,173,71)'
+                              : /*  */
+                                '#000000'
                           }
                         >
                           {element}
@@ -911,28 +919,36 @@ const BoardTitleAndFilter = observer(() => {
                           lineHeight="30px"
                           color={
                             element === '전체'
-                              ? '#000000'
+                              ? 'rgb(0,0,0)'
                               : element === '접수 대기'
-                              ? '#000000'
+                              ? 'rgb(0,0,0)'
                               : element === '진료 대기'
-                              ? '#000000'
+                              ? 'rgb(0,0,0)'
                               : element === '진료 중'
-                              ? '#000000'
-                              : element === '처방 및 수납'
-                              ? '#000000'
+                              ? 'rgb(0,0,0)'
                               : element === '결제 대기'
-                              ? '#000000'
+                              ? 'rgb(0,0,0)'
+                              : element === '처방 및 수납'
+                              ? 'rgb(0,0,0)'
+                              : element === '결제 실패'
+                              ? 'rgb(192,0,0)'
                               : element === '완료'
                               ? 'rgb(112,173,71)'
-                              : element === '결제 실패'
+                              : element === '진료 취소'
                               ? 'rgb(192,0,0)'
                               : element === '진료 거절'
                               ? 'rgb(192,0,0)'
-                              : element === '진료 취소'
-                              ? 'rgb(192,0,0)'
                               : element === '진료 시스템 취소'
                               ? 'rgb(192,0,0)'
-                              : '#000000'
+                              : /*  */
+                              element === '거절'
+                              ? 'rgb(192,0,0)'
+                              : element === '취소'
+                              ? 'rgb(192,0,0)'
+                              : element === '진료 완료'
+                              ? 'rgb(112,173,71)'
+                              : /*  */
+                                '#000000'
                           }
                         >
                           {element === '전체'

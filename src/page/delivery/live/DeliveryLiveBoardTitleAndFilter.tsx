@@ -153,6 +153,7 @@ const BoardTitleAndFilter = observer(() => {
     '픽업 완료',
     '완료',
     '배달 취소',
+    '배달 거절',
   ];
   const [DeliveryState, setDeliveryState] = useState<string[]>(['전체']);
   const onChangeDeliveryState = (event: { target: { value: string } }) => {
@@ -729,6 +730,10 @@ const BoardTitleAndFilter = observer(() => {
                           color={
                             element === '전체'
                               ? '#000000'
+                              : element === '방문 대기'
+                              ? 'rgb(255,64,64)'
+                              : element === '조제 대기'
+                              ? 'rgb(255,64,64)'
                               : element === '접수 대기'
                               ? 'rgb(255,64,64)'
                               : element === '배차 대기'
@@ -739,9 +744,19 @@ const BoardTitleAndFilter = observer(() => {
                               ? 'rgb(237,125,49)'
                               : element === '완료'
                               ? 'rgb(112,173,71)'
+                              : element === '취소'
+                              ? 'rgb(255,64,64)'
+                              : /*  */
+                              element === '배달 완료'
+                              ? 'rgb(112,173,71)'
                               : element === '배달 취소'
                               ? 'rgb(255,64,64)'
-                              : '#000000'
+                              : element === '배달 거절'
+                              ? 'rgb(255,64,64)'
+                              : element === '거절'
+                              ? 'rgb(255,64,64)'
+                              : /*  */
+                                '#000000'
                           }
                         >
                           {element}
@@ -762,6 +777,10 @@ const BoardTitleAndFilter = observer(() => {
                           color={
                             element === '전체'
                               ? '#000000'
+                              : element === '방문 대기'
+                              ? 'rgb(255,64,64)'
+                              : element === '조제 대기'
+                              ? 'rgb(255,64,64)'
                               : element === '접수 대기'
                               ? 'rgb(255,64,64)'
                               : element === '배차 대기'
@@ -772,9 +791,19 @@ const BoardTitleAndFilter = observer(() => {
                               ? 'rgb(237,125,49)'
                               : element === '완료'
                               ? 'rgb(112,173,71)'
+                              : element === '취소'
+                              ? 'rgb(255,64,64)'
+                              : /*  */
+                              element === '배달 완료'
+                              ? 'rgb(112,173,71)'
                               : element === '배달 취소'
                               ? 'rgb(255,64,64)'
-                              : '#000000'
+                              : element === '배달 거절'
+                              ? 'rgb(255,64,64)'
+                              : element === '거절'
+                              ? 'rgb(255,64,64)'
+                              : /*  */
+                                '#000000'
                           }
                         >
                           {element === '전체'

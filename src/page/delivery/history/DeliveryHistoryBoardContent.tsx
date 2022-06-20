@@ -66,8 +66,8 @@ const BoardContent = observer(() => {
     { title: '환자 이름', width: 90 },
     { title: '회원 전화번호', width: 120 },
     { title: '배달 주소', width: 260 },
-    { title: '방문/배달 생성 시각 / 픽업 소요 시간', width: 160 },
-    { title: '픽업 완료 시각 / 방문/배달 소요 시간', width: 160 },
+    { title: '배달 생성 시각 / 픽업 소요 시간', width: 160 },
+    { title: '픽업 완료 시각 / 배달 소요 시간', width: 160 },
     { title: '방문/배달 완료 시각', width: 140 },
   ];
 
@@ -127,7 +127,11 @@ const BoardContent = observer(() => {
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentButtonComponent
                           backgroundColor={
-                            element?.status === '접수 대기'
+                            element?.status === '방문 대기'
+                              ? 'rgb(255,64,64)'
+                              : element?.status === '조제 대기'
+                              ? 'rgb(255,64,64)'
+                              : element?.status === '접수 대기'
                               ? 'rgb(255,64,64)'
                               : element?.status === '배차 대기'
                               ? 'rgb(255,192,0)'
@@ -137,12 +141,26 @@ const BoardContent = observer(() => {
                               ? 'rgb(237,125,49)'
                               : element?.status === '완료'
                               ? 'rgb(112,173,71)'
+                              : element?.status === '취소'
+                              ? 'rgb(255,64,64)'
+                              : /*  */
+                              element?.status === '배달 완료'
+                              ? 'rgb(112,173,71)'
                               : element?.status === '배달 취소'
                               ? 'rgb(255,64,64)'
-                              : 'transparent'
+                              : element?.status === '배달 거절'
+                              ? 'rgb(255,64,64)'
+                              : element?.status === '거절'
+                              ? 'rgb(255,64,64)'
+                              : /*  */
+                                'transparent'
                           }
                           color={
-                            element?.status === '접수 대기'
+                            element?.status === '방문 대기'
+                              ? '#ffffff'
+                              : element?.status === '조제 대기'
+                              ? '#ffffff'
+                              : element?.status === '접수 대기'
                               ? '#ffffff'
                               : element?.status === '배차 대기'
                               ? '#ffffff'
@@ -152,9 +170,19 @@ const BoardContent = observer(() => {
                               ? '#ffffff'
                               : element?.status === '완료'
                               ? '#ffffff'
+                              : element?.status === '취소'
+                              ? '#ffffff'
+                              : /*  */
+                              element?.status === '배달 완료'
+                              ? '#ffffff'
                               : element?.status === '배달 취소'
                               ? '#ffffff'
-                              : '#000000'
+                              : element?.status === '배달 거절'
+                              ? '#ffffff'
+                              : element?.status === '거절'
+                              ? '#ffffff'
+                              : /*  */
+                                '#000000'
                           }
                         >
                           {element?.status || '-'}
