@@ -6,36 +6,37 @@ import { observable } from 'mobx';
 
 /* 방문/배달 내역 */
 /* GET /delivery/list */
+export interface DeliveryElementDataType {
+  deliveryCode: string;
+  medicineCode: string;
+  status: string;
+  pharmacy: {
+    code: string;
+    name: string;
+  };
+  rider: {
+    code: string;
+    name: string;
+  };
+  isExtraDelivery: boolean;
+  hasNotificationToCheck: boolean;
+  patient: {
+    code: string;
+    name: string;
+    phoneNum: string;
+    applicantName: string;
+  };
+  address: string;
+  elapsedTime: string;
+  requestedDateTime: string;
+  pickUpDateTime: string;
+  endDateTime: string;
+}
 export interface DeliveryListDataType {
   count: {
     total: number;
   };
-  deliveryList: {
-    deliveryCode: string;
-    medicineCode: string;
-    status: string;
-    pharmacy: {
-      code: string;
-      name: string;
-    };
-    rider: {
-      code: string;
-      name: string;
-    };
-    isExtraDelivery: boolean;
-    hasNotificationToCheck: boolean;
-    patient: {
-      code: string;
-      name: string;
-      phoneNum: string;
-      applicantName: string;
-    };
-    address: string;
-    elapsedTime: string;
-    requestedDateTime: string;
-    pickUpDateTime: string;
-    endDateTime: string;
-  }[];
+  deliveryList: DeliveryElementDataType[];
 }
 /* Socket */
 export interface SocketDeliveryDataType {

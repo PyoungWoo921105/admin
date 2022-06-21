@@ -22,6 +22,17 @@ export interface AdminDataType {
   /* Statistic */
   StatisticSwitchFlag: boolean;
   setStatisticSwitchFlag: (e: boolean) => void;
+  /* Process Pop Up */
+  ProcessPopUpFlag: boolean;
+  setProcessPopUpFlag: (e: boolean) => void;
+  ProcessPopUpData: any;
+  setProcessPopUpData: (e: any) => void;
+  ProcessPopUpStep: string;
+  setProcessPopUpStep: (e: string) => void;
+  ProcessPopUpType: string;
+  setProcessPopUpType: (e: string) => void;
+  ProcessPopUpCode: string;
+  setProcessPopUpCode: (e: string) => void;
 }
 
 const AdminData = observable<AdminDataType>({
@@ -55,6 +66,27 @@ const AdminData = observable<AdminDataType>({
   StatisticSwitchFlag: true,
   setStatisticSwitchFlag(e: boolean) {
     this.StatisticSwitchFlag = e;
+  },
+  /* Process Pop Up */
+  ProcessPopUpFlag: false,
+  setProcessPopUpFlag(e: boolean) {
+    this.ProcessPopUpFlag = e;
+  },
+  ProcessPopUpData: null,
+  setProcessPopUpData(e: any) {
+    this.ProcessPopUpData = e;
+  },
+  ProcessPopUpStep: '',
+  setProcessPopUpStep(e: string) {
+    this.ProcessPopUpStep = e;
+  },
+  ProcessPopUpType: '',
+  setProcessPopUpType(e: string) {
+    this.ProcessPopUpType = e;
+  },
+  ProcessPopUpCode: '',
+  setProcessPopUpCode(e: string) {
+    this.ProcessPopUpCode = e;
   },
 });
 

@@ -6,6 +6,35 @@ import { observable } from 'mobx';
 
 /* 진료 내역 */
 /* GET /treat/list */
+export interface TreatmentElementDataType {
+  treatCode: string;
+  requestedDateTime: string;
+  status: string;
+  hospital: {
+    code: string;
+    name: string;
+  };
+  doctor: {
+    code: string;
+    name: string;
+  };
+  patient: {
+    code: string;
+    name: string;
+    applicantName: string;
+  };
+  receptionCategory: string;
+  payAmount: string;
+  symptomImgFiles: {
+    name: string;
+    url: string;
+  }[];
+  prescriptionImgFile: {
+    name: string;
+    url: string;
+  };
+  medicineReceiveWay: string;
+}
 export interface TreatmentListDataType {
   count: {
     total: number;
@@ -20,35 +49,7 @@ export interface TreatmentListDataType {
     declined: number;
     systemCanceled: number;
   };
-  treatList: {
-    treatCode: string;
-    requestedDateTime: string;
-    status: string;
-    hospital: {
-      code: string;
-      name: string;
-    };
-    doctor: {
-      code: string;
-      name: string;
-    };
-    patient: {
-      code: string;
-      name: string;
-      applicantName: string;
-    };
-    receptionCategory: string;
-    payAmount: string;
-    symptomImgFiles: {
-      name: string;
-      url: string;
-    }[];
-    prescriptionImgFile: {
-      name: string;
-      url: string;
-    };
-    medicineReceiveWay: string;
-  }[];
+  treatList: TreatmentElementDataType[];
 }
 /* Socket */
 export interface SocketTreatmentDataType {

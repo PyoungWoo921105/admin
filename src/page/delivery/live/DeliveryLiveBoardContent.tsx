@@ -52,9 +52,10 @@ import { ConvertCommaNumber } from 'libraries/conversion/ConvertCommaNumber';
 import { GetTimeCost } from 'libraries/time/GetTimeCost';
 import { ConvertContactNumber } from 'libraries/conversion/ConvertContactNumber';
 import { AllowNumber } from 'libraries/constraint/AllowNumber';
+import { DeliveryElementDataType } from 'data/stores/DeliveryData';
 /*  */
 const BoardContent = observer(() => {
-  const { CommonData, DeliveryData } = useStore();
+  const { CommonData, DeliveryData, AdminData } = useStore();
   /* 카테고리 */
   const CategoryList = [
     { title: '방문/배달 코드', width: 120 },
@@ -70,6 +71,17 @@ const BoardContent = observer(() => {
     { title: '픽업 완료 시각 / 배달 소요 시간', width: 160 },
     { title: '방문/배달 완료 시각', width: 140 },
   ];
+
+  const onClickProcessPopUp = (props: any) => {
+    const { element } = props;
+    AdminData.setProcessPopUpData(element);
+
+    AdminData.setProcessPopUpStep('TREATMENT');
+    AdminData.setProcessPopUpType('SPECIFICATION');
+    AdminData.setProcessPopUpCode((element as DeliveryElementDataType).deliveryCode);
+
+    AdminData.setProcessPopUpFlag(true);
+  };
 
   return (
     <BoardContentFrame>
@@ -114,7 +126,11 @@ const BoardContent = observer(() => {
                       width={`${CategoryList[0].width}%`}
                     >
                       <DataElementContentComponent justifyContent="center">
-                        <DataElementContentTextComponent color="blue" cursor="pointer">
+                        <DataElementContentTextComponent
+                          color="blue"
+                          cursor="pointer"
+                          onClick={() => onClickProcessPopUp({ element })}
+                        >
                           {element?.deliveryCode || '-'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>

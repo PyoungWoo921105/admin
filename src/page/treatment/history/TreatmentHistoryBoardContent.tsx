@@ -48,9 +48,10 @@ import {
 
 import { ConvertDate } from 'libraries/conversion/ConvertDate';
 import { ConvertCommaNumber } from 'libraries/conversion/ConvertCommaNumber';
+import { TreatmentElementDataType } from 'data/stores/TreatmentData';
 /*  */
 const BoardContent = observer(() => {
-  const { TreatmentData } = useStore();
+  const { TreatmentData, AdminData } = useStore();
   /* 카테고리 */
   const CategoryList = [
     { title: '진료 코드', width: 120 },
@@ -65,6 +66,17 @@ const BoardContent = observer(() => {
     { title: '처방전 유무', width: 90 },
     { title: '약 수령 방법', width: 90 },
   ];
+
+  const onClickProcessPopUp = (props: any) => {
+    const { element } = props;
+    AdminData.setProcessPopUpData(element);
+
+    AdminData.setProcessPopUpStep('TREATMENT');
+    AdminData.setProcessPopUpType('SPECIFICATION');
+    AdminData.setProcessPopUpCode((element as TreatmentElementDataType).treatCode);
+
+    AdminData.setProcessPopUpFlag(true);
+  };
 
   return (
     <BoardContentFrame>
@@ -109,7 +121,11 @@ const BoardContent = observer(() => {
                       width={`${CategoryList[0].width}%`}
                     >
                       <DataElementContentComponent justifyContent="center">
-                        <DataElementContentTextComponent color="blue" cursor="pointer">
+                        <DataElementContentTextComponent
+                          color="blue"
+                          cursor="pointer"
+                          onClick={() => onClickProcessPopUp({ element })}
+                        >
                           {element?.treatCode || '-'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
