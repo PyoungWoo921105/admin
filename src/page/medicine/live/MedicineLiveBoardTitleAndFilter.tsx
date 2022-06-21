@@ -385,10 +385,6 @@ const BoardTitleAndFilter = observer(() => {
     '접수 대기',
     '조제 중',
     '결제 실패',
-    '방문 대기',
-    '배차 대기',
-    '배차 완료',
-    '픽업 완료',
     '완료',
     '조제 취소',
     '조제 거절',
@@ -935,30 +931,6 @@ const BoardTitleAndFilter = observer(() => {
                             ? MedicineData.MedicineListData?.count?.failedToPay
                               ? `${ConvertCommaNumber(
                                   MedicineData.MedicineListData?.count?.failedToPay.toString()
-                                )}건`
-                              : '0건'
-                            : element === '방문 대기'
-                            ? MedicineData.MedicineListData?.count?.waitVisit
-                              ? `${ConvertCommaNumber(
-                                  MedicineData.MedicineListData?.count?.waitVisit.toString()
-                                )}건`
-                              : '0건'
-                            : element === '배차 대기'
-                            ? MedicineData.MedicineListData?.count?.waitAllocation
-                              ? `${ConvertCommaNumber(
-                                  MedicineData.MedicineListData?.count?.waitAllocation.toString()
-                                )}건`
-                              : '0건'
-                            : element === '배차 완료'
-                            ? MedicineData.MedicineListData?.count?.allocationCompleted
-                              ? `${ConvertCommaNumber(
-                                  MedicineData.MedicineListData?.count?.allocationCompleted.toString()
-                                )}건`
-                              : '0건'
-                            : element === '픽업 완료'
-                            ? MedicineData.MedicineListData?.count?.pickUpCompleted
-                              ? `${ConvertCommaNumber(
-                                  MedicineData.MedicineListData?.count?.pickUpCompleted.toString()
                                 )}건`
                               : '0건'
                             : element === '완료'
