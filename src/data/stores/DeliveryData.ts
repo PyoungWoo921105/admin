@@ -64,9 +64,22 @@ export interface DeliveryLinkListDataType {
       address: string;
       phoneNum: string;
     };
-    rider: {
-      code: string;
-      name: string;
+    riders: {
+      quick: {
+        1: { code: string; name: string };
+        2: { code: string; name: string };
+        3: { code: string; name: string };
+      };
+      sameDayDelivery: {
+        1: { code: string; name: string };
+        2: { code: string; name: string };
+        3: { code: string; name: string };
+      };
+      parcel: {
+        1: { code: string; name: string };
+        2: { code: string; name: string };
+        3: { code: string; name: string };
+      };
     };
   }[];
 }

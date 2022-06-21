@@ -171,7 +171,7 @@ const BoardContent = observer(() => {
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentTextComponent>
-                          {element?.rider?.name || '-'}
+                          {element?.riders?.quick?.[1]?.name || '-'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
                     </DataElementContentFrame>
@@ -182,7 +182,7 @@ const BoardContent = observer(() => {
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentTextComponent>
-                          {element?.rider?.name || '-'}
+                          {element?.riders?.quick?.[2]?.name || '-'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
                     </DataElementContentFrame>
@@ -193,7 +193,7 @@ const BoardContent = observer(() => {
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentTextComponent>
-                          {element?.rider?.name || '-'}
+                          {element?.riders?.quick?.[3]?.name || '-'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
                     </DataElementContentFrame>
@@ -204,7 +204,7 @@ const BoardContent = observer(() => {
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentTextComponent>
-                          {element?.rider?.name || '-'}
+                          {element?.riders?.sameDayDelivery?.[1]?.name || '-'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
                     </DataElementContentFrame>
@@ -215,7 +215,7 @@ const BoardContent = observer(() => {
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentTextComponent>
-                          {element?.rider?.name || '-'}
+                          {element?.riders?.sameDayDelivery?.[2]?.name || '-'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
                     </DataElementContentFrame>
@@ -226,7 +226,7 @@ const BoardContent = observer(() => {
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentTextComponent>
-                          {element?.rider?.name || '-'}
+                          {element?.riders?.sameDayDelivery?.[3]?.name || '-'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
                     </DataElementContentFrame>
@@ -237,7 +237,7 @@ const BoardContent = observer(() => {
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentTextComponent>
-                          {element?.rider?.name || '-'}
+                          {element?.riders?.parcel?.[1]?.name || '-'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
                     </DataElementContentFrame>
@@ -248,7 +248,7 @@ const BoardContent = observer(() => {
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentTextComponent>
-                          {element?.rider?.name || '-'}
+                          {element?.riders?.parcel?.[2]?.name || '-'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
                     </DataElementContentFrame>
@@ -259,7 +259,7 @@ const BoardContent = observer(() => {
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentTextComponent>
-                          {element?.rider?.name || '-'}
+                          {element?.riders?.parcel?.[3]?.name || '-'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
                     </DataElementContentFrame>
