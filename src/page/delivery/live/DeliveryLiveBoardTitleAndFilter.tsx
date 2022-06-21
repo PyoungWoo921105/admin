@@ -359,15 +359,6 @@ const BoardTitleAndFilter = observer(() => {
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
     GetRiderListBasicFunction();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  useEffect(() => {
-    GetCurrentTime();
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    GetDeliveryListFunction();
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    GetRiderListBasicFunction();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [DeliveryData.PageNavigator]);
 
   /* Socket */

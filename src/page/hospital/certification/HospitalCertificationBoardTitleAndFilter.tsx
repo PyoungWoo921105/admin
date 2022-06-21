@@ -343,15 +343,6 @@ const BoardTitleAndFilter = observer(() => {
     GetAdminVisitCheckSummaryFunction();
     GetCurrentTime();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    GetAdminVisitCheckListFunction();
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    GetAdminVisitCheckSummaryFunction();
-    GetCurrentTime();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [HospitalData.PageNavigator]);
 
   /* 통계 */

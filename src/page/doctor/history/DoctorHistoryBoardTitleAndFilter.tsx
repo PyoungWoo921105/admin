@@ -324,13 +324,6 @@ const BoardTitleAndFilter = observer(() => {
     GetDoctorListFunction();
     GetCurrentTime();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    GetDoctorListFunction();
-    GetCurrentTime();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [DoctorData.PageNavigator]);
 
   /* 통계 */

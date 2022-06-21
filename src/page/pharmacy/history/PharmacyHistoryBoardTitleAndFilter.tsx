@@ -327,13 +327,6 @@ const BoardTitleAndFilter = observer(() => {
     GetPharmacyListFunction();
     GetCurrentTime();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    GetPharmacyListFunction();
-    GetCurrentTime();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [PharmacyData.PageNavigator]);
 
   /* 통계 */

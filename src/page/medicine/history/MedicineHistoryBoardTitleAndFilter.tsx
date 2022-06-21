@@ -360,13 +360,6 @@ const BoardTitleAndFilter = observer(() => {
     GetMedicineListFunction();
     GetCurrentTime();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    GetMedicineListFunction();
-    GetCurrentTime();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [MedicineData.PageNavigator]);
 
   /* 통계 */

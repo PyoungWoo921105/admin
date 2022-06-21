@@ -359,15 +359,6 @@ const BoardTitleAndFilter = observer(() => {
     GetRiderListBasicFunction();
     GetCurrentTime();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    GetDeliveryListFunction();
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    GetRiderListBasicFunction();
-    GetCurrentTime();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [DeliveryData.PageNavigator]);
 
   /* 통계 */

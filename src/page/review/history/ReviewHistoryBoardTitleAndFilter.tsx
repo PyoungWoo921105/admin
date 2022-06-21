@@ -439,13 +439,6 @@ const BoardTitleAndFilter = observer(() => {
     GetReviewListFunction();
     GetCurrentTime();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    GetReviewListFunction();
-    GetCurrentTime();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ReviewData.PageNavigator]);
 
   /* 통계 */
