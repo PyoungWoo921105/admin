@@ -76,7 +76,7 @@ const BoardContent = observer(() => {
     const { element } = props;
     AdminData.setProcessPopUpData(element);
 
-    AdminData.setProcessPopUpStep('TREATMENT');
+    AdminData.setProcessPopUpStep('DELIVERY');
     AdminData.setProcessPopUpType('SPECIFICATION');
     AdminData.setProcessPopUpCode((element as DeliveryElementDataType).deliveryCode);
 
