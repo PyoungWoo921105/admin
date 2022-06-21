@@ -38,6 +38,103 @@ export interface DeliveryListDataType {
   };
   deliveryList: DeliveryElementDataType[];
 }
+/* 배달 상세 내역 */
+/* GET /delivery/details */
+export interface DeliveryDetailsDataType {
+  deliveryInfo: {
+    deliveryCode: string;
+    status: string;
+    address: {
+      jibunAddress: string;
+      roadAddress: string;
+      detailedAddress: string;
+      sido: string;
+      sigungu: string;
+      hname: string;
+      bname: string;
+      wayGuide: string;
+    };
+    riderName: string;
+    riderPhoneNum: string;
+    requestedDateTime: string;
+    pickUpDateTime: string;
+    endDateTime: string;
+    canceledDateTime: string;
+    updatedAddrDateTime: string;
+    patient: {
+      code: string;
+      name: string;
+      phoneNum: string;
+      applicantName: string;
+      symptom: string;
+      relationType: string;
+    };
+    userPaidFee: number;
+    logiDefaultFee: string;
+    logiAddFee: string;
+    distance: number;
+    cancelFee: number;
+    deliveryType: string;
+    addDeliveryBy: string;
+    addDeliveryReason: string;
+    deliveryRequest: string;
+  };
+  logisticsInfo: {
+    logiCompany: {
+      code: string;
+      name: string;
+    };
+    agency: {
+      code: string;
+      name: string;
+    };
+    logiDefaultFee: string;
+    logiAddFee: string;
+    orderedDateTime: string;
+    logiOrderCode: string;
+    deliveryRequest: string;
+    pickUpMinute: number;
+    allocCompletedDateTime: string;
+    estimatedPickUpDateTime: string;
+    riderName: string;
+    riderPhoneNum: string;
+    pickUpStartDateTime: string;
+    pickUpDateTime: string;
+    endDateTime: string;
+  };
+  treatInfo: {
+    treatCode: string;
+    hospital: {
+      code: string;
+      name: string;
+      phoneNum: string;
+    };
+    doctor: {
+      code: string;
+      name: string;
+    };
+    payment: {
+      cardName: string;
+      payAmount: string;
+      payedDateTime: string;
+    };
+  };
+  medicineInfo: {
+    medicineCode: string;
+    pharmacy: {
+      code: string;
+      name: string;
+      phoneNum: string;
+      ownerPhoneNum: string;
+      faxNum: string;
+    };
+    payment: {
+      cardName: string;
+      payAmount: string;
+      payedDateTime: string;
+    };
+  };
+}
 /* Socket */
 export interface SocketDeliveryDataType {
   from: string;
@@ -96,6 +193,10 @@ export interface DeliveryDataType {
   /* GET /delivery/list */
   DeliveryListData: null | DeliveryListDataType;
   setDeliveryListData: (e: null | DeliveryListDataType) => void;
+  /* 배달 상세 내역 */
+  /* GET /delivery/details */
+  DeliveryDetailsData: null | DeliveryDetailsDataType;
+  setDeliveryDetailsData: (e: null | DeliveryDetailsDataType) => void;
   /* Socket */
   /* GET /admin/delivery */
   SocketDeliveryData: null | SocketDeliveryDataType;
@@ -124,6 +225,12 @@ const DeliveryData = observable<DeliveryDataType>({
   DeliveryListData: null,
   setDeliveryListData(e: null | DeliveryListDataType) {
     this.DeliveryListData = e;
+  },
+  /* 배달 상세 내역 */
+  /* GET /delivery/details */
+  DeliveryDetailsData: null,
+  setDeliveryDetailsData(e: null | DeliveryDetailsDataType) {
+    this.DeliveryDetailsData = e;
   },
   /* Socket */
   /* GET /admin/delivery */

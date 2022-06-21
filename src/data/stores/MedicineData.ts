@@ -49,6 +49,73 @@ export interface MedicineListDataType {
   };
   medicineList: MedicineElementDataType[];
 }
+/* 조제 상세 내역 */
+/* GET /medicine/details */
+export interface MedicineDetailsDataType {
+  medicineCode: string;
+  status: string;
+  receptionCategory: string;
+  waitReceptionDateTime: string;
+  inMakingDateTime: string;
+  waitVisitDateTime: string;
+  completedDateTime: string;
+  pharmacy: {
+    code: string;
+    name: string;
+    phoneNum: string;
+    ownerPhoneNum: string;
+    faxNum: string;
+  };
+  hospital: {
+    code: string;
+    name: string;
+    phoneNum: string;
+  };
+  doctor: {
+    code: string;
+    name: string;
+  };
+  patient: {
+    code: string;
+    name: string;
+    phoneNum: string;
+    applicantName: string;
+    symptom: string;
+    relationType: string;
+  };
+  declinedInfo: {
+    dateTime: string;
+    reason: string;
+  };
+  canceledInfo: {
+    dateTime: string;
+    reason: string;
+  };
+  systemCanceledInfo: {
+    dateTime: string;
+    reason: string;
+  };
+  failedToPayInfo: {
+    dateTime: string;
+    reason: string;
+  };
+  payment: {
+    cardName: string;
+    payAmount: string;
+    payedDateTime: string;
+  };
+  medicineReceiveWay: string;
+  deliveryAddress: {
+    jibunAddress: string;
+    roadAddress: string;
+    detailedAddress: string;
+    sido: string;
+    sigungu: string;
+    hname: string;
+    bname: string;
+    wayGuide: string;
+  };
+}
 /* Socket */
 export interface SocketMedicineDataType {
   from: string;
@@ -70,6 +137,10 @@ export interface MedicineDataType {
   /* GET /medicine/list */
   MedicineListData: null | MedicineListDataType;
   setMedicineListData: (e: null | MedicineListDataType) => void;
+  /* 조제 상세 내역 */
+  /* GET /medicine/details */
+  MedicineDetailsData: null | MedicineDetailsDataType;
+  setMedicineDetailsData: (e: null | MedicineDetailsDataType) => void;
   /* Socket */
   /* GET /admin/medicine */
   SocketMedicineData: null | SocketMedicineDataType;
@@ -93,6 +164,12 @@ const MedicineData = observable<MedicineDataType>({
   MedicineListData: null,
   setMedicineListData(e: null | MedicineListDataType) {
     this.MedicineListData = e;
+  },
+  /* 조제 상세 내역 */
+  /* GET /medicine/details */
+  MedicineDetailsData: null,
+  setMedicineDetailsData(e: null | MedicineDetailsDataType) {
+    this.MedicineDetailsData = e;
   },
   /* Socket */
   /* GET /admin/medicine */
