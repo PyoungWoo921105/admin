@@ -70,12 +70,15 @@ const BoardContent = observer(() => {
 
   const onClickProcessPopUp = (props: any) => {
     const { element } = props;
-    AdminData.setProcessPopUpData(element);
-
-    AdminData.setProcessPopUpStep('MEDICINE');
-    AdminData.setProcessPopUpType('SPECIFICATION');
-    AdminData.setProcessPopUpCode((element as MedicineElementDataType).medicineCode);
-
+    const ProcessPopUpData = {
+      Title: '통합 상세 정보',
+      Code: (element as MedicineElementDataType).medicineCode,
+      Step: 'MEDICINE',
+      Type: 'SPECIFICATION',
+      Data: element,
+      Actions: [{ Choice: '돌아가기', Action: () => AdminData.setProcessPopUpFlag(false) }],
+    };
+    AdminData.setProcessPopUpData(ProcessPopUpData);
     AdminData.setProcessPopUpFlag(true);
   };
 

@@ -4,6 +4,16 @@
 
 import { observable } from 'mobx';
 
+/* Process Pop Up */
+export interface ProcessPopUpDataType {
+  Title: string;
+  Code: string;
+  Step: string;
+  Type: string;
+  Data: any;
+  Actions: { Choice: string; Action: () => void }[];
+}
+
 export interface AdminDataType {
   /* Log In */
   LogInPrivateFlag: boolean;
@@ -25,14 +35,9 @@ export interface AdminDataType {
   /* Process Pop Up */
   ProcessPopUpFlag: boolean;
   setProcessPopUpFlag: (e: boolean) => void;
-  ProcessPopUpData: any;
-  setProcessPopUpData: (e: any) => void;
-  ProcessPopUpStep: string;
-  setProcessPopUpStep: (e: string) => void;
-  ProcessPopUpType: string;
-  setProcessPopUpType: (e: string) => void;
-  ProcessPopUpCode: string;
-  setProcessPopUpCode: (e: string) => void;
+
+  ProcessPopUpData: ProcessPopUpDataType | null;
+  setProcessPopUpData: (e: ProcessPopUpDataType) => void;
 }
 
 const AdminData = observable<AdminDataType>({
@@ -73,20 +78,8 @@ const AdminData = observable<AdminDataType>({
     this.ProcessPopUpFlag = e;
   },
   ProcessPopUpData: null,
-  setProcessPopUpData(e: any) {
+  setProcessPopUpData(e: ProcessPopUpDataType) {
     this.ProcessPopUpData = e;
-  },
-  ProcessPopUpStep: '',
-  setProcessPopUpStep(e: string) {
-    this.ProcessPopUpStep = e;
-  },
-  ProcessPopUpType: '',
-  setProcessPopUpType(e: string) {
-    this.ProcessPopUpType = e;
-  },
-  ProcessPopUpCode: '',
-  setProcessPopUpCode(e: string) {
-    this.ProcessPopUpCode = e;
   },
 });
 

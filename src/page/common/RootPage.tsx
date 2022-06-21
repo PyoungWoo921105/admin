@@ -12,6 +12,7 @@ import { RootFrame } from 'styles/components/common/Frame';
 
 import Loading from 'components/loading/Loading';
 import PopUp from 'components/popup/PopUp';
+import ProcessPopUp from 'components/process/ProcessPopUp';
 
 import LogInPage from 'page/login/LogInPage';
 import Common from 'page/common/Common';
@@ -77,6 +78,7 @@ const RootPage = observer(() => {
     <RootFrame>
       {CommonData.LoadingFlag ? <Loading /> : null}
       {CommonData.PopUpFlag ? <PopUp /> : null}
+      {AdminData.ProcessPopUpFlag ? <ProcessPopUp /> : null}
       <Route exact path="/login" component={LogInPage} />
       <Route
         render={({ location }) => (location.pathname.indexOf('/login') === -1 ? <Common /> : null)}

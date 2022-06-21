@@ -69,12 +69,15 @@ const BoardContent = observer(() => {
 
   const onClickProcessPopUp = (props: any) => {
     const { element } = props;
-    AdminData.setProcessPopUpData(element);
-
-    AdminData.setProcessPopUpStep('TREATMENT');
-    AdminData.setProcessPopUpType('SPECIFICATION');
-    AdminData.setProcessPopUpCode((element as TreatmentElementDataType).treatCode);
-
+    const ProcessPopUpData = {
+      Title: '통합 상세 정보',
+      Code: (element as TreatmentElementDataType).treatCode,
+      Step: 'TREATMENT',
+      Type: 'SPECIFICATION',
+      Data: element,
+      Actions: [{ Choice: '돌아가기', Action: () => AdminData.setProcessPopUpFlag(false) }],
+    };
+    AdminData.setProcessPopUpData(ProcessPopUpData);
     AdminData.setProcessPopUpFlag(true);
   };
 
