@@ -118,6 +118,23 @@ export interface TreatmentDetailsDataType {
   };
   medicineReceiveWay: string;
 }
+/* 진료 동작 내역 */
+/* GET /treat/handlingHistory/list */
+export interface TreatmentHandlingHistoryListDataType {
+  count: {
+    total: number;
+  };
+  historyList: {
+    hanldingType: string;
+    status: string;
+    hasPrescription: boolean;
+    isPrescriptionChanged: boolean;
+    extraDocsCount: number;
+    payAmount: number;
+    handledBy: string;
+    handledDateTime: string;
+  }[];
+}
 /* Socket */
 export interface SocketTreatmentDataType {
   from: string;
@@ -143,6 +160,10 @@ export interface TreatmentDataType {
   /* GET /treat/details */
   TreatmentDetailsData: null | TreatmentDetailsDataType;
   setTreatmentDetailsData: (e: null | TreatmentDetailsDataType) => void;
+  /* 진료 동작 내역 */
+  /* GET /treat/handlingHistory/list */
+  TreatmentHandlingHistoryListData: null | TreatmentHandlingHistoryListDataType;
+  setTreatmentHandlingHistoryListData: (e: null | TreatmentHandlingHistoryListDataType) => void;
   /* Socket */
   /* GET /admin/treat */
   SocketTreatmentData: null | SocketTreatmentDataType;
@@ -172,6 +193,12 @@ const TreatmentData = observable<TreatmentDataType>({
   TreatmentDetailsData: null,
   setTreatmentDetailsData(e: null | TreatmentDetailsDataType) {
     this.TreatmentDetailsData = e;
+  },
+  /* 진료 동작 내역 */
+  /* GET /treat/handlingHistory/list */
+  TreatmentHandlingHistoryListData: null,
+  setTreatmentHandlingHistoryListData(e: null | TreatmentHandlingHistoryListDataType) {
+    this.TreatmentHandlingHistoryListData = e;
   },
   /* Socket */
   /* GET /admin/treat */

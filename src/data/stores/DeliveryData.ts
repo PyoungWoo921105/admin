@@ -135,15 +135,6 @@ export interface DeliveryDetailsDataType {
     };
   };
 }
-/* Socket */
-export interface SocketDeliveryDataType {
-  from: string;
-  deliveryList: {
-    medicineCode: string;
-    deliveryCode: string;
-    status: string;
-  }[];
-}
 /* 배달 운영 */
 /* GET /delivery/link/list */
 export interface DeliveryLinkListDataType {
@@ -180,6 +171,31 @@ export interface DeliveryLinkListDataType {
     };
   }[];
 }
+/* 배달 동작 내역 */
+/* GET /delivery/handlingHistory/list */
+export interface DeliveryHandlingHistoryListDataType {
+  count: {
+    total: number;
+  };
+  historyList: {
+    hanldingType: string;
+    status: string;
+    address: string;
+    detailedAddress: string;
+    riderName: string;
+    handledBy: string;
+    handledDateTime: string;
+  }[];
+}
+/* Socket */
+export interface SocketDeliveryDataType {
+  from: string;
+  deliveryList: {
+    medicineCode: string;
+    deliveryCode: string;
+    status: string;
+  }[];
+}
 /*  */
 
 export interface DeliveryDataType {
@@ -197,6 +213,10 @@ export interface DeliveryDataType {
   /* GET /delivery/details */
   DeliveryDetailsData: null | DeliveryDetailsDataType;
   setDeliveryDetailsData: (e: null | DeliveryDetailsDataType) => void;
+  /* 배달 동작 내역 */
+  /* GET /delivery/handlingHistory/list */
+  DeliveryHandlingHistoryListData: null | DeliveryHandlingHistoryListDataType;
+  setDeliveryHandlingHistoryListData: (e: null | DeliveryHandlingHistoryListDataType) => void;
   /* Socket */
   /* GET /admin/delivery */
   SocketDeliveryData: null | SocketDeliveryDataType;
@@ -231,6 +251,12 @@ const DeliveryData = observable<DeliveryDataType>({
   DeliveryDetailsData: null,
   setDeliveryDetailsData(e: null | DeliveryDetailsDataType) {
     this.DeliveryDetailsData = e;
+  },
+  /* 배달 동작 내역 */
+  /* GET /delivery/handlingHistory/list */
+  DeliveryHandlingHistoryListData: null,
+  setDeliveryHandlingHistoryListData(e: null | DeliveryHandlingHistoryListDataType) {
+    this.DeliveryHandlingHistoryListData = e;
   },
   /* Socket */
   /* GET /admin/delivery */

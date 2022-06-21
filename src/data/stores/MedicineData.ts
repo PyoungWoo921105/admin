@@ -116,6 +116,22 @@ export interface MedicineDetailsDataType {
     wayGuide: string;
   };
 }
+/* 조제 동작 내역 */
+/* GET /medicine/handlingHistory/list */
+export interface MedicineHandlingHistoryListDataType {
+  count: {
+    total: number;
+  };
+  historyList: {
+    hanldingType: string;
+    status: string;
+    pharmacyName: string;
+    recieveWay: string;
+    payAmount: number;
+    handledBy: string;
+    handledDateTime: string;
+  }[];
+}
 /* Socket */
 export interface SocketMedicineDataType {
   from: string;
@@ -141,6 +157,10 @@ export interface MedicineDataType {
   /* GET /medicine/details */
   MedicineDetailsData: null | MedicineDetailsDataType;
   setMedicineDetailsData: (e: null | MedicineDetailsDataType) => void;
+  /* 조제 동작 내역 */
+  /* GET /medicine/handlingHistory/list */
+  MedicineHandlingHistoryListData: null | MedicineHandlingHistoryListDataType;
+  setMedicineHandlingHistoryListData: (e: null | MedicineHandlingHistoryListDataType) => void;
   /* Socket */
   /* GET /admin/medicine */
   SocketMedicineData: null | SocketMedicineDataType;
@@ -170,6 +190,12 @@ const MedicineData = observable<MedicineDataType>({
   MedicineDetailsData: null,
   setMedicineDetailsData(e: null | MedicineDetailsDataType) {
     this.MedicineDetailsData = e;
+  },
+  /* 조제 동작 내역 */
+  /* GET /medicine/handlingHistory/list */
+  MedicineHandlingHistoryListData: null,
+  setMedicineHandlingHistoryListData(e: null | MedicineHandlingHistoryListDataType) {
+    this.MedicineHandlingHistoryListData = e;
   },
   /* Socket */
   /* GET /admin/medicine */
