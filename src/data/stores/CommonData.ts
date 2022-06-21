@@ -28,13 +28,13 @@ export interface CommonDataType {
   PopUpFlag: boolean;
   setPopUpFlag: (e: boolean) => void;
 
-  PopUpData: PopUpDataType | null;
-  setPopUpData: (e: PopUpDataType) => void;
+  PopUpData: null | PopUpDataType;
+  setPopUpData: (e: null | PopUpDataType) => void;
   /* Time */
   CurrentTime: string;
   setCurrentTime: (e: string) => void;
   /* Socket */
-  Socket: Socket | null;
+  Socket: null | Socket;
   setSocket: (e: any) => void;
 }
 
@@ -60,7 +60,7 @@ const CommonData = observable<CommonDataType>({
   },
 
   PopUpData: null,
-  setPopUpData(e: PopUpDataType) {
+  setPopUpData(e: null | PopUpDataType) {
     this.PopUpData = e;
   },
   /* Time */

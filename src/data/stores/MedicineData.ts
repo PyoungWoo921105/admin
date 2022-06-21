@@ -42,10 +42,6 @@ export interface MedicineListDataType {
     waitReception: number;
     inMaking: number;
     failedToPay: number;
-    waitVisit: number;
-    waitAllocation: number;
-    allocationCompleted: number;
-    pickUpCompleted: number;
     completed: number;
     canceled: number;
     declined: number;

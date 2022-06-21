@@ -13,6 +13,28 @@ export interface ProcessPopUpDataType {
   Data: any;
   Actions: { Choice: string; Action: () => void }[];
 }
+/* 통합 상세 정보 */
+/* GET /task */
+export interface TaskDataType {
+  treatList: {
+    code: string;
+    createdDateTime: string;
+    status: string;
+  }[];
+  medicineList: {
+    code: string;
+    createdDateTime: string;
+    status: string;
+    receiveWay: string;
+  }[];
+  deliveryList: {
+    code: string;
+    createdDateTime: string;
+    status: string;
+    isAdditionalDelivery: boolean;
+    deliveryType: string;
+  }[];
+}
 
 export interface AdminDataType {
   /* Log In */
@@ -36,8 +58,12 @@ export interface AdminDataType {
   ProcessPopUpFlag: boolean;
   setProcessPopUpFlag: (e: boolean) => void;
 
-  ProcessPopUpData: ProcessPopUpDataType | null;
-  setProcessPopUpData: (e: ProcessPopUpDataType) => void;
+  ProcessPopUpData: null | ProcessPopUpDataType;
+  setProcessPopUpData: (e: null | ProcessPopUpDataType) => void;
+  /* 통합 상세 정보 */
+  /* GET /task */
+  TaskData: null | TaskDataType;
+  setTaskData: (e: null | TaskDataType) => void;
 }
 
 const AdminData = observable<AdminDataType>({
@@ -78,8 +104,14 @@ const AdminData = observable<AdminDataType>({
     this.ProcessPopUpFlag = e;
   },
   ProcessPopUpData: null,
-  setProcessPopUpData(e: ProcessPopUpDataType) {
+  setProcessPopUpData(e: null | ProcessPopUpDataType) {
     this.ProcessPopUpData = e;
+  },
+  /* 통합 상세 정보 */
+  /* GET /task */
+  TaskData: null,
+  setTaskData(e: null | TaskDataType) {
+    this.TaskData = e;
   },
 });
 

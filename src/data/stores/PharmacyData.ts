@@ -26,7 +26,7 @@ export interface PharmacyListDataType {
     registerDateTime: string;
     openingTime: {
       day: string;
-      isOpen: true;
+      isOpen: boolean;
       startHour: string;
       startMinute: string;
       endHour: string;

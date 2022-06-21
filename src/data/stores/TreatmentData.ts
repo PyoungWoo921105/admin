@@ -51,6 +51,73 @@ export interface TreatmentListDataType {
   };
   treatList: TreatmentElementDataType[];
 }
+/* 진료 상세 내역 */
+/* GET /treat/details */
+export interface TreatmentDetailsDataType {
+  treatCode: string;
+  status: string;
+  receptionCategory: string;
+  symptomFilesCount: number;
+  waitReceptionDateTime: string;
+  waitTreatDateTime: string;
+  waitTime: string;
+  inTreatDateTime: string;
+  prescriptionAndReceiptDateTime: string;
+  waitToPayDateTime: string;
+  completedDateTime: string;
+  hospital: {
+    code: string;
+    name: string;
+    phoneNum: string;
+    faxNum: string;
+    ownerPhoneNum: string;
+  };
+  doctor: {
+    code: string;
+    name: string;
+    phoneNum: string;
+  };
+  patient: {
+    code: string;
+    name: string;
+    phoneNum: string;
+    applicantName: string;
+    symptom: string;
+    relationType: string;
+  };
+  deliveryAddress: {
+    jibunAddress: string;
+    roadAddress: string;
+    detailedAddress: string;
+    sido: string;
+    sigungu: string;
+    hname: string;
+    bname: string;
+    wayGuide: string;
+  };
+  declinedInfo: {
+    dateTime: string;
+    reason: string;
+  };
+  canceledInfo: {
+    dateTime: string;
+    reason: string;
+  };
+  systemCancledInfo: {
+    dateTime: string;
+    reason: string;
+  };
+  failedToPayInfo: {
+    dateTime: string;
+    reason: string;
+  };
+  payment: {
+    cardName: string;
+    payAmount: string;
+    payedDateTime: string;
+  };
+  medicineReceiveWay: string;
+}
 /* Socket */
 export interface SocketTreatmentDataType {
   from: string;
@@ -72,6 +139,10 @@ export interface TreatmentDataType {
   /* GET /treat/list */
   TreatmentListData: null | TreatmentListDataType;
   setTreatmentListData: (e: null | TreatmentListDataType) => void;
+  /* 진료 상세 내역 */
+  /* GET /treat/details */
+  TreatmentDetailsData: null | TreatmentDetailsDataType;
+  setTreatmentDetailsData: (e: null | TreatmentDetailsDataType) => void;
   /* Socket */
   /* GET /admin/treat */
   SocketTreatmentData: null | SocketTreatmentDataType;
@@ -95,6 +166,12 @@ const TreatmentData = observable<TreatmentDataType>({
   TreatmentListData: null,
   setTreatmentListData(e: null | TreatmentListDataType) {
     this.TreatmentListData = e;
+  },
+  /* 진료 상세 내역 */
+  /* GET /treat/details */
+  TreatmentDetailsData: null,
+  setTreatmentDetailsData(e: null | TreatmentDetailsDataType) {
+    this.TreatmentDetailsData = e;
   },
   /* Socket */
   /* GET /admin/treat */
