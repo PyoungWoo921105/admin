@@ -16,7 +16,7 @@ export const PopUpFrame = styled.div`
   position: fixed;
   right: 0px;
   top: 0px;
-  z-index: 99;
+  z-index: 1000;
 `;
 export const PopUpComponent = styled.div<CustomProps>`
   background-color: ${props => (props.backgroundColor ? props.backgroundColor : '#ffffff')};

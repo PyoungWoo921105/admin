@@ -30,6 +30,9 @@ import {
   ProcessPopUpBottomButtonRightComponent,
 } from 'styles/components/process/ProcessPopUp';
 
+import ProcessStep from './ProcessStep';
+import ProcessType from './ProcessType';
+
 const ProcessPopUp = observer(() => {
   const { AdminData } = useStore();
 
@@ -92,12 +95,9 @@ const ProcessPopUp = observer(() => {
         >
           <ProcessPopUpMiddleComponent padding="0px 20px 0px 20px">
             <ProcessPopUpMiddleContentFrame>
-              <ProcessPopUpMiddleContentComponent flexDirection="column">
-                {/* {AdminData.ProcessPopUpData?.Contents.map(Content => (
-                <ProcessPopUpMiddleContentTextFrame key={Content} margin="5px 0px 5px 0px">
-                  <ProcessPopUpMiddleContentTextComponent>{Content}</ProcessPopUpMiddleContentTextComponent>
-                </ProcessPopUpMiddleContentTextFrame>
-              ))} */}
+              <ProcessPopUpMiddleContentComponent flexDirection="row">
+                <ProcessStep />
+                <ProcessType />
               </ProcessPopUpMiddleContentComponent>
             </ProcessPopUpMiddleContentFrame>
           </ProcessPopUpMiddleComponent>

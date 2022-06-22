@@ -106,6 +106,7 @@ export const ProcessPopUpMiddleContentComponent = styled.div<CustomProps>`
   justify-content: center;
   width: 100%;
 `;
+/*  */
 export const ProcessPopUpMiddleContentTextFrame = styled.div<CustomProps>`
   align-items: center;
   display: flex;
