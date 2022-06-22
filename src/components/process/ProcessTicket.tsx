@@ -25,6 +25,7 @@ import {
 
 import { GetTask } from 'services/process/GetTask';
 import { ConvertDate } from 'libraries/conversion/ConvertDate';
+import { ProcessPopUpDataType } from 'data/stores/AdminData';
 
 const ProcessTicket = observer(() => {
   const { CommonData, AdminData } = useStore();
@@ -66,14 +67,48 @@ const ProcessTicket = observer(() => {
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
     GetTaskFunction();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [AdminData.ProcessPopUpData?.Code]);
+  }, [
+    AdminData.ProcessPopUpData?.Code,
+    AdminData.ProcessPopUpData?.Step,
+    AdminData.ProcessPopUpData?.Type,
+  ]);
+
+  const onClickProcessTicketElementComponent = (props: { ProcessCode: any; ProcessStep: any }) => {
+    const { ProcessCode, ProcessStep } = props;
+    const TempProcessPopUpData = JSON.parse(
+      JSON.stringify(AdminData.ProcessPopUpData)
+    ) as ProcessPopUpDataType;
+    TempProcessPopUpData.Code = ProcessCode;
+    TempProcessPopUpData.Step = ProcessStep;
+    AdminData.setProcessPopUpData(TempProcessPopUpData);
+  };
 
   return (
     <ProcessTicketFrame>
       <ProcessTicketComponent width="230px" height="250px">
         {/*  */}
         {AdminData.TaskData?.treatList?.map(treatment => (
-          <ProcessTicketElementComponent key={treatment?.code}>
+          <ProcessTicketElementComponent
+            key={treatment?.code}
+            onClick={() =>
+              onClickProcessTicketElementComponent({
+                ProcessCode: treatment?.code,
+                ProcessStep: 'TREATMENT',
+              })
+            }
+            border={
+              AdminData.ProcessPopUpData?.Code === treatment?.code &&
+              AdminData.ProcessPopUpData?.Step === 'TREATMENT'
+                ? '1px solid #ffffff'
+                : '1px solid #ffffff'
+            }
+            backgroundColor={
+              AdminData.ProcessPopUpData?.Code === treatment?.code &&
+              AdminData.ProcessPopUpData?.Step === 'TREATMENT'
+                ? '#3c9e3f'
+                : '#14c276'
+            }
+          >
             <ProcessTicketElementTitleComponent flexDirection="column" justifyContent="center">
               <ProcessTicketElementTitleTextFrame
                 minWidth="50px"
@@ -139,7 +174,27 @@ const ProcessTicket = observer(() => {
           </ProcessTicketElementComponent>
         ))}
         {AdminData.TaskData?.medicineList?.map(medicine => (
-          <ProcessTicketElementComponent key={medicine?.code}>
+          <ProcessTicketElementComponent
+            key={medicine?.code}
+            onClick={() =>
+              onClickProcessTicketElementComponent({
+                ProcessCode: medicine?.code,
+                ProcessStep: 'MEDICINE',
+              })
+            }
+            border={
+              AdminData.ProcessPopUpData?.Code === medicine?.code &&
+              AdminData.ProcessPopUpData?.Step === 'MEDICINE'
+                ? '1px solid #ffffff'
+                : '1px solid #ffffff'
+            }
+            backgroundColor={
+              AdminData.ProcessPopUpData?.Code === medicine?.code &&
+              AdminData.ProcessPopUpData?.Step === 'MEDICINE'
+                ? '#3c9e3f'
+                : '#14c276'
+            }
+          >
             <ProcessTicketElementTitleComponent flexDirection="column" justifyContent="center">
               <ProcessTicketElementTitleTextFrame
                 minWidth="50px"
@@ -207,7 +262,27 @@ const ProcessTicket = observer(() => {
           </ProcessTicketElementComponent>
         ))}
         {AdminData.TaskData?.deliveryList?.map(delivery => (
-          <ProcessTicketElementComponent key={delivery?.code}>
+          <ProcessTicketElementComponent
+            key={delivery?.code}
+            onClick={() =>
+              onClickProcessTicketElementComponent({
+                ProcessCode: delivery?.code,
+                ProcessStep: 'DELIVERY',
+              })
+            }
+            border={
+              AdminData.ProcessPopUpData?.Code === delivery?.code &&
+              AdminData.ProcessPopUpData?.Step === 'DELIVERY'
+                ? '1px solid #ffffff'
+                : '1px solid #ffffff'
+            }
+            backgroundColor={
+              AdminData.ProcessPopUpData?.Code === delivery?.code &&
+              AdminData.ProcessPopUpData?.Step === 'DELIVERY'
+                ? '#3c9e3f'
+                : '#14c276'
+            }
+          >
             <ProcessTicketElementTitleComponent flexDirection="column" justifyContent="center">
               <ProcessTicketElementTitleTextFrame
                 minWidth="50px"

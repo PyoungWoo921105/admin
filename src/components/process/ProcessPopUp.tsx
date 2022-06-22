@@ -30,6 +30,7 @@ import {
   ProcessPopUpBottomButtonRightComponent,
 } from 'styles/components/process/ProcessPopUp';
 
+import { toJS } from 'mobx';
 import ProcessStep from './ProcessStep';
 import ProcessType from './ProcessType';
 
@@ -61,6 +62,8 @@ const ProcessPopUp = observer(() => {
       props();
     }
   };
+
+  console.log(toJS(AdminData.ProcessPopUpData));
 
   return (
     <ProcessPopUpFrame>

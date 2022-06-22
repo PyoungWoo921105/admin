@@ -24,10 +24,11 @@ export const ProcessTicketComponent = styled.div<CustomProps>`
 /*  */
 export const ProcessTicketElementComponent = styled.div<CustomProps>`
   align-items: center;
-  background-color: ${props => (props.backgroundColor ? props.backgroundColor : '#3c9e3f')};
-  border: 1px solid #ffffff;
+  background-color: ${props => (props.backgroundColor ? props.backgroundColor : '')};
+  border: ${props => (props.border ? props.border : '')};
   border-radius: 10px;
   box-sizing: border-box;
+  cursor: pointer;
   display: flex;
   flex-direction: row;
   height: 80px;
@@ -95,7 +96,7 @@ export const ProcessTicketElementContentButtonFrame = styled.div<CustomProps>`
   min-width: ${props => (props.minWidth ? props.minWidth : '')};
   padding: 0px 10px 0px 10px;
 `;
-export const ProcessTicketElementContentButtonComponent = styled.button<CustomProps>`
+export const ProcessTicketElementContentButtonComponent = styled.div<CustomProps>`
   background-color: ${props => (props.backgroundColor ? props.backgroundColor : '#000000')};
   border: none;
   border-radius: 10px;
@@ -105,6 +106,7 @@ export const ProcessTicketElementContentButtonComponent = styled.button<CustomPr
   font-style: normal;
   font-weight: normal;
   padding: 5px 10px 5px 10px;
+  text-align: center;
   width: ${props => (props.width ? props.width : '')};
 `;
 /*  */
