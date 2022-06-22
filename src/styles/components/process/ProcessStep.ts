@@ -12,20 +12,7 @@ export const ProcessStepFrame = styled.div<CustomProps>`
   height: 100%;
   width: 100%;
 `;
-/*  */
-export const ProcessGaugeFrame = styled.div<CustomProps>`
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  padding: 10px 0px 10px 0px;
-  width: 100%;
-`;
-export const ProcessGaugeComponent = styled.div<CustomProps>`
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
-`;
+
 /*  */
 export const ProcessControlFrame = styled.div<CustomProps>`
   display: flex;

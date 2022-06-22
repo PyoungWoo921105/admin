@@ -9,6 +9,7 @@ export interface ProcessPopUpDataType {
   Title: string;
   Code: string;
   Step: string;
+  Way: string;
   Type: string;
   Data: any;
   Actions: { Choice: string; Action: () => void }[];

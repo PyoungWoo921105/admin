@@ -78,6 +78,7 @@ const BoardContent = observer(() => {
       Title: '통합 상세 정보',
       Code: (element as DeliveryElementDataType).deliveryCode,
       Step: 'DELIVERY',
+      Way: '',
       Type: 'SPECIFICATION',
       Data: element,
       Actions: [{ Choice: '돌아가기', Action: () => AdminData.setProcessPopUpFlag(false) }],

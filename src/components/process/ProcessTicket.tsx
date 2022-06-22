@@ -290,7 +290,7 @@ const ProcessTicket = observer(() => {
                 justifyContent="center"
               >
                 <ProcessTicketElementTitleTextComponent color="#ffffff">
-                  {delivery?.deliveryType ? delivery?.deliveryType : '배달'}
+                  {delivery?.deliveryType ? delivery?.deliveryType : '방문/배달'}
                 </ProcessTicketElementTitleTextComponent>
               </ProcessTicketElementTitleTextFrame>
             </ProcessTicketElementTitleComponent>
