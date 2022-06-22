@@ -33,7 +33,7 @@ export interface MedicineElementDataType {
     name: string;
     url: string;
   };
-  medicineReceiveWay: string;
+  deliveryType: string;
   deliveryList: string[];
 }
 export interface MedicineListDataType {
@@ -104,7 +104,7 @@ export interface MedicineDetailsDataType {
     payAmount: string;
     payedDateTime: string;
   };
-  medicineReceiveWay: string;
+  deliveryType: string;
   deliveryAddress: {
     jibunAddress: string;
     roadAddress: string;

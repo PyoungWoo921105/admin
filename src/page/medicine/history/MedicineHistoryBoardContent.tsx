@@ -310,7 +310,7 @@ const BoardContent = observer(() => {
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentTextComponent>
-                          {element?.medicineReceiveWay || '-'}
+                          {element?.deliveryType || '-'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
                     </DataElementContentFrame>

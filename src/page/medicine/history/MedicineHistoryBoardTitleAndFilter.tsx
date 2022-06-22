@@ -262,7 +262,7 @@ const BoardTitleAndFilter = observer(() => {
       doctorName: null || DoctorName,
       receptionCategory: null || DiseaseAndDepartment,
       pharamcyName: null || PharmacyName,
-      medicineReceiveWay: null || DeliveryMethod[0] === '전체' ? null : DeliveryMethod,
+      deliveryType: null || DeliveryMethod[0] === '전체' ? null : DeliveryMethod,
       deliveryCode: null || DeliveryCode,
 
       page: null || MedicineData.PageNavigator - 1,
@@ -315,7 +315,7 @@ const BoardTitleAndFilter = observer(() => {
       doctorName: null || DoctorName,
       receptionCategory: null || DiseaseAndDepartment,
       pharamcyName: null || PharmacyName,
-      medicineReceiveWay: null || DeliveryMethod[0] === '전체' ? null : DeliveryMethod,
+      deliveryType: null || DeliveryMethod[0] === '전체' ? null : DeliveryMethod,
       deliveryCode: null || DeliveryCode,
 
       /* page: null || MedicineData.PageNavigator - 1, */
