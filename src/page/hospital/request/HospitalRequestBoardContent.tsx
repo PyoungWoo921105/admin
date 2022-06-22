@@ -55,7 +55,8 @@ const BoardContent = observer(() => {
   const CategoryList = [
     { title: '선택', width: 60 },
     { title: '추가 요청 코드', width: 120 },
-    { title: '추가 요청 병원 이름', width: 90 },
+    { title: '환자 코드', width: 120 },
+    { title: '추가 요청 병원 이름', width: 120 },
     { title: '병원 위치 (시/도)', width: 120 },
     { title: '병원 위치 (시/군/구)', width: 120 },
     { title: '추가 요청 일시', width: 140 },
@@ -160,7 +161,7 @@ const BoardContent = observer(() => {
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentTextComponent>
-                          {element?.hospital?.name || '-'}
+                          {element?.patient?.code || '-'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
                     </DataElementContentFrame>
@@ -171,7 +172,7 @@ const BoardContent = observer(() => {
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentTextComponent>
-                          {element?.hospital?.sido || '-'}
+                          {element?.hospital?.name || '-'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
                     </DataElementContentFrame>
@@ -182,7 +183,7 @@ const BoardContent = observer(() => {
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentTextComponent>
-                          {element?.hospital?.sigungu || '-'}
+                          {element?.hospital?.sido || '-'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
                     </DataElementContentFrame>
@@ -193,7 +194,7 @@ const BoardContent = observer(() => {
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentTextComponent>
-                          {element?.createdAt ? ConvertDate(element?.createdAt) : '-'}
+                          {element?.hospital?.sigungu || '-'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
                     </DataElementContentFrame>
@@ -201,6 +202,17 @@ const BoardContent = observer(() => {
                     <DataElementContentFrame
                       minWidth={`${CategoryList[6].width}px`}
                       width={`${CategoryList[6].width}%`}
+                    >
+                      <DataElementContentComponent justifyContent="center">
+                        <DataElementContentTextComponent>
+                          {element?.createdAt ? ConvertDate(element?.createdAt) : '-'}
+                        </DataElementContentTextComponent>
+                      </DataElementContentComponent>
+                    </DataElementContentFrame>
+                    {/*  */}
+                    <DataElementContentFrame
+                      minWidth={`${CategoryList[7].width}px`}
+                      width={`${CategoryList[7].width}%`}
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentTextComponent>
@@ -216,23 +228,12 @@ const BoardContent = observer(() => {
                     </DataElementContentFrame>
                     {/*  */}
                     <DataElementContentFrame
-                      minWidth={`${CategoryList[7].width}px`}
-                      width={`${CategoryList[7].width}%`}
-                    >
-                      <DataElementContentComponent justifyContent="center">
-                        <DataElementContentTextComponent>
-                          {element?.isSendNoti ? 'Y' : 'N'}
-                        </DataElementContentTextComponent>
-                      </DataElementContentComponent>
-                    </DataElementContentFrame>
-                    {/*  */}
-                    <DataElementContentFrame
                       minWidth={`${CategoryList[8].width}px`}
                       width={`${CategoryList[8].width}%`}
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentTextComponent>
-                          {element?.isAgreeNoti ? 'Y' : 'N'}
+                          {element?.isSendNoti ? 'Y' : 'N'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
                     </DataElementContentFrame>
@@ -243,7 +244,7 @@ const BoardContent = observer(() => {
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentTextComponent>
-                          {element?.registeredHospital?.name || '-'}
+                          {element?.isAgreeNoti ? 'Y' : 'N'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
                     </DataElementContentFrame>
@@ -254,7 +255,7 @@ const BoardContent = observer(() => {
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentTextComponent>
-                          {element?.registeredHospital?.code ? 'Y' : 'N'}
+                          {element?.registeredHospital?.name || '-'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
                     </DataElementContentFrame>
@@ -262,6 +263,17 @@ const BoardContent = observer(() => {
                     <DataElementContentFrame
                       minWidth={`${CategoryList[11].width}px`}
                       width={`${CategoryList[11].width}%`}
+                    >
+                      <DataElementContentComponent justifyContent="center">
+                        <DataElementContentTextComponent>
+                          {element?.registeredHospital?.code ? 'Y' : 'N'}
+                        </DataElementContentTextComponent>
+                      </DataElementContentComponent>
+                    </DataElementContentFrame>
+                    {/*  */}
+                    <DataElementContentFrame
+                      minWidth={`${CategoryList[12].width}px`}
+                      width={`${CategoryList[12].width}%`}
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentTextComponent>

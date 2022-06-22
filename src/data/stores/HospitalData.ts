@@ -100,6 +100,9 @@ export interface AdminHospitalAdditionDetailsListDataType {
     total: number;
   };
   additionList: {
+    patient: {
+      code: string;
+    };
     hospital: {
       name: string;
       sido: string;
