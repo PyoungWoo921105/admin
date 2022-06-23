@@ -2,7 +2,12 @@
  * Copyright (c) 2022 Medir Inc.
  */
 
-import React, { useCallback, useEffect } from 'react';
+/* eslint-disable react/button-has-type */
+/*
+ * Copyright (c) 2022 Medir Inc.
+ */
+
+import React, { useCallback, useEffect, useRef } from 'react';
 import { observer } from 'mobx-react';
 
 import { useStore } from 'data/useStore';
@@ -177,6 +182,22 @@ const ProcessTicket = observer(() => {
     AdminData.setProcessPopUpData(TempProcessPopUpData);
   };
 
+  /*  */
+  const ProcessTicketRef = useRef<null | HTMLDivElement>(null);
+  const ScrollToProcessTicket = () => {
+    if (ProcessTicketRef && ProcessTicketRef.current) {
+      ProcessTicketRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+  useEffect(() => {
+    ScrollToProcessTicket();
+  }, [
+    AdminData.TaskData?.treatList,
+    AdminData.TaskData?.medicineList,
+    AdminData.TaskData?.deliveryList,
+  ]);
+  /*  */
+
   return (
     <ProcessTicketFrame>
       <ProcessTicketComponent width="230px" height="250px">
@@ -201,6 +222,12 @@ const ProcessTicket = observer(() => {
               AdminData.ProcessPopUpData?.Step === 'TREATMENT'
                 ? '#3c9e3f'
                 : '#14c276'
+            }
+            ref={
+              AdminData.ProcessPopUpData?.Code === treatment?.code &&
+              AdminData.ProcessPopUpData?.Step === 'TREATMENT'
+                ? ProcessTicketRef
+                : null
             }
           >
             <ProcessTicketElementTitleComponent flexDirection="column" justifyContent="center">
@@ -287,6 +314,12 @@ const ProcessTicket = observer(() => {
               AdminData.ProcessPopUpData?.Step === 'MEDICINE'
                 ? '#3c9e3f'
                 : '#14c276'
+            }
+            ref={
+              AdminData.ProcessPopUpData?.Code === medicine?.code &&
+              AdminData.ProcessPopUpData?.Step === 'MEDICINE'
+                ? ProcessTicketRef
+                : null
             }
           >
             <ProcessTicketElementTitleComponent flexDirection="column" justifyContent="center">
@@ -375,6 +408,12 @@ const ProcessTicket = observer(() => {
               AdminData.ProcessPopUpData?.Step === 'DELIVERY'
                 ? '#3c9e3f'
                 : '#14c276'
+            }
+            ref={
+              AdminData.ProcessPopUpData?.Code === delivery?.code &&
+              AdminData.ProcessPopUpData?.Step === 'DELIVERY'
+                ? ProcessTicketRef
+                : null
             }
           >
             <ProcessTicketElementTitleComponent flexDirection="column" justifyContent="center">
