@@ -60,6 +60,7 @@ const BoardContent = observer(() => {
   const CategoryList = [
     { title: '방문/배달 코드', width: 120 },
     { title: '방문/배달 상태', width: 110 },
+    { title: '약 수령 방법', width: 90 },
     { title: '전체 소요 시간', width: 90 },
     { title: '배송 업체 이름', width: 90 },
     { title: '약국 이름', width: 90 },
@@ -227,6 +228,17 @@ const BoardContent = observer(() => {
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentTextComponent>
+                          {element?.deliveryType ? element?.deliveryType : '-'}
+                        </DataElementContentTextComponent>
+                      </DataElementContentComponent>
+                    </DataElementContentFrame>
+                    {/*  */}
+                    <DataElementContentFrame
+                      minWidth={`${CategoryList[3].width}px`}
+                      width={`${CategoryList[3].width}%`}
+                    >
+                      <DataElementContentComponent justifyContent="center">
+                        <DataElementContentTextComponent>
                           {element?.requestedDateTime
                             ? `${ConvertCommaNumber(
                                 GetTimeCost({
@@ -241,8 +253,8 @@ const BoardContent = observer(() => {
                     </DataElementContentFrame>
                     {/*  */}
                     <DataElementContentFrame
-                      minWidth={`${CategoryList[3].width}px`}
-                      width={`${CategoryList[3].width}%`}
+                      minWidth={`${CategoryList[4].width}px`}
+                      width={`${CategoryList[4].width}%`}
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentTextComponent>
@@ -264,23 +276,12 @@ const BoardContent = observer(() => {
                     </DataElementContentFrame>
                     {/*  */}
                     <DataElementContentFrame
-                      minWidth={`${CategoryList[4].width}px`}
-                      width={`${CategoryList[4].width}%`}
-                    >
-                      <DataElementContentComponent justifyContent="center">
-                        <DataElementContentTextComponent>
-                          {element?.pharmacy?.name || '-'}
-                        </DataElementContentTextComponent>
-                      </DataElementContentComponent>
-                    </DataElementContentFrame>
-                    {/*  */}
-                    <DataElementContentFrame
                       minWidth={`${CategoryList[5].width}px`}
                       width={`${CategoryList[5].width}%`}
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentTextComponent>
-                          {element?.patient?.applicantName || '-'}
+                          {element?.pharmacy?.name || '-'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
                     </DataElementContentFrame>
@@ -291,7 +292,7 @@ const BoardContent = observer(() => {
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentTextComponent>
-                          {element?.patient?.name || '-'}
+                          {element?.patient?.applicantName || '-'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
                     </DataElementContentFrame>
@@ -299,6 +300,17 @@ const BoardContent = observer(() => {
                     <DataElementContentFrame
                       minWidth={`${CategoryList[7].width}px`}
                       width={`${CategoryList[7].width}%`}
+                    >
+                      <DataElementContentComponent justifyContent="center">
+                        <DataElementContentTextComponent>
+                          {element?.patient?.name || '-'}
+                        </DataElementContentTextComponent>
+                      </DataElementContentComponent>
+                    </DataElementContentFrame>
+                    {/*  */}
+                    <DataElementContentFrame
+                      minWidth={`${CategoryList[8].width}px`}
+                      width={`${CategoryList[8].width}%`}
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentTextComponent>
@@ -312,8 +324,8 @@ const BoardContent = observer(() => {
                     </DataElementContentFrame>
                     {/*  */}
                     <DataElementContentFrame
-                      minWidth={`${CategoryList[8].width}px`}
-                      width={`${CategoryList[8].width}%`}
+                      minWidth={`${CategoryList[9].width}px`}
+                      width={`${CategoryList[9].width}%`}
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentTextComponent>
@@ -323,8 +335,8 @@ const BoardContent = observer(() => {
                     </DataElementContentFrame>
                     {/*  */}
                     <DataElementContentFrame
-                      minWidth={`${CategoryList[9].width}px`}
-                      width={`${CategoryList[9].width}%`}
+                      minWidth={`${CategoryList[10].width}px`}
+                      width={`${CategoryList[10].width}%`}
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentTextComponent>
@@ -341,8 +353,8 @@ const BoardContent = observer(() => {
                       </DataElementContentComponent>
                     </DataElementContentFrame>
                     <DataElementContentFrame
-                      minWidth={`${CategoryList[10].width}px`}
-                      width={`${CategoryList[10].width}%`}
+                      minWidth={`${CategoryList[11].width}px`}
+                      width={`${CategoryList[11].width}%`}
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentTextComponent>
@@ -359,8 +371,8 @@ const BoardContent = observer(() => {
                       </DataElementContentComponent>
                     </DataElementContentFrame>
                     <DataElementContentFrame
-                      minWidth={`${CategoryList[11].width}px`}
-                      width={`${CategoryList[11].width}%`}
+                      minWidth={`${CategoryList[12].width}px`}
+                      width={`${CategoryList[12].width}%`}
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentTextComponent>

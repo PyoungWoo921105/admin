@@ -31,6 +31,7 @@ export interface DeliveryElementDataType {
   requestedDateTime: string;
   pickUpDateTime: string;
   endDateTime: string;
+  deliveryType: string;
 }
 export interface DeliveryListDataType {
   count: {
