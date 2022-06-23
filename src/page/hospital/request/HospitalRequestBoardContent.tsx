@@ -65,7 +65,6 @@ const BoardContent = observer(() => {
     { title: '알림 동의 여부', width: 120 },
     { title: '연결 병원 이름', width: 90 },
     { title: '연결 여부', width: 90 },
-    { title: '연결 일시', width: 140 },
   ];
 
   const onChangeAdminHospitalAdditionNotificationData = (props: {
@@ -267,19 +266,6 @@ const BoardContent = observer(() => {
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentTextComponent>
                           {element?.registeredHospital?.code ? 'Y' : 'N'}
-                        </DataElementContentTextComponent>
-                      </DataElementContentComponent>
-                    </DataElementContentFrame>
-                    {/*  */}
-                    <DataElementContentFrame
-                      minWidth={`${CategoryList[12].width}px`}
-                      width={`${CategoryList[12].width}%`}
-                    >
-                      <DataElementContentComponent justifyContent="center">
-                        <DataElementContentTextComponent>
-                          {element?.timestamp?.registeredDateTime
-                            ? ConvertDate(element?.timestamp?.registeredDateTime)
-                            : '-'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
                     </DataElementContentFrame>
