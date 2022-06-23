@@ -179,7 +179,7 @@ const BoardTitleAndFilter = observer(() => {
     '배차 완료',
     '픽업 완료',
     '완료',
-    '배달 취소',
+    '취소',
     '배달 거절',
   ];
   const [DeliveryState, setDeliveryState] = useState<string[]>(['전체']);
