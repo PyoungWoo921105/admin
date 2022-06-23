@@ -246,6 +246,16 @@ const BoardTitleAndFilter = observer(() => {
       setDeliveryAgencyName(DeliveryAgencyName.filter(element => element?.code !== object.code));
     }
   };
+  /* 배달 특별지방자치단체 주소 */
+  const [DeliveryMetropolitanAddress, setDeliveryMetropolitanAddress] = useState('');
+  const onChangeDeliveryMetropolitanAddress = (event: { target: { value: string } }) => {
+    setDeliveryMetropolitanAddress(event.target.value);
+  };
+  /* 배달 기초지방자치단체 주소  */
+  const [DeliveryElementaryAddress, setDeliveryElementaryAddress] = useState('');
+  const onChangeDeliveryElementaryAddress = (event: { target: { value: string } }) => {
+    setDeliveryElementaryAddress(event.target.value);
+  };
   /* 진료 코드 */
   const [TreatmentCode, setTreatmentCode] = useState('');
   const onChangeTreatmentCode = (event: { target: { value: string } }) => {
@@ -270,6 +280,8 @@ const BoardTitleAndFilter = observer(() => {
       /* FUTUREWORK */
       /* riderCode: null || DeliveryAgencyName[0].name === '전체' ? null : DeliveryAgencyName, */
       riderCode: null || DeliveryAgencyName[0].name === '전체' ? null : DeliveryAgencyName[0].code,
+      sido: null || DeliveryMetropolitanAddress,
+      sigungu: null || DeliveryElementaryAddress,
       treatCode: null || TreatmentCode,
       medicineCode: null || MedicineCode,
 
@@ -297,6 +309,8 @@ const BoardTitleAndFilter = observer(() => {
   }, [
     CommonData,
     DeliveryAgencyName,
+    DeliveryMetropolitanAddress,
+    DeliveryElementaryAddress,
     DeliveryCode,
     DeliveryData.PageNavigator,
     DeliveryMethod,
@@ -319,6 +333,8 @@ const BoardTitleAndFilter = observer(() => {
       /* FUTUREWORK */
       /* riderCode: null || DeliveryAgencyName[0].name === '전체' ? null : DeliveryAgencyName, */
       riderCode: null || DeliveryAgencyName[0].name === '전체' ? null : DeliveryAgencyName[0].code,
+      sido: null || DeliveryMetropolitanAddress,
+      sigungu: null || DeliveryElementaryAddress,
       treatCode: null || TreatmentCode,
       medicineCode: null || MedicineCode,
 
@@ -346,6 +362,8 @@ const BoardTitleAndFilter = observer(() => {
   }, [
     CommonData,
     DeliveryAgencyName,
+    DeliveryMetropolitanAddress,
+    DeliveryElementaryAddress,
     DeliveryCode,
     DeliveryMethod,
     DeliveryState,
@@ -731,6 +749,52 @@ const BoardTitleAndFilter = observer(() => {
                 </FilterElementBoardFrame>
               </FilterElementComponent>
             </FilterElementFrame>
+            {/* SINGLE INPUT */}
+            <FilterElementFrame>
+              <FilterElementComponent>
+                <FilterElementTitleFrame minWidth="110px" width="110px">
+                  <FilterElementTitleComponent>
+                    <FilterElementTitleTextComponent>
+                      배달 위치 (시/도)
+                    </FilterElementTitleTextComponent>
+                  </FilterElementTitleComponent>
+                </FilterElementTitleFrame>
+                <FilterElementBoardFrame minWidth="110px" width="110px">
+                  <FilterElementBoardComponent>
+                    <FilterElementBoardInputComponent
+                      width="100%"
+                      value={DeliveryMetropolitanAddress}
+                      onChange={onChangeDeliveryMetropolitanAddress}
+                      onKeyPress={onKeyPressEnter}
+                    />
+                  </FilterElementBoardComponent>
+                </FilterElementBoardFrame>
+              </FilterElementComponent>
+            </FilterElementFrame>
+            {/*  */}
+            {/* SINGLE INPUT */}
+            <FilterElementFrame>
+              <FilterElementComponent>
+                <FilterElementTitleFrame minWidth="125px" width="125px">
+                  <FilterElementTitleComponent>
+                    <FilterElementTitleTextComponent>
+                      배달 위치 (시/군/구)
+                    </FilterElementTitleTextComponent>
+                  </FilterElementTitleComponent>
+                </FilterElementTitleFrame>
+                <FilterElementBoardFrame minWidth="95px" width="95px">
+                  <FilterElementBoardComponent>
+                    <FilterElementBoardInputComponent
+                      width="100%"
+                      value={DeliveryElementaryAddress}
+                      onChange={onChangeDeliveryElementaryAddress}
+                      onKeyPress={onKeyPressEnter}
+                    />
+                  </FilterElementBoardComponent>
+                </FilterElementBoardFrame>
+              </FilterElementComponent>
+            </FilterElementFrame>
+            {/*  */}
             {/* SINGLE INPUT */}
             <FilterElementFrame>
               <FilterElementComponent>
