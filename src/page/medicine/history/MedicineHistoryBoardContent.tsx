@@ -74,7 +74,6 @@ const BoardContent = observer(() => {
       Title: '통합 상세 정보',
       Code: (element as MedicineElementDataType).medicineCode,
       Step: 'MEDICINE',
-      Way: '',
       Type: 'SPECIFICATION',
       Data: element,
       Actions: [{ Choice: '돌아가기', Action: () => AdminData.setProcessPopUpFlag(false) }],

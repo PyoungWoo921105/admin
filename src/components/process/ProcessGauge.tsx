@@ -22,58 +22,11 @@ import {
 } from 'styles/components/process/ProcessGauge';
 
 import { ConvertCommaNumber } from 'libraries/conversion/ConvertCommaNumber';
-import { ProcessPopUpDataType } from 'data/stores/AdminData';
 import { GetTimeCost } from 'libraries/time/GetTimeCost';
 import { GetCurrentTime } from 'libraries/time/GetCurrentTime';
 
 const ProcessGauge = observer(() => {
   const { CommonData, AdminData, TreatmentData, MedicineData, DeliveryData } = useStore();
-
-  useEffect(() => {
-    if (AdminData.ProcessPopUpData?.Step === 'DELIVERY') {
-      const TempProcessPopUpData = JSON.parse(
-        JSON.stringify(AdminData.ProcessPopUpData)
-      ) as ProcessPopUpDataType;
-      if (
-        AdminData.TaskData?.deliveryList?.find(
-          delivery => delivery.code === AdminData.ProcessPopUpData?.Code
-        )?.deliveryType === '방문'
-      ) {
-        TempProcessPopUpData.Way = 'VISIT';
-      } else if (
-        AdminData.TaskData?.deliveryList?.find(
-          delivery => delivery.code === AdminData.ProcessPopUpData?.Code
-        )?.deliveryType === '빠른 배달'
-      ) {
-        TempProcessPopUpData.Way = 'QUICK';
-      } else if (
-        AdminData.TaskData?.deliveryList?.find(
-          delivery => delivery.code === AdminData.ProcessPopUpData?.Code
-        )?.deliveryType === '오늘 배송'
-      ) {
-        TempProcessPopUpData.Way = 'TODAY';
-      } else if (
-        AdminData.TaskData?.deliveryList?.find(
-          delivery => delivery.code === AdminData.ProcessPopUpData?.Code
-        )?.deliveryType === '택배'
-      ) {
-        TempProcessPopUpData.Way = 'PARCEL';
-      }
-
-      AdminData.setProcessPopUpData(TempProcessPopUpData);
-    } else {
-      const TempProcessPopUpData = JSON.parse(
-        JSON.stringify(AdminData.ProcessPopUpData)
-      ) as ProcessPopUpDataType;
-      TempProcessPopUpData.Way = '';
-      AdminData.setProcessPopUpData(TempProcessPopUpData);
-    }
-  }, [
-    AdminData,
-    AdminData.ProcessPopUpData?.Code,
-    AdminData.ProcessPopUpData?.Step,
-    AdminData.TaskData?.deliveryList,
-  ]);
 
   useEffect(() => {
     GetCurrentTime();
@@ -347,9 +300,9 @@ const ProcessGauge = observer(() => {
           {/*  */}
         </ProcessGaugeComponent>
       ) : AdminData.ProcessPopUpData?.Step === 'DELIVERY' ? (
-        AdminData.ProcessPopUpData?.Way === 'QUICK' ||
-        AdminData.ProcessPopUpData?.Way === 'TODAY' ||
-        AdminData.ProcessPopUpData?.Way === 'PARCEL' ? (
+        DeliveryData.DeliveryDetailsData?.deliveryInfo?.deliveryType === '빠른 배달' ||
+        DeliveryData.DeliveryDetailsData?.deliveryInfo?.deliveryType === '오늘 배송' ||
+        DeliveryData.DeliveryDetailsData?.deliveryInfo?.deliveryType === '택배' ? (
           <ProcessGaugeComponent width="230px" height="200px">
             <ProcessGaugeElementComponent
               border="1px solid #3c9e3f"
@@ -551,7 +504,7 @@ const ProcessGauge = observer(() => {
             </ProcessGaugeElementComponent>
             {/*  */}
           </ProcessGaugeComponent>
-        ) : AdminData.ProcessPopUpData?.Way === 'VISIT' ? (
+        ) : DeliveryData.DeliveryDetailsData?.deliveryInfo?.deliveryType === '방문' ? (
           <ProcessGaugeComponent width="230px" height="200px">
             <ProcessGaugeElementComponent
               border="1px solid #3c9e3f"
