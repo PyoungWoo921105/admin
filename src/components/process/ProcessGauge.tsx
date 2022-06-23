@@ -2,7 +2,7 @@
  * Copyright (c) 2022 Medir Inc.
  */
 
-import React, { useCallback, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { observer } from 'mobx-react';
 
 import { useStore } from 'data/useStore';
@@ -21,55 +21,13 @@ import {
   /*  */
 } from 'styles/components/process/ProcessGauge';
 
-import { GetTask } from 'services/process/GetTask';
 import { ConvertCommaNumber } from 'libraries/conversion/ConvertCommaNumber';
 import { ProcessPopUpDataType } from 'data/stores/AdminData';
+import { GetTimeCost } from 'libraries/time/GetTimeCost';
+import { GetCurrentTime } from 'libraries/time/GetCurrentTime';
 
 const ProcessGauge = observer(() => {
-  const { CommonData, AdminData } = useStore();
-
-  const GetTaskFunction = useCallback(async () => {
-    CommonData.setLoadingFlag(true);
-
-    let GetTaskData = {};
-    if (AdminData.ProcessPopUpData?.Step === 'TREATMENT') {
-      GetTaskData = { treatCode: AdminData.ProcessPopUpData?.Code };
-    } else if (AdminData.ProcessPopUpData?.Step === 'MEDICINE') {
-      GetTaskData = { medicineCode: AdminData.ProcessPopUpData?.Code };
-    } else if (AdminData.ProcessPopUpData?.Step === 'DELIVERY') {
-      GetTaskData = { deliveryCode: AdminData.ProcessPopUpData?.Code };
-    }
-
-    const response = await GetTask(GetTaskData);
-    CommonData.setLoadingFlag(false);
-    if (response.status === 200) {
-      /*  */
-    } else {
-      const MetaError = response as { status: number; data: { message: string } };
-      const PopUpData = {
-        Category: 'ERROR',
-        Name: 'GET_TASK',
-        Title: '통합 상세 정보 불러오기 실패',
-        Contents: [MetaError?.data?.message] || [
-          '일시적인 서버 오류가 발생하였습니다.',
-          '다음에 다시 시도해주세요.',
-        ],
-        Actions: [{ Choice: '돌아가기', Action: () => CommonData.setPopUpFlag(false) }],
-      };
-      CommonData.setPopUpData(PopUpData);
-      CommonData.setPopUpFlag(true);
-    }
-  }, [AdminData.ProcessPopUpData?.Code, AdminData.ProcessPopUpData?.Step, CommonData]);
-
-  useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    GetTaskFunction();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [
-    AdminData.ProcessPopUpData?.Code,
-    AdminData.ProcessPopUpData?.Step,
-    AdminData.ProcessPopUpData?.Type,
-  ]);
+  const { CommonData, AdminData, TreatmentData, MedicineData, DeliveryData } = useStore();
 
   useEffect(() => {
     if (AdminData.ProcessPopUpData?.Step === 'DELIVERY') {
@@ -116,6 +74,11 @@ const ProcessGauge = observer(() => {
     AdminData.ProcessPopUpData?.Step,
     AdminData.TaskData?.deliveryList,
   ]);
+
+  useEffect(() => {
+    GetCurrentTime();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <ProcessGaugeFrame>
@@ -164,8 +127,19 @@ const ProcessGauge = observer(() => {
                 justifyContent="center"
               >
                 <ProcessGaugeElementContentTextComponent color="#000000">
-                  {/* TODO */}
-                  {`${ConvertCommaNumber('2010')}분`}
+                  {GetTimeCost({
+                    prev: TreatmentData?.TreatmentDetailsData?.waitReceptionDateTime,
+                    next: TreatmentData?.TreatmentDetailsData?.waitTreatDateTime,
+                    temp: CommonData.CurrentTime,
+                  })
+                    ? `${ConvertCommaNumber(
+                        GetTimeCost({
+                          prev: TreatmentData?.TreatmentDetailsData?.waitReceptionDateTime,
+                          next: TreatmentData?.TreatmentDetailsData?.waitTreatDateTime,
+                          temp: CommonData.CurrentTime,
+                        })
+                      )}분`
+                    : '-'}
                 </ProcessGaugeElementContentTextComponent>
               </ProcessGaugeElementContentTextFrame>
             </ProcessGaugeElementContentComponent>
@@ -199,8 +173,9 @@ const ProcessGauge = observer(() => {
                 justifyContent="center"
               >
                 <ProcessGaugeElementContentTextComponent color="#000000">
-                  {/* TODO */}
-                  {`${ConvertCommaNumber('2010')}분`}
+                  {TreatmentData?.TreatmentDetailsData?.waitTime
+                    ? `${ConvertCommaNumber(TreatmentData?.TreatmentDetailsData?.waitTime)}분`
+                    : '-'}
                 </ProcessGaugeElementContentTextComponent>
               </ProcessGaugeElementContentTextFrame>
             </ProcessGaugeElementContentComponent>
@@ -238,8 +213,19 @@ const ProcessGauge = observer(() => {
                 justifyContent="center"
               >
                 <ProcessGaugeElementContentTextComponent color="#000000">
-                  {/* TODO */}
-                  {`${ConvertCommaNumber('2010')}분`}
+                  {GetTimeCost({
+                    prev: TreatmentData?.TreatmentDetailsData?.waitTreatDateTime,
+                    next: TreatmentData?.TreatmentDetailsData?.inTreatDateTime,
+                    temp: CommonData.CurrentTime,
+                  })
+                    ? `${ConvertCommaNumber(
+                        GetTimeCost({
+                          prev: TreatmentData?.TreatmentDetailsData?.waitTreatDateTime,
+                          next: TreatmentData?.TreatmentDetailsData?.inTreatDateTime,
+                          temp: CommonData.CurrentTime,
+                        })
+                      )}분`
+                    : '-'}
                 </ProcessGaugeElementContentTextComponent>
               </ProcessGaugeElementContentTextFrame>
             </ProcessGaugeElementContentComponent>
@@ -291,8 +277,19 @@ const ProcessGauge = observer(() => {
                 justifyContent="center"
               >
                 <ProcessGaugeElementContentTextComponent color="#000000">
-                  {/* TODO */}
-                  {`${ConvertCommaNumber('2010')}분`}
+                  {GetTimeCost({
+                    prev: MedicineData?.MedicineDetailsData?.waitReceptionDateTime,
+                    next: MedicineData?.MedicineDetailsData?.inMakingDateTime,
+                    temp: CommonData.CurrentTime,
+                  })
+                    ? `${ConvertCommaNumber(
+                        GetTimeCost({
+                          prev: MedicineData?.MedicineDetailsData?.waitReceptionDateTime,
+                          next: MedicineData?.MedicineDetailsData?.inMakingDateTime,
+                          temp: CommonData.CurrentTime,
+                        })
+                      )}분`
+                    : '-'}
                 </ProcessGaugeElementContentTextComponent>
               </ProcessGaugeElementContentTextFrame>
             </ProcessGaugeElementContentComponent>
@@ -330,8 +327,19 @@ const ProcessGauge = observer(() => {
                 justifyContent="center"
               >
                 <ProcessGaugeElementContentTextComponent color="#000000">
-                  {/* TODO */}
-                  {`${ConvertCommaNumber('2010')}분`}
+                  {GetTimeCost({
+                    prev: MedicineData?.MedicineDetailsData?.inMakingDateTime,
+                    next: MedicineData?.MedicineDetailsData?.completedDateTime,
+                    temp: CommonData.CurrentTime,
+                  })
+                    ? `${ConvertCommaNumber(
+                        GetTimeCost({
+                          prev: MedicineData?.MedicineDetailsData?.inMakingDateTime,
+                          next: MedicineData?.MedicineDetailsData?.completedDateTime,
+                          temp: CommonData.CurrentTime,
+                        })
+                      )}분`
+                    : '-'}
                 </ProcessGaugeElementContentTextComponent>
               </ProcessGaugeElementContentTextFrame>
             </ProcessGaugeElementContentComponent>
@@ -390,8 +398,22 @@ const ProcessGauge = observer(() => {
                   justifyContent="center"
                 >
                   <ProcessGaugeElementContentTextComponent color="#000000">
-                    {/* TODO */}
-                    {`${ConvertCommaNumber('2010')}분`}
+                    {GetTimeCost({
+                      prev: DeliveryData?.DeliveryDetailsData?.deliveryInfo?.requestedDateTime,
+                      next: DeliveryData?.DeliveryDetailsData?.logisticsInfo
+                        ?.allocCompletedDateTime,
+                      temp: CommonData.CurrentTime,
+                    })
+                      ? `${ConvertCommaNumber(
+                          GetTimeCost({
+                            prev: DeliveryData?.DeliveryDetailsData?.deliveryInfo
+                              ?.requestedDateTime,
+                            next: DeliveryData?.DeliveryDetailsData?.logisticsInfo
+                              ?.allocCompletedDateTime,
+                            temp: CommonData.CurrentTime,
+                          })
+                        )}분`
+                      : '-'}
                   </ProcessGaugeElementContentTextComponent>
                 </ProcessGaugeElementContentTextFrame>
               </ProcessGaugeElementContentComponent>
@@ -425,8 +447,20 @@ const ProcessGauge = observer(() => {
                   justifyContent="center"
                 >
                   <ProcessGaugeElementContentTextComponent color="#000000">
-                    {/* TODO */}
-                    {`${ConvertCommaNumber('2010')}분`}
+                    {GetTimeCost({
+                      prev: DeliveryData?.DeliveryDetailsData?.deliveryInfo?.requestedDateTime,
+                      next: DeliveryData?.DeliveryDetailsData?.deliveryInfo?.pickUpDateTime,
+                      temp: CommonData.CurrentTime,
+                    })
+                      ? `${ConvertCommaNumber(
+                          GetTimeCost({
+                            prev: DeliveryData?.DeliveryDetailsData?.deliveryInfo
+                              ?.requestedDateTime,
+                            next: DeliveryData?.DeliveryDetailsData?.deliveryInfo?.pickUpDateTime,
+                            temp: CommonData.CurrentTime,
+                          })
+                        )}분`
+                      : '-'}
                   </ProcessGaugeElementContentTextComponent>
                 </ProcessGaugeElementContentTextFrame>
               </ProcessGaugeElementContentComponent>
@@ -460,8 +494,19 @@ const ProcessGauge = observer(() => {
                   justifyContent="center"
                 >
                   <ProcessGaugeElementContentTextComponent color="#000000">
-                    {/* TODO */}
-                    {`${ConvertCommaNumber('2010')}분`}
+                    {GetTimeCost({
+                      prev: DeliveryData?.DeliveryDetailsData?.deliveryInfo?.pickUpDateTime,
+                      next: DeliveryData?.DeliveryDetailsData?.deliveryInfo?.endDateTime,
+                      temp: CommonData.CurrentTime,
+                    })
+                      ? `${ConvertCommaNumber(
+                          GetTimeCost({
+                            prev: DeliveryData?.DeliveryDetailsData?.deliveryInfo?.pickUpDateTime,
+                            next: DeliveryData?.DeliveryDetailsData?.deliveryInfo?.endDateTime,
+                            temp: CommonData.CurrentTime,
+                          })
+                        )}분`
+                      : '-'}
                   </ProcessGaugeElementContentTextComponent>
                 </ProcessGaugeElementContentTextFrame>
               </ProcessGaugeElementContentComponent>
@@ -499,8 +544,7 @@ const ProcessGauge = observer(() => {
                   justifyContent="center"
                 >
                   <ProcessGaugeElementContentTextComponent color="#000000">
-                    {/* TODO */}
-                    카카오 퀵 (이코노미)
+                    {DeliveryData?.DeliveryDetailsData?.logisticsInfo?.logiCompany?.name || '-'}
                   </ProcessGaugeElementContentTextComponent>
                 </ProcessGaugeElementContentTextFrame>
               </ProcessGaugeElementContentComponent>
@@ -560,8 +604,20 @@ const ProcessGauge = observer(() => {
                   justifyContent="center"
                 >
                   <ProcessGaugeElementContentTextComponent color="#000000">
-                    {/* TODO */}
-                    {`${ConvertCommaNumber('2010')}분`}
+                    {GetTimeCost({
+                      prev: DeliveryData?.DeliveryDetailsData?.deliveryInfo?.requestedDateTime,
+                      next: DeliveryData?.DeliveryDetailsData?.deliveryInfo?.endDateTime,
+                      temp: CommonData.CurrentTime,
+                    })
+                      ? `${ConvertCommaNumber(
+                          GetTimeCost({
+                            prev: DeliveryData?.DeliveryDetailsData?.deliveryInfo
+                              ?.requestedDateTime,
+                            next: DeliveryData?.DeliveryDetailsData?.deliveryInfo?.endDateTime,
+                            temp: CommonData.CurrentTime,
+                          })
+                        )}분`
+                      : '-'}
                   </ProcessGaugeElementContentTextComponent>
                 </ProcessGaugeElementContentTextFrame>
               </ProcessGaugeElementContentComponent>
