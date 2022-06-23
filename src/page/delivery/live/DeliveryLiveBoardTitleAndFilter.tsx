@@ -143,6 +143,33 @@ const BoardTitleAndFilter = observer(() => {
   const onChangeEndInquiryPeriod = (event: { target: { value: string } }) => {
     setEndInquiryPeriod(AllowNumber(event.target.value));
   };
+  /* 약 수령 방법 */
+  const DeliveryMethodList = ['선택', '전체', '빠른 배달', '오늘 배송', '택배', '방문', '없음'];
+  const [DeliveryMethod, setDeliveryMethod] = useState<string[]>(['전체']);
+  const onChangeDeliveryMethod = (event: { target: { value: string } }) => {
+    if (event.target.value === '전체') {
+      setDeliveryMethod([event.target.value]);
+    } else if (DeliveryMethod.indexOf(event.target.value) === -1) {
+      if (DeliveryMethod.indexOf('전체') === -1) {
+        setDeliveryMethod([event.target.value]);
+        /* setDeliveryMethod([...DeliveryMethod, event.target.value]); */
+      } else {
+        setDeliveryMethod([event.target.value]);
+      }
+    } else if (DeliveryMethod.length === 1) {
+      setDeliveryMethod(['전체']);
+    } else {
+      setDeliveryMethod(DeliveryMethod.filter(element => element !== event.target.value));
+    }
+  };
+  const onClickDeleteDeliveryMethod = (props: { key: any }) => {
+    const { key } = props;
+    if (DeliveryMethod.length === 1 && DeliveryMethod[0] === key) {
+      setDeliveryMethod(['전체']);
+    } else {
+      setDeliveryMethod(DeliveryMethod.filter(element => element !== key));
+    }
+  };
   /* 방문/배달 상태 */
   const DeliveryStateList = [
     '선택',
@@ -234,6 +261,7 @@ const BoardTitleAndFilter = observer(() => {
     CommonData.setLoadingFlag(true);
     const GetDeliveryListData = {
       deliveryCode: null || DeliveryCode,
+      deliveryType: null || DeliveryMethod[0] === '전체' ? null : DeliveryMethod[0],
       startDate: null || StartInquiryPeriod,
       endDate: null || EndInquiryPeriod,
       /* FUTUREWORK */
@@ -271,6 +299,7 @@ const BoardTitleAndFilter = observer(() => {
     DeliveryAgencyName,
     DeliveryCode,
     DeliveryData.PageNavigator,
+    DeliveryMethod,
     DeliveryState,
     EndInquiryPeriod,
     MedicineCode,
@@ -281,6 +310,7 @@ const BoardTitleAndFilter = observer(() => {
     CommonData.setLoadingFlag(true);
     const GetDeliveryListData = {
       deliveryCode: null || DeliveryCode,
+      deliveryType: null || DeliveryMethod[0] === '전체' ? null : DeliveryMethod[0],
       startDate: null || StartInquiryPeriod,
       endDate: null || EndInquiryPeriod,
       /* FUTUREWORK */
@@ -317,6 +347,7 @@ const BoardTitleAndFilter = observer(() => {
     CommonData,
     DeliveryAgencyName,
     DeliveryCode,
+    DeliveryMethod,
     DeliveryState,
     EndInquiryPeriod,
     MedicineCode,
@@ -527,6 +558,62 @@ const BoardTitleAndFilter = observer(() => {
                       maxLength={8}
                       onKeyPress={onKeyPressEnter}
                     />
+                  </FilterElementBoardComponent>
+                </FilterElementBoardFrame>
+              </FilterElementComponent>
+            </FilterElementFrame>
+            {/*  */}
+            {/* SELECT & OPTION */}
+            <FilterElementFrame>
+              <FilterElementComponent margin="0px 1px 0px 0px">
+                <FilterElementTitleFrame minWidth="85px" width="85px">
+                  <FilterElementTitleComponent>
+                    <FilterElementTitleTextComponent>약 수령 방법</FilterElementTitleTextComponent>
+                  </FilterElementTitleComponent>
+                </FilterElementTitleFrame>
+                <FilterElementBoardFrame minWidth="135px" width="135px">
+                  <FilterElementBoardComponent>
+                    <FilterElementBoardSelectComponent
+                      width="100%"
+                      value="선택"
+                      onChange={onChangeDeliveryMethod}
+                      onKeyPress={onKeyPressEnter}
+                    >
+                      {DeliveryMethodList.map(element => (
+                        <FilterElementBoardOptionComponent key={element}>
+                          {element}
+                        </FilterElementBoardOptionComponent>
+                      ))}
+                    </FilterElementBoardSelectComponent>
+                  </FilterElementBoardComponent>
+                </FilterElementBoardFrame>
+              </FilterElementComponent>
+              <FilterElementComponent margin="0px 0px 0px 1px">
+                <FilterElementTitleFrame minWidth="110px" width="110px">
+                  <FilterElementTitleComponent>
+                    <FilterElementTitleTextComponent>
+                      약 수령 방법 선택
+                    </FilterElementTitleTextComponent>
+                  </FilterElementTitleComponent>
+                </FilterElementTitleFrame>
+                <FilterElementBoardFrame minWidth="110px" width="110%">
+                  <FilterElementBoardComponent>
+                    {DeliveryMethod.map((element, key) => (
+                      <FilterElementBoardSelectedComponent
+                        key={element}
+                        margin={key !== DeliveryMethod.length - 1 ? '0px 5px 0px 0px' : ''}
+                        onClick={() => onClickDeleteDeliveryMethod({ key: element })}
+                      >
+                        <FilterElementBoardSelectedTextFrame>
+                          <FilterElementBoardSelectedTextComponent>
+                            {element}
+                          </FilterElementBoardSelectedTextComponent>
+                        </FilterElementBoardSelectedTextFrame>
+                        <FilterElementBoardSelectedImageFrame width="10px">
+                          <FilterElementBoardSelectedImageComponent src={ExitIcon} />
+                        </FilterElementBoardSelectedImageFrame>
+                      </FilterElementBoardSelectedComponent>
+                    ))}
                   </FilterElementBoardComponent>
                 </FilterElementBoardFrame>
               </FilterElementComponent>

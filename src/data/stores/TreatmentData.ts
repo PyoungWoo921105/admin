@@ -33,7 +33,7 @@ export interface TreatmentElementDataType {
     name: string;
     url: string;
   };
-  medicineReceiveWay: string;
+  deliveryType: string;
 }
 export interface TreatmentListDataType {
   count: {
@@ -116,7 +116,7 @@ export interface TreatmentDetailsDataType {
     payAmount: string;
     payedDateTime: string;
   };
-  medicineReceiveWay: string;
+  deliveryType: string;
 }
 /* 진료 동작 내역 */
 /* GET /treat/handlingHistory/list */

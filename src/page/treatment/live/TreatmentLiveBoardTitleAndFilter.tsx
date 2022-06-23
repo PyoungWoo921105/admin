@@ -236,16 +236,16 @@ const BoardTitleAndFilter = observer(() => {
       setPrescriptionState(PrescriptionState.filter(element => element !== key));
     }
   };
-  /* 약 수령 방법 유무 */
-  const DeliveryMethodList = ['선택', '전체', '배달', '방문', '없음'];
+  /* 약 수령 방법 */
+  const DeliveryMethodList = ['선택', '전체', '빠른 배달', '오늘 배송', '택배', '방문', '없음'];
   const [DeliveryMethod, setDeliveryMethod] = useState<string[]>(['전체']);
   const onChangeDeliveryMethod = (event: { target: { value: string } }) => {
     if (event.target.value === '전체') {
       setDeliveryMethod([event.target.value]);
     } else if (DeliveryMethod.indexOf(event.target.value) === -1) {
       if (DeliveryMethod.indexOf('전체') === -1) {
-        /* setDeliveryMethod([event.target.value]); */
-        setDeliveryMethod([...DeliveryMethod, event.target.value]);
+        setDeliveryMethod([event.target.value]);
+        /* setDeliveryMethod([...DeliveryMethod, event.target.value]); */
       } else {
         setDeliveryMethod([event.target.value]);
       }
@@ -287,7 +287,7 @@ const BoardTitleAndFilter = observer(() => {
       doctorName: null || DoctorName,
       receptionCategory: null || DiseaseAndDepartment,
       prescriptionState: null || PrescriptionState[0] === '전체' ? null : TempPrescriptionState,
-      medicineReceiveWay: null || DeliveryMethod[0] === '전체' ? null : DeliveryMethod,
+      deliveryType: null || DeliveryMethod[0] === '전체' ? null : DeliveryMethod[0],
 
       page: null || TreatmentData.PageNavigator - 1,
     };
@@ -348,7 +348,7 @@ const BoardTitleAndFilter = observer(() => {
       doctorName: null || DoctorName,
       receptionCategory: null || DiseaseAndDepartment,
       prescriptionState: null || PrescriptionState[0] === '전체' ? null : TempPrescriptionState,
-      medicineReceiveWay: null || DeliveryMethod[0] === '전체' ? null : DeliveryMethod,
+      deliveryType: null || DeliveryMethod[0] === '전체' ? null : DeliveryMethod[0],
 
       /* page: null || TreatmentData.PageNavigator - 1, */
     };

@@ -5,22 +5,17 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 
-import {
-  ProcessStepFrame,
-  ProcessControlFrame,
-  ProcessControlComponent,
-} from 'styles/components/process/ProcessStep';
+import { ProcessStepFrame } from 'styles/components/process/ProcessStep';
 
 import ProcessTicket from './ProcessTicket';
 import ProcessGauge from './ProcessGauge';
+import ProcessControl from './ProcessControl';
 
 const ProcessStep = observer(() => (
   <ProcessStepFrame>
     <ProcessTicket />
     <ProcessGauge />
-    <ProcessControlFrame>
-      <ProcessControlComponent>{/*  */}</ProcessControlComponent>
-    </ProcessControlFrame>
+    <ProcessControl />
   </ProcessStepFrame>
 ));
 
