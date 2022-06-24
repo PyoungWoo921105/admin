@@ -207,7 +207,7 @@ const BoardContent = observer(() => {
                         >
                           {element?.status || '-'}
                         </DataElementContentButtonComponent>
-                        {element?.isExtraDelivery ? (
+                        {/* {element?.isExtraDelivery ? (
                           <DataElementContentExtraButtonComponent
                             backgroundColor="rgb(255,64,64)"
                             color="#ffffff"
@@ -218,7 +218,7 @@ const BoardContent = observer(() => {
                           >
                             추
                           </DataElementContentExtraButtonComponent>
-                        ) : null}
+                        ) : null} */}
                       </DataElementContentComponent>
                     </DataElementContentFrame>
                     {/*  */}
