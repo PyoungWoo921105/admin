@@ -108,6 +108,9 @@ const BoardTitleAndFilter = observer(() => {
     setDeliveryAgencyName([{ code: '', name: '전체' }]);
     setTreatmentCode('');
     setMedicineCode('');
+    setDeliveryMethod(['전체']);
+    setDeliveryMetropolitanAddress(['전체']);
+    setDeliveryElementaryAddress('');
   };
   /* 데이터 다운로드 */
   const onClickFilterDownload = () => {
@@ -247,9 +250,57 @@ const BoardTitleAndFilter = observer(() => {
     }
   };
   /* 배달 특별지방자치단체 주소 */
-  const [DeliveryMetropolitanAddress, setDeliveryMetropolitanAddress] = useState('');
+  const DeliveryMetropolitanAddressList = [
+    '선택',
+    '전체',
+    '서울',
+    '경기',
+    '강원',
+    '경남',
+    '경북',
+    '광주',
+    '대구',
+    '대전',
+    '부산',
+    '세종',
+    '울산',
+    '인천',
+    '전남',
+    '전북',
+    '제주',
+    '충남',
+    '충북',
+  ];
+  const [DeliveryMetropolitanAddress, setDeliveryMetropolitanAddress] = useState<string[]>([
+    '전체',
+  ]);
   const onChangeDeliveryMetropolitanAddress = (event: { target: { value: string } }) => {
-    setDeliveryMetropolitanAddress(event.target.value);
+    if (event.target.value === '전체') {
+      setDeliveryMetropolitanAddress([event.target.value]);
+    } else if (DeliveryMetropolitanAddress.indexOf(event.target.value) === -1) {
+      if (DeliveryMetropolitanAddress.indexOf('전체') === -1) {
+        setDeliveryMetropolitanAddress([event.target.value]);
+        /* setDeliveryMetropolitanAddress([...DeliveryMetropolitanAddress, event.target.value]); */
+      } else {
+        setDeliveryMetropolitanAddress([event.target.value]);
+      }
+    } else if (DeliveryMetropolitanAddress.length === 1) {
+      setDeliveryMetropolitanAddress(['전체']);
+    } else {
+      setDeliveryMetropolitanAddress(
+        DeliveryMetropolitanAddress.filter(element => element !== event.target.value)
+      );
+    }
+  };
+  const onClickDeleteDeliveryMetropolitanAddress = (props: { key: any }) => {
+    const { key } = props;
+    if (DeliveryMetropolitanAddress.length === 1 && DeliveryMetropolitanAddress[0] === key) {
+      setDeliveryMetropolitanAddress(['전체']);
+    } else {
+      setDeliveryMetropolitanAddress(
+        DeliveryMetropolitanAddress.filter(element => element !== key)
+      );
+    }
   };
   /* 배달 기초지방자치단체 주소  */
   const [DeliveryElementaryAddress, setDeliveryElementaryAddress] = useState('');
@@ -280,7 +331,7 @@ const BoardTitleAndFilter = observer(() => {
       /* FUTUREWORK */
       /* riderCode: null || DeliveryAgencyName[0].name === '전체' ? null : DeliveryAgencyName, */
       riderCode: null || DeliveryAgencyName[0].name === '전체' ? null : DeliveryAgencyName[0].code,
-      sido: null || DeliveryMetropolitanAddress,
+      sido: DeliveryMetropolitanAddress[0] === '전체' ? null : DeliveryMetropolitanAddress[0],
       sigungu: null || DeliveryElementaryAddress,
       treatCode: null || TreatmentCode,
       medicineCode: null || MedicineCode,
@@ -333,7 +384,7 @@ const BoardTitleAndFilter = observer(() => {
       /* FUTUREWORK */
       /* riderCode: null || DeliveryAgencyName[0].name === '전체' ? null : DeliveryAgencyName, */
       riderCode: null || DeliveryAgencyName[0].name === '전체' ? null : DeliveryAgencyName[0].code,
-      sido: null || DeliveryMetropolitanAddress,
+      sido: DeliveryMetropolitanAddress[0] === '전체' ? null : DeliveryMetropolitanAddress[0],
       sigungu: null || DeliveryElementaryAddress,
       treatCode: null || TreatmentCode,
       medicineCode: null || MedicineCode,
@@ -402,11 +453,11 @@ const BoardTitleAndFilter = observer(() => {
   }, [CommonData, RiderData]);
 
   useEffect(() => {
-    GetCurrentTime();
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
     GetDeliveryListFunction();
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
     GetRiderListBasicFunction();
+    GetCurrentTime();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [DeliveryData.PageNavigator]);
 
@@ -762,9 +813,9 @@ const BoardTitleAndFilter = observer(() => {
               </FilterElementComponent>
             </FilterElementFrame>
             {/*  */}
-            {/* SINGLE INPUT */}
+            {/* SELECT & OPTION */}
             <FilterElementFrame>
-              <FilterElementComponent>
+              <FilterElementComponent margin="0px 1px 0px 0px">
                 <FilterElementTitleFrame minWidth="110px" width="110px">
                   <FilterElementTitleComponent>
                     <FilterElementTitleTextComponent>
@@ -774,17 +825,53 @@ const BoardTitleAndFilter = observer(() => {
                 </FilterElementTitleFrame>
                 <FilterElementBoardFrame minWidth="110px" width="110px">
                   <FilterElementBoardComponent>
-                    <FilterElementBoardInputComponent
+                    <FilterElementBoardSelectComponent
                       width="100%"
-                      value={DeliveryMetropolitanAddress}
+                      value="선택"
                       onChange={onChangeDeliveryMetropolitanAddress}
                       onKeyPress={onKeyPressEnter}
-                    />
+                    >
+                      {DeliveryMetropolitanAddressList.map(element => (
+                        <FilterElementBoardOptionComponent key={element}>
+                          {element}
+                        </FilterElementBoardOptionComponent>
+                      ))}
+                    </FilterElementBoardSelectComponent>
+                  </FilterElementBoardComponent>
+                </FilterElementBoardFrame>
+              </FilterElementComponent>
+              <FilterElementComponent margin="0px 0px 0px 1px">
+                <FilterElementTitleFrame minWidth="135px" width="135px">
+                  <FilterElementTitleComponent>
+                    <FilterElementTitleTextComponent>
+                      배달 위치 (시/도) 선택
+                    </FilterElementTitleTextComponent>
+                  </FilterElementTitleComponent>
+                </FilterElementTitleFrame>
+                <FilterElementBoardFrame minWidth="85px" width="85%">
+                  <FilterElementBoardComponent>
+                    {DeliveryMetropolitanAddress.map((element, key) => (
+                      <FilterElementBoardSelectedComponent
+                        key={element}
+                        margin={
+                          key !== DeliveryMetropolitanAddress.length - 1 ? '0px 5px 0px 0px' : ''
+                        }
+                        onClick={() => onClickDeleteDeliveryMetropolitanAddress({ key: element })}
+                      >
+                        <FilterElementBoardSelectedTextFrame>
+                          <FilterElementBoardSelectedTextComponent>
+                            {element}
+                          </FilterElementBoardSelectedTextComponent>
+                        </FilterElementBoardSelectedTextFrame>
+                        <FilterElementBoardSelectedImageFrame width="10px">
+                          <FilterElementBoardSelectedImageComponent src={ExitIcon} />
+                        </FilterElementBoardSelectedImageFrame>
+                      </FilterElementBoardSelectedComponent>
+                    ))}
                   </FilterElementBoardComponent>
                 </FilterElementBoardFrame>
               </FilterElementComponent>
             </FilterElementFrame>
-            {/*  */}
             {/* SINGLE INPUT */}
             <FilterElementFrame>
               <FilterElementComponent>

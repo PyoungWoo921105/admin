@@ -111,7 +111,7 @@ const BoardTitleAndFilter = observer(() => {
     setAlarmNotificationState(['전체']);
     setAlarmAgreementState(['전체']);
     setRequestHospitalName('');
-    setRequestHospitalMetropolitanAddress('');
+    setRequestHospitalMetropolitanAddress(['전체']);
     setRequestHospitalElementaryAddress('');
     setPatientName('');
     setPatientPhoneNumber('');
@@ -214,9 +214,60 @@ const BoardTitleAndFilter = observer(() => {
     setRequestHospitalName(event.target.value);
   };
   /* 요청 병원 특별지방자치단체 주소 */
-  const [RequestHospitalMetropolitanAddress, setRequestHospitalMetropolitanAddress] = useState('');
+  const RequestHospitalMetropolitanAddressList = [
+    '선택',
+    '전체',
+    '서울',
+    '경기',
+    '강원',
+    '경남',
+    '경북',
+    '광주',
+    '대구',
+    '대전',
+    '부산',
+    '세종',
+    '울산',
+    '인천',
+    '전남',
+    '전북',
+    '제주',
+    '충남',
+    '충북',
+  ];
+  const [RequestHospitalMetropolitanAddress, setRequestHospitalMetropolitanAddress] = useState<
+    string[]
+  >(['전체']);
   const onChangeRequestHospitalMetropolitanAddress = (event: { target: { value: string } }) => {
-    setRequestHospitalMetropolitanAddress(event.target.value);
+    if (event.target.value === '전체') {
+      setRequestHospitalMetropolitanAddress([event.target.value]);
+    } else if (RequestHospitalMetropolitanAddress.indexOf(event.target.value) === -1) {
+      if (RequestHospitalMetropolitanAddress.indexOf('전체') === -1) {
+        setRequestHospitalMetropolitanAddress([event.target.value]);
+        /* setRequestHospitalMetropolitanAddress([...RequestHospitalMetropolitanAddress, event.target.value]); */
+      } else {
+        setRequestHospitalMetropolitanAddress([event.target.value]);
+      }
+    } else if (RequestHospitalMetropolitanAddress.length === 1) {
+      setRequestHospitalMetropolitanAddress(['전체']);
+    } else {
+      setRequestHospitalMetropolitanAddress(
+        RequestHospitalMetropolitanAddress.filter(element => element !== event.target.value)
+      );
+    }
+  };
+  const onClickDeleteRequestHospitalMetropolitanAddress = (props: { key: any }) => {
+    const { key } = props;
+    if (
+      RequestHospitalMetropolitanAddress.length === 1 &&
+      RequestHospitalMetropolitanAddress[0] === key
+    ) {
+      setRequestHospitalMetropolitanAddress(['전체']);
+    } else {
+      setRequestHospitalMetropolitanAddress(
+        RequestHospitalMetropolitanAddress.filter(element => element !== key)
+      );
+    }
   };
   /* 요청 병원 기초지방자치단체 주소  */
   const [RequestHospitalElementaryAddress, setRequestHospitalElementaryAddress] = useState('');
@@ -316,7 +367,10 @@ const BoardTitleAndFilter = observer(() => {
       isSendNoti: AlarmNotificationState[0] === '전체' ? null : TempAlarmNotificationState[0],
       isRegistered: AlarmAgreementState[0] === '전체' ? null : TempAlarmAgreementState[0],
       hospitalName: null || RequestHospitalName,
-      hospitalSido: null || RequestHospitalMetropolitanAddress,
+      hospitalSido:
+        RequestHospitalMetropolitanAddress[0] === '전체'
+          ? null
+          : RequestHospitalMetropolitanAddress[0],
       hospitalSigungu: null || RequestHospitalElementaryAddress,
       patientName: null || PatientName,
       patientPhoneNum: null || PatientPhoneNumber,
@@ -762,9 +816,9 @@ const BoardTitleAndFilter = observer(() => {
               </FilterElementComponent>
             </FilterElementFrame>
             {/*  */}
-            {/* SINGLE INPUT */}
+            {/* SELECT & OPTION */}
             <FilterElementFrame>
-              <FilterElementComponent>
+              <FilterElementComponent margin="0px 1px 0px 0px">
                 <FilterElementTitleFrame minWidth="110px" width="110px">
                   <FilterElementTitleComponent>
                     <FilterElementTitleTextComponent>
@@ -774,12 +828,53 @@ const BoardTitleAndFilter = observer(() => {
                 </FilterElementTitleFrame>
                 <FilterElementBoardFrame minWidth="110px" width="110px">
                   <FilterElementBoardComponent>
-                    <FilterElementBoardInputComponent
+                    <FilterElementBoardSelectComponent
                       width="100%"
-                      value={RequestHospitalMetropolitanAddress}
+                      value="선택"
                       onChange={onChangeRequestHospitalMetropolitanAddress}
                       onKeyPress={onKeyPressEnter}
-                    />
+                    >
+                      {RequestHospitalMetropolitanAddressList.map(element => (
+                        <FilterElementBoardOptionComponent key={element}>
+                          {element}
+                        </FilterElementBoardOptionComponent>
+                      ))}
+                    </FilterElementBoardSelectComponent>
+                  </FilterElementBoardComponent>
+                </FilterElementBoardFrame>
+              </FilterElementComponent>
+              <FilterElementComponent margin="0px 0px 0px 1px">
+                <FilterElementTitleFrame minWidth="135px" width="135px">
+                  <FilterElementTitleComponent>
+                    <FilterElementTitleTextComponent>
+                      병원 위치 (시/도) 선택
+                    </FilterElementTitleTextComponent>
+                  </FilterElementTitleComponent>
+                </FilterElementTitleFrame>
+                <FilterElementBoardFrame minWidth="85px" width="85%">
+                  <FilterElementBoardComponent>
+                    {RequestHospitalMetropolitanAddress.map((element, key) => (
+                      <FilterElementBoardSelectedComponent
+                        key={element}
+                        margin={
+                          key !== RequestHospitalMetropolitanAddress.length - 1
+                            ? '0px 5px 0px 0px'
+                            : ''
+                        }
+                        onClick={() =>
+                          onClickDeleteRequestHospitalMetropolitanAddress({ key: element })
+                        }
+                      >
+                        <FilterElementBoardSelectedTextFrame>
+                          <FilterElementBoardSelectedTextComponent>
+                            {element}
+                          </FilterElementBoardSelectedTextComponent>
+                        </FilterElementBoardSelectedTextFrame>
+                        <FilterElementBoardSelectedImageFrame width="10px">
+                          <FilterElementBoardSelectedImageComponent src={ExitIcon} />
+                        </FilterElementBoardSelectedImageFrame>
+                      </FilterElementBoardSelectedComponent>
+                    ))}
                   </FilterElementBoardComponent>
                 </FilterElementBoardFrame>
               </FilterElementComponent>
