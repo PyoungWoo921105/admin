@@ -110,7 +110,7 @@ const BoardTitleAndFilter = observer(() => {
     setHospitalName('');
     setDoctorName('');
     setPrescriptionState(['전체']);
-    setDeliveryMethod(['전체']);
+    setMedicineRequestState(['전체']);
   };
   /* 데이터 다운로드 */
   const onClickFilterDownload = () => {
@@ -236,31 +236,33 @@ const BoardTitleAndFilter = observer(() => {
       setPrescriptionState(PrescriptionState.filter(element => element !== key));
     }
   };
-  /* 약 수령 방법 */
-  const DeliveryMethodList = ['선택', '전체', '빠른 배달', '오늘 배송', '택배', '방문', '없음'];
-  const [DeliveryMethod, setDeliveryMethod] = useState<string[]>(['전체']);
-  const onChangeDeliveryMethod = (event: { target: { value: string } }) => {
+  /* 조제 요청 여부 */
+  const MedicineRequestStateList = ['선택', '전체', 'Y', 'N'];
+  const [MedicineRequestState, setMedicineRequestState] = useState<string[]>(['전체']);
+  const onChangeMedicineRequestState = (event: { target: { value: string } }) => {
     if (event.target.value === '전체') {
-      setDeliveryMethod([event.target.value]);
-    } else if (DeliveryMethod.indexOf(event.target.value) === -1) {
-      if (DeliveryMethod.indexOf('전체') === -1) {
-        setDeliveryMethod([event.target.value]);
-        /* setDeliveryMethod([...DeliveryMethod, event.target.value]); */
+      setMedicineRequestState([event.target.value]);
+    } else if (MedicineRequestState.indexOf(event.target.value) === -1) {
+      if (MedicineRequestState.indexOf('전체') === -1) {
+        setMedicineRequestState([event.target.value]);
+        /* setMedicineRequestState([...MedicineRequestState, event.target.value]); */
       } else {
-        setDeliveryMethod([event.target.value]);
+        setMedicineRequestState([event.target.value]);
       }
-    } else if (DeliveryMethod.length === 1) {
-      setDeliveryMethod(['전체']);
+    } else if (MedicineRequestState.length === 1) {
+      setMedicineRequestState(['전체']);
     } else {
-      setDeliveryMethod(DeliveryMethod.filter(element => element !== event.target.value));
+      setMedicineRequestState(
+        MedicineRequestState.filter(element => element !== event.target.value)
+      );
     }
   };
-  const onClickDeleteDeliveryMethod = (props: { key: any }) => {
+  const onClickDeleteMedicineRequestState = (props: { key: any }) => {
     const { key } = props;
-    if (DeliveryMethod.length === 1 && DeliveryMethod[0] === key) {
-      setDeliveryMethod(['전체']);
+    if (MedicineRequestState.length === 1 && MedicineRequestState[0] === key) {
+      setMedicineRequestState(['전체']);
     } else {
-      setDeliveryMethod(DeliveryMethod.filter(element => element !== key));
+      setMedicineRequestState(MedicineRequestState.filter(element => element !== key));
     }
   };
   /* 데이터 */
@@ -287,7 +289,8 @@ const BoardTitleAndFilter = observer(() => {
       doctorName: null || DoctorName,
       receptionCategory: null || DiseaseAndDepartment,
       prescriptionState: null || PrescriptionState[0] === '전체' ? null : TempPrescriptionState,
-      deliveryType: null || DeliveryMethod[0] === '전체' ? null : DeliveryMethod[0],
+      isMedicineRequested:
+        null || MedicineRequestState[0] === '전체' ? null : MedicineRequestState[0],
 
       page: null || TreatmentData.PageNavigator - 1,
     };
@@ -312,7 +315,7 @@ const BoardTitleAndFilter = observer(() => {
     }
   }, [
     CommonData,
-    DeliveryMethod,
+    MedicineRequestState,
     DiseaseAndDepartment,
     DoctorName,
     EndInquiryPeriod,
@@ -348,7 +351,8 @@ const BoardTitleAndFilter = observer(() => {
       doctorName: null || DoctorName,
       receptionCategory: null || DiseaseAndDepartment,
       prescriptionState: null || PrescriptionState[0] === '전체' ? null : TempPrescriptionState,
-      deliveryType: null || DeliveryMethod[0] === '전체' ? null : DeliveryMethod[0],
+      isMedicineRequested:
+        null || MedicineRequestState[0] === '전체' ? null : MedicineRequestState[0],
 
       /* page: null || TreatmentData.PageNavigator - 1, */
     };
@@ -373,7 +377,7 @@ const BoardTitleAndFilter = observer(() => {
     }
   }, [
     CommonData,
-    DeliveryMethod,
+    MedicineRequestState,
     DiseaseAndDepartment,
     DoctorName,
     EndInquiryPeriod,
@@ -779,20 +783,22 @@ const BoardTitleAndFilter = observer(() => {
             {/* SELECT & OPTION */}
             <FilterElementFrame>
               <FilterElementComponent margin="0px 1px 0px 0px">
-                <FilterElementTitleFrame minWidth="85px" width="85px">
+                <FilterElementTitleFrame minWidth="95px" width="95px">
                   <FilterElementTitleComponent>
-                    <FilterElementTitleTextComponent>약 수령 방법</FilterElementTitleTextComponent>
+                    <FilterElementTitleTextComponent>
+                      조제 요청 여부
+                    </FilterElementTitleTextComponent>
                   </FilterElementTitleComponent>
                 </FilterElementTitleFrame>
-                <FilterElementBoardFrame minWidth="135px" width="135px">
+                <FilterElementBoardFrame minWidth="125px" width="125px">
                   <FilterElementBoardComponent>
                     <FilterElementBoardSelectComponent
                       width="100%"
                       value="선택"
-                      onChange={onChangeDeliveryMethod}
+                      onChange={onChangeMedicineRequestState}
                       onKeyPress={onKeyPressEnter}
                     >
-                      {DeliveryMethodList.map(element => (
+                      {MedicineRequestStateList.map(element => (
                         <FilterElementBoardOptionComponent key={element}>
                           {element}
                         </FilterElementBoardOptionComponent>
@@ -802,20 +808,20 @@ const BoardTitleAndFilter = observer(() => {
                 </FilterElementBoardFrame>
               </FilterElementComponent>
               <FilterElementComponent margin="0px 0px 0px 1px">
-                <FilterElementTitleFrame minWidth="110px" width="110px">
+                <FilterElementTitleFrame minWidth="120px" width="120px">
                   <FilterElementTitleComponent>
                     <FilterElementTitleTextComponent>
-                      약 수령 방법 선택
+                      조제 요청 여부 선택
                     </FilterElementTitleTextComponent>
                   </FilterElementTitleComponent>
                 </FilterElementTitleFrame>
-                <FilterElementBoardFrame minWidth="110px" width="110%">
+                <FilterElementBoardFrame minWidth="100px" width="100%">
                   <FilterElementBoardComponent>
-                    {DeliveryMethod.map((element, key) => (
+                    {MedicineRequestState.map((element, key) => (
                       <FilterElementBoardSelectedComponent
                         key={element}
-                        margin={key !== DeliveryMethod.length - 1 ? '0px 5px 0px 0px' : ''}
-                        onClick={() => onClickDeleteDeliveryMethod({ key: element })}
+                        margin={key !== MedicineRequestState.length - 1 ? '0px 5px 0px 0px' : ''}
+                        onClick={() => onClickDeleteMedicineRequestState({ key: element })}
                       >
                         <FilterElementBoardSelectedTextFrame>
                           <FilterElementBoardSelectedTextComponent>

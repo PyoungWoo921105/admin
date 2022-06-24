@@ -33,7 +33,7 @@ export interface TreatmentElementDataType {
     name: string;
     url: string;
   };
-  deliveryType: string;
+  isMedicineRequested: boolean;
 }
 export interface TreatmentListDataType {
   count: {

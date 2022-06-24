@@ -64,7 +64,7 @@ const BoardContent = observer(() => {
     { title: '접수 항목', width: 110 },
     { title: '결제 금액', width: 90 },
     { title: '처방전 유무', width: 90 },
-    { title: '약 수령 방법', width: 90 },
+    { title: '조제 요청 여부', width: 90 },
   ];
 
   const onClickProcessPopUp = (props: any) => {
@@ -304,7 +304,7 @@ const BoardContent = observer(() => {
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentTextComponent>
-                          {element?.deliveryType || '-'}
+                          {element?.isMedicineRequested ? 'Y' : 'N'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
                     </DataElementContentFrame>
