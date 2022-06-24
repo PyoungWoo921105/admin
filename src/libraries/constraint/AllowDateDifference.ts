@@ -12,6 +12,9 @@ export const AllowDateDifference = (props: {
 }) => {
   const { previous, next, format, unit } = props;
 
+  if (unit === 'months') {
+    return moment.duration(moment(next, format).diff(moment(previous, format))).asMonths();
+  }
   if (unit === 'days') {
     return moment.duration(moment(next, format).diff(moment(previous, format))).asDays();
   }
