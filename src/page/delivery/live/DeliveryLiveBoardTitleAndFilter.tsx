@@ -106,6 +106,7 @@ const BoardTitleAndFilter = observer(() => {
     setEndInquiryPeriod('');
     setDeliveryState(['전체']);
     setDeliveryAgencyName([{ code: '', name: '전체' }]);
+    setPatientName('');
     setTreatmentCode('');
     setMedicineCode('');
     setDeliveryMethod(['전체']);
@@ -249,6 +250,11 @@ const BoardTitleAndFilter = observer(() => {
       setDeliveryAgencyName(DeliveryAgencyName.filter(element => element?.code !== object.code));
     }
   };
+  /* 환자 이름 */
+  const [PatientName, setPatientName] = useState('');
+  const onChangePatientName = (event: { target: { value: string } }) => {
+    setPatientName(event.target.value);
+  };
   /* 배달 특별지방자치단체 주소 */
   const DeliveryMetropolitanAddressList = [
     '선택',
@@ -335,6 +341,7 @@ const BoardTitleAndFilter = observer(() => {
       sigungu: null || DeliveryElementaryAddress,
       treatCode: null || TreatmentCode,
       medicineCode: null || MedicineCode,
+      patientName: PatientName || PatientName,
 
       page: null || DeliveryData.PageNavigator - 1,
     };
@@ -359,17 +366,18 @@ const BoardTitleAndFilter = observer(() => {
     }
   }, [
     CommonData,
+    DeliveryCode,
+    DeliveryMethod,
+    StartInquiryPeriod,
+    EndInquiryPeriod,
+    DeliveryState,
     DeliveryAgencyName,
     DeliveryMetropolitanAddress,
     DeliveryElementaryAddress,
-    DeliveryCode,
-    DeliveryData.PageNavigator,
-    DeliveryMethod,
-    DeliveryState,
-    EndInquiryPeriod,
-    MedicineCode,
-    StartInquiryPeriod,
     TreatmentCode,
+    MedicineCode,
+    PatientName,
+    DeliveryData.PageNavigator,
   ]);
   const GetDeliveryListExportFunction = useCallback(async () => {
     CommonData.setLoadingFlag(true);
@@ -388,6 +396,7 @@ const BoardTitleAndFilter = observer(() => {
       sigungu: null || DeliveryElementaryAddress,
       treatCode: null || TreatmentCode,
       medicineCode: null || MedicineCode,
+      patientName: PatientName || PatientName,
 
       /* page: null || DeliveryData.PageNavigator - 1, */
     };
@@ -412,16 +421,17 @@ const BoardTitleAndFilter = observer(() => {
     }
   }, [
     CommonData,
+    DeliveryCode,
+    DeliveryMethod,
+    StartInquiryPeriod,
+    EndInquiryPeriod,
+    DeliveryState,
     DeliveryAgencyName,
     DeliveryMetropolitanAddress,
     DeliveryElementaryAddress,
-    DeliveryCode,
-    DeliveryMethod,
-    DeliveryState,
-    EndInquiryPeriod,
-    MedicineCode,
-    StartInquiryPeriod,
     TreatmentCode,
+    MedicineCode,
+    PatientName,
   ]);
   const GetRiderListBasicFunction = useCallback(async () => {
     CommonData.setLoadingFlag(true);
@@ -808,6 +818,27 @@ const BoardTitleAndFilter = observer(() => {
                         </FilterElementBoardSelectedImageFrame>
                       </FilterElementBoardSelectedComponent>
                     ))}
+                  </FilterElementBoardComponent>
+                </FilterElementBoardFrame>
+              </FilterElementComponent>
+            </FilterElementFrame>
+            {/*  */}
+            {/* SINGLE INPUT */}
+            <FilterElementFrame>
+              <FilterElementComponent>
+                <FilterElementTitleFrame minWidth="70px" width="70px">
+                  <FilterElementTitleComponent>
+                    <FilterElementTitleTextComponent>환자 이름</FilterElementTitleTextComponent>
+                  </FilterElementTitleComponent>
+                </FilterElementTitleFrame>
+                <FilterElementBoardFrame minWidth="150px" width="150px">
+                  <FilterElementBoardComponent>
+                    <FilterElementBoardInputComponent
+                      width="100%"
+                      value={PatientName}
+                      onChange={onChangePatientName}
+                      onKeyPress={onKeyPressEnter}
+                    />
                   </FilterElementBoardComponent>
                 </FilterElementBoardFrame>
               </FilterElementComponent>
