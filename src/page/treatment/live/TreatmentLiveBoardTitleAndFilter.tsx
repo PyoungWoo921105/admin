@@ -397,6 +397,16 @@ const BoardTitleAndFilter = observer(() => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [TreatmentData.PageNavigator]);
 
+  /* Socket */
+  useEffect(() => {
+    if (TreatmentData.SocketTreatmentData?.treatList?.length !== 0) {
+      GetCurrentTime();
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
+      GetTreatmentListFunction();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [TreatmentData.SocketTreatmentData]);
+
   /* 통계 */
   const StatisticsList = [
     '전체',
