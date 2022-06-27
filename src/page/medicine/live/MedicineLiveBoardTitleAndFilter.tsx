@@ -277,10 +277,9 @@ const BoardTitleAndFilter = observer(() => {
         Category: 'ERROR',
         Name: 'GET_MEDICINE_LIST',
         Title: '조제 현황 불러오기 실패',
-        Contents: [MetaError?.data?.message] || [
-          '일시적인 서버 오류가 발생하였습니다.',
-          '다음에 다시 시도해주세요.',
-        ],
+        Contents: MetaError?.data?.message
+          ? [MetaError?.data?.message]
+          : ['일시적인 서버 오류가 발생하였습니다.', '다음에 다시 시도해주세요.'],
         Actions: [{ Choice: '돌아가기', Action: () => CommonData.setPopUpFlag(false) }],
       };
       CommonData.setPopUpData(PopUpData);
@@ -330,10 +329,9 @@ const BoardTitleAndFilter = observer(() => {
         Category: 'ERROR',
         Name: 'GET_MEDICINE_LIST_EXPORT',
         Title: '조제 현황 데이터 다운로드 실패',
-        Contents: [MetaError?.data?.message] || [
-          '일시적인 서버 오류가 발생하였습니다.',
-          '다음에 다시 시도해주세요.',
-        ],
+        Contents: MetaError?.data?.message
+          ? [MetaError?.data?.message]
+          : ['일시적인 서버 오류가 발생하였습니다.', '다음에 다시 시도해주세요.'],
         Actions: [{ Choice: '돌아가기', Action: () => CommonData.setPopUpFlag(false) }],
       };
       CommonData.setPopUpData(PopUpData);

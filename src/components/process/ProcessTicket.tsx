@@ -60,10 +60,9 @@ const ProcessTicket = observer(() => {
         Category: 'ERROR',
         Name: 'GET_TASK',
         Title: '통합 상세 정보 불러오기 실패',
-        Contents: [MetaError?.data?.message] || [
-          '일시적인 서버 오류가 발생하였습니다.',
-          '다음에 다시 시도해주세요.',
-        ],
+        Contents: MetaError?.data?.message
+          ? [MetaError?.data?.message]
+          : ['일시적인 서버 오류가 발생하였습니다.', '다음에 다시 시도해주세요.'],
         Actions: [{ Choice: '돌아가기', Action: () => CommonData.setPopUpFlag(false) }],
       };
       CommonData.setPopUpData(PopUpData);
@@ -87,10 +86,9 @@ const ProcessTicket = observer(() => {
         Category: 'ERROR',
         Name: 'GET_TREATMENT_DETAILS',
         Title: '진료 상세 정보 불러오기 실패',
-        Contents: [MetaError?.data?.message] || [
-          '일시적인 서버 오류가 발생하였습니다.',
-          '다음에 다시 시도해주세요.',
-        ],
+        Contents: MetaError?.data?.message
+          ? [MetaError?.data?.message]
+          : ['일시적인 서버 오류가 발생하였습니다.', '다음에 다시 시도해주세요.'],
         Actions: [{ Choice: '돌아가기', Action: () => CommonData.setPopUpFlag(false) }],
       };
       CommonData.setPopUpData(PopUpData);
@@ -114,10 +112,9 @@ const ProcessTicket = observer(() => {
         Category: 'ERROR',
         Name: 'GET_MEDICINE_DETAILS',
         Title: '조제 상세 정보 불러오기 실패',
-        Contents: [MetaError?.data?.message] || [
-          '일시적인 서버 오류가 발생하였습니다.',
-          '다음에 다시 시도해주세요.',
-        ],
+        Contents: MetaError?.data?.message
+          ? [MetaError?.data?.message]
+          : ['일시적인 서버 오류가 발생하였습니다.', '다음에 다시 시도해주세요.'],
         Actions: [{ Choice: '돌아가기', Action: () => CommonData.setPopUpFlag(false) }],
       };
       CommonData.setPopUpData(PopUpData);
@@ -141,10 +138,9 @@ const ProcessTicket = observer(() => {
         Category: 'ERROR',
         Name: 'GET_DELIVERY_DETAILS',
         Title: '배달 상세 정보 불러오기 실패',
-        Contents: [MetaError?.data?.message] || [
-          '일시적인 서버 오류가 발생하였습니다.',
-          '다음에 다시 시도해주세요.',
-        ],
+        Contents: MetaError?.data?.message
+          ? [MetaError?.data?.message]
+          : ['일시적인 서버 오류가 발생하였습니다.', '다음에 다시 시도해주세요.'],
         Actions: [{ Choice: '돌아가기', Action: () => CommonData.setPopUpFlag(false) }],
       };
       CommonData.setPopUpData(PopUpData);

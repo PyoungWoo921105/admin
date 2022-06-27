@@ -394,10 +394,9 @@ const BoardTitleAndFilter = observer(() => {
         Category: 'ERROR',
         Name: 'GET_ADMIN_HOSPITAL_ADDITION_DETAILS_LIST',
         Title: '병원 추가 요청 내역 불러오기 실패',
-        Contents: [MetaError?.data?.message] || [
-          '일시적인 서버 오류가 발생하였습니다.',
-          '다음에 다시 시도해주세요.',
-        ],
+        Contents: MetaError?.data?.message
+          ? [MetaError?.data?.message]
+          : ['일시적인 서버 오류가 발생하였습니다.', '다음에 다시 시도해주세요.'],
         Actions: [{ Choice: '돌아가기', Action: () => CommonData.setPopUpFlag(false) }],
       };
       CommonData.setPopUpData(PopUpData);
@@ -451,10 +450,9 @@ const BoardTitleAndFilter = observer(() => {
         Category: 'ERROR',
         Name: 'GET_ADMIN_HOSPITAL_ADDITION_DETAILS_LIST_EXPORT',
         Title: '병원 추가 요청 내역 데이터 다운로드 실패',
-        Contents: [MetaError?.data?.message] || [
-          '일시적인 서버 오류가 발생하였습니다.',
-          '다음에 다시 시도해주세요.',
-        ],
+        Contents: MetaError?.data?.message
+          ? [MetaError?.data?.message]
+          : ['일시적인 서버 오류가 발생하였습니다.', '다음에 다시 시도해주세요.'],
         Actions: [{ Choice: '돌아가기', Action: () => CommonData.setPopUpFlag(false) }],
       };
       CommonData.setPopUpData(PopUpData);
@@ -499,10 +497,9 @@ const BoardTitleAndFilter = observer(() => {
           Category: 'ERROR',
           Name: 'POST_ADMIN_HOSPITAL_ADDITION_NOTIFICATION',
           Title: '병원 추가 요청 알림 발송 실패',
-          Contents: [MetaError?.data?.message?.body] || [
-            '일시적인 서버 오류가 발생하였습니다.',
-            '다음에 다시 시도해주세요.',
-          ],
+          Contents: MetaError?.data?.message?.body
+            ? [MetaError?.data?.message?.body]
+            : ['일시적인 서버 오류가 발생하였습니다.', '다음에 다시 시도해주세요.'],
           Actions: [{ Choice: '돌아가기', Action: () => CommonData.setPopUpFlag(false) }],
         };
         CommonData.setPopUpData(PopUpData);
@@ -517,10 +514,9 @@ const BoardTitleAndFilter = observer(() => {
         Category: 'ERROR',
         Name: 'POST_ADMIN_HOSPITAL_ADDITION_NOTIFICATION',
         Title: '병원 추가 요청 알림 발송 실패',
-        Contents: [MetaError?.data?.message?.body] || [
-          '일시적인 서버 오류가 발생하였습니다.',
-          '다음에 다시 시도해주세요.',
-        ],
+        Contents: MetaError?.data?.message?.body
+          ? [MetaError?.data?.message?.body]
+          : ['일시적인 서버 오류가 발생하였습니다.', '다음에 다시 시도해주세요.'],
         Actions: [{ Choice: '돌아가기', Action: () => CommonData.setPopUpFlag(false) }],
       };
       CommonData.setPopUpData(PopUpData);

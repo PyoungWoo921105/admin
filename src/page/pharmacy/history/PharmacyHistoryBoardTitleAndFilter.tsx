@@ -253,10 +253,9 @@ const BoardTitleAndFilter = observer(() => {
         Category: 'ERROR',
         Name: 'GET_PHARMACY_LIST',
         Title: '약국 내역 불러오기 실패',
-        Contents: [MetaError?.data?.message] || [
-          '일시적인 서버 오류가 발생하였습니다.',
-          '다음에 다시 시도해주세요.',
-        ],
+        Contents: MetaError?.data?.message
+          ? [MetaError?.data?.message]
+          : ['일시적인 서버 오류가 발생하였습니다.', '다음에 다시 시도해주세요.'],
         Actions: [{ Choice: '돌아가기', Action: () => CommonData.setPopUpFlag(false) }],
       };
       CommonData.setPopUpData(PopUpData);
@@ -300,10 +299,9 @@ const BoardTitleAndFilter = observer(() => {
         Category: 'ERROR',
         Name: 'GET_PHARMACY_LIST_EXPORT',
         Title: '약국 내역 데이터 다운로드 실패',
-        Contents: [MetaError?.data?.message] || [
-          '일시적인 서버 오류가 발생하였습니다.',
-          '다음에 다시 시도해주세요.',
-        ],
+        Contents: MetaError?.data?.message
+          ? [MetaError?.data?.message]
+          : ['일시적인 서버 오류가 발생하였습니다.', '다음에 다시 시도해주세요.'],
         Actions: [{ Choice: '돌아가기', Action: () => CommonData.setPopUpFlag(false) }],
       };
       CommonData.setPopUpData(PopUpData);
