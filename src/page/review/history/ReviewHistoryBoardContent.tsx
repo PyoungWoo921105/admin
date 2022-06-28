@@ -318,9 +318,9 @@ const BoardContent = observer(() => {
                         <DataElementContentButtonComponent
                           backgroundColor={
                             element?.isPublic === true
-                              ? 'rgb(192,0,0)'
-                              : element?.isPublic === false
                               ? 'rgb(112,173,71)'
+                              : element?.isPublic === false
+                              ? 'rgb(192,0,0)'
                               : 'transparent'
                           }
                           color={
@@ -344,9 +344,9 @@ const BoardContent = observer(() => {
                         <DataElementContentButtonComponent
                           backgroundColor={
                             element?.hasReply === true
-                              ? 'rgb(192,0,0)'
-                              : element?.hasReply === false
                               ? 'rgb(112,173,71)'
+                              : element?.hasReply === false
+                              ? 'rgb(192,0,0)'
                               : 'transparent'
                           }
                           color={

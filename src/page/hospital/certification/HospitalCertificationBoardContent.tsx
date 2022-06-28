@@ -135,7 +135,7 @@ const BoardContent = observer(() => {
                               : element?.status === 'in-checking'
                               ? 'rgb(255, 192, 0)'
                               : element?.status === 'completed'
-                              ? 'rgb(255,173,71)'
+                              ? 'rgb(112,173,71)'
                               : element?.status === 'declined'
                               ? 'rgb(192,0,0)'
                               : 'transparent'
