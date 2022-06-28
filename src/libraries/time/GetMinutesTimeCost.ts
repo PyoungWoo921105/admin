@@ -4,7 +4,7 @@
 
 import moment from 'moment';
 
-export const GetTimeCost = (props: { prev: any; next: any; temp: any }) => {
+export const GetMinutesTimeCost = (props: { prev: any; next: any; temp: any }) => {
   const { prev, next, temp } = props;
   if (moment(prev, 'YYYYMMDDHHmmss').isValid() === true) {
     if (next && moment(next, 'YYYYMMDDHHmmss').isValid() === true) {
@@ -22,4 +22,4 @@ export const GetTimeCost = (props: { prev: any; next: any; temp: any }) => {
   return '';
 };
 
-export default GetTimeCost;
+export default GetMinutesTimeCost;

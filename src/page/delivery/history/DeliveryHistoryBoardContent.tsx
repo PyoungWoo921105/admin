@@ -49,10 +49,10 @@ import {
 
 import { ConvertDate } from 'libraries/conversion/ConvertDate';
 import { ConvertCommaNumber } from 'libraries/conversion/ConvertCommaNumber';
-import { GetTimeCost } from 'libraries/time/GetTimeCost';
 import { ConvertContactNumber } from 'libraries/conversion/ConvertContactNumber';
 import { AllowNumber } from 'libraries/constraint/AllowNumber';
 import { DeliveryElementDataType } from 'data/stores/DeliveryData';
+import { GetConditionalMinutesTimeCost } from 'libraries/time/GetConditionalMinutesTimeCost';
 /*  */
 const BoardContent = observer(() => {
   const { CommonData, DeliveryData, AdminData } = useStore();
@@ -241,11 +241,12 @@ const BoardContent = observer(() => {
                         <DataElementContentTextComponent>
                           {element?.requestedDateTime
                             ? `${ConvertCommaNumber(
-                                GetTimeCost({
+                                GetConditionalMinutesTimeCost({
                                   prev: element?.requestedDateTime,
                                   next: element?.endDateTime,
-                                  temp: CommonData.CurrentTime,
-                                })
+                                  alt: element?.canceledDateTime,
+                                  curr: CommonData.CurrentTime,
+                                }).toString()
                               )}분`
                             : '-'}
                         </DataElementContentTextComponent>
@@ -342,11 +343,12 @@ const BoardContent = observer(() => {
                         <DataElementContentTextComponent>
                           {element?.requestedDateTime
                             ? `${ConvertDate(element?.requestedDateTime)}/${ConvertCommaNumber(
-                                GetTimeCost({
+                                GetConditionalMinutesTimeCost({
                                   prev: element?.requestedDateTime,
                                   next: element?.pickUpDateTime,
-                                  temp: CommonData.CurrentTime,
-                                })
+                                  alt: element?.canceledDateTime,
+                                  curr: CommonData.CurrentTime,
+                                }).toString()
                               )}분`
                             : '-'}
                         </DataElementContentTextComponent>
@@ -360,11 +362,12 @@ const BoardContent = observer(() => {
                         <DataElementContentTextComponent>
                           {element?.pickUpDateTime
                             ? `${ConvertDate(element?.pickUpDateTime)}/${ConvertCommaNumber(
-                                GetTimeCost({
+                                GetConditionalMinutesTimeCost({
                                   prev: element?.pickUpDateTime,
                                   next: element?.endDateTime,
-                                  temp: CommonData.CurrentTime,
-                                })
+                                  alt: element?.canceledDateTime,
+                                  curr: CommonData.CurrentTime,
+                                }).toString()
                               )}분`
                             : '-'}
                         </DataElementContentTextComponent>

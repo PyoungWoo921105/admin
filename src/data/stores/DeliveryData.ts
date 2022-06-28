@@ -30,6 +30,7 @@ export interface DeliveryElementDataType {
   elapsedTime: string;
   requestedDateTime: string;
   pickUpDateTime: string;
+  canceledDateTime: string;
   endDateTime: string;
   deliveryType: string;
 }
@@ -44,7 +45,16 @@ export interface DeliveryListDataType {
 export interface DeliveryDetailsDataType {
   deliveryInfo: {
     deliveryCode: string;
+    patient: {
+      code: string;
+      name: string;
+      phoneNum: string;
+      applicantName: string;
+      symptom: string;
+      relationType: string;
+    };
     status: string;
+    deliveryType: string;
     address: {
       jibunAddress: string;
       roadAddress: string;
@@ -55,53 +65,42 @@ export interface DeliveryDetailsDataType {
       bname: string;
       wayGuide: string;
     };
-    riderName: string;
-    riderPhoneNum: string;
-    requestedDateTime: string;
-    pickUpDateTime: string;
-    endDateTime: string;
-    canceledDateTime: string;
-    updatedAddrDateTime: string;
-    patient: {
-      code: string;
-      name: string;
-      phoneNum: string;
-      applicantName: string;
-      symptom: string;
-      relationType: string;
-    };
-    userPaidFee: number;
-    logiDefaultFee: string;
-    logiAddFee: string;
     distance: number;
-    cancelFee: number;
-    deliveryType: string;
-    addDeliveryBy: string;
-    addDeliveryReason: string;
     deliveryRequest: string;
-  };
-  logisticsInfo: {
     logiCompany: {
       code: string;
       name: string;
     };
+    riderName: string;
+    riderPhoneNum: string;
+    requestedDateTime: string;
+    waitAllocDateTime: string;
+    allocCompletedDateTime: string;
+    pickUpDateTime: string;
+    endDateTime: string;
+    canceledDateTime: string;
+    updatedAddrDateTime: string;
+    userPaidFee: number;
+    logiDefaultFee: string;
+    logiAddFee: string;
+    cancelFee: number;
+    addDeliveryBy: string;
+    addDeliveryReason: string;
+  };
+  logisticsInfo: {
     agency: {
       code: string;
       name: string;
     };
     logiDefaultFee: string;
     logiAddFee: string;
-    orderedDateTime: string;
     logiOrderCode: string;
     deliveryRequest: string;
     pickUpMinute: number;
-    allocCompletedDateTime: string;
     estimatedPickUpDateTime: string;
     riderName: string;
     riderPhoneNum: string;
     pickUpStartDateTime: string;
-    pickUpDateTime: string;
-    endDateTime: string;
   };
   treatInfo: {
     treatCode: string;

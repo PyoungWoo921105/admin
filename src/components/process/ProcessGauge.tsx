@@ -22,7 +22,7 @@ import {
 } from 'styles/components/process/ProcessGauge';
 
 import { ConvertCommaNumber } from 'libraries/conversion/ConvertCommaNumber';
-import { GetTimeCost } from 'libraries/time/GetTimeCost';
+import { GetConditionalMinutesTimeCost } from 'libraries/time/GetConditionalMinutesTimeCost';
 import { GetCurrentTime } from 'libraries/time/GetCurrentTime';
 
 const ProcessGauge = observer(() => {
@@ -80,17 +80,14 @@ const ProcessGauge = observer(() => {
                 justifyContent="center"
               >
                 <ProcessGaugeElementContentTextComponent color="#000000">
-                  {GetTimeCost({
-                    prev: TreatmentData?.TreatmentDetailsData?.waitReceptionDateTime,
-                    next: TreatmentData?.TreatmentDetailsData?.waitTreatDateTime,
-                    temp: CommonData.CurrentTime,
-                  })
+                  {TreatmentData?.TreatmentDetailsData?.waitReceptionDateTime
                     ? `${ConvertCommaNumber(
-                        GetTimeCost({
+                        GetConditionalMinutesTimeCost({
                           prev: TreatmentData?.TreatmentDetailsData?.waitReceptionDateTime,
                           next: TreatmentData?.TreatmentDetailsData?.waitTreatDateTime,
-                          temp: CommonData.CurrentTime,
-                        })
+                          alt: TreatmentData?.TreatmentDetailsData?.canceledInfo?.dateTime,
+                          curr: CommonData.CurrentTime,
+                        }).toString()
                       )}분`
                     : '-'}
                 </ProcessGaugeElementContentTextComponent>
@@ -166,17 +163,14 @@ const ProcessGauge = observer(() => {
                 justifyContent="center"
               >
                 <ProcessGaugeElementContentTextComponent color="#000000">
-                  {GetTimeCost({
-                    prev: TreatmentData?.TreatmentDetailsData?.waitTreatDateTime,
-                    next: TreatmentData?.TreatmentDetailsData?.inTreatDateTime,
-                    temp: CommonData.CurrentTime,
-                  })
+                  {TreatmentData?.TreatmentDetailsData?.waitTreatDateTime
                     ? `${ConvertCommaNumber(
-                        GetTimeCost({
+                        GetConditionalMinutesTimeCost({
                           prev: TreatmentData?.TreatmentDetailsData?.waitTreatDateTime,
                           next: TreatmentData?.TreatmentDetailsData?.inTreatDateTime,
-                          temp: CommonData.CurrentTime,
-                        })
+                          alt: TreatmentData?.TreatmentDetailsData?.canceledInfo?.dateTime,
+                          curr: CommonData.CurrentTime,
+                        }).toString()
                       )}분`
                     : '-'}
                 </ProcessGaugeElementContentTextComponent>
@@ -230,17 +224,14 @@ const ProcessGauge = observer(() => {
                 justifyContent="center"
               >
                 <ProcessGaugeElementContentTextComponent color="#000000">
-                  {GetTimeCost({
-                    prev: MedicineData?.MedicineDetailsData?.waitReceptionDateTime,
-                    next: MedicineData?.MedicineDetailsData?.inMakingDateTime,
-                    temp: CommonData.CurrentTime,
-                  })
+                  {MedicineData?.MedicineDetailsData?.waitReceptionDateTime
                     ? `${ConvertCommaNumber(
-                        GetTimeCost({
+                        GetConditionalMinutesTimeCost({
                           prev: MedicineData?.MedicineDetailsData?.waitReceptionDateTime,
                           next: MedicineData?.MedicineDetailsData?.inMakingDateTime,
-                          temp: CommonData.CurrentTime,
-                        })
+                          alt: MedicineData?.MedicineDetailsData?.canceledInfo?.dateTime,
+                          curr: CommonData.CurrentTime,
+                        }).toString()
                       )}분`
                     : '-'}
                 </ProcessGaugeElementContentTextComponent>
@@ -280,17 +271,14 @@ const ProcessGauge = observer(() => {
                 justifyContent="center"
               >
                 <ProcessGaugeElementContentTextComponent color="#000000">
-                  {GetTimeCost({
-                    prev: MedicineData?.MedicineDetailsData?.inMakingDateTime,
-                    next: MedicineData?.MedicineDetailsData?.completedDateTime,
-                    temp: CommonData.CurrentTime,
-                  })
+                  {MedicineData?.MedicineDetailsData?.waitReceptionDateTime
                     ? `${ConvertCommaNumber(
-                        GetTimeCost({
+                        GetConditionalMinutesTimeCost({
                           prev: MedicineData?.MedicineDetailsData?.inMakingDateTime,
                           next: MedicineData?.MedicineDetailsData?.completedDateTime,
-                          temp: CommonData.CurrentTime,
-                        })
+                          alt: MedicineData?.MedicineDetailsData?.canceledInfo?.dateTime,
+                          curr: CommonData.CurrentTime,
+                        }).toString()
                       )}분`
                     : '-'}
                 </ProcessGaugeElementContentTextComponent>
@@ -351,20 +339,16 @@ const ProcessGauge = observer(() => {
                   justifyContent="center"
                 >
                   <ProcessGaugeElementContentTextComponent color="#000000">
-                    {GetTimeCost({
-                      prev: DeliveryData?.DeliveryDetailsData?.deliveryInfo?.requestedDateTime,
-                      next: DeliveryData?.DeliveryDetailsData?.logisticsInfo
-                        ?.allocCompletedDateTime,
-                      temp: CommonData.CurrentTime,
-                    })
+                    {DeliveryData?.DeliveryDetailsData?.deliveryInfo?.requestedDateTime
                       ? `${ConvertCommaNumber(
-                          GetTimeCost({
+                          GetConditionalMinutesTimeCost({
                             prev: DeliveryData?.DeliveryDetailsData?.deliveryInfo
                               ?.requestedDateTime,
-                            next: DeliveryData?.DeliveryDetailsData?.logisticsInfo
+                            next: DeliveryData?.DeliveryDetailsData?.deliveryInfo
                               ?.allocCompletedDateTime,
-                            temp: CommonData.CurrentTime,
-                          })
+                            alt: DeliveryData?.DeliveryDetailsData?.deliveryInfo?.canceledDateTime,
+                            curr: CommonData.CurrentTime,
+                          }).toString()
                         )}분`
                       : '-'}
                   </ProcessGaugeElementContentTextComponent>
@@ -400,18 +384,15 @@ const ProcessGauge = observer(() => {
                   justifyContent="center"
                 >
                   <ProcessGaugeElementContentTextComponent color="#000000">
-                    {GetTimeCost({
-                      prev: DeliveryData?.DeliveryDetailsData?.deliveryInfo?.requestedDateTime,
-                      next: DeliveryData?.DeliveryDetailsData?.deliveryInfo?.pickUpDateTime,
-                      temp: CommonData.CurrentTime,
-                    })
+                    {DeliveryData?.DeliveryDetailsData?.deliveryInfo?.requestedDateTime
                       ? `${ConvertCommaNumber(
-                          GetTimeCost({
+                          GetConditionalMinutesTimeCost({
                             prev: DeliveryData?.DeliveryDetailsData?.deliveryInfo
                               ?.requestedDateTime,
                             next: DeliveryData?.DeliveryDetailsData?.deliveryInfo?.pickUpDateTime,
-                            temp: CommonData.CurrentTime,
-                          })
+                            alt: DeliveryData?.DeliveryDetailsData?.deliveryInfo?.canceledDateTime,
+                            curr: CommonData.CurrentTime,
+                          }).toString()
                         )}분`
                       : '-'}
                   </ProcessGaugeElementContentTextComponent>
@@ -447,17 +428,14 @@ const ProcessGauge = observer(() => {
                   justifyContent="center"
                 >
                   <ProcessGaugeElementContentTextComponent color="#000000">
-                    {GetTimeCost({
-                      prev: DeliveryData?.DeliveryDetailsData?.deliveryInfo?.pickUpDateTime,
-                      next: DeliveryData?.DeliveryDetailsData?.deliveryInfo?.endDateTime,
-                      temp: CommonData.CurrentTime,
-                    })
+                    {DeliveryData?.DeliveryDetailsData?.deliveryInfo?.pickUpDateTime
                       ? `${ConvertCommaNumber(
-                          GetTimeCost({
+                          GetConditionalMinutesTimeCost({
                             prev: DeliveryData?.DeliveryDetailsData?.deliveryInfo?.pickUpDateTime,
                             next: DeliveryData?.DeliveryDetailsData?.deliveryInfo?.endDateTime,
-                            temp: CommonData.CurrentTime,
-                          })
+                            alt: DeliveryData?.DeliveryDetailsData?.deliveryInfo?.canceledDateTime,
+                            curr: CommonData.CurrentTime,
+                          }).toString()
                         )}분`
                       : '-'}
                   </ProcessGaugeElementContentTextComponent>
@@ -497,7 +475,7 @@ const ProcessGauge = observer(() => {
                   justifyContent="center"
                 >
                   <ProcessGaugeElementContentTextComponent color="#000000">
-                    {DeliveryData?.DeliveryDetailsData?.logisticsInfo?.logiCompany?.name || '-'}
+                    {DeliveryData?.DeliveryDetailsData?.deliveryInfo?.riderName || '-'}
                   </ProcessGaugeElementContentTextComponent>
                 </ProcessGaugeElementContentTextFrame>
               </ProcessGaugeElementContentComponent>
@@ -557,18 +535,15 @@ const ProcessGauge = observer(() => {
                   justifyContent="center"
                 >
                   <ProcessGaugeElementContentTextComponent color="#000000">
-                    {GetTimeCost({
-                      prev: DeliveryData?.DeliveryDetailsData?.deliveryInfo?.requestedDateTime,
-                      next: DeliveryData?.DeliveryDetailsData?.deliveryInfo?.endDateTime,
-                      temp: CommonData.CurrentTime,
-                    })
+                    {DeliveryData?.DeliveryDetailsData?.deliveryInfo?.requestedDateTime
                       ? `${ConvertCommaNumber(
-                          GetTimeCost({
+                          GetConditionalMinutesTimeCost({
                             prev: DeliveryData?.DeliveryDetailsData?.deliveryInfo
                               ?.requestedDateTime,
                             next: DeliveryData?.DeliveryDetailsData?.deliveryInfo?.endDateTime,
-                            temp: CommonData.CurrentTime,
-                          })
+                            alt: DeliveryData?.DeliveryDetailsData?.deliveryInfo?.canceledDateTime,
+                            curr: CommonData.CurrentTime,
+                          }).toString()
                         )}분`
                       : '-'}
                   </ProcessGaugeElementContentTextComponent>
