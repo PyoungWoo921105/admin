@@ -153,7 +153,7 @@ const BoardTitleAndFilter = observer(() => {
     setEndInquiryPeriod(AllowNumber(event.target.value));
   };
   /* 알림 발송 상태 */
-  const AlarmNotificationStateList = ['선택', '전체', 'Y', 'N'];
+  const AlarmNotificationStateList = ['선택', '전체', 'O', 'X'];
   const [AlarmNotificationState, setAlarmNotificationState] = useState<string[]>(['전체']);
   const onChangeAlarmNotificationState = (event: { target: { value: string } }) => {
     if (event.target.value === '전체') {
@@ -182,7 +182,7 @@ const BoardTitleAndFilter = observer(() => {
     }
   };
   /* 알림 동의 상태 */
-  const AlarmAgreementStateList = ['선택', '전체', 'Y', 'N'];
+  const AlarmAgreementStateList = ['선택', '전체', 'O', 'X'];
   const [AlarmAgreementState, setAlarmAgreementState] = useState<string[]>(['전체']);
   const onChangeAlarmAgreementState = (event: { target: { value: string } }) => {
     if (event.target.value === '전체') {
@@ -300,7 +300,7 @@ const BoardTitleAndFilter = observer(() => {
     setHospitalPhoneNumber(ConvertContactNumber(AllowNumber(event.target.value)));
   };
   /* 병원 연결 상태 */
-  const RequestHospitalLinkStateList = ['선택', '전체', 'Y', 'N'];
+  const RequestHospitalLinkStateList = ['선택', '전체', 'O', 'X'];
   const [RequestHospitalLinkState, setRequestHospitalLinkState] = useState<string[]>(['전체']);
   const onChangeRequestHospitalLinkState = (event: { target: { value: string } }) => {
     if (event.target.value === '전체') {
@@ -334,9 +334,9 @@ const BoardTitleAndFilter = observer(() => {
     const TempAlarmNotificationState = [];
     if (AlarmNotificationState.length !== 0 && AlarmNotificationState[0] !== '전체') {
       for (let i = 0; i < AlarmNotificationState.length; i += 1) {
-        if (AlarmNotificationState[i] === 'Y') {
+        if (AlarmNotificationState[i] === 'O') {
           TempAlarmNotificationState.push(true);
-        } else if (AlarmNotificationState[i] === 'N') {
+        } else if (AlarmNotificationState[i] === 'X') {
           TempAlarmNotificationState.push(false);
         }
       }
@@ -344,9 +344,9 @@ const BoardTitleAndFilter = observer(() => {
     const TempAlarmAgreementState = [];
     if (AlarmAgreementState.length !== 0 && AlarmAgreementState[0] !== '전체') {
       for (let i = 0; i < AlarmAgreementState.length; i += 1) {
-        if (AlarmAgreementState[i] === 'Y') {
+        if (AlarmAgreementState[i] === 'O') {
           TempAlarmAgreementState.push(true);
-        } else if (AlarmAgreementState[i] === 'N') {
+        } else if (AlarmAgreementState[i] === 'X') {
           TempAlarmAgreementState.push(false);
         }
       }
@@ -354,9 +354,9 @@ const BoardTitleAndFilter = observer(() => {
     const TempRequestHospitalLinkState = [];
     if (RequestHospitalLinkState.length !== 0 && RequestHospitalLinkState[0] !== '전체') {
       for (let i = 0; i < RequestHospitalLinkState.length; i += 1) {
-        if (RequestHospitalLinkState[i] === 'Y') {
+        if (RequestHospitalLinkState[i] === 'O') {
           TempRequestHospitalLinkState.push(true);
-        } else if (RequestHospitalLinkState[i] === 'N') {
+        } else if (RequestHospitalLinkState[i] === 'X') {
           TempRequestHospitalLinkState.push(false);
         }
       }
@@ -365,7 +365,7 @@ const BoardTitleAndFilter = observer(() => {
       startDate: null || StartInquiryPeriod,
       endDate: null || EndInquiryPeriod,
       isSendNoti: AlarmNotificationState[0] === '전체' ? null : TempAlarmNotificationState[0],
-      isRegistered: AlarmAgreementState[0] === '전체' ? null : TempAlarmAgreementState[0],
+      isAgreeNoti: AlarmAgreementState[0] === '전체' ? null : TempAlarmAgreementState[0],
       hospitalName: null || RequestHospitalName,
       hospitalSido:
         RequestHospitalMetropolitanAddress[0] === '전체'
@@ -376,8 +376,8 @@ const BoardTitleAndFilter = observer(() => {
       patientPhoneNum: null || PatientPhoneNumber,
       patientJibunAddress: null || PatientAddress,
       regHospitalName: null || HospitalName,
-      regHospitalPhoneNum:
-        RequestHospitalLinkState[0] === '전체' ? null : TempRequestHospitalLinkState[0],
+      regHospitalPhoneNum: null || HospitalPhoneNumber,
+      isRegistered: RequestHospitalLinkState[0] === '전체' ? null : TempRequestHospitalLinkState[0],
 
       size: 20,
       from: HospitalData.PageNavigator ? (HospitalData.PageNavigator - 1) * 20 : undefined,
@@ -409,6 +409,7 @@ const BoardTitleAndFilter = observer(() => {
     EndInquiryPeriod,
     HospitalData.PageNavigator,
     HospitalName,
+    HospitalPhoneNumber,
     PatientAddress,
     PatientName,
     PatientPhoneNumber,
@@ -420,20 +421,56 @@ const BoardTitleAndFilter = observer(() => {
   ]);
   const GetAdminHospitalAdditionDetailsListExportFunction = useCallback(async () => {
     CommonData.setLoadingFlag(true);
+    const TempAlarmNotificationState = [];
+    if (AlarmNotificationState.length !== 0 && AlarmNotificationState[0] !== '전체') {
+      for (let i = 0; i < AlarmNotificationState.length; i += 1) {
+        if (AlarmNotificationState[i] === 'O') {
+          TempAlarmNotificationState.push(true);
+        } else if (AlarmNotificationState[i] === 'X') {
+          TempAlarmNotificationState.push(false);
+        }
+      }
+    }
+    const TempAlarmAgreementState = [];
+    if (AlarmAgreementState.length !== 0 && AlarmAgreementState[0] !== '전체') {
+      for (let i = 0; i < AlarmAgreementState.length; i += 1) {
+        if (AlarmAgreementState[i] === 'O') {
+          TempAlarmAgreementState.push(true);
+        } else if (AlarmAgreementState[i] === 'X') {
+          TempAlarmAgreementState.push(false);
+        }
+      }
+    }
+    const TempRequestHospitalLinkState = [];
+    if (RequestHospitalLinkState.length !== 0 && RequestHospitalLinkState[0] !== '전체') {
+      for (let i = 0; i < RequestHospitalLinkState.length; i += 1) {
+        if (RequestHospitalLinkState[i] === 'O') {
+          TempRequestHospitalLinkState.push(true);
+        } else if (RequestHospitalLinkState[i] === 'X') {
+          TempRequestHospitalLinkState.push(false);
+        }
+      }
+    }
     const GetAdminHospitalAdditionDetailsListExportData = {
       startDate: null || StartInquiryPeriod,
       endDate: null || EndInquiryPeriod,
-      isSendNoti: AlarmNotificationState[0] === '전체' ? null : AlarmNotificationState[0],
-      isRegistered: AlarmAgreementState[0] === '전체' ? null : AlarmAgreementState[0],
+      isSendNoti: AlarmNotificationState[0] === '전체' ? null : TempAlarmNotificationState[0],
+      isAgreeNoti: AlarmAgreementState[0] === '전체' ? null : TempAlarmAgreementState[0],
       hospitalName: null || RequestHospitalName,
-      hospitalSido: null || RequestHospitalMetropolitanAddress,
+      hospitalSido:
+        RequestHospitalMetropolitanAddress[0] === '전체'
+          ? null
+          : RequestHospitalMetropolitanAddress[0],
       hospitalSigungu: null || RequestHospitalElementaryAddress,
       patientName: null || PatientName,
       patientPhoneNum: null || PatientPhoneNumber,
       patientJibunAddress: null || PatientAddress,
       regHospitalName: null || HospitalName,
-      regHospitalPhoneNum:
-        RequestHospitalLinkState[0] === '전체' ? null : RequestHospitalLinkState[0],
+      regHospitalPhoneNum: null || HospitalPhoneNumber,
+      isRegistered: RequestHospitalLinkState[0] === '전체' ? null : TempRequestHospitalLinkState[0],
+
+      size: 20,
+      from: HospitalData.PageNavigator ? (HospitalData.PageNavigator - 1) * 20 : undefined,
 
       /* size: 20,
       from: HospitalData.PageNavigator ? (HospitalData.PageNavigator - 1) * 20 : undefined, */
@@ -463,7 +500,9 @@ const BoardTitleAndFilter = observer(() => {
     AlarmNotificationState,
     CommonData,
     EndInquiryPeriod,
+    HospitalData.PageNavigator,
     HospitalName,
+    HospitalPhoneNumber,
     PatientAddress,
     PatientName,
     PatientPhoneNumber,

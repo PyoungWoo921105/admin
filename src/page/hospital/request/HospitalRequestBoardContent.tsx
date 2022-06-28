@@ -232,7 +232,7 @@ const BoardContent = observer(() => {
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentTextComponent>
-                          {element?.isSendNoti ? 'Y' : 'N'}
+                          {element?.isSendNoti ? 'O' : '-'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
                     </DataElementContentFrame>
@@ -243,7 +243,7 @@ const BoardContent = observer(() => {
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentTextComponent>
-                          {element?.isAgreeNoti ? 'Y' : 'N'}
+                          {element?.isAgreeNoti ? 'O' : '-'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
                     </DataElementContentFrame>
@@ -265,7 +265,7 @@ const BoardContent = observer(() => {
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentTextComponent>
-                          {element?.registeredHospital?.code ? 'Y' : 'N'}
+                          {element?.registeredHospital?.code ? 'O' : '-'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
                     </DataElementContentFrame>
