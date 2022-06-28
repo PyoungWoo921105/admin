@@ -339,11 +339,11 @@ const ProcessControl = observer(() => {
                   justifyContent="center"
                 >
                   <ProcessControlElementContentTextComponent color="#000000">
-                    {DeliveryData?.DeliveryDetailsData?.deliveryInfo?.waitAllocDateTime
+                    {DeliveryData?.DeliveryDetailsData?.deliveryInfo?.requestedDateTime
                       ? `${ConvertCommaNumber(
                           GetConditionalMinutesTimeCost({
                             prev: DeliveryData?.DeliveryDetailsData?.deliveryInfo
-                              ?.waitAllocDateTime,
+                              ?.requestedDateTime,
                             next: DeliveryData?.DeliveryDetailsData?.deliveryInfo
                               ?.allocCompletedDateTime,
                             alt: DeliveryData?.DeliveryDetailsData?.deliveryInfo?.canceledDateTime,
