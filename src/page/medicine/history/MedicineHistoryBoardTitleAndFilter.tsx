@@ -379,6 +379,23 @@ const BoardTitleAndFilter = observer(() => {
     }
   };
 
+  /* 실시간 동기화 */
+  const onClickPageSynchronize = () => {
+    AdminData.setSynchronizationSwitchFlag(!AdminData.SynchronizationSwitchFlag);
+  };
+
+  /* Socket */
+  useEffect(() => {
+    if (AdminData.SynchronizationSwitchFlag === true) {
+      if (MedicineData.SocketMedicineData?.medicineList?.length !== 0) {
+        GetCurrentTime();
+        // eslint-disable-next-line @typescript-eslint/no-floating-promises
+        GetMedicineListFunction();
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [AdminData.SynchronizationSwitchFlag, MedicineData.SocketMedicineData]);
+
   return (
     <BoardTitleAndFilterFrame>
       <TitleFrame>
@@ -394,6 +411,20 @@ const BoardTitleAndFilter = observer(() => {
               <TitlePageRefreshButtonComponent>페이지 새로고침</TitlePageRefreshButtonComponent>
             </TitlePageRefreshButtonFrame>
           </TitlePageRefreshFrame>
+          {/*  */}
+          {/* 실시간 동기화 */}
+          <TitleFilterFrame>
+            <TitleFilterTextFrame>
+              <TitleFilterTextComponent>실시간 동기화</TitleFilterTextComponent>
+            </TitleFilterTextFrame>
+            <TitleFilterButtonFrame>
+              <TitleFilterButtonComponent
+                type="checkbox"
+                checked={AdminData.SynchronizationSwitchFlag}
+                onChange={onClickPageSynchronize}
+              />
+            </TitleFilterButtonFrame>
+          </TitleFilterFrame>
           {/*  */}
           {/* 필터 스위치 */}
           <TitleFilterFrame>

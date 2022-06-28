@@ -25,7 +25,6 @@ const DeliveryNavigationBar = observer(() => {
   const location = useLocation<LocalState>();
 
   const NavigationBarTitleList = [
-    { name: '방문/배달 현황', path: '/delivery/live' },
     { name: '방문/배달 내역', path: '/delivery/history' },
     { name: '배달 운영', path: '/delivery/operation' },
   ];

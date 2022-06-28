@@ -54,6 +54,9 @@ export interface AdminDataType {
   /* Statistic */
   StatisticSwitchFlag: boolean;
   setStatisticSwitchFlag: (e: boolean) => void;
+  /* Real-time Synchronization */
+  SynchronizationSwitchFlag: boolean;
+  setSynchronizationSwitchFlag: (e: boolean) => void;
   /* Process Pop Up */
   ProcessPopUpFlag: boolean;
   setProcessPopUpFlag: (e: boolean) => void;
@@ -97,6 +100,11 @@ const AdminData = observable<AdminDataType>({
   StatisticSwitchFlag: true,
   setStatisticSwitchFlag(e: boolean) {
     this.StatisticSwitchFlag = e;
+  },
+  /* Real-time Synchronization */
+  SynchronizationSwitchFlag: true,
+  setSynchronizationSwitchFlag(e: boolean) {
+    this.SynchronizationSwitchFlag = e;
   },
   /* Process Pop Up */
   ProcessPopUpFlag: false,

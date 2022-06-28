@@ -210,15 +210,15 @@ const BoardTitleAndFilter = observer(() => {
     setDiseaseAndDepartment(event.target.value);
   };
   /* 처방전 유무 */
-  const PrescriptionStateList = ['선택', '전체', 'Y', 'N'];
+  const PrescriptionStateList = ['선택', '전체', 'O', 'X'];
   const [PrescriptionState, setPrescriptionState] = useState<string[]>(['전체']);
   const onChangePrescriptionState = (event: { target: { value: string } }) => {
     if (event.target.value === '전체') {
       setPrescriptionState([event.target.value]);
     } else if (PrescriptionState.indexOf(event.target.value) === -1) {
       if (PrescriptionState.indexOf('전체') === -1) {
-        /* setPrescriptionState([event.target.value]); */
-        setPrescriptionState([...PrescriptionState, event.target.value]);
+        setPrescriptionState([event.target.value]);
+        /* setPrescriptionState([...PrescriptionState, event.target.value]); */
       } else {
         setPrescriptionState([event.target.value]);
       }
@@ -237,7 +237,7 @@ const BoardTitleAndFilter = observer(() => {
     }
   };
   /* 조제 요청 여부 */
-  const MedicineRequestStateList = ['선택', '전체', 'Y', 'N'];
+  const MedicineRequestStateList = ['선택', '전체', 'O', 'X'];
   const [MedicineRequestState, setMedicineRequestState] = useState<string[]>(['전체']);
   const onChangeMedicineRequestState = (event: { target: { value: string } }) => {
     if (event.target.value === '전체') {
@@ -271,10 +271,20 @@ const BoardTitleAndFilter = observer(() => {
     const TempPrescriptionState = [];
     if (PrescriptionState.length !== 0 && PrescriptionState[0] !== '전체') {
       for (let i = 0; i < PrescriptionState.length; i += 1) {
-        if (PrescriptionState[i] === 'Y') {
+        if (PrescriptionState[i] === 'O') {
           TempPrescriptionState.push('있음');
-        } else if (PrescriptionState[i] === 'N') {
+        } else if (PrescriptionState[i] === 'X') {
           TempPrescriptionState.push('없음');
+        }
+      }
+    }
+    const TempMedicineRequestState = [];
+    if (MedicineRequestState.length !== 0 && MedicineRequestState[0] !== '전체') {
+      for (let i = 0; i < MedicineRequestState.length; i += 1) {
+        if (MedicineRequestState[i] === 'O') {
+          TempMedicineRequestState.push('Y');
+        } else if (MedicineRequestState[i] === 'X') {
+          TempMedicineRequestState.push('N');
         }
       }
     }
@@ -288,9 +298,9 @@ const BoardTitleAndFilter = observer(() => {
       hospitalName: null || HospitalName,
       doctorName: null || DoctorName,
       receptionCategory: null || DiseaseAndDepartment,
-      prescriptionState: null || PrescriptionState[0] === '전체' ? null : TempPrescriptionState,
+      prescriptionState: null || PrescriptionState[0] === '전체' ? null : TempPrescriptionState[0],
       isMedicineRequested:
-        null || MedicineRequestState[0] === '전체' ? null : MedicineRequestState[0],
+        null || MedicineRequestState[0] === '전체' ? null : TempMedicineRequestState[0],
 
       page: null || TreatmentData.PageNavigator - 1,
     };
@@ -332,10 +342,20 @@ const BoardTitleAndFilter = observer(() => {
     const TempPrescriptionState = [];
     if (PrescriptionState.length !== 0 && PrescriptionState[0] !== '전체') {
       for (let i = 0; i < PrescriptionState.length; i += 1) {
-        if (PrescriptionState[i] === 'Y') {
+        if (PrescriptionState[i] === 'O') {
           TempPrescriptionState.push('있음');
-        } else if (PrescriptionState[i] === 'N') {
+        } else if (PrescriptionState[i] === 'X') {
           TempPrescriptionState.push('없음');
+        }
+      }
+    }
+    const TempMedicineRequestState = [];
+    if (MedicineRequestState.length !== 0 && MedicineRequestState[0] !== '전체') {
+      for (let i = 0; i < MedicineRequestState.length; i += 1) {
+        if (MedicineRequestState[i] === 'O') {
+          TempMedicineRequestState.push('Y');
+        } else if (MedicineRequestState[i] === 'X') {
+          TempMedicineRequestState.push('N');
         }
       }
     }
@@ -349,9 +369,9 @@ const BoardTitleAndFilter = observer(() => {
       hospitalName: null || HospitalName,
       doctorName: null || DoctorName,
       receptionCategory: null || DiseaseAndDepartment,
-      prescriptionState: null || PrescriptionState[0] === '전체' ? null : TempPrescriptionState,
+      prescriptionState: null || PrescriptionState[0] === '전체' ? null : TempPrescriptionState[0],
       isMedicineRequested:
-        null || MedicineRequestState[0] === '전체' ? null : MedicineRequestState[0],
+        null || MedicineRequestState[0] === '전체' ? null : TempMedicineRequestState[0],
 
       /* page: null || TreatmentData.PageNavigator - 1, */
     };
@@ -417,6 +437,23 @@ const BoardTitleAndFilter = observer(() => {
     }
   };
 
+  /* 실시간 동기화 */
+  const onClickPageSynchronize = () => {
+    AdminData.setSynchronizationSwitchFlag(!AdminData.SynchronizationSwitchFlag);
+  };
+
+  /* Socket */
+  useEffect(() => {
+    if (AdminData.SynchronizationSwitchFlag === true) {
+      if (TreatmentData.SocketTreatmentData?.treatList?.length !== 0) {
+        GetCurrentTime();
+        // eslint-disable-next-line @typescript-eslint/no-floating-promises
+        GetTreatmentListFunction();
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [AdminData.SynchronizationSwitchFlag, TreatmentData.SocketTreatmentData]);
+
   return (
     <BoardTitleAndFilterFrame>
       <TitleFrame>
@@ -432,6 +469,20 @@ const BoardTitleAndFilter = observer(() => {
               <TitlePageRefreshButtonComponent>페이지 새로고침</TitlePageRefreshButtonComponent>
             </TitlePageRefreshButtonFrame>
           </TitlePageRefreshFrame>
+          {/*  */}
+          {/* 실시간 동기화 */}
+          <TitleFilterFrame>
+            <TitleFilterTextFrame>
+              <TitleFilterTextComponent>실시간 동기화</TitleFilterTextComponent>
+            </TitleFilterTextFrame>
+            <TitleFilterButtonFrame>
+              <TitleFilterButtonComponent
+                type="checkbox"
+                checked={AdminData.SynchronizationSwitchFlag}
+                onChange={onClickPageSynchronize}
+              />
+            </TitleFilterButtonFrame>
+          </TitleFilterFrame>
           {/*  */}
           {/* 필터 스위치 */}
           <TitleFilterFrame>

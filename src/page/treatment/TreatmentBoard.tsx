@@ -9,12 +9,10 @@ import { Route } from 'react-router-dom';
 
 import { LocalBoardFrame } from 'styles/components/common/Frame';
 import TreatmentHistoryBoard from 'page/treatment/history/TreatmentHistoryBoard';
-import TreatmentLiveBoard from 'page/treatment/live/TreatmentLiveBoard';
 
 const TreatmentBoard = observer(() => (
   <LocalBoardFrame>
     <Route path="/treatment/history" component={TreatmentHistoryBoard} />
-    <Route path="/treatment/live" component={TreatmentLiveBoard} />
   </LocalBoardFrame>
 ));
 

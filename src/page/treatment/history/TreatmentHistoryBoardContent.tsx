@@ -293,7 +293,7 @@ const BoardContent = observer(() => {
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentTextComponent>
-                          {element?.prescriptionImgFile?.url ? 'Y' : 'N'}
+                          {element?.prescriptionImgFile?.url ? 'O' : '-'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
                     </DataElementContentFrame>
@@ -304,7 +304,7 @@ const BoardContent = observer(() => {
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentTextComponent>
-                          {element?.isMedicineRequested ? 'Y' : 'N'}
+                          {element?.isMedicineRequested ? 'O' : '-'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
                     </DataElementContentFrame>

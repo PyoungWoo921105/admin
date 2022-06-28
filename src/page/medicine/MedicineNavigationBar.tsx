@@ -24,10 +24,7 @@ const MedicineNavigationBar = observer(() => {
   const history = useHistory();
   const location = useLocation<LocalState>();
 
-  const NavigationBarTitleList = [
-    { name: '조제 현황', path: '/medicine/live' },
-    { name: '조제 내역', path: '/medicine/history' },
-  ];
+  const NavigationBarTitleList = [{ name: '조제 내역', path: '/medicine/history' }];
 
   const onClickNavigationBarMenu = (props: { key: number }) => {
     const { key } = props;
