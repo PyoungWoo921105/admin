@@ -336,8 +336,8 @@ const BoardTitleAndFilter = observer(() => {
     '등록 반려',
     '블라인드',
 
-    '운영 중',
-    '운영 종료',
+    '조제 가능',
+    '조제 종료',
   ];
 
   /* ENTER */
@@ -727,9 +727,9 @@ const BoardTitleAndFilter = observer(() => {
                               ? 'rgb(192,0,0)'
                               : element === '블라인드'
                               ? 'rgb(192,0,0)'
-                              : element === '운영 중'
+                              : element === '조제 가능'
                               ? 'rgb(112,173,71)'
-                              : element === '운영 종료'
+                              : element === '조제 종료'
                               ? 'rgb(192,0,0)'
                               : '#000000'
                           }
@@ -760,9 +760,9 @@ const BoardTitleAndFilter = observer(() => {
                               ? 'rgb(192,0,0)'
                               : element === '블라인드'
                               ? 'rgb(192,0,0)'
-                              : element === '운영 중'
+                              : element === '조제 가능'
                               ? 'rgb(112,173,71)'
-                              : element === '운영 종료'
+                              : element === '조제 종료'
                               ? 'rgb(192,0,0)'
                               : '#000000'
                           }
@@ -797,13 +797,13 @@ const BoardTitleAndFilter = observer(() => {
                                   PharmacyData.PharmacyListData?.count?.blinded.toString()
                                 )}건`
                               : '0건'
-                            : element === '운영 중'
+                            : element === '조제 가능'
                             ? PharmacyData.PharmacyListData?.count?.running
                               ? `${ConvertCommaNumber(
                                   PharmacyData.PharmacyListData?.count?.running.toString()
                                 )}건`
                               : '0건'
-                            : element === '운영 종료'
+                            : element === '조제 종료'
                             ? PharmacyData.PharmacyListData?.count?.stop
                               ? `${ConvertCommaNumber(
                                   PharmacyData.PharmacyListData?.count?.stop.toString()

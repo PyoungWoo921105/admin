@@ -60,11 +60,11 @@ const BoardContent = observer(() => {
     { title: '운영 상태', width: 110 },
     { title: '약국 주소', width: 260 },
     { title: '약국 전화번호', width: 120 },
+    { title: '약국 운영 시간 (점심 시간)', width: 140 },
+    { title: '스티커/봉투', width: 90 },
+    { title: '접수 대기 건', width: 90 },
     { title: '연계 병원 이름', width: 90 },
     { title: '연계 병원 운영 상태', width: 110 },
-    { title: '약국 운영 시간 (점심 시간)', width: 140 },
-    { title: '접수 대기 건', width: 90 },
-    { title: '스티커/봉투', width: 90 },
   ];
 
   return (
@@ -223,6 +223,65 @@ const BoardContent = observer(() => {
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentTextComponent>
+                          {element?.openingTime?.startHour &&
+                          element?.openingTime?.startMinute &&
+                          element?.openingTime?.endHour &&
+                          element?.openingTime?.endMinute
+                            ? `${element?.openingTime?.startHour}:${element?.openingTime?.startMinute}~${element?.openingTime?.endHour}:${element?.openingTime?.endMinute}`
+                            : '-'}
+                          {element?.openingTime?.lunchStartHour &&
+                          element?.openingTime?.lunchStartMinute &&
+                          element?.openingTime?.lunchEndHour &&
+                          element?.openingTime?.lunchEndMinute
+                            ? ` (${element?.openingTime?.lunchStartHour}:${element?.openingTime?.lunchStartMinute}~${element?.openingTime?.lunchEndHour}:${element?.openingTime?.lunchEndMinute})`
+                            : ''}
+                        </DataElementContentTextComponent>
+                      </DataElementContentComponent>
+                    </DataElementContentFrame>
+                    {/*  */}
+                    <DataElementContentFrame
+                      minWidth={`${CategoryList[7].width}px`}
+                      width={`${CategoryList[7].width}%`}
+                    >
+                      <DataElementContentComponent justifyContent="center">
+                        <DataElementContentButtonComponent
+                          backgroundColor={
+                            element?.numMedicineBags > 50 && element?.numStickers > 50
+                              ? 'rgb(112,173,71)'
+                              : element?.numMedicineBags <= 50 || element?.numStickers <= 50
+                              ? 'rgb(192,0,0)'
+                              : '#000000'
+                          }
+                          color="#ffffff"
+                        >
+                          {element?.numMedicineBags > 50 && element?.numStickers > 50
+                            ? '충분'
+                            : element?.numMedicineBags <= 50 || element?.numStickers <= 50
+                            ? '부족'
+                            : '-'}
+                        </DataElementContentButtonComponent>
+                      </DataElementContentComponent>
+                    </DataElementContentFrame>
+                    {/*  */}
+                    <DataElementContentFrame
+                      minWidth={`${CategoryList[8].width}px`}
+                      width={`${CategoryList[8].width}%`}
+                    >
+                      <DataElementContentComponent justifyContent="center">
+                        <DataElementContentTextComponent>
+                          {element?.waitReceptionCount
+                            ? ConvertCommaNumber(element?.waitReceptionCount.toString())
+                            : '-'}
+                        </DataElementContentTextComponent>
+                      </DataElementContentComponent>
+                    </DataElementContentFrame>
+                    {/*  */}
+                    <DataElementContentFrame
+                      minWidth={`${CategoryList[9].width}px`}
+                      width={`${CategoryList[9].width}%`}
+                    >
+                      <DataElementContentComponent justifyContent="center">
+                        <DataElementContentTextComponent>
                           {element?.hospitalList && element?.hospitalList.length !== 0
                             ? element?.hospitalList
                                 .map(hospitalName => hospitalName?.name)
@@ -233,8 +292,8 @@ const BoardContent = observer(() => {
                     </DataElementContentFrame>
                     {/*  */}
                     <DataElementContentFrame
-                      minWidth={`${CategoryList[7].width}px`}
-                      width={`${CategoryList[7].width}%`}
+                      minWidth={`${CategoryList[10].width}px`}
+                      width={`${CategoryList[10].width}%`}
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentButtonComponent
@@ -262,65 +321,6 @@ const BoardContent = observer(() => {
                           }
                         >
                           {element?.hospitalState || '-'}
-                        </DataElementContentButtonComponent>
-                      </DataElementContentComponent>
-                    </DataElementContentFrame>
-                    {/*  */}
-                    <DataElementContentFrame
-                      minWidth={`${CategoryList[8].width}px`}
-                      width={`${CategoryList[8].width}%`}
-                    >
-                      <DataElementContentComponent justifyContent="center">
-                        <DataElementContentTextComponent>
-                          {element?.openingTime?.startHour &&
-                          element?.openingTime?.startMinute &&
-                          element?.openingTime?.endHour &&
-                          element?.openingTime?.endMinute
-                            ? `${element?.openingTime?.startHour}:${element?.openingTime?.startMinute}~${element?.openingTime?.endHour}:${element?.openingTime?.endMinute}`
-                            : '-'}
-                          {element?.openingTime?.lunchStartHour &&
-                          element?.openingTime?.lunchStartMinute &&
-                          element?.openingTime?.lunchEndHour &&
-                          element?.openingTime?.lunchEndMinute
-                            ? ` (${element?.openingTime?.lunchStartHour}:${element?.openingTime?.lunchStartMinute}~${element?.openingTime?.lunchEndHour}:${element?.openingTime?.lunchEndMinute})`
-                            : ''}
-                        </DataElementContentTextComponent>
-                      </DataElementContentComponent>
-                    </DataElementContentFrame>
-                    {/*  */}
-                    <DataElementContentFrame
-                      minWidth={`${CategoryList[9].width}px`}
-                      width={`${CategoryList[9].width}%`}
-                    >
-                      <DataElementContentComponent justifyContent="center">
-                        <DataElementContentTextComponent>
-                          {element?.waitReceptionCount
-                            ? ConvertCommaNumber(element?.waitReceptionCount.toString())
-                            : '-'}
-                        </DataElementContentTextComponent>
-                      </DataElementContentComponent>
-                    </DataElementContentFrame>
-                    {/*  */}
-                    <DataElementContentFrame
-                      minWidth={`${CategoryList[10].width}px`}
-                      width={`${CategoryList[10].width}%`}
-                    >
-                      <DataElementContentComponent justifyContent="center">
-                        <DataElementContentButtonComponent
-                          backgroundColor={
-                            element?.numMedicineBags > 50 && element?.numStickers > 50
-                              ? 'rgb(112,173,71)'
-                              : element?.numMedicineBags <= 50 || element?.numStickers <= 50
-                              ? 'rgb(192,0,0)'
-                              : '#000000'
-                          }
-                          color="#ffffff"
-                        >
-                          {element?.numMedicineBags > 50 && element?.numStickers > 50
-                            ? '충분'
-                            : element?.numMedicineBags <= 50 || element?.numStickers <= 50
-                            ? '부족'
-                            : '-'}
                         </DataElementContentButtonComponent>
                       </DataElementContentComponent>
                     </DataElementContentFrame>

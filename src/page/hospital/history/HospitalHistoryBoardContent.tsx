@@ -60,9 +60,9 @@ const BoardContent = observer(() => {
     { title: '운영 상태', width: 110 },
     { title: '병원 주소', width: 260 },
     { title: '병원 전화번호', width: 120 },
+    { title: '병원 운영 시간 (점심 시간)', width: 140 },
     { title: '소속 의사 이름', width: 90 },
     { title: '연계 약국 이름', width: 90 },
-    { title: '병원 운영 시간 (점심 시간)', width: 140 },
     { title: '접수 대기 건', width: 90 },
   ];
 
@@ -226,34 +226,6 @@ const BoardContent = observer(() => {
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentTextComponent>
-                          {element?.doctorList && element?.doctorList.length !== 0
-                            ? element?.doctorList.map(doctorName => doctorName?.name).join(', ')
-                            : '-'}
-                        </DataElementContentTextComponent>
-                      </DataElementContentComponent>
-                    </DataElementContentFrame>
-                    {/*  */}
-                    <DataElementContentFrame
-                      minWidth={`${CategoryList[7].width}px`}
-                      width={`${CategoryList[7].width}%`}
-                    >
-                      <DataElementContentComponent justifyContent="center">
-                        <DataElementContentTextComponent>
-                          {element?.pharmacyList && element?.pharmacyList.length !== 0
-                            ? element?.pharmacyList
-                                .map(pharmacyName => pharmacyName?.name)
-                                .join(', ')
-                            : '-'}
-                        </DataElementContentTextComponent>
-                      </DataElementContentComponent>
-                    </DataElementContentFrame>
-                    {/*  */}
-                    <DataElementContentFrame
-                      minWidth={`${CategoryList[8].width}px`}
-                      width={`${CategoryList[8].width}%`}
-                    >
-                      <DataElementContentComponent justifyContent="center">
-                        <DataElementContentTextComponent>
                           {element?.openingTime?.startHour &&
                           element?.openingTime?.startMinute &&
                           element?.openingTime?.endHour &&
@@ -266,6 +238,34 @@ const BoardContent = observer(() => {
                           element?.openingTime?.lunchEndMinute
                             ? ` (${element?.openingTime?.lunchStartHour}:${element?.openingTime?.lunchStartMinute}~${element?.openingTime?.lunchEndHour}:${element?.openingTime?.lunchEndMinute})`
                             : ''}
+                        </DataElementContentTextComponent>
+                      </DataElementContentComponent>
+                    </DataElementContentFrame>
+                    {/*  */}
+                    <DataElementContentFrame
+                      minWidth={`${CategoryList[7].width}px`}
+                      width={`${CategoryList[7].width}%`}
+                    >
+                      <DataElementContentComponent justifyContent="center">
+                        <DataElementContentTextComponent>
+                          {element?.doctorList && element?.doctorList.length !== 0
+                            ? element?.doctorList.map(doctorName => doctorName?.name).join(', ')
+                            : '-'}
+                        </DataElementContentTextComponent>
+                      </DataElementContentComponent>
+                    </DataElementContentFrame>
+                    {/*  */}
+                    <DataElementContentFrame
+                      minWidth={`${CategoryList[8].width}px`}
+                      width={`${CategoryList[8].width}%`}
+                    >
+                      <DataElementContentComponent justifyContent="center">
+                        <DataElementContentTextComponent>
+                          {element?.pharmacyList && element?.pharmacyList.length !== 0
+                            ? element?.pharmacyList
+                                .map(pharmacyName => pharmacyName?.name)
+                                .join(', ')
+                            : '-'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
                     </DataElementContentFrame>

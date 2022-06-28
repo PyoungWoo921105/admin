@@ -333,8 +333,8 @@ const BoardTitleAndFilter = observer(() => {
     '등록 반려',
     '블라인드',
 
-    '운영 중',
-    '운영 종료',
+    '진료 가능',
+    '진료 종료',
   ];
 
   /* ENTER */
@@ -689,9 +689,9 @@ const BoardTitleAndFilter = observer(() => {
                               ? 'rgb(192,0,0)'
                               : element === '블라인드'
                               ? 'rgb(192,0,0)'
-                              : element === '운영 중'
+                              : element === '진료 가능'
                               ? 'rgb(112,173,71)'
-                              : element === '운영 종료'
+                              : element === '진료 종료'
                               ? 'rgb(192,0,0)'
                               : '#000000'
                           }
@@ -722,9 +722,9 @@ const BoardTitleAndFilter = observer(() => {
                               ? 'rgb(192,0,0)'
                               : element === '블라인드'
                               ? 'rgb(192,0,0)'
-                              : element === '운영 중'
+                              : element === '진료 가능'
                               ? 'rgb(112,173,71)'
-                              : element === '운영 종료'
+                              : element === '진료 종료'
                               ? 'rgb(192,0,0)'
                               : '#000000'
                           }
@@ -759,13 +759,13 @@ const BoardTitleAndFilter = observer(() => {
                                   DoctorData.DoctorListData?.count?.blinded.toString()
                                 )}건`
                               : '0건'
-                            : element === '운영 중'
+                            : element === '진료 가능'
                             ? DoctorData.DoctorListData?.count?.running
                               ? `${ConvertCommaNumber(
                                   DoctorData.DoctorListData?.count?.running.toString()
                                 )}건`
                               : '0건'
-                            : element === '운영 종료'
+                            : element === '진료 종료'
                             ? DoctorData.DoctorListData?.count?.stop
                               ? `${ConvertCommaNumber(
                                   DoctorData.DoctorListData?.count?.stop.toString()
