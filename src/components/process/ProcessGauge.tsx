@@ -271,7 +271,7 @@ const ProcessGauge = observer(() => {
                 justifyContent="center"
               >
                 <ProcessGaugeElementContentTextComponent color="#000000">
-                  {MedicineData?.MedicineDetailsData?.waitReceptionDateTime
+                  {MedicineData?.MedicineDetailsData?.inMakingDateTime
                     ? `${ConvertCommaNumber(
                         GetConditionalMinutesTimeCost({
                           prev: MedicineData?.MedicineDetailsData?.inMakingDateTime,
@@ -339,11 +339,11 @@ const ProcessGauge = observer(() => {
                   justifyContent="center"
                 >
                   <ProcessGaugeElementContentTextComponent color="#000000">
-                    {DeliveryData?.DeliveryDetailsData?.deliveryInfo?.requestedDateTime
+                    {DeliveryData?.DeliveryDetailsData?.deliveryInfo?.waitAllocDateTime
                       ? `${ConvertCommaNumber(
                           GetConditionalMinutesTimeCost({
                             prev: DeliveryData?.DeliveryDetailsData?.deliveryInfo
-                              ?.requestedDateTime,
+                              ?.waitAllocDateTime,
                             next: DeliveryData?.DeliveryDetailsData?.deliveryInfo
                               ?.allocCompletedDateTime,
                             alt: DeliveryData?.DeliveryDetailsData?.deliveryInfo?.canceledDateTime,
@@ -384,11 +384,11 @@ const ProcessGauge = observer(() => {
                   justifyContent="center"
                 >
                   <ProcessGaugeElementContentTextComponent color="#000000">
-                    {DeliveryData?.DeliveryDetailsData?.deliveryInfo?.requestedDateTime
+                    {DeliveryData?.DeliveryDetailsData?.deliveryInfo?.allocCompletedDateTime
                       ? `${ConvertCommaNumber(
                           GetConditionalMinutesTimeCost({
                             prev: DeliveryData?.DeliveryDetailsData?.deliveryInfo
-                              ?.requestedDateTime,
+                              ?.allocCompletedDateTime,
                             next: DeliveryData?.DeliveryDetailsData?.deliveryInfo?.pickUpDateTime,
                             alt: DeliveryData?.DeliveryDetailsData?.deliveryInfo?.canceledDateTime,
                             curr: CommonData.CurrentTime,
@@ -475,7 +475,7 @@ const ProcessGauge = observer(() => {
                   justifyContent="center"
                 >
                   <ProcessGaugeElementContentTextComponent color="#000000">
-                    {DeliveryData?.DeliveryDetailsData?.deliveryInfo?.riderName || '-'}
+                    {DeliveryData?.DeliveryDetailsData?.deliveryInfo?.logiCompany?.name || '-'}
                   </ProcessGaugeElementContentTextComponent>
                 </ProcessGaugeElementContentTextFrame>
               </ProcessGaugeElementContentComponent>

@@ -18,8 +18,7 @@ export interface DeliveryElementDataType {
     code: string;
     name: string;
   };
-  isExtraDelivery: boolean;
-  hasNotificationToCheck: boolean;
+  isExtraDelivery: true;
   patient: {
     code: string;
     name: string;
@@ -27,12 +26,16 @@ export interface DeliveryElementDataType {
     applicantName: string;
   };
   address: string;
+  sigungu: string;
+  deliveryType: string;
   elapsedTime: string;
   requestedDateTime: string;
+  waitVisitDateTime: string;
+  waitAllocDateTime: string;
+  allocCompletedDateTime: string;
   pickUpDateTime: string;
-  canceledDateTime: string;
   endDateTime: string;
-  deliveryType: string;
+  canceledDateTime: string;
 }
 export interface DeliveryListDataType {
   count: {

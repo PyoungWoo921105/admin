@@ -33,7 +33,6 @@ import {
   DataElementContentComponent,
   DataElementContentTextComponent,
   DataElementContentButtonComponent,
-  DataElementContentExtraButtonComponent,
   /* 네비게이션 */
   NavigationFrame,
   NavigationComponent,
@@ -261,18 +260,6 @@ const BoardContent = observer(() => {
                         <DataElementContentTextComponent>
                           {element?.rider?.name || '-'}
                         </DataElementContentTextComponent>
-                        {element?.hasNotificationToCheck ? (
-                          <DataElementContentExtraButtonComponent
-                            backgroundColor="rgb(255,64,64)"
-                            color="#ffffff"
-                            minWidth="25px"
-                            width="25px"
-                            minHeight="25px"
-                            height="25px"
-                          >
-                            !
-                          </DataElementContentExtraButtonComponent>
-                        ) : null}
                       </DataElementContentComponent>
                     </DataElementContentFrame>
                     {/*  */}
