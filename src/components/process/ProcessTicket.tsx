@@ -34,6 +34,9 @@ import { ProcessPopUpDataType } from 'data/stores/AdminData';
 import { GetTreatmentDetails } from 'services/treatment/GetTreatmentDetails';
 import { GetMedicineDetails } from 'services/medicine/GetMedicineDetails';
 import { GetDeliveryDetails } from 'services/delivery/GetDeliveryDetails';
+import { GetTreatmentHandlingHistoryList } from 'services/treatment/GetTreatmentHandlingHistoryList';
+import { GetMedicineHandlingHistoryList } from 'services/medicine/GetMedicineHandlingHistoryList';
+import { GetDeliveryHandlingHistoryList } from 'services/delivery/GetDeliveryHandlingHistoryList';
 
 const ProcessTicket = observer(() => {
   const { CommonData, AdminData } = useStore();
@@ -96,6 +99,36 @@ const ProcessTicket = observer(() => {
     }
   }, [AdminData.ProcessPopUpData?.Code, CommonData]);
   /*  */
+  const GetTreatmentHandlingHistoryListFunction = useCallback(async () => {
+    CommonData.setLoadingFlag(true);
+
+    const GetTreatmentHandlingHistoryListData = {
+      treatCode: AdminData.ProcessPopUpData?.Code || null,
+      numInPage: 999,
+      page: 0,
+    };
+
+    const response = await GetTreatmentHandlingHistoryList(GetTreatmentHandlingHistoryListData);
+
+    CommonData.setLoadingFlag(false);
+    if (response.status === 200) {
+      /*  */
+    } else {
+      const MetaError = response as { status: number; data: { message: string } };
+      const PopUpData = {
+        Category: 'ERROR',
+        Name: 'GET_TREATMENT_HANDLING_HISTORY_LIST',
+        Title: '진료 처리 내역 불러오기 실패',
+        Contents: MetaError?.data?.message
+          ? [MetaError?.data?.message]
+          : ['일시적인 서버 오류가 발생하였습니다.', '다음에 다시 시도해주세요.'],
+        Actions: [{ Choice: '돌아가기', Action: () => CommonData.setPopUpFlag(false) }],
+      };
+      CommonData.setPopUpData(PopUpData);
+      CommonData.setPopUpFlag(true);
+    }
+  }, [AdminData.ProcessPopUpData?.Code, CommonData]);
+  /*  */
   const GetMedicineDetailsFunction = useCallback(async () => {
     CommonData.setLoadingFlag(true);
 
@@ -122,6 +155,36 @@ const ProcessTicket = observer(() => {
     }
   }, [AdminData.ProcessPopUpData?.Code, CommonData]);
   /*  */
+  const GetMedicineHandlingHistoryListFunction = useCallback(async () => {
+    CommonData.setLoadingFlag(true);
+
+    const GetMedicineHandlingHistoryListData = {
+      medicineCode: AdminData.ProcessPopUpData?.Code || null,
+      numInPage: 999,
+      page: 0,
+    };
+
+    const response = await GetMedicineHandlingHistoryList(GetMedicineHandlingHistoryListData);
+
+    CommonData.setLoadingFlag(false);
+    if (response.status === 200) {
+      /*  */
+    } else {
+      const MetaError = response as { status: number; data: { message: string } };
+      const PopUpData = {
+        Category: 'ERROR',
+        Name: 'GET_MEDICINE_HANDLING_HISTORY_LIST',
+        Title: '조제 처리 내역 불러오기 실패',
+        Contents: MetaError?.data?.message
+          ? [MetaError?.data?.message]
+          : ['일시적인 서버 오류가 발생하였습니다.', '다음에 다시 시도해주세요.'],
+        Actions: [{ Choice: '돌아가기', Action: () => CommonData.setPopUpFlag(false) }],
+      };
+      CommonData.setPopUpData(PopUpData);
+      CommonData.setPopUpFlag(true);
+    }
+  }, [AdminData.ProcessPopUpData?.Code, CommonData]);
+  /*  */
   const GetDeliveryDetailsFunction = useCallback(async () => {
     CommonData.setLoadingFlag(true);
 
@@ -137,7 +200,37 @@ const ProcessTicket = observer(() => {
       const PopUpData = {
         Category: 'ERROR',
         Name: 'GET_DELIVERY_DETAILS',
-        Title: '배달 상세 정보 불러오기 실패',
+        Title: '방문/배달 상세 정보 불러오기 실패',
+        Contents: MetaError?.data?.message
+          ? [MetaError?.data?.message]
+          : ['일시적인 서버 오류가 발생하였습니다.', '다음에 다시 시도해주세요.'],
+        Actions: [{ Choice: '돌아가기', Action: () => CommonData.setPopUpFlag(false) }],
+      };
+      CommonData.setPopUpData(PopUpData);
+      CommonData.setPopUpFlag(true);
+    }
+  }, [AdminData.ProcessPopUpData?.Code, CommonData]);
+  /*  */
+  const GetDeliveryHandlingHistoryListFunction = useCallback(async () => {
+    CommonData.setLoadingFlag(true);
+
+    const GetDeliveryHandlingHistoryListData = {
+      deliveryCode: AdminData.ProcessPopUpData?.Code || null,
+      numInPage: 999,
+      page: 0,
+    };
+
+    const response = await GetDeliveryHandlingHistoryList(GetDeliveryHandlingHistoryListData);
+
+    CommonData.setLoadingFlag(false);
+    if (response.status === 200) {
+      /*  */
+    } else {
+      const MetaError = response as { status: number; data: { message: string } };
+      const PopUpData = {
+        Category: 'ERROR',
+        Name: 'GET_DELIVERY_HANDLING_HISTORY_LIST',
+        Title: '방문/배달 처리 내역 불러오기 실패',
         Contents: MetaError?.data?.message
           ? [MetaError?.data?.message]
           : ['일시적인 서버 오류가 발생하였습니다.', '다음에 다시 시도해주세요.'],
@@ -152,14 +245,29 @@ const ProcessTicket = observer(() => {
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
     GetTaskFunction();
     if (AdminData.ProcessPopUpData?.Step === 'TREATMENT') {
-      // eslint-disable-next-line @typescript-eslint/no-floating-promises
-      GetTreatmentDetailsFunction();
+      if (AdminData.ProcessPopUpData?.Type === 'SPECIFICATION') {
+        // eslint-disable-next-line @typescript-eslint/no-floating-promises
+        GetTreatmentDetailsFunction();
+      } else if (AdminData.ProcessPopUpData?.Type === 'LOG') {
+        // eslint-disable-next-line @typescript-eslint/no-floating-promises
+        GetTreatmentHandlingHistoryListFunction();
+      }
     } else if (AdminData.ProcessPopUpData?.Step === 'MEDICINE') {
-      // eslint-disable-next-line @typescript-eslint/no-floating-promises
-      GetMedicineDetailsFunction();
+      if (AdminData.ProcessPopUpData?.Type === 'SPECIFICATION') {
+        // eslint-disable-next-line @typescript-eslint/no-floating-promises
+        GetMedicineDetailsFunction();
+      } else if (AdminData.ProcessPopUpData?.Type === 'LOG') {
+        // eslint-disable-next-line @typescript-eslint/no-floating-promises
+        GetMedicineHandlingHistoryListFunction();
+      }
     } else if (AdminData.ProcessPopUpData?.Step === 'DELIVERY') {
-      // eslint-disable-next-line @typescript-eslint/no-floating-promises
-      GetDeliveryDetailsFunction();
+      if (AdminData.ProcessPopUpData?.Type === 'SPECIFICATION') {
+        // eslint-disable-next-line @typescript-eslint/no-floating-promises
+        GetDeliveryDetailsFunction();
+      } else if (AdminData.ProcessPopUpData?.Type === 'LOG') {
+        // eslint-disable-next-line @typescript-eslint/no-floating-promises
+        GetDeliveryHandlingHistoryListFunction();
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [

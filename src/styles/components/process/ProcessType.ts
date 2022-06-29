@@ -10,10 +10,8 @@ export const ProcessTypeFrame = styled.div<CustomProps>`
   display: flex;
   flex-direction: column;
   height: 100%;
+  margin: 0px 0px 0px 5px;
   width: 100%;
 `;
-/*  */
-export const ProcessPopUpBorderComponent = styled.div`
-  border-bottom: 1px solid rgb(224, 224, 224);
-  margin: 0px 15px;
-`;
+
+export default ProcessTypeFrame;

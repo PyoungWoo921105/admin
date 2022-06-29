@@ -43,7 +43,7 @@ export interface DeliveryListDataType {
   };
   deliveryList: DeliveryElementDataType[];
 }
-/* 배달 상세 내역 */
+/* 방문/배달 상세 내역 */
 /* GET /delivery/details */
 export interface DeliveryDetailsDataType {
   deliveryInfo: {
@@ -212,7 +212,7 @@ export interface DeliveryDataType {
   /* GET /delivery/list */
   DeliveryListData: null | DeliveryListDataType;
   setDeliveryListData: (e: null | DeliveryListDataType) => void;
-  /* 배달 상세 내역 */
+  /* 방문/배달 상세 내역 */
   /* GET /delivery/details */
   DeliveryDetailsData: null | DeliveryDetailsDataType;
   setDeliveryDetailsData: (e: null | DeliveryDetailsDataType) => void;
@@ -249,7 +249,7 @@ const DeliveryData = observable<DeliveryDataType>({
   setDeliveryListData(e: null | DeliveryListDataType) {
     this.DeliveryListData = e;
   },
-  /* 배달 상세 내역 */
+  /* 방문/배달 상세 내역 */
   /* GET /delivery/details */
   DeliveryDetailsData: null,
   setDeliveryDetailsData(e: null | DeliveryDetailsDataType) {

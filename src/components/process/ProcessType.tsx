@@ -5,14 +5,23 @@
 import React /* , { useCallback, useEffect } */ from 'react';
 import { observer } from 'mobx-react';
 
-/* import { useStore } from 'data/useStore'; */
+import { useStore } from 'data/useStore';
 
 import { ProcessTypeFrame } from 'styles/components/process/ProcessType';
 
-const ProcessType = observer(() => (
-  /* const { AdminData } = useStore(); */
+import { toJS } from 'mobx';
+import ProcessConverter from './ProcessConverter';
 
-  <ProcessTypeFrame>{/*  */}</ProcessTypeFrame>
-));
+const ProcessType = observer(() => {
+  const { AdminData } = useStore();
+
+  console.log(toJS(AdminData.ProcessPopUpData));
+
+  return (
+    <ProcessTypeFrame>
+      <ProcessConverter />
+    </ProcessTypeFrame>
+  );
+});
 
 export default ProcessType;
