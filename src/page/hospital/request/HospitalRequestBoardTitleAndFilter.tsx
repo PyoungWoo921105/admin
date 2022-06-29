@@ -381,6 +381,9 @@ const BoardTitleAndFilter = observer(() => {
 
       size: 20,
       from: HospitalData.PageNavigator ? (HospitalData.PageNavigator - 1) * 20 : undefined,
+
+      sortOption: 'created-date-time',
+      sortType: 'desc',
     };
     const response = await GetAdminHospitalAdditionDetailsList(
       GetAdminHospitalAdditionDetailsListData

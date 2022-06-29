@@ -203,7 +203,7 @@ const BoardTitleAndFilter = observer(() => {
         }
       }
     }
-    const GetHospitalListData = {
+    const GetAdminVisitCheckListData = {
       startDate: null || StartInquiryPeriod,
       endDate: null || EndInquiryPeriod,
       statusList: CertificationState[0] === '전체' ? null : TempCertificationState,
@@ -213,8 +213,11 @@ const BoardTitleAndFilter = observer(() => {
 
       size: 20,
       from: HospitalData.PageNavigator ? (HospitalData.PageNavigator - 1) * 20 : undefined,
+
+      sortOption: 'created-date-time',
+      sortType: 'desc',
     };
-    const response = await GetAdminVisitCheckList(GetHospitalListData);
+    const response = await GetAdminVisitCheckList(GetAdminVisitCheckListData);
     CommonData.setLoadingFlag(false);
     if (response.status === 200) {
       /*  */
