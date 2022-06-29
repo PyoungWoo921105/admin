@@ -28,10 +28,12 @@ export const ProcessControlElementComponent = styled.div<CustomProps>`
   border: ${props => (props.border ? props.border : '')};
   border-radius: ${props => (props.borderRadius ? props.borderRadius : '')};
   box-sizing: border-box;
+  cursor: ${props => (props.cursor ? props.cursor : '')};
   display: flex;
   flex-direction: row;
   height: 40px;
   justify-content: center;
+  margin: 5px 0px 5px 0px;
   min-height: 40px;
   width: 210px;
 `;
