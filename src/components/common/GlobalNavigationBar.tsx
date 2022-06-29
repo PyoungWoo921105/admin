@@ -2,7 +2,7 @@
  * Copyright (c) 2022 Medir Inc.
  */
 
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { observer } from 'mobx-react';
 
 import { useStore } from 'data/useStore';
@@ -26,6 +26,8 @@ import {
   GlobalNavigationBarTitleTextComponent,
   GlobalNavigationBarShowContentImageFrame,
   GlobalNavigationBarShowContentImageComponent,
+  LocalNavigationBarShowContentImageFrame,
+  LocalNavigationBarShowContentImageComponent,
   GlobalNavigationBarShortCutFrame,
   GlobalNavigationBarShortCutComponent,
   GlobalNavigationBarShortCutTextComponent,
@@ -40,7 +42,7 @@ import {
 import { PostAuthLogout } from 'services/login/PostAuthLogOut';
 
 const GlobalNavigationBar = observer(() => {
-  const { CommonData } = useStore();
+  const { CommonData, AdminData } = useStore();
   const history = useHistory();
   const location = useLocation();
 
@@ -74,16 +76,14 @@ const GlobalNavigationBar = observer(() => {
     ],
   ];
 
-  const [GlobalNavigationBarState, setGlobalNavigationBarState] = useState('CLOSE');
-
   useEffect(() => {
-    if (GlobalNavigationBarState === 'CLOSING') {
+    if (AdminData.GlobalNavigationBarState === 'CLOSING') {
       const interval = setInterval(() => {
-        setGlobalNavigationBarState('CLOSE');
+        AdminData.setGlobalNavigationBarState('CLOSE');
       }, 250);
       return () => clearInterval(interval);
     }
-  }, [GlobalNavigationBarState]);
+  }, [AdminData, AdminData.GlobalNavigationBarState]);
 
   const onClickGlobalNavigationBarMenu = (props: { firstKey: number; secondKey: number }) => {
     const { firstKey, secondKey } = props;
@@ -95,20 +95,19 @@ const GlobalNavigationBar = observer(() => {
         state: { initiate: true },
       });
     }
-
-    setGlobalNavigationBarState('CLOSING');
+    AdminData.setGlobalNavigationBarState('CLOSING');
   };
 
   /*  */
   const keyDownEvent = useCallback(
     (event: { keyCode: number }) => {
       if (event.keyCode === 27) {
-        if (GlobalNavigationBarState === 'OPENING') {
-          setGlobalNavigationBarState('CLOSING');
+        if (AdminData.GlobalNavigationBarState === 'OPENING') {
+          AdminData.setGlobalNavigationBarState('CLOSING');
         }
       }
     },
-    [GlobalNavigationBarState]
+    [AdminData]
   );
   /*  */
 
@@ -168,19 +167,33 @@ const GlobalNavigationBar = observer(() => {
             <GlobalNavigationBarShowContentImageFrame
               onClick={() => {
                 // eslint-disable-next-line no-unused-expressions
-                GlobalNavigationBarState === 'CLOSE' || GlobalNavigationBarState === 'CLOSING'
-                  ? setGlobalNavigationBarState('OPENING')
-                  : setGlobalNavigationBarState('CLOSING');
+                AdminData.GlobalNavigationBarState === 'CLOSE' ||
+                AdminData.GlobalNavigationBarState === 'CLOSING'
+                  ? AdminData.setGlobalNavigationBarState('OPENING')
+                  : AdminData.setGlobalNavigationBarState('CLOSING');
               }}
             >
               <GlobalNavigationBarShowContentImageComponent
                 src={
-                  GlobalNavigationBarState === 'CLOSE' || GlobalNavigationBarState === 'CLOSING'
+                  AdminData.GlobalNavigationBarState === 'CLOSE' ||
+                  AdminData.GlobalNavigationBarState === 'CLOSING'
                     ? PlusIcon
                     : MinusIcon
                 }
               />
             </GlobalNavigationBarShowContentImageFrame>
+            <LocalNavigationBarShowContentImageFrame
+              onClick={() => {
+                // eslint-disable-next-line no-unused-expressions
+                AdminData.LocalNavigationBarState === false
+                  ? AdminData.setLocalNavigationBarState(true)
+                  : AdminData.setLocalNavigationBarState(false);
+              }}
+            >
+              <LocalNavigationBarShowContentImageComponent
+                src={AdminData.LocalNavigationBarState === false ? PlusIcon : MinusIcon}
+              />
+            </LocalNavigationBarShowContentImageFrame>
             {width >= 768 ? (
               <GlobalNavigationBarShortCutFrame>
                 <GlobalNavigationBarShortCutComponent>
@@ -361,7 +374,7 @@ const GlobalNavigationBar = observer(() => {
           </GlobalNavigationBarTitleSubFrame>
         </GlobalNavigationBarTitleComponent>
       </GlobalNavigationBarTitleFrame>
-      {GlobalNavigationBarState === 'OPENING' ? (
+      {AdminData.GlobalNavigationBarState === 'OPENING' ? (
         <GlobalNavigationBarContentOpeningComponent>
           {GlobalNavigationBarTitleList.map((globalNavigationBarTitleNames, firstKey) =>
             firstKey !== 0 ? (
@@ -398,7 +411,7 @@ const GlobalNavigationBar = observer(() => {
             ) : null
           )}
         </GlobalNavigationBarContentOpeningComponent>
-      ) : GlobalNavigationBarState === 'CLOSING' ? (
+      ) : AdminData.GlobalNavigationBarState === 'CLOSING' ? (
         <GlobalNavigationBarContentClosingComponent>
           {GlobalNavigationBarTitleList.map((globalNavigationBarTitleNames, firstKey) =>
             firstKey !== 0 ? (

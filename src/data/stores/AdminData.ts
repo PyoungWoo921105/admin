@@ -48,6 +48,11 @@ export interface AdminDataType {
   setLogInValidateFlag: (e: boolean) => void;
   LogInMessage: string;
   setLogInMessage: (e: string) => void;
+  /* Navigation Bar */
+  GlobalNavigationBarState: string;
+  setGlobalNavigationBarState: (e: string) => void;
+  LocalNavigationBarState: boolean;
+  setLocalNavigationBarState: (e: boolean) => void;
   /* Filter */
   FilterSwitchFlag: boolean;
   setFilterSwitchFlag: (e: boolean) => void;
@@ -90,6 +95,15 @@ const AdminData = observable<AdminDataType>({
   LogInMessage: '',
   setLogInMessage(e: string) {
     this.LogInMessage = e;
+  },
+  /* Navigation Bar */
+  GlobalNavigationBarState: 'CLOSE',
+  setGlobalNavigationBarState(e: string) {
+    this.GlobalNavigationBarState = e;
+  },
+  LocalNavigationBarState: true,
+  setLocalNavigationBarState(e: boolean) {
+    this.LocalNavigationBarState = e;
   },
   /* Filter */
   FilterSwitchFlag: true,

@@ -19,8 +19,10 @@ import {
   LocalNavigationBarContentTextFrame,
   LocalNavigationBarContentTextComponent,
 } from 'styles/components/common/LocalNavigation';
+import { useStore } from 'data/useStore';
 
 const TreatmentNavigationBar = observer(() => {
+  const { AdminData } = useStore();
   const history = useHistory();
   const location = useLocation<LocalState>();
 
@@ -52,7 +54,7 @@ const TreatmentNavigationBar = observer(() => {
   }, []);
 
   return (
-    <LocalNavigationBarFrame>
+    <LocalNavigationBarFrame display={AdminData.LocalNavigationBarState ? 'flex' : 'none'}>
       <LocalNavigationBarTitleFrame>
         <LocalNavigationBarTitleComponent>
           <LocalNavigationBarTitleTextFrame>

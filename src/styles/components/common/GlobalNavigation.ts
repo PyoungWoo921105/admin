@@ -11,6 +11,7 @@ export const GlobalNavigationBarFrame = styled.div`
   height: 40px;
   left: 0px;
   min-height: 40px;
+  min-width: 320px;
   position: absolute;
   right: 0px;
   top: 0px;
@@ -46,9 +47,9 @@ export const GlobalNavigationBarLogoImageFrame = styled.div`
   height: 100%;
   justify-content: center;
   margin: 0px 5px 0px 5px;
-  max-width: 120px;
-  min-width: 120px;
-  width: 120px;
+  max-width: 100px;
+  min-width: 100px;
+  width: 100px;
 `;
 export const GlobalNavigationBarLogoImageComponent = styled.img`
   width: 100%;
@@ -57,7 +58,7 @@ export const GlobalNavigationBarTitleTextFrame = styled.div`
   align-items: center;
   display: flex;
   justify-content: center;
-  margin: 0px 0px 0px 5px;
+  margin: 0px 5px 0px 5px;
   min-width: 50px;
   width: 50px;
 `;
@@ -76,12 +77,28 @@ export const GlobalNavigationBarShowContentImageFrame = styled.button`
   display: flex;
   height: 30px;
   justify-content: center;
-  margin: 0px 5px 0px 0px;
+  margin: 0px -2px 0px 0px;
   min-height: 30px;
   min-width: 30px;
   width: 30px;
 `;
 export const GlobalNavigationBarShowContentImageComponent = styled.img`
+  width: 100%;
+`;
+export const LocalNavigationBarShowContentImageFrame = styled.button`
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  height: 30px;
+  justify-content: center;
+  margin: 0px 5px 0px -2px;
+  min-height: 30px;
+  min-width: 30px;
+  width: 30px;
+`;
+export const LocalNavigationBarShowContentImageComponent = styled.img`
   width: 100%;
 `;
 export const GlobalNavigationBarShortCutFrame = styled.div`
@@ -167,7 +184,7 @@ export const GlobalNavigationBarContentTitleComponent = styled.button<CustomProp
 export const GlobalNavigationBarContentTitleTextComponent = styled.span`
   color: #ffffff;
   font-family: 'Spoqa Han Sans Neo';
-  font-size: 13px;
+  font-size: 11px;
   font-style: normal;
   font-weight: normal;
 `;

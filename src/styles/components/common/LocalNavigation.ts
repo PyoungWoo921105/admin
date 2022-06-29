@@ -9,8 +9,8 @@ import { CustomProps } from 'styles/interface/CustomProps';
 export interface LocalState {
   initiate: boolean;
 }
-export const LocalNavigationBarFrame = styled.div`
-  display: flex;
+export const LocalNavigationBarFrame = styled.div<CustomProps>`
+  display: ${props => (props.display ? props.display : '')};
   flex-direction: column;
   height: 100%;
   min-width: 100px;

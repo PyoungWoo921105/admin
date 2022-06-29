@@ -13,7 +13,9 @@ export const PopUpFrame = styled.div`
   display: flex;
   justify-content: center;
   left: 0px;
-  position: fixed;
+  min-height: 480px;
+  min-width: 320px;
+  position: absolute;
   right: 0px;
   top: 0px;
   z-index: 1000;

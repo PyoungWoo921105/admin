@@ -8,13 +8,16 @@ import { CustomProps } from 'styles/interface/CustomProps';
 
 export const LogInFrame = styled.div`
   align-items: center;
+  bottom: 0px;
   display: flex;
   flex-direction: column;
-  height: 100vh;
   justify-content: center;
-  margin: 0 auto;
-  position: relative;
-  width: fit-content;
+  left: 0px;
+  min-height: 480px;
+  min-width: 320px;
+  position: absolute;
+  right: 0px;
+  top: 0px;
 `;
 export const LogInComponent = styled.div<CustomProps>`
   background-color: ${props => (props.backgroundColor ? props.backgroundColor : '')};

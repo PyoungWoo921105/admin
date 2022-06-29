@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2022 Medir Inc.
+ */
+
 import styled from 'styled-components';
 
 export const LoadingFrame = styled.div`
@@ -10,7 +14,7 @@ export const LoadingFrame = styled.div`
   position: fixed;
   right: 0px;
   top: 0px;
-  z-index: 999;
+  z-index: 9999;
 `;
 export const LoadingComponent = styled.div`
   height: 300px;
