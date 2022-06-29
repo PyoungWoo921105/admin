@@ -7,7 +7,7 @@
  * Copyright (c) 2022 Medir Inc.
  */
 
-import React, { useCallback, useEffect } from 'react';
+import React from 'react';
 import { observer } from 'mobx-react';
 
 import { useStore } from 'data/useStore';
