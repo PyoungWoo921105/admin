@@ -84,8 +84,8 @@ export interface DeliveryDetailsDataType {
     canceledDateTime: string;
     updatedAddrDateTime: string;
     userPaidFee: number;
-    logiDefaultFee: string;
-    logiAddFee: string;
+    logiDefaultFee: number;
+    logiAddFee: number;
     cancelFee: number;
     addDeliveryBy: string;
     addDeliveryReason: string;
@@ -95,8 +95,8 @@ export interface DeliveryDetailsDataType {
       code: string;
       name: string;
     };
-    logiDefaultFee: string;
-    logiAddFee: string;
+    logiDefaultFee: number;
+    logiAddFee: number;
     logiOrderCode: string;
     deliveryRequest: string;
     pickUpMinute: number;

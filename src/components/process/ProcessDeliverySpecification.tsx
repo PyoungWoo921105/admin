@@ -29,6 +29,7 @@ import { AllowNumber } from 'libraries/constraint/AllowNumber';
 import { ConvertContactNumber } from 'libraries/conversion/ConvertContactNumber';
 import { ConvertDate } from 'libraries/conversion/ConvertDate';
 import { GetConditionalMinutesTimeCost } from 'libraries/time/GetConditionalMinutesTimeCost';
+import { AllowConditionalNumberDifference } from 'libraries/constraint/AllowConditionalNumberDifference';
 
 const ProcessDeliverySpecification = observer(() => {
   const { DeliveryData, CommonData } = useStore();
@@ -1021,7 +1022,7 @@ const ProcessDeliverySpecification = observer(() => {
                   <ProcessSpecificationElementContentTextComponent color="#000000">
                     {DeliveryData?.DeliveryDetailsData?.deliveryInfo?.logiAddFee
                       ? `${ConvertCommaNumber(
-                          DeliveryData?.DeliveryDetailsData?.deliveryInfo?.logiAddFee
+                          DeliveryData?.DeliveryDetailsData?.deliveryInfo?.logiAddFee.toString()
                         )}원`
                       : '-'}
                   </ProcessSpecificationElementContentTextComponent>
@@ -1274,6 +1275,578 @@ const ProcessDeliverySpecification = observer(() => {
           {/*  */}
         </ProcessSpecificationComponent>
         {/*  */}
+        {DeliveryData.DeliveryDetailsData?.deliveryInfo?.logiCompany?.name ? (
+          DeliveryData.DeliveryDetailsData?.deliveryInfo?.logiCompany?.name ===
+            '카카오퀵(이코노미)' ||
+          DeliveryData.DeliveryDetailsData?.deliveryInfo?.logiCompany?.name === '카카오퀵(급송)' ||
+          DeliveryData.DeliveryDetailsData?.deliveryInfo?.logiCompany?.name === '카카오퀵(일반)' ? (
+            <ProcessSpecificationComponent width="100%" height="100%">
+              {/*  */}
+              <ProcessSpecificationElementFrame width="100%" border="none">
+                <ProcessSpecificationElementComponent border="1px solid #3c9e3f" width="100%">
+                  <ProcessSpecificationElementTitleComponent
+                    flexDirection="column"
+                    justifyContent="center"
+                    width="100%"
+                    backgroundColor="#3c9e3f"
+                  >
+                    <ProcessSpecificationElementTitleTextFrame>
+                      <ProcessSpecificationElementTitleTextComponent color="#ffffff">
+                        배달 대행 정보
+                      </ProcessSpecificationElementTitleTextComponent>
+                    </ProcessSpecificationElementTitleTextFrame>
+                  </ProcessSpecificationElementTitleComponent>
+                </ProcessSpecificationElementComponent>
+              </ProcessSpecificationElementFrame>
+              {/*  */}
+              <ProcessSpecificationElementFrame width="100%" border="none">
+                {/*  */}
+                <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+                  <ProcessSpecificationElementTitleComponent
+                    flexDirection="column"
+                    justifyContent="center"
+                    minWidth="150px"
+                    backgroundColor="#14c276"
+                  >
+                    <ProcessSpecificationElementTitleTextFrame>
+                      <ProcessSpecificationElementTitleTextComponent color="#FFFFFF">
+                        3PL 배달 번호
+                      </ProcessSpecificationElementTitleTextComponent>
+                    </ProcessSpecificationElementTitleTextFrame>
+                  </ProcessSpecificationElementTitleComponent>
+                  <ProcessSpecificationElementContentComponent
+                    flexDirection="column"
+                    justifyContent="center"
+                    width="100%"
+                    minWidth="300px"
+                  >
+                    <ProcessSpecificationElementContentTextFrame>
+                      <ProcessSpecificationElementContentTextComponent color="#000000">
+                        {DeliveryData?.DeliveryDetailsData?.logisticsInfo?.logiOrderCode || '-'}
+                      </ProcessSpecificationElementContentTextComponent>
+                    </ProcessSpecificationElementContentTextFrame>
+                  </ProcessSpecificationElementContentComponent>
+                </ProcessSpecificationElementComponent>
+                {/*  */}
+              </ProcessSpecificationElementFrame>
+              {/*  */}
+              <ProcessSpecificationElementFrame width="100%" border="none">
+                {/*  */}
+                <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+                  <ProcessSpecificationElementTitleComponent
+                    flexDirection="column"
+                    justifyContent="center"
+                    minWidth="150px"
+                    backgroundColor="#14c276"
+                  >
+                    <ProcessSpecificationElementTitleTextFrame>
+                      <ProcessSpecificationElementTitleTextComponent color="#FFFFFF">
+                        최저 금액 대행사 이름
+                      </ProcessSpecificationElementTitleTextComponent>
+                    </ProcessSpecificationElementTitleTextFrame>
+                  </ProcessSpecificationElementTitleComponent>
+                  <ProcessSpecificationElementContentComponent
+                    flexDirection="column"
+                    justifyContent="center"
+                    width="100%"
+                    minWidth="300px"
+                  >
+                    <ProcessSpecificationElementContentTextFrame>
+                      <ProcessSpecificationElementContentTextComponent color="#000000">
+                        {DeliveryData?.DeliveryDetailsData?.logisticsInfo?.agency?.name || '-'}
+                      </ProcessSpecificationElementContentTextComponent>
+                    </ProcessSpecificationElementContentTextFrame>
+                  </ProcessSpecificationElementContentComponent>
+                </ProcessSpecificationElementComponent>
+                {/*  */}
+                <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+                  <ProcessSpecificationElementTitleComponent
+                    flexDirection="column"
+                    justifyContent="center"
+                    minWidth="150px"
+                    backgroundColor="#14c276"
+                  >
+                    <ProcessSpecificationElementTitleTextFrame>
+                      <ProcessSpecificationElementTitleTextComponent color="#FFFFFF">
+                        대행사 코드
+                      </ProcessSpecificationElementTitleTextComponent>
+                    </ProcessSpecificationElementTitleTextFrame>
+                  </ProcessSpecificationElementTitleComponent>
+                  <ProcessSpecificationElementContentComponent
+                    flexDirection="column"
+                    justifyContent="center"
+                    width="100%"
+                    minWidth="300px"
+                  >
+                    <ProcessSpecificationElementContentTextFrame>
+                      <ProcessSpecificationElementContentTextComponent color="#000000">
+                        {DeliveryData?.DeliveryDetailsData?.logisticsInfo?.agency?.code || '-'}
+                      </ProcessSpecificationElementContentTextComponent>
+                    </ProcessSpecificationElementContentTextFrame>
+                  </ProcessSpecificationElementContentComponent>
+                </ProcessSpecificationElementComponent>
+                {/*  */}
+              </ProcessSpecificationElementFrame>
+              {/*  */}
+              <ProcessSpecificationElementFrame width="100%" border="none">
+                {/*  */}
+                <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+                  <ProcessSpecificationElementTitleComponent
+                    flexDirection="column"
+                    justifyContent="center"
+                    minWidth="150px"
+                    backgroundColor="#14c276"
+                  >
+                    <ProcessSpecificationElementTitleTextFrame>
+                      <ProcessSpecificationElementTitleTextComponent color="#FFFFFF">
+                        픽업 요청 시간
+                      </ProcessSpecificationElementTitleTextComponent>
+                    </ProcessSpecificationElementTitleTextFrame>
+                  </ProcessSpecificationElementTitleComponent>
+                  <ProcessSpecificationElementContentComponent
+                    flexDirection="column"
+                    justifyContent="center"
+                    width="100%"
+                    minWidth="300px"
+                  >
+                    <ProcessSpecificationElementContentTextFrame>
+                      <ProcessSpecificationElementContentTextComponent color="#000000">
+                        {DeliveryData?.DeliveryDetailsData?.logisticsInfo?.pickUpMinute
+                          ? `${DeliveryData?.DeliveryDetailsData?.logisticsInfo?.pickUpMinute}분`
+                          : '-'}
+                      </ProcessSpecificationElementContentTextComponent>
+                    </ProcessSpecificationElementContentTextFrame>
+                  </ProcessSpecificationElementContentComponent>
+                </ProcessSpecificationElementComponent>
+                {/*  */}
+                <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+                  <ProcessSpecificationElementTitleComponent
+                    flexDirection="column"
+                    justifyContent="center"
+                    minWidth="150px"
+                    backgroundColor="#14c276"
+                  >
+                    <ProcessSpecificationElementTitleTextFrame>
+                      <ProcessSpecificationElementTitleTextComponent color="#FFFFFF">
+                        픽업 출발
+                      </ProcessSpecificationElementTitleTextComponent>
+                    </ProcessSpecificationElementTitleTextFrame>
+                  </ProcessSpecificationElementTitleComponent>
+                  <ProcessSpecificationElementContentComponent
+                    flexDirection="column"
+                    justifyContent="center"
+                    width="100%"
+                    minWidth="300px"
+                  >
+                    <ProcessSpecificationElementContentTextFrame>
+                      <ProcessSpecificationElementContentTextComponent color="#000000">
+                        {DeliveryData?.DeliveryDetailsData?.logisticsInfo?.pickUpStartDateTime
+                          ? ConvertDate(
+                              DeliveryData?.DeliveryDetailsData?.logisticsInfo?.pickUpStartDateTime
+                            )
+                          : '-'}
+                      </ProcessSpecificationElementContentTextComponent>
+                    </ProcessSpecificationElementContentTextFrame>
+                  </ProcessSpecificationElementContentComponent>
+                </ProcessSpecificationElementComponent>
+              </ProcessSpecificationElementFrame>
+              {/*  */}
+              <ProcessSpecificationElementFrame width="100%" border="none">
+                {/*  */}
+                <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+                  <ProcessSpecificationElementTitleComponent
+                    flexDirection="column"
+                    justifyContent="center"
+                    minWidth="150px"
+                    backgroundColor="#14c276"
+                  >
+                    <ProcessSpecificationElementTitleTextFrame>
+                      <ProcessSpecificationElementTitleTextComponent color="#FFFFFF">
+                        기본 요금
+                      </ProcessSpecificationElementTitleTextComponent>
+                    </ProcessSpecificationElementTitleTextFrame>
+                  </ProcessSpecificationElementTitleComponent>
+                  <ProcessSpecificationElementContentComponent
+                    flexDirection="column"
+                    justifyContent="center"
+                    width="100%"
+                    minWidth="300px"
+                  >
+                    <ProcessSpecificationElementContentTextFrame>
+                      <ProcessSpecificationElementContentTextComponent color="#000000">
+                        {DeliveryData?.DeliveryDetailsData?.logisticsInfo?.logiDefaultFee
+                          ? `${ConvertCommaNumber(
+                              DeliveryData?.DeliveryDetailsData?.logisticsInfo?.logiDefaultFee.toString()
+                            )}원`
+                          : '-'}
+                      </ProcessSpecificationElementContentTextComponent>
+                    </ProcessSpecificationElementContentTextFrame>
+                  </ProcessSpecificationElementContentComponent>
+                </ProcessSpecificationElementComponent>
+                {/*  */}
+                <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+                  <ProcessSpecificationElementTitleComponent
+                    flexDirection="column"
+                    justifyContent="center"
+                    minWidth="150px"
+                    backgroundColor="#14c276"
+                  >
+                    <ProcessSpecificationElementTitleTextFrame>
+                      <ProcessSpecificationElementTitleTextComponent color="#FFFFFF">
+                        할증 금액
+                      </ProcessSpecificationElementTitleTextComponent>
+                    </ProcessSpecificationElementTitleTextFrame>
+                  </ProcessSpecificationElementTitleComponent>
+                  <ProcessSpecificationElementContentComponent
+                    flexDirection="column"
+                    justifyContent="center"
+                    width="100%"
+                    minWidth="300px"
+                  >
+                    <ProcessSpecificationElementContentTextFrame>
+                      <ProcessSpecificationElementContentTextComponent color="#000000">
+                        {DeliveryData?.DeliveryDetailsData?.logisticsInfo?.logiAddFee
+                          ? `${ConvertCommaNumber(
+                              DeliveryData?.DeliveryDetailsData?.logisticsInfo?.logiAddFee.toString()
+                            )}원`
+                          : '-'}
+                      </ProcessSpecificationElementContentTextComponent>
+                    </ProcessSpecificationElementContentTextFrame>
+                  </ProcessSpecificationElementContentComponent>
+                </ProcessSpecificationElementComponent>
+                {/*  */}
+              </ProcessSpecificationElementFrame>
+              {/*  */}
+              <ProcessSpecificationElementFrame width="100%" border="none">
+                {/*  */}
+                <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+                  <ProcessSpecificationElementTitleComponent
+                    flexDirection="column"
+                    justifyContent="center"
+                    minWidth="150px"
+                    backgroundColor="#14c276"
+                  >
+                    <ProcessSpecificationElementTitleTextFrame>
+                      <ProcessSpecificationElementTitleTextComponent color="#FFFFFF">
+                        배달 대행 총 금액
+                      </ProcessSpecificationElementTitleTextComponent>
+                    </ProcessSpecificationElementTitleTextFrame>
+                  </ProcessSpecificationElementTitleComponent>
+                  <ProcessSpecificationElementContentComponent
+                    flexDirection="column"
+                    justifyContent="center"
+                    width="100%"
+                    minWidth="300px"
+                  >
+                    <ProcessSpecificationElementContentTextFrame>
+                      <ProcessSpecificationElementContentTextComponent color="#000000">
+                        {(DeliveryData?.DeliveryDetailsData?.logisticsInfo?.logiDefaultFee ||
+                          DeliveryData?.DeliveryDetailsData?.logisticsInfo?.logiAddFee) &&
+                        AllowConditionalNumberDifference({
+                          first:
+                            DeliveryData?.DeliveryDetailsData?.logisticsInfo?.logiDefaultFee.toString(),
+                          second:
+                            DeliveryData?.DeliveryDetailsData?.logisticsInfo?.logiAddFee.toString(),
+                        }).toString()
+                          ? `${ConvertCommaNumber(
+                              AllowConditionalNumberDifference({
+                                first:
+                                  DeliveryData?.DeliveryDetailsData?.logisticsInfo?.logiDefaultFee.toString(),
+                                second:
+                                  DeliveryData?.DeliveryDetailsData?.logisticsInfo?.logiAddFee.toString(),
+                              }).toString()
+                            )}원`
+                          : '-'}
+                      </ProcessSpecificationElementContentTextComponent>
+                    </ProcessSpecificationElementContentTextFrame>
+                  </ProcessSpecificationElementContentComponent>
+                </ProcessSpecificationElementComponent>
+                {/*  */}
+              </ProcessSpecificationElementFrame>
+              {/*  */}
+            </ProcessSpecificationComponent>
+          ) : DeliveryData.DeliveryDetailsData?.deliveryInfo?.logiCompany?.name === '푸드테크' ? (
+            <ProcessSpecificationComponent width="100%" height="100%">
+              {/*  */}
+              <ProcessSpecificationElementFrame width="100%" border="none">
+                <ProcessSpecificationElementComponent border="1px solid #3c9e3f" width="100%">
+                  <ProcessSpecificationElementTitleComponent
+                    flexDirection="column"
+                    justifyContent="center"
+                    width="100%"
+                    backgroundColor="#3c9e3f"
+                  >
+                    <ProcessSpecificationElementTitleTextFrame>
+                      <ProcessSpecificationElementTitleTextComponent color="#ffffff">
+                        배달 대행 정보
+                      </ProcessSpecificationElementTitleTextComponent>
+                    </ProcessSpecificationElementTitleTextFrame>
+                  </ProcessSpecificationElementTitleComponent>
+                </ProcessSpecificationElementComponent>
+              </ProcessSpecificationElementFrame>
+              {/*  */}
+              <ProcessSpecificationElementFrame width="100%" border="none">
+                {/*  */}
+                <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+                  <ProcessSpecificationElementTitleComponent
+                    flexDirection="column"
+                    justifyContent="center"
+                    minWidth="150px"
+                    backgroundColor="#14c276"
+                  >
+                    <ProcessSpecificationElementTitleTextFrame>
+                      <ProcessSpecificationElementTitleTextComponent color="#FFFFFF">
+                        3PL 배달 번호
+                      </ProcessSpecificationElementTitleTextComponent>
+                    </ProcessSpecificationElementTitleTextFrame>
+                  </ProcessSpecificationElementTitleComponent>
+                  <ProcessSpecificationElementContentComponent
+                    flexDirection="column"
+                    justifyContent="center"
+                    width="100%"
+                    minWidth="300px"
+                  >
+                    <ProcessSpecificationElementContentTextFrame>
+                      <ProcessSpecificationElementContentTextComponent color="#000000">
+                        {DeliveryData?.DeliveryDetailsData?.logisticsInfo?.logiOrderCode || '-'}
+                      </ProcessSpecificationElementContentTextComponent>
+                    </ProcessSpecificationElementContentTextFrame>
+                  </ProcessSpecificationElementContentComponent>
+                </ProcessSpecificationElementComponent>
+                {/*  */}
+              </ProcessSpecificationElementFrame>
+              {/*  */}
+              <ProcessSpecificationElementFrame width="100%" border="none">
+                {/*  */}
+                <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+                  <ProcessSpecificationElementTitleComponent
+                    flexDirection="column"
+                    justifyContent="center"
+                    minWidth="150px"
+                    backgroundColor="#14c276"
+                  >
+                    <ProcessSpecificationElementTitleTextFrame>
+                      <ProcessSpecificationElementTitleTextComponent color="#FFFFFF">
+                        최저 금액 대행사 이름
+                      </ProcessSpecificationElementTitleTextComponent>
+                    </ProcessSpecificationElementTitleTextFrame>
+                  </ProcessSpecificationElementTitleComponent>
+                  <ProcessSpecificationElementContentComponent
+                    flexDirection="column"
+                    justifyContent="center"
+                    width="100%"
+                    minWidth="300px"
+                  >
+                    <ProcessSpecificationElementContentTextFrame>
+                      <ProcessSpecificationElementContentTextComponent color="#000000">
+                        {DeliveryData?.DeliveryDetailsData?.logisticsInfo?.agency?.name || '-'}
+                      </ProcessSpecificationElementContentTextComponent>
+                    </ProcessSpecificationElementContentTextFrame>
+                  </ProcessSpecificationElementContentComponent>
+                </ProcessSpecificationElementComponent>
+                {/*  */}
+                <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+                  <ProcessSpecificationElementTitleComponent
+                    flexDirection="column"
+                    justifyContent="center"
+                    minWidth="150px"
+                    backgroundColor="#14c276"
+                  >
+                    <ProcessSpecificationElementTitleTextFrame>
+                      <ProcessSpecificationElementTitleTextComponent color="#FFFFFF">
+                        대행사 코드
+                      </ProcessSpecificationElementTitleTextComponent>
+                    </ProcessSpecificationElementTitleTextFrame>
+                  </ProcessSpecificationElementTitleComponent>
+                  <ProcessSpecificationElementContentComponent
+                    flexDirection="column"
+                    justifyContent="center"
+                    width="100%"
+                    minWidth="300px"
+                  >
+                    <ProcessSpecificationElementContentTextFrame>
+                      <ProcessSpecificationElementContentTextComponent color="#000000">
+                        {DeliveryData?.DeliveryDetailsData?.logisticsInfo?.agency?.code || '-'}
+                      </ProcessSpecificationElementContentTextComponent>
+                    </ProcessSpecificationElementContentTextFrame>
+                  </ProcessSpecificationElementContentComponent>
+                </ProcessSpecificationElementComponent>
+                {/*  */}
+              </ProcessSpecificationElementFrame>
+              {/*  */}
+              <ProcessSpecificationElementFrame width="100%" border="none">
+                {/*  */}
+                <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+                  <ProcessSpecificationElementTitleComponent
+                    flexDirection="column"
+                    justifyContent="center"
+                    minWidth="150px"
+                    backgroundColor="#14c276"
+                  >
+                    <ProcessSpecificationElementTitleTextFrame>
+                      <ProcessSpecificationElementTitleTextComponent color="#FFFFFF">
+                        픽업 요청 시간
+                      </ProcessSpecificationElementTitleTextComponent>
+                    </ProcessSpecificationElementTitleTextFrame>
+                  </ProcessSpecificationElementTitleComponent>
+                  <ProcessSpecificationElementContentComponent
+                    flexDirection="column"
+                    justifyContent="center"
+                    width="100%"
+                    minWidth="300px"
+                  >
+                    <ProcessSpecificationElementContentTextFrame>
+                      <ProcessSpecificationElementContentTextComponent color="#000000">
+                        {DeliveryData?.DeliveryDetailsData?.logisticsInfo?.pickUpMinute
+                          ? `${DeliveryData?.DeliveryDetailsData?.logisticsInfo?.pickUpMinute}분`
+                          : '-'}
+                      </ProcessSpecificationElementContentTextComponent>
+                    </ProcessSpecificationElementContentTextFrame>
+                  </ProcessSpecificationElementContentComponent>
+                </ProcessSpecificationElementComponent>
+                {/*  */}
+                <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+                  <ProcessSpecificationElementTitleComponent
+                    flexDirection="column"
+                    justifyContent="center"
+                    minWidth="150px"
+                    backgroundColor="#14c276"
+                  >
+                    <ProcessSpecificationElementTitleTextFrame>
+                      <ProcessSpecificationElementTitleTextComponent color="#FFFFFF">
+                        픽업 출발
+                      </ProcessSpecificationElementTitleTextComponent>
+                    </ProcessSpecificationElementTitleTextFrame>
+                  </ProcessSpecificationElementTitleComponent>
+                  <ProcessSpecificationElementContentComponent
+                    flexDirection="column"
+                    justifyContent="center"
+                    width="100%"
+                    minWidth="300px"
+                  >
+                    <ProcessSpecificationElementContentTextFrame>
+                      <ProcessSpecificationElementContentTextComponent color="#000000">
+                        {DeliveryData?.DeliveryDetailsData?.logisticsInfo?.pickUpStartDateTime
+                          ? ConvertDate(
+                              DeliveryData?.DeliveryDetailsData?.logisticsInfo?.pickUpStartDateTime
+                            )
+                          : '-'}
+                      </ProcessSpecificationElementContentTextComponent>
+                    </ProcessSpecificationElementContentTextFrame>
+                  </ProcessSpecificationElementContentComponent>
+                </ProcessSpecificationElementComponent>
+              </ProcessSpecificationElementFrame>
+              {/*  */}
+              <ProcessSpecificationElementFrame width="100%" border="none">
+                {/*  */}
+                <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+                  <ProcessSpecificationElementTitleComponent
+                    flexDirection="column"
+                    justifyContent="center"
+                    minWidth="150px"
+                    backgroundColor="#14c276"
+                  >
+                    <ProcessSpecificationElementTitleTextFrame>
+                      <ProcessSpecificationElementTitleTextComponent color="#FFFFFF">
+                        기본 요금
+                      </ProcessSpecificationElementTitleTextComponent>
+                    </ProcessSpecificationElementTitleTextFrame>
+                  </ProcessSpecificationElementTitleComponent>
+                  <ProcessSpecificationElementContentComponent
+                    flexDirection="column"
+                    justifyContent="center"
+                    width="100%"
+                    minWidth="300px"
+                  >
+                    <ProcessSpecificationElementContentTextFrame>
+                      <ProcessSpecificationElementContentTextComponent color="#000000">
+                        {DeliveryData?.DeliveryDetailsData?.logisticsInfo?.logiDefaultFee
+                          ? `${ConvertCommaNumber(
+                              DeliveryData?.DeliveryDetailsData?.logisticsInfo?.logiDefaultFee.toString()
+                            )}원`
+                          : '-'}
+                      </ProcessSpecificationElementContentTextComponent>
+                    </ProcessSpecificationElementContentTextFrame>
+                  </ProcessSpecificationElementContentComponent>
+                </ProcessSpecificationElementComponent>
+                {/*  */}
+                <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+                  <ProcessSpecificationElementTitleComponent
+                    flexDirection="column"
+                    justifyContent="center"
+                    minWidth="150px"
+                    backgroundColor="#14c276"
+                  >
+                    <ProcessSpecificationElementTitleTextFrame>
+                      <ProcessSpecificationElementTitleTextComponent color="#FFFFFF">
+                        할증 금액
+                      </ProcessSpecificationElementTitleTextComponent>
+                    </ProcessSpecificationElementTitleTextFrame>
+                  </ProcessSpecificationElementTitleComponent>
+                  <ProcessSpecificationElementContentComponent
+                    flexDirection="column"
+                    justifyContent="center"
+                    width="100%"
+                    minWidth="300px"
+                  >
+                    <ProcessSpecificationElementContentTextFrame>
+                      <ProcessSpecificationElementContentTextComponent color="#000000">
+                        {DeliveryData?.DeliveryDetailsData?.logisticsInfo?.logiAddFee
+                          ? `${ConvertCommaNumber(
+                              DeliveryData?.DeliveryDetailsData?.logisticsInfo?.logiAddFee.toString()
+                            )}원`
+                          : '-'}
+                      </ProcessSpecificationElementContentTextComponent>
+                    </ProcessSpecificationElementContentTextFrame>
+                  </ProcessSpecificationElementContentComponent>
+                </ProcessSpecificationElementComponent>
+                {/*  */}
+              </ProcessSpecificationElementFrame>
+              {/*  */}
+              <ProcessSpecificationElementFrame width="100%" border="none">
+                {/*  */}
+                <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+                  <ProcessSpecificationElementTitleComponent
+                    flexDirection="column"
+                    justifyContent="center"
+                    minWidth="150px"
+                    backgroundColor="#14c276"
+                  >
+                    <ProcessSpecificationElementTitleTextFrame>
+                      <ProcessSpecificationElementTitleTextComponent color="#FFFFFF">
+                        배달 대행 총 금액
+                      </ProcessSpecificationElementTitleTextComponent>
+                    </ProcessSpecificationElementTitleTextFrame>
+                  </ProcessSpecificationElementTitleComponent>
+                  <ProcessSpecificationElementContentComponent
+                    flexDirection="column"
+                    justifyContent="center"
+                    width="100%"
+                    minWidth="300px"
+                  >
+                    <ProcessSpecificationElementContentTextFrame>
+                      <ProcessSpecificationElementContentTextComponent color="#000000">
+                        {DeliveryData?.DeliveryDetailsData?.logisticsInfo?.logiDefaultFee ||
+                        DeliveryData?.DeliveryDetailsData?.logisticsInfo?.logiAddFee
+                          ? `${ConvertCommaNumber(
+                              AllowConditionalNumberDifference({
+                                first:
+                                  DeliveryData?.DeliveryDetailsData?.logisticsInfo?.logiDefaultFee.toString(),
+                                second:
+                                  DeliveryData?.DeliveryDetailsData?.logisticsInfo?.logiAddFee.toString(),
+                              }).toString()
+                            )}원`
+                          : '-'}
+                      </ProcessSpecificationElementContentTextComponent>
+                    </ProcessSpecificationElementContentTextFrame>
+                  </ProcessSpecificationElementContentComponent>
+                </ProcessSpecificationElementComponent>
+                {/*  */}
+              </ProcessSpecificationElementFrame>
+              {/*  */}
+            </ProcessSpecificationComponent>
+          ) : null
+        ) : null}
       </ProcessSpecificationTypeComponent>
     </ProcessSpecificationFrame>
   );
