@@ -57,6 +57,7 @@ export interface TreatmentDetailsDataType {
   treatCode: string;
   status: string;
   receptionCategory: string;
+  allowsGenericSubstitution: boolean;
   symptomFilesCount: number;
   waitReceptionDateTime: string;
   waitTreatDateTime: string;
@@ -103,7 +104,7 @@ export interface TreatmentDetailsDataType {
     dateTime: string;
     reason: string;
   };
-  systemCancledInfo: {
+  systemCanceledInfo: {
     dateTime: string;
     reason: string;
   };
@@ -116,7 +117,7 @@ export interface TreatmentDetailsDataType {
     payAmount: string;
     payedDateTime: string;
   };
-  deliveryType: string;
+  isMedicineRequested: boolean;
 }
 /* 진료 동작 내역 */
 /* GET /treat/handlingHistory/list */

@@ -9,9 +9,7 @@ import { CustomProps } from 'styles/interface/CustomProps';
 export const ProcessConverterFrame = styled.div<CustomProps>`
   display: flex;
   flex-direction: column;
-  height: 100%;
   padding: 10px 0px 10px 0px;
-  width: 100%;
 `;
 export const ProcessConverterComponent = styled.div<CustomProps>`
   box-sizing: border-box;
@@ -33,6 +31,7 @@ export const ProcessConverterElementComponent = styled.div<CustomProps>`
   height: 40px;
   justify-content: center;
   min-height: 40px;
+  width: ${props => (props.width ? props.width : '')};
 `;
 export const ProcessConverterElementTitleComponent = styled.div<CustomProps>`
   align-items: ${props => (props.alignItems ? props.alignItems : '')};

@@ -85,7 +85,11 @@ const ProcessGauge = observer(() => {
                         GetConditionalMinutesTimeCost({
                           prev: TreatmentData?.TreatmentDetailsData?.waitReceptionDateTime,
                           next: TreatmentData?.TreatmentDetailsData?.waitTreatDateTime,
-                          alt: TreatmentData?.TreatmentDetailsData?.canceledInfo?.dateTime,
+                          alt: [
+                            TreatmentData?.TreatmentDetailsData?.canceledInfo?.dateTime,
+                            TreatmentData?.TreatmentDetailsData?.declinedInfo?.dateTime,
+                            TreatmentData?.TreatmentDetailsData?.systemCanceledInfo?.dateTime,
+                          ],
                           curr: CommonData.CurrentTime,
                         }).toString()
                       )}분`
@@ -168,7 +172,11 @@ const ProcessGauge = observer(() => {
                         GetConditionalMinutesTimeCost({
                           prev: TreatmentData?.TreatmentDetailsData?.waitTreatDateTime,
                           next: TreatmentData?.TreatmentDetailsData?.inTreatDateTime,
-                          alt: TreatmentData?.TreatmentDetailsData?.canceledInfo?.dateTime,
+                          alt: [
+                            TreatmentData?.TreatmentDetailsData?.canceledInfo?.dateTime,
+                            TreatmentData?.TreatmentDetailsData?.declinedInfo?.dateTime,
+                            TreatmentData?.TreatmentDetailsData?.systemCanceledInfo?.dateTime,
+                          ],
                           curr: CommonData.CurrentTime,
                         }).toString()
                       )}분`
@@ -229,7 +237,11 @@ const ProcessGauge = observer(() => {
                         GetConditionalMinutesTimeCost({
                           prev: MedicineData?.MedicineDetailsData?.waitReceptionDateTime,
                           next: MedicineData?.MedicineDetailsData?.inMakingDateTime,
-                          alt: MedicineData?.MedicineDetailsData?.canceledInfo?.dateTime,
+                          alt: [
+                            MedicineData?.MedicineDetailsData?.canceledInfo?.dateTime,
+                            MedicineData?.MedicineDetailsData?.declinedInfo?.dateTime,
+                            MedicineData?.MedicineDetailsData?.systemCanceledInfo?.dateTime,
+                          ],
                           curr: CommonData.CurrentTime,
                         }).toString()
                       )}분`
@@ -276,7 +288,11 @@ const ProcessGauge = observer(() => {
                         GetConditionalMinutesTimeCost({
                           prev: MedicineData?.MedicineDetailsData?.inMakingDateTime,
                           next: MedicineData?.MedicineDetailsData?.completedDateTime,
-                          alt: MedicineData?.MedicineDetailsData?.canceledInfo?.dateTime,
+                          alt: [
+                            MedicineData?.MedicineDetailsData?.canceledInfo?.dateTime,
+                            MedicineData?.MedicineDetailsData?.declinedInfo?.dateTime,
+                            MedicineData?.MedicineDetailsData?.systemCanceledInfo?.dateTime,
+                          ],
                           curr: CommonData.CurrentTime,
                         }).toString()
                       )}분`
@@ -346,7 +362,9 @@ const ProcessGauge = observer(() => {
                               ?.requestedDateTime,
                             next: DeliveryData?.DeliveryDetailsData?.deliveryInfo
                               ?.allocCompletedDateTime,
-                            alt: DeliveryData?.DeliveryDetailsData?.deliveryInfo?.canceledDateTime,
+                            alt: [
+                              DeliveryData?.DeliveryDetailsData?.deliveryInfo?.canceledDateTime,
+                            ],
                             curr: CommonData.CurrentTime,
                           }).toString()
                         )}분`
@@ -390,7 +408,9 @@ const ProcessGauge = observer(() => {
                             prev: DeliveryData?.DeliveryDetailsData?.deliveryInfo
                               ?.allocCompletedDateTime,
                             next: DeliveryData?.DeliveryDetailsData?.deliveryInfo?.pickUpDateTime,
-                            alt: DeliveryData?.DeliveryDetailsData?.deliveryInfo?.canceledDateTime,
+                            alt: [
+                              DeliveryData?.DeliveryDetailsData?.deliveryInfo?.canceledDateTime,
+                            ],
                             curr: CommonData.CurrentTime,
                           }).toString()
                         )}분`
@@ -433,7 +453,9 @@ const ProcessGauge = observer(() => {
                           GetConditionalMinutesTimeCost({
                             prev: DeliveryData?.DeliveryDetailsData?.deliveryInfo?.pickUpDateTime,
                             next: DeliveryData?.DeliveryDetailsData?.deliveryInfo?.endDateTime,
-                            alt: DeliveryData?.DeliveryDetailsData?.deliveryInfo?.canceledDateTime,
+                            alt: [
+                              DeliveryData?.DeliveryDetailsData?.deliveryInfo?.canceledDateTime,
+                            ],
                             curr: CommonData.CurrentTime,
                           }).toString()
                         )}분`
@@ -541,7 +563,9 @@ const ProcessGauge = observer(() => {
                             prev: DeliveryData?.DeliveryDetailsData?.deliveryInfo
                               ?.requestedDateTime,
                             next: DeliveryData?.DeliveryDetailsData?.deliveryInfo?.endDateTime,
-                            alt: DeliveryData?.DeliveryDetailsData?.deliveryInfo?.canceledDateTime,
+                            alt: [
+                              DeliveryData?.DeliveryDetailsData?.deliveryInfo?.canceledDateTime,
+                            ],
                             curr: CommonData.CurrentTime,
                           }).toString()
                         )}분`

@@ -9,17 +9,22 @@ import { useStore } from 'data/useStore';
 
 import { ProcessTypeFrame } from 'styles/components/process/ProcessType';
 
-import { toJS } from 'mobx';
 import ProcessConverter from './ProcessConverter';
+import ProcessSpecification from './ProcessSpecification';
 
 const ProcessType = observer(() => {
   const { AdminData } = useStore();
-
-  console.log(toJS(AdminData.ProcessPopUpData));
-
   return (
-    <ProcessTypeFrame>
+    <ProcessTypeFrame
+      maxWidth="930px"
+      width="930px"
+      minWidth="930px"
+      maxHeight="710px"
+      height="710px"
+      minHeight="710px"
+    >
       <ProcessConverter />
+      {AdminData.ProcessPopUpData?.Type === 'SPECIFICATION' ? <ProcessSpecification /> : null}
     </ProcessTypeFrame>
   );
 });

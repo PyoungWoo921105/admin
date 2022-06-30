@@ -12,7 +12,14 @@ import ProcessGauge from './ProcessGauge';
 import ProcessControl from './ProcessControl';
 
 const ProcessStep = observer(() => (
-  <ProcessStepFrame>
+  <ProcessStepFrame
+    maxWidth="230px"
+    width="230px"
+    minWidth="230px"
+    maxHeight="710px"
+    height="710px"
+    minHeight="710px"
+  >
     <ProcessTicket />
     <ProcessGauge />
     <ProcessControl />

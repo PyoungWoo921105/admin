@@ -54,6 +54,7 @@ export interface MedicineListDataType {
 export interface MedicineDetailsDataType {
   medicineCode: string;
   status: string;
+  allowsGenericSubstitution: boolean;
   receptionCategory: string;
   waitReceptionDateTime: string;
   inMakingDateTime: string;

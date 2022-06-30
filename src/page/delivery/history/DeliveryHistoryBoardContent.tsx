@@ -243,7 +243,7 @@ const BoardContent = observer(() => {
                                 GetConditionalMinutesTimeCost({
                                   prev: element?.requestedDateTime,
                                   next: element?.endDateTime,
-                                  alt: element?.canceledDateTime,
+                                  alt: [element?.canceledDateTime],
                                   curr: CommonData.CurrentTime,
                                 }).toString()
                               )}분`
@@ -333,7 +333,7 @@ const BoardContent = observer(() => {
                                 GetConditionalMinutesTimeCost({
                                   prev: element?.requestedDateTime,
                                   next: element?.pickUpDateTime,
-                                  alt: element?.canceledDateTime,
+                                  alt: [element?.canceledDateTime],
                                   curr: CommonData.CurrentTime,
                                 }).toString()
                               )}분`
@@ -352,7 +352,7 @@ const BoardContent = observer(() => {
                                 GetConditionalMinutesTimeCost({
                                   prev: element?.pickUpDateTime,
                                   next: element?.endDateTime,
-                                  alt: element?.canceledDateTime,
+                                  alt: [element?.canceledDateTime],
                                   curr: CommonData.CurrentTime,
                                 }).toString()
                               )}분`

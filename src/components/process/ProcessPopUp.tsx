@@ -23,11 +23,11 @@ import {
   ProcessPopUpMiddleComponent,
   ProcessPopUpMiddleContentFrame,
   ProcessPopUpMiddleContentComponent,
-  ProcessPopUpBottomFrame,
+  /* ProcessPopUpBottomFrame,
   ProcessPopUpBottomComponent,
   ProcessPopUpBottomButtonComponent,
   ProcessPopUpBottomButtonLeftComponent,
-  ProcessPopUpBottomButtonRightComponent,
+  ProcessPopUpBottomButtonRightComponent, */
 } from 'styles/components/process/ProcessPopUp';
 
 import ProcessStep from './ProcessStep';
@@ -56,11 +56,11 @@ const ProcessPopUp = observer(() => {
     };
   }, [keyDownEvent]);
 
-  const onClickAction = (props: (() => void) | undefined) => {
+  /* const onClickAction = (props: (() => void) | undefined) => {
     if (props) {
       props();
     }
-  };
+  }; */
 
   return (
     <ProcessPopUpFrame>
@@ -102,7 +102,7 @@ const ProcessPopUp = observer(() => {
             </ProcessPopUpMiddleContentFrame>
           </ProcessPopUpMiddleComponent>
         </ProcessPopUpMiddleFrame>
-        {AdminData.ProcessPopUpData?.Actions.length === 1 ? (
+        {/* {AdminData.ProcessPopUpData?.Actions.length === 1 ? (
           <ProcessPopUpBottomFrame>
             <ProcessPopUpBottomComponent>
               <ProcessPopUpBottomButtonComponent
@@ -128,7 +128,7 @@ const ProcessPopUp = observer(() => {
               </ProcessPopUpBottomButtonRightComponent>
             </ProcessPopUpBottomComponent>
           </ProcessPopUpBottomFrame>
-        ) : null}
+        ) : null} */}
       </ProcessPopUpComponent>
     </ProcessPopUpFrame>
   );

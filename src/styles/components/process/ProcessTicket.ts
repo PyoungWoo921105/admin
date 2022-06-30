@@ -9,9 +9,7 @@ import { CustomProps } from 'styles/interface/CustomProps';
 export const ProcessTicketFrame = styled.div<CustomProps>`
   display: flex;
   flex-direction: column;
-  height: 100%;
   padding: 10px 0px 10px 0px;
-  width: 100%;
 `;
 export const ProcessTicketComponent = styled.div<CustomProps>`
   box-sizing: border-box;

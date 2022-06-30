@@ -52,6 +52,7 @@ const ProcessConverter = observer(() => {
             AdminData.ProcessPopUpData?.Type === 'SPECIFICATION' ? '#3c9e3f' : '#14c276'
           }
           cursor={AdminData.ProcessPopUpData?.Type === 'SPECIFICATION' ? '' : 'pointer'}
+          width="100%"
         >
           <ProcessConverterElementTitleComponent flexDirection="column" justifyContent="center">
             <ProcessConverterElementTitleTextFrame
@@ -89,6 +90,7 @@ const ProcessConverter = observer(() => {
           border="1px solid #ffffff"
           backgroundColor={AdminData.ProcessPopUpData?.Type === 'LOG' ? '#3c9e3f' : '#14c276'}
           cursor={AdminData.ProcessPopUpData?.Type === 'LOG' ? '' : 'pointer'}
+          width="100%"
         >
           <ProcessConverterElementTitleComponent flexDirection="column" justifyContent="center">
             <ProcessConverterElementTitleTextFrame

@@ -74,7 +74,7 @@ export const ProcessPopUpTopExitImageComponent = styled.img<CustomProps>`
 export const ProcessPopUpMiddleFrame = styled.div<CustomProps>`
   align-items: ${props => (props.alignItems ? props.alignItems : '')};
   background-color: ${props => (props.backgroundColor ? props.backgroundColor : '#ffffff')};
-  border-radius: ${props => (props.borderRadius ? props.borderRadius : '')};
+  border-radius: 0px 0px 10px 10px;
   display: flex;
   flex-direction: row;
   justify-content: ${props => (props.justifyContent ? props.justifyContent : '')};
@@ -123,7 +123,7 @@ export const ProcessPopUpMiddleContentTextComponent = styled.span<CustomProps>`
   font-weight: normal;
 `;
 /*  */
-export const ProcessPopUpBottomFrame = styled.div<CustomProps>`
+/* export const ProcessPopUpBottomFrame = styled.div<CustomProps>`
   background-color: ${props => (props.backgroundColor ? props.backgroundColor : '#ffffff')};
   border-radius: 0px 0px 10px 10px;
   display: flex;
@@ -192,8 +192,7 @@ export const ProcessPopUpBottomButtonRightComponent = styled.button<CustomProps>
   height: 100%;
   justify-content: center;
   width: 100%;
-`;
-/*  */
+`; */
 export const ProcessPopUpBorderComponent = styled.div`
   border-bottom: 1px solid rgb(224, 224, 224);
   margin: 0px 15px;

@@ -9,9 +9,7 @@ import { CustomProps } from 'styles/interface/CustomProps';
 export const ProcessGaugeFrame = styled.div<CustomProps>`
   display: flex;
   flex-direction: column;
-  height: 100%;
   padding: 10px 0px 10px 0px;
-  width: 100%;
 `;
 export const ProcessGaugeComponent = styled.div<CustomProps>`
   box-sizing: border-box;
@@ -30,9 +28,9 @@ export const ProcessGaugeElementComponent = styled.div<CustomProps>`
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
-  height: 40px;
+  height: 35px;
   justify-content: center;
-  min-height: 40px;
+  min-height: 35px;
   width: 210px;
 `;
 export const ProcessGaugeElementTitleComponent = styled.div<CustomProps>`
@@ -40,9 +38,9 @@ export const ProcessGaugeElementTitleComponent = styled.div<CustomProps>`
   border-right: ${props => (props.border ? props.border : '')};
   display: flex;
   flex-direction: ${props => (props.flexDirection ? props.flexDirection : '')};
-  height: 40px;
+  height: 35px;
   justify-content: ${props => (props.justifyContent ? props.justifyContent : '')};
-  min-height: 40px;
+  min-height: 35px;
 `;
 export const ProcessGaugeElementTitleTextFrame = styled.div<CustomProps>`
   align-items: center;
@@ -67,9 +65,9 @@ export const ProcessGaugeElementContentComponent = styled.div<CustomProps>`
   border-left: ${props => (props.border ? props.border : '')};
   display: flex;
   flex-direction: ${props => (props.flexDirection ? props.flexDirection : '')};
-  height: 40px;
+  height: 35px;
   justify-content: ${props => (props.justifyContent ? props.justifyContent : '')};
-  min-height: 40px;
+  min-height: 35px;
 `;
 export const ProcessGaugeElementContentTextFrame = styled.div<CustomProps>`
   align-items: center;
