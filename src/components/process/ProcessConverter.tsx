@@ -49,7 +49,7 @@ const ProcessConverter = observer(() => {
           }
           border="1px solid #ffffff"
           backgroundColor={
-            AdminData.ProcessPopUpData?.Type === 'SPECIFICATION' ? '#3c9e3f' : '#d3d3d3'
+            AdminData.ProcessPopUpData?.Type === 'SPECIFICATION' ? '#3c9e3f' : '#14c276'
           }
           cursor={AdminData.ProcessPopUpData?.Type === 'SPECIFICATION' ? '' : 'pointer'}
         >
@@ -60,7 +60,7 @@ const ProcessConverter = observer(() => {
               minWidth="120px"
             >
               <ProcessConverterElementTitleTextComponent
-                color={AdminData.ProcessPopUpData?.Type === 'SPECIFICATION' ? '#ffffff' : ''}
+                color={AdminData.ProcessPopUpData?.Type === 'SPECIFICATION' ? '#ffffff' : '#ffffff'}
               >
                 {AdminData.ProcessPopUpData?.Step === 'TREATMENT'
                   ? '진료'
@@ -87,7 +87,7 @@ const ProcessConverter = observer(() => {
             })
           }
           border="1px solid #ffffff"
-          backgroundColor={AdminData.ProcessPopUpData?.Type === 'LOG' ? '#3c9e3f' : '#d3d3d3'}
+          backgroundColor={AdminData.ProcessPopUpData?.Type === 'LOG' ? '#3c9e3f' : '#14c276'}
           cursor={AdminData.ProcessPopUpData?.Type === 'LOG' ? '' : 'pointer'}
         >
           <ProcessConverterElementTitleComponent flexDirection="column" justifyContent="center">
@@ -97,7 +97,7 @@ const ProcessConverter = observer(() => {
               minWidth="120px"
             >
               <ProcessConverterElementTitleTextComponent
-                color={AdminData.ProcessPopUpData?.Type === 'LOG' ? '#ffffff' : ''}
+                color={AdminData.ProcessPopUpData?.Type === 'LOG' ? '#ffffff' : '#ffffff'}
               >
                 {AdminData.ProcessPopUpData?.Step === 'TREATMENT'
                   ? '진료'
