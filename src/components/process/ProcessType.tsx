@@ -11,6 +11,7 @@ import { ProcessTypeFrame } from 'styles/components/process/ProcessType';
 
 import ProcessConverter from './ProcessConverter';
 import ProcessSpecification from './ProcessSpecification';
+import ProcessLog from './ProcessLog';
 
 const ProcessType = observer(() => {
   const { AdminData } = useStore();
@@ -25,6 +26,7 @@ const ProcessType = observer(() => {
     >
       <ProcessConverter />
       {AdminData.ProcessPopUpData?.Type === 'SPECIFICATION' ? <ProcessSpecification /> : null}
+      {AdminData.ProcessPopUpData?.Type === 'LOG' ? <ProcessLog /> : null}
     </ProcessTypeFrame>
   );
 });

@@ -15,7 +15,7 @@ import ProcessMedicineSpecification from './specification/ProcessMedicineSpecifi
 import ProcessDeliverySpecification from './specification/ProcessDeliverySpecification';
 import ProcessVisitSpecification from './specification/ProcessVisitSpecification';
 
-const ProcessSpecification = observer(() => {
+const ProcessLog = observer(() => {
   const { AdminData, DeliveryData } = useStore();
 
   useEffect(() => {
@@ -42,4 +42,4 @@ const ProcessSpecification = observer(() => {
   );
 });
 
-export default ProcessSpecification;
+export default ProcessLog;
