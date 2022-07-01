@@ -48,8 +48,9 @@ export const BoardTitleAndFilterFrame = styled.div`
   background-color: #e5f7ef;
   overflow-y: overlay;
 `;
-export const BoardContentFrame = styled.div`
+export const DynamicBoardContentFrame = styled.div`
   flex-grow: 1;
   height: 0px;
   overflow-y: overlay;
 `;
+export const StaticBoardContentFrame = styled.div``;

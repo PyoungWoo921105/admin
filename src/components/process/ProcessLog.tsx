@@ -7,16 +7,15 @@ import { observer } from 'mobx-react';
 
 import { useStore } from 'data/useStore';
 
-import { ProcessSpecificationFrame } from 'styles/components/process/ProcessSpecification';
+import { ProcessLogFrame } from 'styles/components/process/ProcessLog';
 
 import { GetCurrentTime } from 'libraries/time/GetCurrentTime';
-import ProcessTreatmentSpecification from './specification/ProcessTreatmentSpecification';
+import ProcessTreatmentLog from './log/ProcessTreatmentLog';
 import ProcessMedicineSpecification from './specification/ProcessMedicineSpecification';
 import ProcessDeliverySpecification from './specification/ProcessDeliverySpecification';
-import ProcessVisitSpecification from './specification/ProcessVisitSpecification';
 
 const ProcessLog = observer(() => {
-  const { AdminData, DeliveryData } = useStore();
+  const { AdminData } = useStore();
 
   useEffect(() => {
     GetCurrentTime();
@@ -24,21 +23,15 @@ const ProcessLog = observer(() => {
   }, []);
 
   return (
-    <ProcessSpecificationFrame>
+    <ProcessLogFrame>
       {AdminData.ProcessPopUpData?.Step === 'TREATMENT' ? (
-        <ProcessTreatmentSpecification />
+        <ProcessTreatmentLog />
       ) : AdminData.ProcessPopUpData?.Step === 'MEDICINE' ? (
         <ProcessMedicineSpecification />
       ) : AdminData.ProcessPopUpData?.Step === 'DELIVERY' ? (
-        DeliveryData.DeliveryDetailsData?.deliveryInfo?.deliveryType === '빠른 배달' ||
-        DeliveryData.DeliveryDetailsData?.deliveryInfo?.deliveryType === '오늘 배송' ||
-        DeliveryData.DeliveryDetailsData?.deliveryInfo?.deliveryType === '택배' ? (
-          <ProcessDeliverySpecification />
-        ) : DeliveryData.DeliveryDetailsData?.deliveryInfo?.deliveryType === '방문' ? (
-          <ProcessVisitSpecification />
-        ) : null
+        <ProcessDeliverySpecification />
       ) : null}
-    </ProcessSpecificationFrame>
+    </ProcessLogFrame>
   );
 });
 

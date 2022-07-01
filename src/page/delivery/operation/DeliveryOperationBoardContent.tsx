@@ -9,7 +9,7 @@ import { observer } from 'mobx-react';
 import { useStore } from 'data/useStore';
 
 /* 컨텐츠 */
-import { BoardContentFrame } from 'styles/components/common/Frame';
+import { DynamicBoardContentFrame } from 'styles/components/common/Frame';
 /*  */
 /* 레코드 */
 import {
@@ -71,7 +71,7 @@ const BoardContent = observer(() => {
   ];
 
   return (
-    <BoardContentFrame>
+    <DynamicBoardContentFrame>
       {/* 내용 */}
       <RecordFrame>
         <RecordComponent>
@@ -404,7 +404,7 @@ const BoardContent = observer(() => {
           {/*  */}
         </NavigationComponent>
       </NavigationFrame>
-    </BoardContentFrame>
+    </DynamicBoardContentFrame>
   );
 });
 

@@ -9,7 +9,7 @@ import { observer } from 'mobx-react';
 import { useStore } from 'data/useStore';
 
 /* 컨텐츠 */
-import { BoardContentFrame } from 'styles/components/common/Frame';
+import { DynamicBoardContentFrame } from 'styles/components/common/Frame';
 /*  */
 /* 레코드 */
 import {
@@ -90,7 +90,7 @@ const BoardContent = observer(() => {
   };
 
   return (
-    <BoardContentFrame>
+    <DynamicBoardContentFrame>
       {/* 내용 */}
       <RecordFrame>
         <RecordComponent>
@@ -232,7 +232,7 @@ const BoardContent = observer(() => {
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentTextComponent>
-                          {element?.isSendNoti ? 'O' : '-'}
+                          {!element?.isSendNoti ? '-' : 'O'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
                     </DataElementContentFrame>
@@ -243,7 +243,7 @@ const BoardContent = observer(() => {
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentTextComponent>
-                          {element?.isAgreeNoti ? 'O' : '-'}
+                          {!element?.isAgreeNoti ? '-' : 'O'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
                     </DataElementContentFrame>
@@ -265,7 +265,7 @@ const BoardContent = observer(() => {
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentTextComponent>
-                          {element?.registeredHospital?.code ? 'O' : '-'}
+                          {!element?.registeredHospital?.code ? '-' : 'O'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
                     </DataElementContentFrame>
@@ -421,7 +421,7 @@ const BoardContent = observer(() => {
           {/*  */}
         </NavigationComponent>
       </NavigationFrame>
-    </BoardContentFrame>
+    </DynamicBoardContentFrame>
   );
 });
 

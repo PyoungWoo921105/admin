@@ -17,9 +17,9 @@ const ProcessType = observer(() => {
   const { AdminData } = useStore();
   return (
     <ProcessTypeFrame
-      maxWidth="930px"
-      width="930px"
-      minWidth="930px"
+      maxWidth="1000px"
+      width="1000px"
+      minWidth="1000px"
       maxHeight="710px"
       height="710px"
       minHeight="710px"

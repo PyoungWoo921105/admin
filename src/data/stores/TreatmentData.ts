@@ -130,6 +130,7 @@ export interface TreatmentHandlingHistoryListDataType {
     status: string;
     hasPrescription: boolean;
     isPrescriptionChanged: boolean;
+    allowsGenericSubstitution: boolean;
     extraDocsCount: number;
     payAmount: number;
     handledBy: string;

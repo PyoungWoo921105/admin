@@ -10,6 +10,7 @@ export const ProcessSpecificationFrame = styled.div<CustomProps>`
   display: flex;
   flex-direction: column;
   height: 100%;
+  overflow-x: overlay;
   overflow-y: overlay;
   padding: 0px 0px 0px 0px;
   width: 100%;
