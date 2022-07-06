@@ -80,7 +80,6 @@ const ProcessMedicineSpecification = observer(() => {
               minWidth="300px"
             >
               <ProcessSpecificationElementContentTextFrame>
-                7{' '}
                 <ProcessSpecificationElementContentTextComponent color="#000000">
                   {MedicineData?.MedicineDetailsData?.pharmacy?.name || '-'}
                 </ProcessSpecificationElementContentTextComponent>
