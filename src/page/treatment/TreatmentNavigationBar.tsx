@@ -26,7 +26,10 @@ const TreatmentNavigationBar = observer(() => {
   const history = useHistory();
   const location = useLocation<LocalState>();
 
-  const NavigationBarTitleList = [{ name: '진료 내역', path: '/treatment/history' }];
+  const NavigationBarTitleList = [
+    { name: '진료 내역', path: '/treatment/history' },
+    { name: '주치의 인증 내역', path: '/treatment/certification' },
+  ];
 
   const onClickNavigationBarMenu = (props: { key: number }) => {
     const { key } = props;

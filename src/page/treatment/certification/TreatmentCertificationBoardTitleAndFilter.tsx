@@ -90,7 +90,7 @@ import { GetCurrentTime } from 'libraries/time/GetCurrentTime';
 import { ConvertCommaNumber } from 'libraries/conversion/ConvertCommaNumber';
 /*  */
 const BoardTitleAndFilter = observer(() => {
-  const { CommonData, AdminData, HospitalData } = useStore();
+  const { CommonData, AdminData, TreatmentData } = useStore();
   /* 필터 스위치 */
   const onChangeFilterSwitchFlag = () => {
     AdminData.setFilterSwitchFlag(!AdminData.FilterSwitchFlag);
@@ -123,8 +123,8 @@ const BoardTitleAndFilter = observer(() => {
     GetAdminVisitCheckListFunction();
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
     GetAdminVisitCheckSummaryFunction();
-    HospitalData.setPageNavigator(1);
-    HospitalData.setParagraphNavigator(1);
+    TreatmentData.setPageNavigator(1);
+    TreatmentData.setParagraphNavigator(1);
   };
   /* 필터 */
   /* 시작 조회 기간 */
@@ -212,7 +212,7 @@ const BoardTitleAndFilter = observer(() => {
       patientPhoneNum: null || PatientPhoneNumber,
 
       size: 20,
-      from: HospitalData.PageNavigator ? (HospitalData.PageNavigator - 1) * 20 : undefined,
+      from: TreatmentData.PageNavigator ? (TreatmentData.PageNavigator - 1) * 20 : undefined,
 
       sortOption: 'created-date-time',
       sortType: 'desc',
@@ -239,7 +239,7 @@ const BoardTitleAndFilter = observer(() => {
     CertificationState,
     CommonData,
     EndInquiryPeriod,
-    HospitalData.PageNavigator,
+    TreatmentData.PageNavigator,
     HospitalName,
     PatientName,
     PatientPhoneNumber,
@@ -306,7 +306,7 @@ const BoardTitleAndFilter = observer(() => {
       patientName: null || PatientName,
       patientPhoneNum: null || PatientPhoneNumber,
 
-      /* page: null || HospitalData.PageNavigator - 1, */
+      /* page: null || TreatmentData.PageNavigator - 1, */
     };
     const response = await GetAdminVisitCheckListExport(GetAdminVisitCheckListExportData);
     CommonData.setLoadingFlag(false);
@@ -343,7 +343,7 @@ const BoardTitleAndFilter = observer(() => {
     GetAdminVisitCheckSummaryFunction();
     GetCurrentTime();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [HospitalData.PageNavigator]);
+  }, [TreatmentData.PageNavigator]);
 
   /* 통계 */
   const StatisticsList = ['전체', '회원가입 대기', '인증 요청', '인증 완료', '인증 거절'];
@@ -659,33 +659,33 @@ const BoardTitleAndFilter = observer(() => {
                           }
                         >
                           {element === '전체'
-                            ? HospitalData.AdminVisitCheckListData?.count?.total
+                            ? TreatmentData.AdminVisitCheckListData?.count?.total
                               ? `${ConvertCommaNumber(
-                                  HospitalData.AdminVisitCheckListData?.count?.total.toString()
+                                  TreatmentData.AdminVisitCheckListData?.count?.total.toString()
                                 )}건`
                               : '0건'
                             : element === '회원가입 대기'
-                            ? HospitalData.AdminVisitCheckSummaryData?.count?.waitRegister
+                            ? TreatmentData.AdminVisitCheckSummaryData?.count?.waitRegister
                               ? `${ConvertCommaNumber(
-                                  HospitalData.AdminVisitCheckSummaryData?.count?.waitRegister.toString()
+                                  TreatmentData.AdminVisitCheckSummaryData?.count?.waitRegister.toString()
                                 )}건`
                               : '0건'
                             : element === '인증 요청'
-                            ? HospitalData.AdminVisitCheckSummaryData?.count?.inChecking
+                            ? TreatmentData.AdminVisitCheckSummaryData?.count?.inChecking
                               ? `${ConvertCommaNumber(
-                                  HospitalData.AdminVisitCheckSummaryData?.count?.inChecking.toString()
+                                  TreatmentData.AdminVisitCheckSummaryData?.count?.inChecking.toString()
                                 )}건`
                               : '0건'
                             : element === '인증 완료'
-                            ? HospitalData.AdminVisitCheckSummaryData?.count?.completed
+                            ? TreatmentData.AdminVisitCheckSummaryData?.count?.completed
                               ? `${ConvertCommaNumber(
-                                  HospitalData.AdminVisitCheckSummaryData?.count?.completed.toString()
+                                  TreatmentData.AdminVisitCheckSummaryData?.count?.completed.toString()
                                 )}건`
                               : '0건'
                             : element === '인증 거절'
-                            ? HospitalData.AdminVisitCheckSummaryData?.count?.declined
+                            ? TreatmentData.AdminVisitCheckSummaryData?.count?.declined
                               ? `${ConvertCommaNumber(
-                                  HospitalData.AdminVisitCheckSummaryData?.count?.declined.toString()
+                                  TreatmentData.AdminVisitCheckSummaryData?.count?.declined.toString()
                                 )}건`
                               : '0건'
                             : '0건'}

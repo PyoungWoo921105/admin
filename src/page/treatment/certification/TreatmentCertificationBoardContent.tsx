@@ -51,7 +51,7 @@ import { ConvertContactNumber } from 'libraries/conversion/ConvertContactNumber'
 import { AllowNumber } from 'libraries/constraint/AllowNumber';
 /*  */
 const BoardContent = observer(() => {
-  const { HospitalData } = useStore();
+  const { TreatmentData } = useStore();
   /* 카테고리 */
   const CategoryList = [
     { title: '인증 코드', width: 120 },
@@ -97,7 +97,7 @@ const BoardContent = observer(() => {
           <DataFrame>
             <DataComponent>
               {/*  */}
-              {HospitalData.AdminVisitCheckListData?.visitCheckList?.map(element => (
+              {TreatmentData.AdminVisitCheckListData?.visitCheckList?.map(element => (
                 <DataElementFrame key={element?.code}>
                   <DataElementComponent>
                     {/*  */}
@@ -240,8 +240,8 @@ const BoardContent = observer(() => {
               backgroundColor="#14C276"
               cursor="pointer"
               onClick={() => {
-                /* HospitalData.setPageNavigator(1); */
-                HospitalData.setParagraphNavigator(1);
+                /* TreatmentData.setPageNavigator(1); */
+                TreatmentData.setParagraphNavigator(1);
               }}
             >
               <NavigationTextComponent color="#ffffff">{'<<'}</NavigationTextComponent>
@@ -250,8 +250,8 @@ const BoardContent = observer(() => {
               backgroundColor="#14C276"
               cursor="pointer"
               onClick={() =>
-                HospitalData.ParagraphNavigator > 1
-                  ? HospitalData.setParagraphNavigator(HospitalData.ParagraphNavigator - 1)
+                TreatmentData.ParagraphNavigator > 1
+                  ? TreatmentData.setParagraphNavigator(TreatmentData.ParagraphNavigator - 1)
                   : {}
               }
             >
@@ -260,44 +260,45 @@ const BoardContent = observer(() => {
           </NavigationButtonFrame>
           <NavigationButtonFrame>
             {[...Array(10)].map((element, key) =>
-              (HospitalData.ParagraphNavigator - 1) * 10 + key + 1 <=
-              (HospitalData.AdminVisitCheckListData?.count &&
-              HospitalData.AdminVisitCheckListData?.count.total
-                ? Math.floor((Number(HospitalData.AdminVisitCheckListData?.count.total) - 1) / 20) +
-                  1
+              (TreatmentData.ParagraphNavigator - 1) * 10 + key + 1 <=
+              (TreatmentData.AdminVisitCheckListData?.count &&
+              TreatmentData.AdminVisitCheckListData?.count.total
+                ? Math.floor(
+                    (Number(TreatmentData.AdminVisitCheckListData?.count.total) - 1) / 20
+                  ) + 1
                 : 1) ? (
                 <NavigationPageButtonComponent
                   // eslint-disable-next-line react/no-array-index-key
                   key={key}
                   cursor="pointer"
                   backgroundColor={
-                    (HospitalData.ParagraphNavigator - 1) * 10 + key + 1 ===
-                    HospitalData.PageNavigator
+                    (TreatmentData.ParagraphNavigator - 1) * 10 + key + 1 ===
+                    TreatmentData.PageNavigator
                       ? '#3C9E3F'
                       : '#14C276'
                   }
                   onClick={() => {
-                    HospitalData.setPageNavigator(
-                      (HospitalData.ParagraphNavigator - 1) * 10 + key + 1
+                    TreatmentData.setPageNavigator(
+                      (TreatmentData.ParagraphNavigator - 1) * 10 + key + 1
                     );
                   }}
                 >
                   <NavigationTextComponent
                     color={
-                      (HospitalData.ParagraphNavigator - 1) * 10 + key + 1 ===
-                      HospitalData.PageNavigator
+                      (TreatmentData.ParagraphNavigator - 1) * 10 + key + 1 ===
+                      TreatmentData.PageNavigator
                         ? '#ffffff'
                         : '#ffffff'
                     }
                   >
-                    {(HospitalData.ParagraphNavigator - 1) * 10 + key + 1 <=
-                    (HospitalData.AdminVisitCheckListData?.count &&
-                    HospitalData.AdminVisitCheckListData?.count.total
+                    {(TreatmentData.ParagraphNavigator - 1) * 10 + key + 1 <=
+                    (TreatmentData.AdminVisitCheckListData?.count &&
+                    TreatmentData.AdminVisitCheckListData?.count.total
                       ? Math.floor(
-                          (Number(HospitalData.AdminVisitCheckListData?.count.total) - 1) / 20
+                          (Number(TreatmentData.AdminVisitCheckListData?.count.total) - 1) / 20
                         ) + 1
                       : 1)
-                      ? (HospitalData.ParagraphNavigator - 1) * 10 + key + 1
+                      ? (TreatmentData.ParagraphNavigator - 1) * 10 + key + 1
                       : ''}
                   </NavigationTextComponent>
                 </NavigationPageButtonComponent>
@@ -312,12 +313,12 @@ const BoardContent = observer(() => {
               backgroundColor="#14C276"
               cursor="pointer"
               onClick={() =>
-                HospitalData.AdminVisitCheckListData?.count &&
-                HospitalData.AdminVisitCheckListData?.count.total
+                TreatmentData.AdminVisitCheckListData?.count &&
+                TreatmentData.AdminVisitCheckListData?.count.total
                   ? Math.ceil(
-                      (Number(HospitalData.AdminVisitCheckListData?.count.total) - 1) / 20 / 10
-                    ) > HospitalData.ParagraphNavigator
-                    ? HospitalData.setParagraphNavigator(HospitalData.ParagraphNavigator + 1)
+                      (Number(TreatmentData.AdminVisitCheckListData?.count.total) - 1) / 20 / 10
+                    ) > TreatmentData.ParagraphNavigator
+                    ? TreatmentData.setParagraphNavigator(TreatmentData.ParagraphNavigator + 1)
                     : {}
                   : {}
               }
@@ -328,20 +329,20 @@ const BoardContent = observer(() => {
               backgroundColor="#14C276"
               cursor="pointer"
               onClick={() => {
-                /* HospitalData.setPageNavigator(
-                  HospitalData.AdminVisitCheckListData?.count &&
-                    HospitalData.AdminVisitCheckListData?.count.total
-                    ? Math.floor((Number(HospitalData.AdminVisitCheckListData?.count.total) - 1) / 20) +
+                /* TreatmentData.setPageNavigator(
+                  TreatmentData.AdminVisitCheckListData?.count &&
+                    TreatmentData.AdminVisitCheckListData?.count.total
+                    ? Math.floor((Number(TreatmentData.AdminVisitCheckListData?.count.total) - 1) / 20) +
                         1
                     : 1
                 ); */
-                HospitalData.setParagraphNavigator(
+                TreatmentData.setParagraphNavigator(
                   parseInt(
                     (
-                      ((HospitalData.AdminVisitCheckListData?.count &&
-                      HospitalData.AdminVisitCheckListData?.count.total
+                      ((TreatmentData.AdminVisitCheckListData?.count &&
+                      TreatmentData.AdminVisitCheckListData?.count.total
                         ? Math.floor(
-                            (Number(HospitalData.AdminVisitCheckListData?.count.total) - 1) / 20
+                            (Number(TreatmentData.AdminVisitCheckListData?.count.total) - 1) / 20
                           )
                         : 0) +
                         1 -

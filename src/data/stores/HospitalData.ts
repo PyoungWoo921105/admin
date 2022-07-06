@@ -48,51 +48,6 @@ export interface HospitalListDataType {
   }[];
 }
 /*  */
-/* 주치의 인증 내역 */
-/* GET /admin/visitCheck/list */
-export interface AdminVisitCheckListDataType {
-  count: {
-    total: number;
-  };
-  visitCheckList: {
-    code: string;
-    createdAt: string;
-    status: string;
-    patient: {
-      code: string;
-      name: string;
-    };
-    hospital: {
-      code: string;
-      name: string;
-    };
-    declineReason: string;
-    receptionInfo: {
-      name: string;
-      rrn: string;
-      phoneNum: string;
-      jibunAddress: string;
-      roadAddress: string;
-      detailedAddress: string;
-      location: {
-        latitude: number;
-        longitude: number;
-      };
-    };
-  }[];
-}
-/* 주치의 인증 내역 */
-/* GET /admin/visitCheck/summary */
-export interface AdminVisitCheckSummaryDataType {
-  count: {
-    total: number;
-    declined: number;
-    waitRegister: number;
-    inChecking: number;
-    completed: number;
-  };
-}
-/*  */
 /* 병원 추가 요청 내역 */
 /* GET /admin/hospitalAddition/details/list */
 export interface AdminHospitalAdditionDetailsListDataType {
@@ -168,14 +123,6 @@ export interface HospitalDataType {
   HospitalListData: null | HospitalListDataType;
   setHospitalListData: (e: null | HospitalListDataType) => void;
   /*  */
-  /* 주치의 인증 내역 */
-  /* GET /admin/visitCheck/list */
-  AdminVisitCheckListData: null | AdminVisitCheckListDataType;
-  setAdminVisitCheckListData: (e: null | AdminVisitCheckListDataType) => void;
-  /* GET /admin/visitCheck/summary */
-  AdminVisitCheckSummaryData: null | AdminVisitCheckSummaryDataType;
-  setAdminVisitCheckSummaryData: (e: null | AdminVisitCheckSummaryDataType) => void;
-  /*  */
   /* 병원 추가 요청 내역 */
   /* GET /admin/hospitalAddition/details/list */
   AdminHospitalAdditionDetailsListData: null | AdminHospitalAdditionDetailsListDataType;
@@ -206,18 +153,6 @@ const HospitalData = observable<HospitalDataType>({
   HospitalListData: null,
   setHospitalListData(e: null | HospitalListDataType) {
     this.HospitalListData = e;
-  },
-  /*  */
-  /* 주치의 인증 내역 */
-  /* GET /admin/visitCheck/list */
-  AdminVisitCheckListData: null,
-  setAdminVisitCheckListData(e: null | AdminVisitCheckListDataType) {
-    this.AdminVisitCheckListData = e;
-  },
-  /* GET /admin/visitCheck/summary */
-  AdminVisitCheckSummaryData: null,
-  setAdminVisitCheckSummaryData(e: null | AdminVisitCheckSummaryDataType) {
-    this.AdminVisitCheckSummaryData = e;
   },
   /*  */
   /* 병원 추가 요청 내역 */
