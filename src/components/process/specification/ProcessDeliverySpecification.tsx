@@ -1098,7 +1098,7 @@ const ProcessDeliverySpecification = observer(() => {
             >
               <ProcessSpecificationElementContentTextFrame>
                 <ProcessSpecificationElementContentTextComponent color="#000000">
-                  {DeliveryData?.DeliveryDetailsData?.logisticsInfo?.deliveryRequest || '-'}
+                  {DeliveryData?.DeliveryDetailsData?.deliveryInfo?.deliveryRequest || '-'}
                 </ProcessSpecificationElementContentTextComponent>
               </ProcessSpecificationElementContentTextFrame>
             </ProcessSpecificationElementContentComponent>
@@ -1442,6 +1442,63 @@ const ProcessDeliverySpecification = observer(() => {
                 >
                   <ProcessSpecificationElementTitleTextFrame>
                     <ProcessSpecificationElementTitleTextComponent color="#FFFFFF">
+                      약국 이름
+                    </ProcessSpecificationElementTitleTextComponent>
+                  </ProcessSpecificationElementTitleTextFrame>
+                </ProcessSpecificationElementTitleComponent>
+                <ProcessSpecificationElementContentComponent
+                  flexDirection="column"
+                  justifyContent="center"
+                  width="100%"
+                  minWidth="300px"
+                >
+                  <ProcessSpecificationElementContentTextFrame>
+                    <ProcessSpecificationElementContentTextComponent color="#000000">
+                      {DeliveryData?.DeliveryDetailsData?.medicineInfo?.pharmacy?.name || '-'}
+                    </ProcessSpecificationElementContentTextComponent>
+                  </ProcessSpecificationElementContentTextFrame>
+                </ProcessSpecificationElementContentComponent>
+              </ProcessSpecificationElementComponent>
+              {/*  */}
+              <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+                <ProcessSpecificationElementTitleComponent
+                  flexDirection="column"
+                  justifyContent="center"
+                  minWidth="150px"
+                  backgroundColor="#14c276"
+                >
+                  <ProcessSpecificationElementTitleTextFrame>
+                    <ProcessSpecificationElementTitleTextComponent color="#FFFFFF">
+                      약국 번호
+                    </ProcessSpecificationElementTitleTextComponent>
+                  </ProcessSpecificationElementTitleTextFrame>
+                </ProcessSpecificationElementTitleComponent>
+                <ProcessSpecificationElementContentComponent
+                  flexDirection="column"
+                  justifyContent="center"
+                  width="100%"
+                  minWidth="300px"
+                >
+                  <ProcessSpecificationElementContentTextFrame>
+                    <ProcessSpecificationElementContentTextComponent color="#000000">
+                      {DeliveryData?.DeliveryDetailsData?.medicineInfo?.pharmacy?.code || '-'}
+                    </ProcessSpecificationElementContentTextComponent>
+                  </ProcessSpecificationElementContentTextFrame>
+                </ProcessSpecificationElementContentComponent>
+              </ProcessSpecificationElementComponent>
+            </ProcessSpecificationElementFrame>
+            {/*  */}
+            <ProcessSpecificationElementFrame width="100%" border="none">
+              {/*  */}
+              <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+                <ProcessSpecificationElementTitleComponent
+                  flexDirection="column"
+                  justifyContent="center"
+                  minWidth="150px"
+                  backgroundColor="#14c276"
+                >
+                  <ProcessSpecificationElementTitleTextFrame>
+                    <ProcessSpecificationElementTitleTextComponent color="#FFFFFF">
                       기본 요금
                     </ProcessSpecificationElementTitleTextComponent>
                   </ProcessSpecificationElementTitleTextFrame>
@@ -1537,6 +1594,37 @@ const ProcessDeliverySpecification = observer(() => {
                             }).toString()
                           )}원`
                         : '-'}
+                    </ProcessSpecificationElementContentTextComponent>
+                  </ProcessSpecificationElementContentTextFrame>
+                </ProcessSpecificationElementContentComponent>
+              </ProcessSpecificationElementComponent>
+              {/*  */}
+            </ProcessSpecificationElementFrame>
+            {/*  */}
+            <ProcessSpecificationElementFrame width="100%" border="none">
+              {/*  */}
+              <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+                <ProcessSpecificationElementTitleComponent
+                  flexDirection="column"
+                  justifyContent="center"
+                  minWidth="150px"
+                  backgroundColor="#14c276"
+                >
+                  <ProcessSpecificationElementTitleTextFrame>
+                    <ProcessSpecificationElementTitleTextComponent color="#FFFFFF">
+                      배달 요청 사항
+                    </ProcessSpecificationElementTitleTextComponent>
+                  </ProcessSpecificationElementTitleTextFrame>
+                </ProcessSpecificationElementTitleComponent>
+                <ProcessSpecificationElementContentComponent
+                  flexDirection="column"
+                  justifyContent="center"
+                  width="100%"
+                  minWidth="300px"
+                >
+                  <ProcessSpecificationElementContentTextFrame>
+                    <ProcessSpecificationElementContentTextComponent color="#000000">
+                      {DeliveryData?.DeliveryDetailsData?.logisticsInfo?.deliveryRequest || '-'}
                     </ProcessSpecificationElementContentTextComponent>
                   </ProcessSpecificationElementContentTextFrame>
                 </ProcessSpecificationElementContentComponent>
@@ -1728,6 +1816,63 @@ const ProcessDeliverySpecification = observer(() => {
                 >
                   <ProcessSpecificationElementTitleTextFrame>
                     <ProcessSpecificationElementTitleTextComponent color="#FFFFFF">
+                      약국 이름
+                    </ProcessSpecificationElementTitleTextComponent>
+                  </ProcessSpecificationElementTitleTextFrame>
+                </ProcessSpecificationElementTitleComponent>
+                <ProcessSpecificationElementContentComponent
+                  flexDirection="column"
+                  justifyContent="center"
+                  width="100%"
+                  minWidth="300px"
+                >
+                  <ProcessSpecificationElementContentTextFrame>
+                    <ProcessSpecificationElementContentTextComponent color="#000000">
+                      {DeliveryData?.DeliveryDetailsData?.medicineInfo?.pharmacy?.name || '-'}
+                    </ProcessSpecificationElementContentTextComponent>
+                  </ProcessSpecificationElementContentTextFrame>
+                </ProcessSpecificationElementContentComponent>
+              </ProcessSpecificationElementComponent>
+              {/*  */}
+              <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+                <ProcessSpecificationElementTitleComponent
+                  flexDirection="column"
+                  justifyContent="center"
+                  minWidth="150px"
+                  backgroundColor="#14c276"
+                >
+                  <ProcessSpecificationElementTitleTextFrame>
+                    <ProcessSpecificationElementTitleTextComponent color="#FFFFFF">
+                      약국 번호
+                    </ProcessSpecificationElementTitleTextComponent>
+                  </ProcessSpecificationElementTitleTextFrame>
+                </ProcessSpecificationElementTitleComponent>
+                <ProcessSpecificationElementContentComponent
+                  flexDirection="column"
+                  justifyContent="center"
+                  width="100%"
+                  minWidth="300px"
+                >
+                  <ProcessSpecificationElementContentTextFrame>
+                    <ProcessSpecificationElementContentTextComponent color="#000000">
+                      {DeliveryData?.DeliveryDetailsData?.medicineInfo?.pharmacy?.code || '-'}
+                    </ProcessSpecificationElementContentTextComponent>
+                  </ProcessSpecificationElementContentTextFrame>
+                </ProcessSpecificationElementContentComponent>
+              </ProcessSpecificationElementComponent>
+            </ProcessSpecificationElementFrame>
+            {/*  */}
+            <ProcessSpecificationElementFrame width="100%" border="none">
+              {/*  */}
+              <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+                <ProcessSpecificationElementTitleComponent
+                  flexDirection="column"
+                  justifyContent="center"
+                  minWidth="150px"
+                  backgroundColor="#14c276"
+                >
+                  <ProcessSpecificationElementTitleTextFrame>
+                    <ProcessSpecificationElementTitleTextComponent color="#FFFFFF">
                       기본 요금
                     </ProcessSpecificationElementTitleTextComponent>
                   </ProcessSpecificationElementTitleTextFrame>
@@ -1817,6 +1962,37 @@ const ProcessDeliverySpecification = observer(() => {
                             }).toString()
                           )}원`
                         : '-'}
+                    </ProcessSpecificationElementContentTextComponent>
+                  </ProcessSpecificationElementContentTextFrame>
+                </ProcessSpecificationElementContentComponent>
+              </ProcessSpecificationElementComponent>
+              {/*  */}
+            </ProcessSpecificationElementFrame>
+            {/*  */}
+            <ProcessSpecificationElementFrame width="100%" border="none">
+              {/*  */}
+              <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+                <ProcessSpecificationElementTitleComponent
+                  flexDirection="column"
+                  justifyContent="center"
+                  minWidth="150px"
+                  backgroundColor="#14c276"
+                >
+                  <ProcessSpecificationElementTitleTextFrame>
+                    <ProcessSpecificationElementTitleTextComponent color="#FFFFFF">
+                      배달 요청 사항
+                    </ProcessSpecificationElementTitleTextComponent>
+                  </ProcessSpecificationElementTitleTextFrame>
+                </ProcessSpecificationElementTitleComponent>
+                <ProcessSpecificationElementContentComponent
+                  flexDirection="column"
+                  justifyContent="center"
+                  width="100%"
+                  minWidth="300px"
+                >
+                  <ProcessSpecificationElementContentTextFrame>
+                    <ProcessSpecificationElementContentTextComponent color="#000000">
+                      {DeliveryData?.DeliveryDetailsData?.logisticsInfo?.deliveryRequest || '-'}
                     </ProcessSpecificationElementContentTextComponent>
                   </ProcessSpecificationElementContentTextFrame>
                 </ProcessSpecificationElementContentComponent>

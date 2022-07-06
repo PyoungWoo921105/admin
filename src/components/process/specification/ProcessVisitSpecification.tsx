@@ -699,7 +699,7 @@ const ProcessVisitSpecification = observer(() => {
             >
               <ProcessSpecificationElementContentTextFrame>
                 <ProcessSpecificationElementContentTextComponent color="#000000">
-                  {DeliveryData?.DeliveryDetailsData?.logisticsInfo?.deliveryRequest || '-'}
+                  {DeliveryData?.DeliveryDetailsData?.deliveryInfo?.deliveryRequest || '-'}
                 </ProcessSpecificationElementContentTextComponent>
               </ProcessSpecificationElementContentTextFrame>
             </ProcessSpecificationElementContentComponent>
