@@ -62,8 +62,8 @@ import { GetCurrentTime } from 'libraries/time/GetCurrentTime';
 import { ConvertDate } from 'libraries/conversion/ConvertDate';
 import { ConvertCommaNumber } from 'libraries/conversion/ConvertCommaNumber';
 
-const ProcessTreatmentLog = observer(() => {
-  const { TreatmentData } = useStore();
+const ProcessMedicineLog = observer(() => {
+  const { MedicineData } = useStore();
 
   useEffect(() => {
     GetCurrentTime();
@@ -74,10 +74,8 @@ const ProcessTreatmentLog = observer(() => {
   const CategoryList = [
     { title: '분류', width: 90 },
     { title: '상태', width: 120 },
-    { title: '처방전 유무', width: 80 },
-    { title: '처방전 변경 여부', width: 105 },
-    { title: '기타 서류 개수', width: 95 },
-    { title: '대체 조제 사전 동의 여부', width: 145 },
+    { title: '약국 이름', width: 120 },
+    { title: '약 수령 방법', width: 105 },
     { title: '결제 금액', width: 90 },
     { title: '처리자 이름', width: 120 },
     { title: '일시', width: 140 },
@@ -121,7 +119,7 @@ const ProcessTreatmentLog = observer(() => {
               <DataFrame>
                 <DataComponent>
                   {/*  */}
-                  {TreatmentData.TreatmentHandlingHistoryListData?.historyList?.map(element => (
+                  {MedicineData.MedicineHandlingHistoryListData?.historyList?.map(element => (
                     <DataElementFrame key={element?.handledDateTime}>
                       <DataElementComponent
                         backgroundColor={
@@ -129,10 +127,12 @@ const ProcessTreatmentLog = observer(() => {
                             ? 'rgb(226,240,217)'
                             : element?.hanldingType === '상태 변경'
                             ? 'rgb(255,255,255)'
-                            : element?.hanldingType === '파일 변경'
+                            : element?.hanldingType === '수령 방법 변경'
                             ? 'rgb(222,235,247)'
                             : element?.hanldingType === '결제 변경'
                             ? 'rgb(251,229,214)'
+                            : element?.hanldingType === '약국 변경'
+                            ? 'rgb(252,242,204)'
                             : element?.hanldingType === '재결제'
                             ? 'rgb(251,229,214)'
                             : 'transparent'
@@ -159,61 +159,65 @@ const ProcessTreatmentLog = observer(() => {
                               backgroundColor={
                                 element?.status === '접수 대기'
                                   ? 'rgb(0,0,0)'
-                                  : element?.status === '진료 대기'
-                                  ? 'rgb(0,0,0)'
-                                  : element?.status === '진료 중'
-                                  ? 'rgb(0,0,0)'
-                                  : element?.status === '결제 대기'
-                                  ? 'rgb(0,0,0)'
-                                  : element?.status === '처방 및 수납'
+                                  : element?.status === '조제 중'
                                   ? 'rgb(0,0,0)'
                                   : element?.status === '결제 실패'
                                   ? 'rgb(192,0,0)'
+                                  : element?.status === '조제 거절'
+                                  ? 'rgb(192,0,0)'
+                                  : element?.status === '조제 시스템 취소'
+                                  ? 'rgb(192,0,0)'
                                   : element?.status === '완료'
                                   ? 'rgb(112,173,71)'
-                                  : element?.status === '진료 취소'
-                                  ? 'rgb(192,0,0)'
-                                  : element?.status === '진료 거절'
-                                  ? 'rgb(192,0,0)'
-                                  : element?.status === '진료 시스템 취소'
-                                  ? 'rgb(192,0,0)'
                                   : /*  */
                                   element?.status === '거절'
                                   ? 'rgb(192,0,0)'
                                   : element?.status === '취소'
                                   ? 'rgb(192,0,0)'
-                                  : element?.status === '진료 완료'
+                                  : element?.status === '조제 완료'
                                   ? 'rgb(112,173,71)'
+                                  : element?.status === '조제 취소'
+                                  ? 'rgb(192,0,0)'
+                                  : element?.status === '방문 대기'
+                                  ? '#000000'
+                                  : element?.status === '배차 대기'
+                                  ? '#000000'
+                                  : element?.status === '배차 완료'
+                                  ? '#000000'
+                                  : element?.status === '픽업 완료'
+                                  ? '#000000'
                                   : /*  */
                                     'transparent'
                               }
                               color={
                                 element?.status === '접수 대기'
                                   ? '#ffffff'
-                                  : element?.status === '진료 대기'
-                                  ? '#ffffff'
-                                  : element?.status === '진료 중'
-                                  ? '#ffffff'
-                                  : element?.status === '결제 대기'
-                                  ? '#ffffff'
-                                  : element?.status === '처방 및 수납'
+                                  : element?.status === '조제 중'
                                   ? '#ffffff'
                                   : element?.status === '결제 실패'
                                   ? '#ffffff'
+                                  : element?.status === '조제 거절'
+                                  ? '#ffffff'
+                                  : element?.status === '조제 시스템 취소'
+                                  ? '#ffffff'
                                   : element?.status === '완료'
-                                  ? '#ffffff'
-                                  : element?.status === '진료 취소'
-                                  ? '#ffffff'
-                                  : element?.status === '진료 거절'
-                                  ? '#ffffff'
-                                  : element?.status === '진료 시스템 취소'
                                   ? '#ffffff'
                                   : /*  */
                                   element?.status === '거절'
                                   ? '#ffffff'
                                   : element?.status === '취소'
                                   ? '#ffffff'
-                                  : element?.status === '진료 완료'
+                                  : element?.status === '조제 완료'
+                                  ? '#ffffff'
+                                  : element?.status === '조제 취소'
+                                  ? '#ffffff'
+                                  : element?.status === '방문 대기'
+                                  ? '#ffffff'
+                                  : element?.status === '배차 대기'
+                                  ? '#ffffff'
+                                  : element?.status === '배차 완료'
+                                  ? '#ffffff'
+                                  : element?.status === '픽업 완료'
                                   ? '#ffffff'
                                   : /*  */
                                     '#000000'
@@ -230,7 +234,7 @@ const ProcessTreatmentLog = observer(() => {
                         >
                           <DataElementContentComponent justifyContent="center">
                             <DataElementContentTextComponent>
-                              {!element?.hasPrescription ? '-' : 'O'}
+                              {element?.pharmacyName || '-'}
                             </DataElementContentTextComponent>
                           </DataElementContentComponent>
                         </DataElementContentFrame>
@@ -241,7 +245,7 @@ const ProcessTreatmentLog = observer(() => {
                         >
                           <DataElementContentComponent justifyContent="center">
                             <DataElementContentTextComponent>
-                              {!element?.isPrescriptionChanged ? '-' : 'O'}
+                              {element?.recieveWay || '-'}
                             </DataElementContentTextComponent>
                           </DataElementContentComponent>
                         </DataElementContentFrame>
@@ -249,28 +253,6 @@ const ProcessTreatmentLog = observer(() => {
                         <DataElementContentFrame
                           minWidth={`${CategoryList[4].width}px`}
                           width={`${CategoryList[4].width}%`}
-                        >
-                          <DataElementContentComponent justifyContent="center">
-                            <DataElementContentTextComponent>
-                              {element?.extraDocsCount ? `${element?.extraDocsCount}개` : '-'}
-                            </DataElementContentTextComponent>
-                          </DataElementContentComponent>
-                        </DataElementContentFrame>
-                        {/*  */}
-                        <DataElementContentFrame
-                          minWidth={`${CategoryList[5].width}px`}
-                          width={`${CategoryList[5].width}%`}
-                        >
-                          <DataElementContentComponent justifyContent="center">
-                            <DataElementContentTextComponent>
-                              {!element?.allowsGenericSubstitution ? '-' : 'O'}
-                            </DataElementContentTextComponent>
-                          </DataElementContentComponent>
-                        </DataElementContentFrame>
-                        {/*  */}
-                        <DataElementContentFrame
-                          minWidth={`${CategoryList[6].width}px`}
-                          width={`${CategoryList[6].width}%`}
                         >
                           <DataElementContentComponent justifyContent="center">
                             <DataElementContentTextComponent>
@@ -282,8 +264,8 @@ const ProcessTreatmentLog = observer(() => {
                         </DataElementContentFrame>
                         {/*  */}
                         <DataElementContentFrame
-                          minWidth={`${CategoryList[7].width}px`}
-                          width={`${CategoryList[7].width}%`}
+                          minWidth={`${CategoryList[5].width}px`}
+                          width={`${CategoryList[5].width}%`}
                         >
                           <DataElementContentComponent justifyContent="center">
                             <DataElementContentTextComponent>
@@ -307,8 +289,8 @@ const ProcessTreatmentLog = observer(() => {
                         </DataElementContentFrame>
                         {/*  */}
                         <DataElementContentFrame
-                          minWidth={`${CategoryList[8].width}px`}
-                          width={`${CategoryList[8].width}%`}
+                          minWidth={`${CategoryList[6].width}px`}
+                          width={`${CategoryList[6].width}%`}
                         >
                           <DataElementContentComponent justifyContent="center">
                             <DataElementContentTextComponent>
@@ -339,7 +321,7 @@ const ProcessTreatmentLog = observer(() => {
                   backgroundColor="#14C276"
                   cursor="pointer"
                   onClick={() => {
-                    TreatmentData.setParagraphNavigator(1);
+                    MedicineData.setParagraphNavigator(1);
                   }}
                 >
                   <NavigationTextComponent color="#ffffff">{'<<'}</NavigationTextComponent>
@@ -348,8 +330,8 @@ const ProcessTreatmentLog = observer(() => {
                   backgroundColor="#14C276"
                   cursor="pointer"
                   onClick={() =>
-                    TreatmentData.ParagraphNavigator > 1
-                      ? TreatmentData.setParagraphNavigator(TreatmentData.ParagraphNavigator - 1)
+                    MedicineData.ParagraphNavigator > 1
+                      ? MedicineData.setParagraphNavigator(MedicineData.ParagraphNavigator - 1)
                       : {}
                   }
                 >
@@ -358,10 +340,10 @@ const ProcessTreatmentLog = observer(() => {
               </NavigationButtonFrame>
               <NavigationButtonFrame>
                 {[...Array(10)].map((element, key) =>
-                  (TreatmentData.ParagraphNavigator - 1) * 10 + key + 1 <=
-                  (TreatmentData.TreatmentListData?.count &&
-                  TreatmentData.TreatmentListData?.count.total
-                    ? Math.floor((Number(TreatmentData.TreatmentListData?.count.total) - 1) / 20) +
+                  (MedicineData.ParagraphNavigator - 1) * 10 + key + 1 <=
+                  (MedicineData.MedicineListData?.count &&
+                  MedicineData.MedicineListData?.count.total
+                    ? Math.floor((Number(MedicineData.MedicineListData?.count.total) - 1) / 20) +
                       1
                     : 1) ? (
                     <NavigationPageButtonComponent
@@ -369,33 +351,33 @@ const ProcessTreatmentLog = observer(() => {
                       key={key}
                       cursor="pointer"
                       backgroundColor={
-                        (TreatmentData.ParagraphNavigator - 1) * 10 + key + 1 ===
-                        TreatmentData.PageNavigator
+                        (MedicineData.ParagraphNavigator - 1) * 10 + key + 1 ===
+                        MedicineData.PageNavigator
                           ? '#3C9E3F'
                           : '#14C276'
                       }
                       onClick={() => {
-                        TreatmentData.setPageNavigator(
-                          (TreatmentData.ParagraphNavigator - 1) * 10 + key + 1
+                        MedicineData.setPageNavigator(
+                          (MedicineData.ParagraphNavigator - 1) * 10 + key + 1
                         );
                       }}
                     >
                       <NavigationTextComponent
                         color={
-                          (TreatmentData.ParagraphNavigator - 1) * 10 + key + 1 ===
-                          TreatmentData.PageNavigator
+                          (MedicineData.ParagraphNavigator - 1) * 10 + key + 1 ===
+                          MedicineData.PageNavigator
                             ? '#ffffff'
                             : '#ffffff'
                         }
                       >
-                        {(TreatmentData.ParagraphNavigator - 1) * 10 + key + 1 <=
-                        (TreatmentData.TreatmentListData?.count &&
-                        TreatmentData.TreatmentListData?.count.total
+                        {(MedicineData.ParagraphNavigator - 1) * 10 + key + 1 <=
+                        (MedicineData.MedicineListData?.count &&
+                        MedicineData.MedicineListData?.count.total
                           ? Math.floor(
-                              (Number(TreatmentData.TreatmentListData?.count.total) - 1) / 20
+                              (Number(MedicineData.MedicineListData?.count.total) - 1) / 20
                             ) + 1
                           : 1)
-                          ? (TreatmentData.ParagraphNavigator - 1) * 10 + key + 1
+                          ? (MedicineData.ParagraphNavigator - 1) * 10 + key + 1
                           : ''}
                       </NavigationTextComponent>
                     </NavigationPageButtonComponent>
@@ -410,12 +392,12 @@ const ProcessTreatmentLog = observer(() => {
                   backgroundColor="#14C276"
                   cursor="pointer"
                   onClick={() =>
-                    TreatmentData.TreatmentListData?.count &&
-                    TreatmentData.TreatmentListData?.count.total
+                    MedicineData.MedicineListData?.count &&
+                    MedicineData.MedicineListData?.count.total
                       ? Math.ceil(
-                          (Number(TreatmentData.TreatmentListData?.count.total) - 1) / 20 / 10
-                        ) > TreatmentData.ParagraphNavigator
-                        ? TreatmentData.setParagraphNavigator(TreatmentData.ParagraphNavigator + 1)
+                          (Number(MedicineData.MedicineListData?.count.total) - 1) / 20 / 10
+                        ) > MedicineData.ParagraphNavigator
+                        ? MedicineData.setParagraphNavigator(MedicineData.ParagraphNavigator + 1)
                         : {}
                       : {}
                   }
@@ -426,13 +408,13 @@ const ProcessTreatmentLog = observer(() => {
                   backgroundColor="#14C276"
                   cursor="pointer"
                   onClick={() => {
-                    TreatmentData.setParagraphNavigator(
+                    MedicineData.setParagraphNavigator(
                       parseInt(
                         (
-                          ((TreatmentData.TreatmentListData?.count &&
-                          TreatmentData.TreatmentListData?.count.total
+                          ((MedicineData.MedicineListData?.count &&
+                          MedicineData.MedicineListData?.count.total
                             ? Math.floor(
-                                (Number(TreatmentData.TreatmentListData?.count.total) - 1) / 20
+                                (Number(MedicineData.MedicineListData?.count.total) - 1) / 20
                               )
                             : 0) +
                             1 -
@@ -458,4 +440,4 @@ const ProcessTreatmentLog = observer(() => {
   );
 });
 
-export default ProcessTreatmentLog;
+export default ProcessMedicineLog;

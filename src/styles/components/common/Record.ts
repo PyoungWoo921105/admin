@@ -123,8 +123,9 @@ export const DataElementFrame = styled.div<CustomProps>`
   min-height: 40px;
   width: 100%;
 `;
-export const DataElementComponent = styled.div`
+export const DataElementComponent = styled.div<CustomProps>`
   align-items: center;
+  background-color: ${props => (props.backgroundColor ? props.backgroundColor : '')};
   display: flex;
   flex-direction: row;
   height: 100%;
@@ -132,7 +133,7 @@ export const DataElementComponent = styled.div`
 `;
 export const DataElementContentFrame = styled.div<CustomProps>`
   align-items: center;
-  background-color: #ffffff;
+  background-color: transparent;
   border: 1px solid #e5f7ef;
   box-sizing: border-box;
   display: flex;

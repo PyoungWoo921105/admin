@@ -186,6 +186,8 @@ export interface DeliveryHandlingHistoryListDataType {
     address: string;
     detailedAddress: string;
     riderName: string;
+    logisticsName: string;
+    reason: string;
     handledBy: string;
     handledDateTime: string;
   }[];

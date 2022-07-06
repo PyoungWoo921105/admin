@@ -11,8 +11,8 @@ import { ProcessLogFrame } from 'styles/components/process/ProcessLog';
 
 import { GetCurrentTime } from 'libraries/time/GetCurrentTime';
 import ProcessTreatmentLog from './log/ProcessTreatmentLog';
-import ProcessMedicineSpecification from './specification/ProcessMedicineSpecification';
-import ProcessDeliverySpecification from './specification/ProcessDeliverySpecification';
+import ProcessMedicineLog from './log/ProcessMedicineLog';
+import ProcessDeliveryLog from './log/ProcessDeliveryLog';
 
 const ProcessLog = observer(() => {
   const { AdminData } = useStore();
@@ -27,9 +27,9 @@ const ProcessLog = observer(() => {
       {AdminData.ProcessPopUpData?.Step === 'TREATMENT' ? (
         <ProcessTreatmentLog />
       ) : AdminData.ProcessPopUpData?.Step === 'MEDICINE' ? (
-        <ProcessMedicineSpecification />
+        <ProcessMedicineLog />
       ) : AdminData.ProcessPopUpData?.Step === 'DELIVERY' ? (
-        <ProcessDeliverySpecification />
+        <ProcessDeliveryLog />
       ) : null}
     </ProcessLogFrame>
   );
