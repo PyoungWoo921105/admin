@@ -52,7 +52,7 @@ import { ConvertContactNumber } from 'libraries/conversion/ConvertContactNumber'
 import { AllowNumber } from 'libraries/constraint/AllowNumber';
 /*  */
 const BoardContent = observer(() => {
-  const { DeliveryData } = useStore();
+  const { RiderData } = useStore();
   /* 카테고리 */
   const CategoryList = [
     { title: '약국 코드', width: 120 },
@@ -113,7 +113,7 @@ const BoardContent = observer(() => {
           <DataFrame>
             <DataComponent>
               {/*  */}
-              {DeliveryData.DeliveryLinkListData?.linkList?.map(element => (
+              {RiderData.RiderLinkListData?.linkList?.map(element => (
                 <DataElementFrame key={element?.pharmacy?.code}>
                   <DataElementComponent>
                     {/*  */}
@@ -285,8 +285,8 @@ const BoardContent = observer(() => {
               backgroundColor="#14C276"
               cursor="pointer"
               onClick={() => {
-                /* DeliveryData.setPageNavigator(1); */
-                DeliveryData.setParagraphNavigator(1);
+                /* RiderData.setPageNavigator(1); */
+                RiderData.setParagraphNavigator(1);
               }}
             >
               <NavigationTextComponent color="#ffffff">{'<<'}</NavigationTextComponent>
@@ -295,8 +295,8 @@ const BoardContent = observer(() => {
               backgroundColor="#14C276"
               cursor="pointer"
               onClick={() =>
-                DeliveryData.ParagraphNavigator > 1
-                  ? DeliveryData.setParagraphNavigator(DeliveryData.ParagraphNavigator - 1)
+                RiderData.ParagraphNavigator > 1
+                  ? RiderData.setParagraphNavigator(RiderData.ParagraphNavigator - 1)
                   : {}
               }
             >
@@ -305,43 +305,35 @@ const BoardContent = observer(() => {
           </NavigationButtonFrame>
           <NavigationButtonFrame>
             {[...Array(10)].map((element, key) =>
-              (DeliveryData.ParagraphNavigator - 1) * 10 + key + 1 <=
-              (DeliveryData.DeliveryLinkListData?.count &&
-              DeliveryData.DeliveryLinkListData?.count.total
-                ? Math.floor((Number(DeliveryData.DeliveryLinkListData?.count.total) - 1) / 20) + 1
+              (RiderData.ParagraphNavigator - 1) * 10 + key + 1 <=
+              (RiderData.RiderLinkListData?.count && RiderData.RiderLinkListData?.count.total
+                ? Math.floor((Number(RiderData.RiderLinkListData?.count.total) - 1) / 20) + 1
                 : 1) ? (
                 <NavigationPageButtonComponent
                   // eslint-disable-next-line react/no-array-index-key
                   key={key}
                   cursor="pointer"
                   backgroundColor={
-                    (DeliveryData.ParagraphNavigator - 1) * 10 + key + 1 ===
-                    DeliveryData.PageNavigator
+                    (RiderData.ParagraphNavigator - 1) * 10 + key + 1 === RiderData.PageNavigator
                       ? '#3C9E3F'
                       : '#14C276'
                   }
                   onClick={() => {
-                    DeliveryData.setPageNavigator(
-                      (DeliveryData.ParagraphNavigator - 1) * 10 + key + 1
-                    );
+                    RiderData.setPageNavigator((RiderData.ParagraphNavigator - 1) * 10 + key + 1);
                   }}
                 >
                   <NavigationTextComponent
                     color={
-                      (DeliveryData.ParagraphNavigator - 1) * 10 + key + 1 ===
-                      DeliveryData.PageNavigator
+                      (RiderData.ParagraphNavigator - 1) * 10 + key + 1 === RiderData.PageNavigator
                         ? '#ffffff'
                         : '#ffffff'
                     }
                   >
-                    {(DeliveryData.ParagraphNavigator - 1) * 10 + key + 1 <=
-                    (DeliveryData.DeliveryLinkListData?.count &&
-                    DeliveryData.DeliveryLinkListData?.count.total
-                      ? Math.floor(
-                          (Number(DeliveryData.DeliveryLinkListData?.count.total) - 1) / 20
-                        ) + 1
+                    {(RiderData.ParagraphNavigator - 1) * 10 + key + 1 <=
+                    (RiderData.RiderLinkListData?.count && RiderData.RiderLinkListData?.count.total
+                      ? Math.floor((Number(RiderData.RiderLinkListData?.count.total) - 1) / 20) + 1
                       : 1)
-                      ? (DeliveryData.ParagraphNavigator - 1) * 10 + key + 1
+                      ? (RiderData.ParagraphNavigator - 1) * 10 + key + 1
                       : ''}
                   </NavigationTextComponent>
                 </NavigationPageButtonComponent>
@@ -356,12 +348,10 @@ const BoardContent = observer(() => {
               backgroundColor="#14C276"
               cursor="pointer"
               onClick={() =>
-                DeliveryData.DeliveryLinkListData?.count &&
-                DeliveryData.DeliveryLinkListData?.count.total
-                  ? Math.ceil(
-                      (Number(DeliveryData.DeliveryLinkListData?.count.total) - 1) / 20 / 10
-                    ) > DeliveryData.ParagraphNavigator
-                    ? DeliveryData.setParagraphNavigator(DeliveryData.ParagraphNavigator + 1)
+                RiderData.RiderLinkListData?.count && RiderData.RiderLinkListData?.count.total
+                  ? Math.ceil((Number(RiderData.RiderLinkListData?.count.total) - 1) / 20 / 10) >
+                    RiderData.ParagraphNavigator
+                    ? RiderData.setParagraphNavigator(RiderData.ParagraphNavigator + 1)
                     : {}
                   : {}
               }
@@ -372,21 +362,19 @@ const BoardContent = observer(() => {
               backgroundColor="#14C276"
               cursor="pointer"
               onClick={() => {
-                /* DeliveryData.setPageNavigator(
-                  DeliveryData.DeliveryLinkListData?.count &&
-                    DeliveryData.DeliveryLinkListData?.count.total
-                    ? Math.floor((Number(DeliveryData.DeliveryLinkListData?.count.total) - 1) / 20) +
+                /* RiderData.setPageNavigator(
+                  RiderData.RiderLinkListData?.count &&
+                    RiderData.RiderLinkListData?.count.total
+                    ? Math.floor((Number(RiderData.RiderLinkListData?.count.total) - 1) / 20) +
                         1
                     : 1
                 ); */
-                DeliveryData.setParagraphNavigator(
+                RiderData.setParagraphNavigator(
                   parseInt(
                     (
-                      ((DeliveryData.DeliveryLinkListData?.count &&
-                      DeliveryData.DeliveryLinkListData?.count.total
-                        ? Math.floor(
-                            (Number(DeliveryData.DeliveryLinkListData?.count.total) - 1) / 20
-                          )
+                      ((RiderData.RiderLinkListData?.count &&
+                      RiderData.RiderLinkListData?.count.total
+                        ? Math.floor((Number(RiderData.RiderLinkListData?.count.total) - 1) / 20)
                         : 0) +
                         1 -
                         1) /

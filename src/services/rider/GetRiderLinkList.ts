@@ -5,13 +5,13 @@
 import { customAxios } from 'services/common/CreateAxios';
 import { useStore } from 'data/useStore';
 
-export const GetDeliveryLinkList = async (data: any) => {
-  const { DeliveryData } = useStore();
+export const GetRiderLinkList = async (data: any) => {
+  const { RiderData } = useStore();
   try {
     /* axios.get(url[, config]) */
-    const response = await customAxios.get('/delivery/link/list', { params: data });
+    const response = await customAxios.get('/rider/link/list', { params: data });
     const MetaResponse = response as { status: number; data: any };
-    DeliveryData.setDeliveryLinkListData(MetaResponse.data);
+    RiderData.setRiderLinkListData(MetaResponse.data);
     return MetaResponse;
   } catch (error: unknown) {
     const MetaError = error as { response: { status: number; data: { message: string } } };
@@ -19,4 +19,4 @@ export const GetDeliveryLinkList = async (data: any) => {
   }
 };
 
-export default GetDeliveryLinkList;
+export default GetRiderLinkList;

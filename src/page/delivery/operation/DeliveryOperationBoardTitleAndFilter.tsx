@@ -76,7 +76,7 @@ import {
 
 import ExitIcon from 'assets/icons/ExitIcon.svg';
 
-import { GetDeliveryLinkList } from 'services/delivery/GetDeliveryLinkList';
+import { GetRiderLinkList } from 'services/rider/GetRiderLinkList';
 
 import { GetRiderListBasic } from 'services/rider/GetRiderListBasic';
 
@@ -86,7 +86,7 @@ import { GetCurrentTime } from 'libraries/time/GetCurrentTime';
 import { ConvertCommaNumber } from 'libraries/conversion/ConvertCommaNumber';
 /*  */
 const BoardTitleAndFilter = observer(() => {
-  const { CommonData, AdminData, DeliveryData, RiderData } = useStore();
+  const { CommonData, AdminData, RiderData } = useStore();
   /* 필터 스위치 */
   const onChangeFilterSwitchFlag = () => {
     AdminData.setFilterSwitchFlag(!AdminData.FilterSwitchFlag);
@@ -109,11 +109,11 @@ const BoardTitleAndFilter = observer(() => {
   /* 검색 */
   const onClickSearch = () => {
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    GetDeliveryLinkListFunction();
+    GetRiderLinkListFunction();
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
     GetRiderListBasicFunction();
-    DeliveryData.setPageNavigator(1);
-    DeliveryData.setParagraphNavigator(1);
+    RiderData.setPageNavigator(1);
+    RiderData.setParagraphNavigator(1);
   };
   /* 필터 */
   /* 약국 코드 */
@@ -171,9 +171,9 @@ const BoardTitleAndFilter = observer(() => {
   };
 
   /* 데이터 */
-  const GetDeliveryLinkListFunction = useCallback(async () => {
+  const GetRiderLinkListFunction = useCallback(async () => {
     CommonData.setLoadingFlag(true);
-    const GetDeliveryLinkListData = {
+    const GetRiderLinkListData = {
       pharmacyCode: null || PharmacyCode,
       pharmacyName: null || PharmacyName,
       pharmacyPhoneNum: null || PharmacyPhoneNumber,
@@ -181,9 +181,9 @@ const BoardTitleAndFilter = observer(() => {
       /* riderCode: null || DeliveryAgencyName[0].name === '전체' ? null : DeliveryAgencyName, */
       riderCode: null || DeliveryAgencyName[0].name === '전체' ? null : DeliveryAgencyName[0].code,
 
-      page: null || DeliveryData.PageNavigator - 1,
+      page: null || RiderData.PageNavigator - 1,
     };
-    const response = await GetDeliveryLinkList(GetDeliveryLinkListData);
+    const response = await GetRiderLinkList(GetRiderLinkListData);
     CommonData.setLoadingFlag(false);
     if (response.status === 200) {
       /*  */
@@ -204,7 +204,7 @@ const BoardTitleAndFilter = observer(() => {
   }, [
     CommonData,
     DeliveryAgencyName,
-    DeliveryData.PageNavigator,
+    RiderData.PageNavigator,
     PharmacyCode,
     PharmacyName,
     PharmacyPhoneNumber,
@@ -239,12 +239,12 @@ const BoardTitleAndFilter = observer(() => {
 
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    GetDeliveryLinkListFunction();
+    GetRiderLinkListFunction();
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
     GetRiderListBasicFunction();
     GetCurrentTime();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [DeliveryData.PageNavigator]);
+  }, [RiderData.PageNavigator]);
 
   /* 통계 */
   const StatisticsList = ['전체'];
@@ -490,9 +490,9 @@ const BoardTitleAndFilter = observer(() => {
                           color={element === '전체' ? '#000000' : '#000000'}
                         >
                           {element === '전체'
-                            ? DeliveryData.DeliveryLinkListData?.count?.total
+                            ? RiderData.RiderLinkListData?.count?.total
                               ? `${ConvertCommaNumber(
-                                  DeliveryData.DeliveryLinkListData?.count?.total.toString()
+                                  RiderData.RiderLinkListData?.count?.total.toString()
                                 )}건`
                               : '0건'
                             : '0건'}

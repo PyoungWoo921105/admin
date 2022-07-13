@@ -138,42 +138,6 @@ export interface DeliveryDetailsDataType {
     };
   };
 }
-/* 배달 운영 */
-/* GET /delivery/link/list */
-export interface DeliveryLinkListDataType {
-  count: {
-    total: number;
-  };
-  linkList: {
-    pharmacy: {
-      code: string;
-      name: string;
-      location: {
-        latitude: number;
-        longitude: number;
-      };
-      address: string;
-      phoneNum: string;
-    };
-    riders: {
-      quick: {
-        1: { code: string; name: string };
-        2: { code: string; name: string };
-        3: { code: string; name: string };
-      };
-      sameDayDelivery: {
-        1: { code: string; name: string };
-        2: { code: string; name: string };
-        3: { code: string; name: string };
-      };
-      parcel: {
-        1: { code: string; name: string };
-        2: { code: string; name: string };
-        3: { code: string; name: string };
-      };
-    };
-  }[];
-}
 /* 배달 동작 내역 */
 /* GET /delivery/handlingHistory/list */
 export interface DeliveryHandlingHistoryListDataType {
@@ -227,11 +191,6 @@ export interface DeliveryDataType {
   SocketDeliveryData: null | SocketDeliveryDataType;
   setSocketDeliveryData: (e: null | SocketDeliveryDataType) => void;
   /*  */
-  /* 배달 운영 */
-  /* GET /delivery/link/list */
-  DeliveryLinkListData: null | DeliveryLinkListDataType;
-  setDeliveryLinkListData: (e: null | DeliveryLinkListDataType) => void;
-  /*  */
 }
 
 const DeliveryData = observable<DeliveryDataType>({
@@ -268,13 +227,6 @@ const DeliveryData = observable<DeliveryDataType>({
   SocketDeliveryData: null,
   setSocketDeliveryData(e: null | SocketDeliveryDataType) {
     this.SocketDeliveryData = e;
-  },
-  /*  */
-  /* 배달 운영 */
-  /* GET /delivery/link/list */
-  DeliveryLinkListData: null,
-  setDeliveryLinkListData(e: null | DeliveryLinkListDataType) {
-    this.DeliveryLinkListData = e;
   },
   /*  */
 });
