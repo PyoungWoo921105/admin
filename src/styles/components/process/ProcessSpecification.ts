@@ -10,8 +10,8 @@ export const ProcessSpecificationFrame = styled.div<CustomProps>`
   display: flex;
   flex-direction: column;
   height: 100%;
-  overflow-x: overlay;
-  overflow-y: overlay;
+  overflow-x: auto;
+  overflow-y: auto;
   padding: 0px 0px 0px 0px;
   width: 100%;
 `;
@@ -40,7 +40,6 @@ export const ProcessSpecificationElementFrame = styled.div<CustomProps>`
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
-  height: 35px;
   min-height: 35px;
   width: ${props => (props.width ? props.width : '')};
 `;
@@ -52,7 +51,7 @@ export const ProcessSpecificationElementComponent = styled.div<CustomProps>`
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
-  height: 35px;
+  height: 100%;
   min-height: 35px;
   width: ${props => (props.width ? props.width : '')};
 `;
@@ -62,7 +61,7 @@ export const ProcessSpecificationElementTitleComponent = styled.div<CustomProps>
   border: ${props => (props.border ? props.border : '')};
   display: flex;
   flex-direction: ${props => (props.flexDirection ? props.flexDirection : '')};
-  height: 35px;
+  height: 100%;
   justify-content: ${props => (props.justifyContent ? props.justifyContent : '')};
   min-height: 35px;
   min-width: ${props => (props.minWidth ? props.minWidth : '')};
@@ -92,7 +91,6 @@ export const ProcessSpecificationElementContentComponent = styled.div<CustomProp
   border: ${props => (props.border ? props.border : '')};
   display: flex;
   flex-direction: ${props => (props.flexDirection ? props.flexDirection : '')};
-  height: 35px;
   justify-content: ${props => (props.justifyContent ? props.justifyContent : '')};
   min-height: 35px;
   min-width: ${props => (props.minWidth ? props.minWidth : '')};
@@ -115,8 +113,9 @@ export const ProcessSpecificationElementContentTextComponent = styled.span<Custo
   font-size: 11px;
   font-style: normal;
   font-weight: normal;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  line-height: 35px;
+  overflow: ${props => (props.overflow ? props.overflow : 'hidden')};
+  text-overflow: ${props => (props.textOverflow ? props.textOverflow : 'ellipsis')};
+  white-space: ${props => (props.whiteSpace ? props.whiteSpace : 'nowrap')};
 `;
 /*  */

@@ -183,9 +183,7 @@ const LogInPage = observer(() => {
           <LogInBottomComponent>
             <LogInBottomButtonFrame margin="0px 0px 5px 0px">
               <LogInBottomButtonComponent
-                backgroundColor={
-                  AdminData.LogInValidateFlag ? 'rgb(0, 178, 100)' : 'rgb(224, 224, 224);'
-                }
+                backgroundColor={AdminData.LogInValidateFlag ? 'rgb(0, 178, 100)' : '#E3E3E3;'}
                 onClick={onClickLogInButton}
               >
                 로그인하기

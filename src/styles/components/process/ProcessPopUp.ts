@@ -194,6 +194,6 @@ export const ProcessPopUpBottomButtonRightComponent = styled.button<CustomProps>
   width: 100%;
 `; */
 export const ProcessPopUpBorderComponent = styled.div`
-  border-bottom: 1px solid rgb(224, 224, 224);
+  border-bottom: 1px solid #e3e3e3;
   margin: 0px 15px;
 `;

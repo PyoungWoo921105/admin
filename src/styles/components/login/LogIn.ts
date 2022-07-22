@@ -110,7 +110,7 @@ export const LogInMiddleContentInputFrame = styled.div<CustomProps>`
   width: 100%;
 `;
 export const LogInMiddleContentInputComponent = styled.input<CustomProps>`
-  border: 1px solid rgb(224, 224, 224);
+  border: 1px solid #e3e3e3;
   border-radius: 4px;
   box-sizing: border-box;
   height: 50px;

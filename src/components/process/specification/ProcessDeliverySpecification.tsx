@@ -62,7 +62,7 @@ const ProcessDeliverySpecification = observer(() => {
         {/*  */}
         <ProcessSpecificationElementFrame width="100%" border="none">
           {/*  */}
-          <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+          <ProcessSpecificationElementComponent border="1px solid #3c9e3f" width="100%">
             <ProcessSpecificationElementTitleComponent
               flexDirection="column"
               justifyContent="center"
@@ -89,7 +89,7 @@ const ProcessDeliverySpecification = observer(() => {
             </ProcessSpecificationElementContentComponent>
           </ProcessSpecificationElementComponent>
           {/*  */}
-          <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+          <ProcessSpecificationElementComponent border="1px solid #3c9e3f" width="100%">
             <ProcessSpecificationElementTitleComponent
               flexDirection="column"
               justifyContent="center"
@@ -130,7 +130,7 @@ const ProcessDeliverySpecification = observer(() => {
         {/*  */}
         <ProcessSpecificationElementFrame width="100%" border="none">
           {/*  */}
-          <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+          <ProcessSpecificationElementComponent border="1px solid #3c9e3f" width="100%">
             <ProcessSpecificationElementTitleComponent
               flexDirection="column"
               justifyContent="center"
@@ -167,7 +167,7 @@ const ProcessDeliverySpecification = observer(() => {
             </ProcessSpecificationElementContentComponent>
           </ProcessSpecificationElementComponent>
           {/*  */}
-          <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+          <ProcessSpecificationElementComponent border="1px solid #3c9e3f" width="100%">
             <ProcessSpecificationElementTitleComponent
               flexDirection="column"
               justifyContent="center"
@@ -227,7 +227,7 @@ const ProcessDeliverySpecification = observer(() => {
         {/*  */}
         <ProcessSpecificationElementFrame width="100%" border="none">
           {/*  */}
-          <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+          <ProcessSpecificationElementComponent border="1px solid #3c9e3f" width="100%">
             <ProcessSpecificationElementTitleComponent
               flexDirection="column"
               justifyContent="center"
@@ -254,7 +254,7 @@ const ProcessDeliverySpecification = observer(() => {
             </ProcessSpecificationElementContentComponent>
           </ProcessSpecificationElementComponent>
           {/*  */}
-          <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+          <ProcessSpecificationElementComponent border="1px solid #3c9e3f" width="100%">
             <ProcessSpecificationElementTitleComponent
               flexDirection="column"
               justifyContent="center"
@@ -295,7 +295,7 @@ const ProcessDeliverySpecification = observer(() => {
         {/*  */}
         <ProcessSpecificationElementFrame width="100%" border="none">
           {/*  */}
-          <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+          <ProcessSpecificationElementComponent border="1px solid #3c9e3f" width="100%">
             <ProcessSpecificationElementTitleComponent
               flexDirection="column"
               justifyContent="center"
@@ -322,7 +322,7 @@ const ProcessDeliverySpecification = observer(() => {
             </ProcessSpecificationElementContentComponent>
           </ProcessSpecificationElementComponent>
           {/*  */}
-          <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+          <ProcessSpecificationElementComponent border="1px solid #3c9e3f" width="100%">
             <ProcessSpecificationElementTitleComponent
               flexDirection="column"
               justifyContent="center"
@@ -344,6 +344,36 @@ const ProcessDeliverySpecification = observer(() => {
               <ProcessSpecificationElementContentTextFrame>
                 <ProcessSpecificationElementContentTextComponent color="#000000">
                   {DeliveryData?.DeliveryDetailsData?.deliveryInfo?.patient?.relationType || '-'}
+                </ProcessSpecificationElementContentTextComponent>
+              </ProcessSpecificationElementContentTextFrame>
+            </ProcessSpecificationElementContentComponent>
+          </ProcessSpecificationElementComponent>
+          {/*  */}
+        </ProcessSpecificationElementFrame>
+        <ProcessSpecificationElementFrame width="100%" border="none">
+          {/*  */}
+          <ProcessSpecificationElementComponent border="1px solid #3c9e3f" width="100%">
+            <ProcessSpecificationElementTitleComponent
+              flexDirection="column"
+              justifyContent="center"
+              minWidth="150px"
+              backgroundColor="#14c276"
+            >
+              <ProcessSpecificationElementTitleTextFrame>
+                <ProcessSpecificationElementTitleTextComponent color="#FFFFFF">
+                  회원 요청 사항
+                </ProcessSpecificationElementTitleTextComponent>
+              </ProcessSpecificationElementTitleTextFrame>
+            </ProcessSpecificationElementTitleComponent>
+            <ProcessSpecificationElementContentComponent
+              flexDirection="column"
+              justifyContent="center"
+              width="100%"
+              minWidth="300px"
+            >
+              <ProcessSpecificationElementContentTextFrame>
+                <ProcessSpecificationElementContentTextComponent color="#000000">
+                  {DeliveryData?.DeliveryDetailsData?.deliveryInfo?.deliveryRequest || '-'}
                 </ProcessSpecificationElementContentTextComponent>
               </ProcessSpecificationElementContentTextFrame>
             </ProcessSpecificationElementContentComponent>
@@ -374,7 +404,7 @@ const ProcessDeliverySpecification = observer(() => {
         {/*  */}
         <ProcessSpecificationElementFrame width="100%" border="none">
           {/*  */}
-          <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+          <ProcessSpecificationElementComponent border="1px solid #3c9e3f" width="100%">
             <ProcessSpecificationElementTitleComponent
               flexDirection="column"
               justifyContent="center"
@@ -401,7 +431,7 @@ const ProcessDeliverySpecification = observer(() => {
             </ProcessSpecificationElementContentComponent>
           </ProcessSpecificationElementComponent>
           {/*  */}
-          <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+          <ProcessSpecificationElementComponent border="1px solid #3c9e3f" width="100%">
             <ProcessSpecificationElementTitleComponent
               flexDirection="column"
               justifyContent="center"
@@ -432,7 +462,7 @@ const ProcessDeliverySpecification = observer(() => {
         {/*  */}
         <ProcessSpecificationElementFrame width="100%" border="none">
           {/*  */}
-          <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+          <ProcessSpecificationElementComponent border="1px solid #3c9e3f" width="100%">
             <ProcessSpecificationElementTitleComponent
               flexDirection="column"
               justifyContent="center"
@@ -459,7 +489,7 @@ const ProcessDeliverySpecification = observer(() => {
             </ProcessSpecificationElementContentComponent>
           </ProcessSpecificationElementComponent>
           {/*  */}
-          <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+          <ProcessSpecificationElementComponent border="1px solid #3c9e3f" width="100%">
             <ProcessSpecificationElementTitleComponent
               flexDirection="column"
               justifyContent="center"
@@ -494,7 +524,7 @@ const ProcessDeliverySpecification = observer(() => {
         {/*  */}
         <ProcessSpecificationElementFrame width="100%" border="none">
           {/*  */}
-          <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+          <ProcessSpecificationElementComponent border="1px solid #3c9e3f" width="100%">
             <ProcessSpecificationElementTitleComponent
               flexDirection="column"
               justifyContent="center"
@@ -525,7 +555,7 @@ const ProcessDeliverySpecification = observer(() => {
         {/*  */}
         <ProcessSpecificationElementFrame width="100%" border="none">
           {/*  */}
-          <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+          <ProcessSpecificationElementComponent border="1px solid #3c9e3f" width="100%">
             <ProcessSpecificationElementTitleComponent
               flexDirection="column"
               justifyContent="center"
@@ -552,7 +582,7 @@ const ProcessDeliverySpecification = observer(() => {
             </ProcessSpecificationElementContentComponent>
           </ProcessSpecificationElementComponent>
           {/*  */}
-          <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+          <ProcessSpecificationElementComponent border="1px solid #3c9e3f" width="100%">
             <ProcessSpecificationElementTitleComponent
               flexDirection="column"
               justifyContent="center"
@@ -591,7 +621,7 @@ const ProcessDeliverySpecification = observer(() => {
         {/*  */}
         <ProcessSpecificationElementFrame width="100%" border="none">
           {/*  */}
-          <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+          <ProcessSpecificationElementComponent border="1px solid #3c9e3f" width="100%">
             <ProcessSpecificationElementTitleComponent
               flexDirection="column"
               justifyContent="center"
@@ -622,7 +652,7 @@ const ProcessDeliverySpecification = observer(() => {
             </ProcessSpecificationElementContentComponent>
           </ProcessSpecificationElementComponent>
           {/*  */}
-          <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+          <ProcessSpecificationElementComponent border="1px solid #3c9e3f" width="100%">
             <ProcessSpecificationElementTitleComponent
               flexDirection="column"
               justifyContent="center"
@@ -662,7 +692,7 @@ const ProcessDeliverySpecification = observer(() => {
         {/*  */}
         <ProcessSpecificationElementFrame width="100%" border="none">
           {/*  */}
-          <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+          <ProcessSpecificationElementComponent border="1px solid #3c9e3f" width="100%">
             <ProcessSpecificationElementTitleComponent
               flexDirection="column"
               justifyContent="center"
@@ -693,7 +723,7 @@ const ProcessDeliverySpecification = observer(() => {
             </ProcessSpecificationElementContentComponent>
           </ProcessSpecificationElementComponent>
           {/*  */}
-          <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+          <ProcessSpecificationElementComponent border="1px solid #3c9e3f" width="100%">
             <ProcessSpecificationElementTitleComponent
               flexDirection="column"
               justifyContent="center"
@@ -734,7 +764,7 @@ const ProcessDeliverySpecification = observer(() => {
         {/*  */}
         <ProcessSpecificationElementFrame width="100%" border="none">
           {/*  */}
-          <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+          <ProcessSpecificationElementComponent border="1px solid #3c9e3f" width="100%">
             <ProcessSpecificationElementTitleComponent
               flexDirection="column"
               justifyContent="center"
@@ -765,7 +795,7 @@ const ProcessDeliverySpecification = observer(() => {
             </ProcessSpecificationElementContentComponent>
           </ProcessSpecificationElementComponent>
           {/*  */}
-          <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+          <ProcessSpecificationElementComponent border="1px solid #3c9e3f" width="100%">
             <ProcessSpecificationElementTitleComponent
               flexDirection="column"
               justifyContent="center"
@@ -806,7 +836,7 @@ const ProcessDeliverySpecification = observer(() => {
         {/*  */}
         <ProcessSpecificationElementFrame width="100%" border="none">
           {/*  */}
-          <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+          <ProcessSpecificationElementComponent border="1px solid #3c9e3f" width="100%">
             <ProcessSpecificationElementTitleComponent
               flexDirection="column"
               justifyContent="center"
@@ -835,7 +865,7 @@ const ProcessDeliverySpecification = observer(() => {
             </ProcessSpecificationElementContentComponent>
           </ProcessSpecificationElementComponent>
           {/*  */}
-          <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+          <ProcessSpecificationElementComponent border="1px solid #3c9e3f" width="100%">
             <ProcessSpecificationElementTitleComponent
               flexDirection="column"
               justifyContent="center"
@@ -875,7 +905,7 @@ const ProcessDeliverySpecification = observer(() => {
         {/*  */}
         <ProcessSpecificationElementFrame width="100%" border="none">
           {/*  */}
-          <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+          <ProcessSpecificationElementComponent border="1px solid #3c9e3f" width="100%">
             <ProcessSpecificationElementTitleComponent
               flexDirection="column"
               justifyContent="center"
@@ -904,7 +934,7 @@ const ProcessDeliverySpecification = observer(() => {
             </ProcessSpecificationElementContentComponent>
           </ProcessSpecificationElementComponent>
           {/*  */}
-          <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+          <ProcessSpecificationElementComponent border="1px solid #3c9e3f" width="100%">
             <ProcessSpecificationElementTitleComponent
               flexDirection="column"
               justifyContent="center"
@@ -937,7 +967,7 @@ const ProcessDeliverySpecification = observer(() => {
         {/*  */}
         <ProcessSpecificationElementFrame width="100%" border="none">
           {/*  */}
-          <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+          <ProcessSpecificationElementComponent border="1px solid #3c9e3f" width="100%">
             <ProcessSpecificationElementTitleComponent
               flexDirection="column"
               justifyContent="center"
@@ -980,7 +1010,7 @@ const ProcessDeliverySpecification = observer(() => {
             </ProcessSpecificationElementContentComponent>
           </ProcessSpecificationElementComponent>
           {/*  */}
-          <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+          <ProcessSpecificationElementComponent border="1px solid #3c9e3f" width="100%">
             <ProcessSpecificationElementTitleComponent
               flexDirection="column"
               justifyContent="center"
@@ -1015,7 +1045,7 @@ const ProcessDeliverySpecification = observer(() => {
         {/*  */}
         <ProcessSpecificationElementFrame width="100%" border="none">
           {/*  */}
-          <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+          <ProcessSpecificationElementComponent border="1px solid #3c9e3f" width="100%">
             <ProcessSpecificationElementTitleComponent
               flexDirection="column"
               justifyContent="center"
@@ -1042,7 +1072,7 @@ const ProcessDeliverySpecification = observer(() => {
             </ProcessSpecificationElementContentComponent>
           </ProcessSpecificationElementComponent>
           {/*  */}
-          <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+          <ProcessSpecificationElementComponent border="1px solid #3c9e3f" width="100%">
             <ProcessSpecificationElementTitleComponent
               flexDirection="column"
               justifyContent="center"
@@ -1077,7 +1107,7 @@ const ProcessDeliverySpecification = observer(() => {
         {/*  */}
         <ProcessSpecificationElementFrame width="100%" border="none">
           {/*  */}
-          <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+          <ProcessSpecificationElementComponent border="1px solid #3c9e3f" width="100%">
             <ProcessSpecificationElementTitleComponent
               flexDirection="column"
               justifyContent="center"
@@ -1086,7 +1116,7 @@ const ProcessDeliverySpecification = observer(() => {
             >
               <ProcessSpecificationElementTitleTextFrame>
                 <ProcessSpecificationElementTitleTextComponent color="#FFFFFF">
-                  배달 메모
+                  배달 요청 사항
                 </ProcessSpecificationElementTitleTextComponent>
               </ProcessSpecificationElementTitleTextFrame>
             </ProcessSpecificationElementTitleComponent>
@@ -1097,8 +1127,11 @@ const ProcessDeliverySpecification = observer(() => {
               minWidth="300px"
             >
               <ProcessSpecificationElementContentTextFrame>
-                <ProcessSpecificationElementContentTextComponent color="#000000">
-                  {DeliveryData?.DeliveryDetailsData?.deliveryInfo?.deliveryRequest || '-'}
+                <ProcessSpecificationElementContentTextComponent
+                  color="#000000"
+                  whiteSpace="pre-line"
+                >
+                  {DeliveryData?.DeliveryDetailsData?.logisticsInfo?.deliveryRequest || '-'}
                 </ProcessSpecificationElementContentTextComponent>
               </ProcessSpecificationElementContentTextFrame>
             </ProcessSpecificationElementContentComponent>
@@ -1108,7 +1141,7 @@ const ProcessDeliverySpecification = observer(() => {
         {/*  */}
         <ProcessSpecificationElementFrame width="100%" border="none">
           {/*  */}
-          <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+          <ProcessSpecificationElementComponent border="1px solid #3c9e3f" width="100%">
             <ProcessSpecificationElementTitleComponent
               flexDirection="column"
               justifyContent="center"
@@ -1135,7 +1168,7 @@ const ProcessDeliverySpecification = observer(() => {
             </ProcessSpecificationElementContentComponent>
           </ProcessSpecificationElementComponent>
           {/*  */}
-          <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+          <ProcessSpecificationElementComponent border="1px solid #3c9e3f" width="100%">
             <ProcessSpecificationElementTitleComponent
               flexDirection="column"
               justifyContent="center"
@@ -1166,7 +1199,7 @@ const ProcessDeliverySpecification = observer(() => {
         {/*  */}
         <ProcessSpecificationElementFrame width="100%" border="none">
           {/*  */}
-          <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+          <ProcessSpecificationElementComponent border="1px solid #3c9e3f" width="100%">
             <ProcessSpecificationElementTitleComponent
               flexDirection="column"
               justifyContent="center"
@@ -1193,7 +1226,7 @@ const ProcessDeliverySpecification = observer(() => {
             </ProcessSpecificationElementContentComponent>
           </ProcessSpecificationElementComponent>
           {/*  */}
-          <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+          <ProcessSpecificationElementComponent border="1px solid #3c9e3f" width="100%">
             <ProcessSpecificationElementTitleComponent
               flexDirection="column"
               justifyContent="center"
@@ -1224,7 +1257,7 @@ const ProcessDeliverySpecification = observer(() => {
         {/*  */}
         <ProcessSpecificationElementFrame width="100%" border="none">
           {/*  */}
-          <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+          <ProcessSpecificationElementComponent border="1px solid #3c9e3f" width="100%">
             <ProcessSpecificationElementTitleComponent
               flexDirection="column"
               justifyContent="center"
@@ -1281,7 +1314,7 @@ const ProcessDeliverySpecification = observer(() => {
             {/*  */}
             <ProcessSpecificationElementFrame width="100%" border="none">
               {/*  */}
-              <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+              <ProcessSpecificationElementComponent border="1px solid #3c9e3f" width="100%">
                 <ProcessSpecificationElementTitleComponent
                   flexDirection="column"
                   justifyContent="center"
@@ -1312,7 +1345,7 @@ const ProcessDeliverySpecification = observer(() => {
             {/*  */}
             <ProcessSpecificationElementFrame width="100%" border="none">
               {/*  */}
-              <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+              <ProcessSpecificationElementComponent border="1px solid #3c9e3f" width="100%">
                 <ProcessSpecificationElementTitleComponent
                   flexDirection="column"
                   justifyContent="center"
@@ -1339,7 +1372,7 @@ const ProcessDeliverySpecification = observer(() => {
                 </ProcessSpecificationElementContentComponent>
               </ProcessSpecificationElementComponent>
               {/*  */}
-              <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+              <ProcessSpecificationElementComponent border="1px solid #3c9e3f" width="100%">
                 <ProcessSpecificationElementTitleComponent
                   flexDirection="column"
                   justifyContent="center"
@@ -1370,7 +1403,7 @@ const ProcessDeliverySpecification = observer(() => {
             {/*  */}
             <ProcessSpecificationElementFrame width="100%" border="none">
               {/*  */}
-              <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+              <ProcessSpecificationElementComponent border="1px solid #3c9e3f" width="100%">
                 <ProcessSpecificationElementTitleComponent
                   flexDirection="column"
                   justifyContent="center"
@@ -1399,7 +1432,7 @@ const ProcessDeliverySpecification = observer(() => {
                 </ProcessSpecificationElementContentComponent>
               </ProcessSpecificationElementComponent>
               {/*  */}
-              <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+              <ProcessSpecificationElementComponent border="1px solid #3c9e3f" width="100%">
                 <ProcessSpecificationElementTitleComponent
                   flexDirection="column"
                   justifyContent="center"
@@ -1433,7 +1466,7 @@ const ProcessDeliverySpecification = observer(() => {
             {/*  */}
             <ProcessSpecificationElementFrame width="100%" border="none">
               {/*  */}
-              <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+              <ProcessSpecificationElementComponent border="1px solid #3c9e3f" width="100%">
                 <ProcessSpecificationElementTitleComponent
                   flexDirection="column"
                   justifyContent="center"
@@ -1460,7 +1493,7 @@ const ProcessDeliverySpecification = observer(() => {
                 </ProcessSpecificationElementContentComponent>
               </ProcessSpecificationElementComponent>
               {/*  */}
-              <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+              <ProcessSpecificationElementComponent border="1px solid #3c9e3f" width="100%">
                 <ProcessSpecificationElementTitleComponent
                   flexDirection="column"
                   justifyContent="center"
@@ -1490,7 +1523,7 @@ const ProcessDeliverySpecification = observer(() => {
             {/*  */}
             <ProcessSpecificationElementFrame width="100%" border="none">
               {/*  */}
-              <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+              <ProcessSpecificationElementComponent border="1px solid #3c9e3f" width="100%">
                 <ProcessSpecificationElementTitleComponent
                   flexDirection="column"
                   justifyContent="center"
@@ -1521,7 +1554,7 @@ const ProcessDeliverySpecification = observer(() => {
                 </ProcessSpecificationElementContentComponent>
               </ProcessSpecificationElementComponent>
               {/*  */}
-              <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+              <ProcessSpecificationElementComponent border="1px solid #3c9e3f" width="100%">
                 <ProcessSpecificationElementTitleComponent
                   flexDirection="column"
                   justifyContent="center"
@@ -1556,7 +1589,7 @@ const ProcessDeliverySpecification = observer(() => {
             {/*  */}
             <ProcessSpecificationElementFrame width="100%" border="none">
               {/*  */}
-              <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+              <ProcessSpecificationElementComponent border="1px solid #3c9e3f" width="100%">
                 <ProcessSpecificationElementTitleComponent
                   flexDirection="column"
                   justifyContent="center"
@@ -1603,7 +1636,7 @@ const ProcessDeliverySpecification = observer(() => {
             {/*  */}
             <ProcessSpecificationElementFrame width="100%" border="none">
               {/*  */}
-              <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+              <ProcessSpecificationElementComponent border="1px solid #3c9e3f" width="100%">
                 <ProcessSpecificationElementTitleComponent
                   flexDirection="column"
                   justifyContent="center"
@@ -1623,7 +1656,10 @@ const ProcessDeliverySpecification = observer(() => {
                   minWidth="300px"
                 >
                   <ProcessSpecificationElementContentTextFrame>
-                    <ProcessSpecificationElementContentTextComponent color="#000000">
+                    <ProcessSpecificationElementContentTextComponent
+                      color="#000000"
+                      whiteSpace="pre-line"
+                    >
                       {DeliveryData?.DeliveryDetailsData?.logisticsInfo?.deliveryRequest || '-'}
                     </ProcessSpecificationElementContentTextComponent>
                   </ProcessSpecificationElementContentTextFrame>
@@ -1655,7 +1691,7 @@ const ProcessDeliverySpecification = observer(() => {
             {/*  */}
             <ProcessSpecificationElementFrame width="100%" border="none">
               {/*  */}
-              <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+              <ProcessSpecificationElementComponent border="1px solid #3c9e3f" width="100%">
                 <ProcessSpecificationElementTitleComponent
                   flexDirection="column"
                   justifyContent="center"
@@ -1686,7 +1722,7 @@ const ProcessDeliverySpecification = observer(() => {
             {/*  */}
             <ProcessSpecificationElementFrame width="100%" border="none">
               {/*  */}
-              <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+              <ProcessSpecificationElementComponent border="1px solid #3c9e3f" width="100%">
                 <ProcessSpecificationElementTitleComponent
                   flexDirection="column"
                   justifyContent="center"
@@ -1713,7 +1749,7 @@ const ProcessDeliverySpecification = observer(() => {
                 </ProcessSpecificationElementContentComponent>
               </ProcessSpecificationElementComponent>
               {/*  */}
-              <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+              <ProcessSpecificationElementComponent border="1px solid #3c9e3f" width="100%">
                 <ProcessSpecificationElementTitleComponent
                   flexDirection="column"
                   justifyContent="center"
@@ -1744,7 +1780,7 @@ const ProcessDeliverySpecification = observer(() => {
             {/*  */}
             <ProcessSpecificationElementFrame width="100%" border="none">
               {/*  */}
-              <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+              <ProcessSpecificationElementComponent border="1px solid #3c9e3f" width="100%">
                 <ProcessSpecificationElementTitleComponent
                   flexDirection="column"
                   justifyContent="center"
@@ -1773,7 +1809,7 @@ const ProcessDeliverySpecification = observer(() => {
                 </ProcessSpecificationElementContentComponent>
               </ProcessSpecificationElementComponent>
               {/*  */}
-              <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+              <ProcessSpecificationElementComponent border="1px solid #3c9e3f" width="100%">
                 <ProcessSpecificationElementTitleComponent
                   flexDirection="column"
                   justifyContent="center"
@@ -1807,7 +1843,7 @@ const ProcessDeliverySpecification = observer(() => {
             {/*  */}
             <ProcessSpecificationElementFrame width="100%" border="none">
               {/*  */}
-              <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+              <ProcessSpecificationElementComponent border="1px solid #3c9e3f" width="100%">
                 <ProcessSpecificationElementTitleComponent
                   flexDirection="column"
                   justifyContent="center"
@@ -1834,7 +1870,7 @@ const ProcessDeliverySpecification = observer(() => {
                 </ProcessSpecificationElementContentComponent>
               </ProcessSpecificationElementComponent>
               {/*  */}
-              <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+              <ProcessSpecificationElementComponent border="1px solid #3c9e3f" width="100%">
                 <ProcessSpecificationElementTitleComponent
                   flexDirection="column"
                   justifyContent="center"
@@ -1864,7 +1900,7 @@ const ProcessDeliverySpecification = observer(() => {
             {/*  */}
             <ProcessSpecificationElementFrame width="100%" border="none">
               {/*  */}
-              <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+              <ProcessSpecificationElementComponent border="1px solid #3c9e3f" width="100%">
                 <ProcessSpecificationElementTitleComponent
                   flexDirection="column"
                   justifyContent="center"
@@ -1895,7 +1931,7 @@ const ProcessDeliverySpecification = observer(() => {
                 </ProcessSpecificationElementContentComponent>
               </ProcessSpecificationElementComponent>
               {/*  */}
-              <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+              <ProcessSpecificationElementComponent border="1px solid #3c9e3f" width="100%">
                 <ProcessSpecificationElementTitleComponent
                   flexDirection="column"
                   justifyContent="center"
@@ -1930,7 +1966,7 @@ const ProcessDeliverySpecification = observer(() => {
             {/*  */}
             <ProcessSpecificationElementFrame width="100%" border="none">
               {/*  */}
-              <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+              <ProcessSpecificationElementComponent border="1px solid #3c9e3f" width="100%">
                 <ProcessSpecificationElementTitleComponent
                   flexDirection="column"
                   justifyContent="center"
@@ -1971,7 +2007,7 @@ const ProcessDeliverySpecification = observer(() => {
             {/*  */}
             <ProcessSpecificationElementFrame width="100%" border="none">
               {/*  */}
-              <ProcessSpecificationElementComponent border="1px solid #14c276" width="100%">
+              <ProcessSpecificationElementComponent border="1px solid #3c9e3f" width="100%">
                 <ProcessSpecificationElementTitleComponent
                   flexDirection="column"
                   justifyContent="center"
@@ -1991,7 +2027,10 @@ const ProcessDeliverySpecification = observer(() => {
                   minWidth="300px"
                 >
                   <ProcessSpecificationElementContentTextFrame>
-                    <ProcessSpecificationElementContentTextComponent color="#000000">
+                    <ProcessSpecificationElementContentTextComponent
+                      color="#000000"
+                      whiteSpace="pre-line"
+                    >
                       {DeliveryData?.DeliveryDetailsData?.logisticsInfo?.deliveryRequest || '-'}
                     </ProcessSpecificationElementContentTextComponent>
                   </ProcessSpecificationElementContentTextFrame>

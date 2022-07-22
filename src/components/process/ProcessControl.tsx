@@ -41,7 +41,7 @@ const ProcessControl = observer(() => {
               TreatmentData.TreatmentDetailsData?.status === '완료' ||
               /*  */
               TreatmentData.TreatmentDetailsData?.status === '진료 완료'
-                ? 'rgb(0,178,100)'
+                ? '#00B264'
                 : '#d3d3d3'
             }
             cursor={
@@ -84,7 +84,7 @@ const ProcessControl = observer(() => {
               MedicineData.MedicineDetailsData?.status === '조제 시스템 취소' ||
               /*  */
               MedicineData.MedicineDetailsData?.status === '거절'
-                ? 'rgb(0,178,100)'
+                ? '#00B264'
                 : '#d3d3d3'
             }
             cursor={
@@ -131,7 +131,7 @@ const ProcessControl = observer(() => {
               MedicineData.MedicineDetailsData?.status === '배차 대기' ||
               MedicineData.MedicineDetailsData?.status === '배차 완료' ||
               MedicineData.MedicineDetailsData?.status === '픽업 완료'
-                ? 'rgb(0,178,100)'
+                ? '#00B264'
                 : '#d3d3d3'
             }
             cursor={
@@ -187,7 +187,7 @@ const ProcessControl = observer(() => {
             backgroundColor={
               MedicineData.MedicineDetailsData?.status === '접수 대기' ||
               MedicineData.MedicineDetailsData?.status === '조제 중'
-                ? 'rgb(0,178,100)'
+                ? '#00B264'
                 : '#d3d3d3'
             }
             cursor={
@@ -223,7 +223,7 @@ const ProcessControl = observer(() => {
               border="none"
               backgroundColor={
                 DeliveryData.DeliveryDetailsData?.deliveryInfo?.status === '접수 대기'
-                  ? 'rgb(0,178,100)'
+                  ? '#00B264'
                   : '#d3d3d3'
               }
               cursor={
@@ -275,7 +275,7 @@ const ProcessControl = observer(() => {
                   DeliveryData?.DeliveryDetailsData?.deliveryInfo?.logiCompany?.name !==
                     '카카오퀵(일반)' &&
                   DeliveryData?.DeliveryDetailsData?.deliveryInfo?.logiCompany?.name !== '푸드테크')
-                  ? 'rgb(0,178,100)'
+                  ? '#00B264'
                   : '#d3d3d3'
               }
               cursor={
@@ -363,7 +363,7 @@ const ProcessControl = observer(() => {
                 DeliveryData.DeliveryDetailsData?.deliveryInfo?.status === '배달 완료' ||
                 DeliveryData.DeliveryDetailsData?.deliveryInfo?.status === '배달 거절' ||
                 DeliveryData.DeliveryDetailsData?.deliveryInfo?.status === '거절'
-                  ? 'rgb(0,178,100)'
+                  ? '#00B264'
                   : '#d3d3d3'
               }
               cursor={
@@ -410,7 +410,7 @@ const ProcessControl = observer(() => {
               border="none"
               backgroundColor={
                 DeliveryData.DeliveryDetailsData?.deliveryInfo?.status === '배차 대기'
-                  ? 'rgb(0,178,100)'
+                  ? '#00B264'
                   : '#d3d3d3'
               }
               cursor={
@@ -466,7 +466,7 @@ const ProcessControl = observer(() => {
                   DeliveryData?.DeliveryDetailsData?.deliveryInfo?.logiCompany?.name !==
                     '카카오퀵(일반)' &&
                   DeliveryData?.DeliveryDetailsData?.deliveryInfo?.logiCompany?.name !== '푸드테크')
-                  ? 'rgb(0,178,100)'
+                  ? '#00B264'
                   : '#d3d3d3'
               }
               cursor={
@@ -554,7 +554,7 @@ const ProcessControl = observer(() => {
                 DeliveryData.DeliveryDetailsData?.deliveryInfo?.status === '배달 완료' ||
                 DeliveryData.DeliveryDetailsData?.deliveryInfo?.status === '배달 거절' ||
                 DeliveryData.DeliveryDetailsData?.deliveryInfo?.status === '거절'
-                  ? 'rgb(0,178,100)'
+                  ? '#00B264'
                   : '#d3d3d3'
               }
               cursor={
