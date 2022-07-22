@@ -4,7 +4,7 @@ import './App.css'; */
 
 import { BrowserRouter } from 'react-router-dom';
 
-import RootPage from 'page/common/RootPage';
+import RootPage from 'view/common/RootPage';
 
 function App() {
   return (

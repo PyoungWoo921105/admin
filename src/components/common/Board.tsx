@@ -9,17 +9,17 @@ import { Route } from 'react-router-dom';
 
 import { GlobalBoardFrame } from 'styles/components/common/Frame';
 
-import HomePage from 'page/home/HomePage';
-import TreatmentPage from 'page/treatment/TreatmentPage';
-import MedicinePage from 'page/medicine/MedicinePage';
-import DeliveryPage from 'page/delivery/DeliveryPage';
-import HospitalPage from 'page/hospital/HospitalPage';
-import PharmacyPage from 'page/pharmacy/PharmacyPage';
-import DoctorPage from 'page/doctor/DoctorPage';
-import ReviewPage from 'page/review/ReviewPage';
-import SettlementPage from 'page/settlement/SettlementPage';
-import PromotionPage from 'page/promotion/PromotionPage';
-import IndicatorPage from 'page/indicator/IndicatorPage';
+import HomePage from 'view/home/HomePage';
+import TreatmentPage from 'view/treatment/TreatmentPage';
+import MedicinePage from 'view/medicine/MedicinePage';
+import DeliveryPage from 'view/delivery/DeliveryPage';
+import HospitalPage from 'view/hospital/HospitalPage';
+import PharmacyPage from 'view/pharmacy/PharmacyPage';
+import DoctorPage from 'view/doctor/DoctorPage';
+import ReviewPage from 'view/review/ReviewPage';
+import SettlementPage from 'view/settlement/SettlementPage';
+import PromotionPage from 'view/promotion/PromotionPage';
+import IndicatorPage from 'view/indicator/IndicatorPage';
 
 const Board = observer(() => (
   <GlobalBoardFrame>

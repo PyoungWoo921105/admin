@@ -5,6 +5,8 @@
 import { CommonData } from 'data/stores/CommonData';
 import { AdminData } from 'data/stores/AdminData';
 
+import { AlarmData } from 'data/stores/AlarmData';
+
 import { TreatmentData } from 'data/stores/TreatmentData';
 import { MedicineData } from 'data/stores/MedicineData';
 import { DeliveryData } from 'data/stores/DeliveryData';
@@ -17,6 +19,7 @@ import { ReviewData } from 'data/stores/ReviewData';
 export const useStore = () => ({
   CommonData,
   AdminData,
+  AlarmData,
   TreatmentData,
   MedicineData,
   DeliveryData,
