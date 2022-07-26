@@ -50,7 +50,7 @@ import { ConvertContactNumber } from 'libraries/conversion/ConvertContactNumber'
 import { AllowNumber } from 'libraries/constraint/AllowNumber';
 /*  */
 const BoardContent = observer(() => {
-  const { DoctorData } = useStore();
+  const { DoctorData, AdminData } = useStore();
   /* 카테고리 */
   const CategoryList = [
     { title: '의사 코드', width: 120 },
@@ -107,7 +107,14 @@ const BoardContent = observer(() => {
                       width={`${CategoryList[0].width}%`}
                     >
                       <DataElementContentComponent justifyContent="center">
-                        <DataElementContentTextComponent color="blue" cursor="pointer">
+                        <DataElementContentTextComponent
+                          lineHeight={!AdminData.LocalContentState ? '38px' : '38px'}
+                          overflow={!AdminData.LocalContentState ? 'hidden' : ''}
+                          textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
+                          whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                          color="blue"
+                          cursor="pointer"
+                        >
                           {element?.code || '-'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
@@ -118,7 +125,12 @@ const BoardContent = observer(() => {
                       width={`${CategoryList[1].width}%`}
                     >
                       <DataElementContentComponent justifyContent="center">
-                        <DataElementContentTextComponent>
+                        <DataElementContentTextComponent
+                          lineHeight={!AdminData.LocalContentState ? '38px' : '38px'}
+                          overflow={!AdminData.LocalContentState ? 'hidden' : ''}
+                          textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
+                          whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                        >
                           {element?.name || '-'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
@@ -197,7 +209,12 @@ const BoardContent = observer(() => {
                       width={`${CategoryList[4].width}%`}
                     >
                       <DataElementContentComponent justifyContent="center">
-                        <DataElementContentTextComponent>
+                        <DataElementContentTextComponent
+                          lineHeight={!AdminData.LocalContentState ? '38px' : '38px'}
+                          overflow={!AdminData.LocalContentState ? 'hidden' : ''}
+                          textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
+                          whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                        >
                           {element?.phoneNum
                             ? AllowNumber(element?.phoneNum)
                               ? ConvertContactNumber(AllowNumber(element?.phoneNum))
@@ -212,7 +229,12 @@ const BoardContent = observer(() => {
                       width={`${CategoryList[5].width}%`}
                     >
                       <DataElementContentComponent justifyContent="center">
-                        <DataElementContentTextComponent>
+                        <DataElementContentTextComponent
+                          lineHeight={!AdminData.LocalContentState ? '38px' : '38px'}
+                          overflow={!AdminData.LocalContentState ? 'hidden' : ''}
+                          textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
+                          whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                        >
                           {element?.departments && element?.departments.length !== 0
                             ? element?.departments.join(', ')
                             : '-'}
@@ -226,7 +248,12 @@ const BoardContent = observer(() => {
                       width={`${CategoryList[6].width}%`}
                     >
                       <DataElementContentComponent justifyContent="center">
-                        <DataElementContentTextComponent>
+                        <DataElementContentTextComponent
+                          lineHeight={!AdminData.LocalContentState ? '38px' : '38px'}
+                          overflow={!AdminData.LocalContentState ? 'hidden' : ''}
+                          textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
+                          whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                        >
                           {element?.diseases && element?.diseases.length !== 0
                             ? element?.diseases.join(', ')
                             : '-'}
@@ -239,7 +266,12 @@ const BoardContent = observer(() => {
                       width={`${CategoryList[7].width}%`}
                     >
                       <DataElementContentComponent justifyContent="center">
-                        <DataElementContentTextComponent>
+                        <DataElementContentTextComponent
+                          lineHeight={!AdminData.LocalContentState ? '38px' : '38px'}
+                          overflow={!AdminData.LocalContentState ? 'hidden' : ''}
+                          textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
+                          whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                        >
                           {element?.hospital?.name || '-'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
@@ -250,7 +282,12 @@ const BoardContent = observer(() => {
                       width={`${CategoryList[8].width}%`}
                     >
                       <DataElementContentComponent justifyContent="center">
-                        <DataElementContentTextComponent>
+                        <DataElementContentTextComponent
+                          lineHeight={!AdminData.LocalContentState ? '38px' : '38px'}
+                          overflow={!AdminData.LocalContentState ? 'hidden' : ''}
+                          textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
+                          whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                        >
                           {element?.openingTime?.startHour &&
                           element?.openingTime?.startMinute &&
                           element?.openingTime?.endHour &&

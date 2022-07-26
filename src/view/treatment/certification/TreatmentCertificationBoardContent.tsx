@@ -51,7 +51,7 @@ import { ConvertContactNumber } from 'libraries/conversion/ConvertContactNumber'
 import { AllowNumber } from 'libraries/constraint/AllowNumber';
 /*  */
 const BoardContent = observer(() => {
-  const { TreatmentData } = useStore();
+  const { TreatmentData, AdminData } = useStore();
   /* 카테고리 */
   const CategoryList = [
     { title: '인증 코드', width: 120 },
@@ -106,7 +106,14 @@ const BoardContent = observer(() => {
                       width={`${CategoryList[0].width}%`}
                     >
                       <DataElementContentComponent justifyContent="center">
-                        <DataElementContentTextComponent color="blue" cursor="pointer">
+                        <DataElementContentTextComponent
+                          lineHeight={!AdminData.LocalContentState ? '38px' : '38px'}
+                          overflow={!AdminData.LocalContentState ? 'hidden' : ''}
+                          textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
+                          whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                          color="blue"
+                          cursor="pointer"
+                        >
                           {element?.code ? element?.code : '-'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
@@ -117,7 +124,12 @@ const BoardContent = observer(() => {
                       width={`${CategoryList[1].width}%`}
                     >
                       <DataElementContentComponent justifyContent="center">
-                        <DataElementContentTextComponent>
+                        <DataElementContentTextComponent
+                          lineHeight={!AdminData.LocalContentState ? '38px' : '38px'}
+                          overflow={!AdminData.LocalContentState ? 'hidden' : ''}
+                          textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
+                          whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                        >
                           {element?.createdAt ? ConvertDate(element?.createdAt) : '-'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
@@ -170,7 +182,12 @@ const BoardContent = observer(() => {
                       width={`${CategoryList[3].width}%`}
                     >
                       <DataElementContentComponent justifyContent="center">
-                        <DataElementContentTextComponent>
+                        <DataElementContentTextComponent
+                          lineHeight={!AdminData.LocalContentState ? '38px' : '38px'}
+                          overflow={!AdminData.LocalContentState ? 'hidden' : ''}
+                          textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
+                          whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                        >
                           {element?.hospital?.name || '-'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
@@ -181,7 +198,12 @@ const BoardContent = observer(() => {
                       width={`${CategoryList[4].width}%`}
                     >
                       <DataElementContentComponent justifyContent="center">
-                        <DataElementContentTextComponent>
+                        <DataElementContentTextComponent
+                          lineHeight={!AdminData.LocalContentState ? '38px' : '38px'}
+                          overflow={!AdminData.LocalContentState ? 'hidden' : ''}
+                          textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
+                          whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                        >
                           {element?.patient?.name || '-'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
@@ -192,7 +214,12 @@ const BoardContent = observer(() => {
                       width={`${CategoryList[5].width}%`}
                     >
                       <DataElementContentComponent justifyContent="center">
-                        <DataElementContentTextComponent>
+                        <DataElementContentTextComponent
+                          lineHeight={!AdminData.LocalContentState ? '38px' : '38px'}
+                          overflow={!AdminData.LocalContentState ? 'hidden' : ''}
+                          textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
+                          whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                        >
                           {element?.receptionInfo?.phoneNum
                             ? AllowNumber(element?.receptionInfo?.phoneNum)
                               ? ConvertContactNumber(AllowNumber(element?.receptionInfo?.phoneNum))
@@ -207,7 +234,12 @@ const BoardContent = observer(() => {
                       width={`${CategoryList[6].width}%`}
                     >
                       <DataElementContentComponent justifyContent="center">
-                        <DataElementContentTextComponent>
+                        <DataElementContentTextComponent
+                          lineHeight={!AdminData.LocalContentState ? '38px' : '38px'}
+                          overflow={!AdminData.LocalContentState ? 'hidden' : ''}
+                          textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
+                          whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                        >
                           {element?.receptionInfo?.jibunAddress
                             ? `${element?.receptionInfo?.jibunAddress} ${element?.receptionInfo?.detailedAddress}`
                             : element?.receptionInfo?.roadAddress

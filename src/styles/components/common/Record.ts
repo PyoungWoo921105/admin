@@ -119,7 +119,6 @@ export const DataElementFrame = styled.div<CustomProps>`
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
-  height: 40px;
   min-height: 40px;
   width: 100%;
 `;
@@ -129,6 +128,7 @@ export const DataElementComponent = styled.div<CustomProps>`
   display: flex;
   flex-direction: row;
   height: 100%;
+  min-height: 40px;
   width: 100%;
 `;
 export const DataElementContentFrame = styled.div<CustomProps>`
@@ -138,7 +138,7 @@ export const DataElementContentFrame = styled.div<CustomProps>`
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
-  height: 100%;
+  min-height: 40px;
   min-width: ${props => (props.minWidth ? props.minWidth : '')};
   width: ${props => (props.width ? props.width : '')};
 `;
@@ -159,9 +159,10 @@ export const DataElementContentTextComponent = styled.span<CustomProps>`
   font-size: 11px;
   font-style: normal;
   font-weight: normal;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  line-height: ${props => (props.lineHeight ? props.lineHeight : '')};
+  overflow: ${props => (props.overflow ? props.overflow : '')};
+  text-overflow: ${props => (props.textOverflow ? props.textOverflow : '')};
+  white-space: ${props => (props.whiteSpace ? props.whiteSpace : '')};
 `;
 export const DataElementContentButtonComponent = styled.button<CustomProps>`
   align-items: center;

@@ -77,12 +77,28 @@ export const GlobalNavigationBarShowContentImageFrame = styled.button`
   display: flex;
   height: 30px;
   justify-content: center;
-  margin: 0px -2px 0px 0px;
+  margin: 0px -2px 0px 5px;
   min-height: 30px;
   min-width: 30px;
   width: 30px;
 `;
 export const GlobalNavigationBarShowContentImageComponent = styled.img`
+  width: 100%;
+`;
+export const LocalContentShowContentImageFrame = styled.button`
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  height: 30px;
+  justify-content: center;
+  margin: 0px 0px 0px 0px;
+  min-height: 30px;
+  min-width: 30px;
+  width: 30px;
+`;
+export const LocalContentShowContentImageComponent = styled.img`
   width: 100%;
 `;
 export const LocalNavigationBarShowContentImageFrame = styled.button`

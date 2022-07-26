@@ -52,7 +52,7 @@ import { ConvertContactNumber } from 'libraries/conversion/ConvertContactNumber'
 import { AllowNumber } from 'libraries/constraint/AllowNumber';
 /*  */
 const BoardContent = observer(() => {
-  const { RiderData } = useStore();
+  const { RiderData, AdminData } = useStore();
   /* 카테고리 */
   const CategoryList = [
     { title: '약국 코드', width: 120 },
@@ -122,7 +122,14 @@ const BoardContent = observer(() => {
                       width={`${CategoryList[0].width}%`}
                     >
                       <DataElementContentComponent justifyContent="center">
-                        <DataElementContentTextComponent color="blue" cursor="pointer">
+                        <DataElementContentTextComponent
+                          lineHeight={!AdminData.LocalContentState ? '38px' : '38px'}
+                          overflow={!AdminData.LocalContentState ? 'hidden' : ''}
+                          textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
+                          whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                          color="blue"
+                          cursor="pointer"
+                        >
                           {element?.pharmacy?.code || '-'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
@@ -133,7 +140,12 @@ const BoardContent = observer(() => {
                       width={`${CategoryList[1].width}%`}
                     >
                       <DataElementContentComponent justifyContent="center">
-                        <DataElementContentTextComponent>
+                        <DataElementContentTextComponent
+                          lineHeight={!AdminData.LocalContentState ? '38px' : '38px'}
+                          overflow={!AdminData.LocalContentState ? 'hidden' : ''}
+                          textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
+                          whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                        >
                           {element?.pharmacy?.name || '-'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
@@ -144,7 +156,12 @@ const BoardContent = observer(() => {
                       width={`${CategoryList[2].width}%`}
                     >
                       <DataElementContentComponent justifyContent="center">
-                        <DataElementContentTextComponent>
+                        <DataElementContentTextComponent
+                          lineHeight={!AdminData.LocalContentState ? '38px' : '38px'}
+                          overflow={!AdminData.LocalContentState ? 'hidden' : ''}
+                          textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
+                          whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                        >
                           {element?.pharmacy?.phoneNum
                             ? AllowNumber(element?.pharmacy?.phoneNum)
                               ? ConvertContactNumber(AllowNumber(element?.pharmacy?.phoneNum))
@@ -159,7 +176,12 @@ const BoardContent = observer(() => {
                       width={`${CategoryList[3].width}%`}
                     >
                       <DataElementContentComponent justifyContent="center">
-                        <DataElementContentTextComponent>
+                        <DataElementContentTextComponent
+                          lineHeight={!AdminData.LocalContentState ? '38px' : '38px'}
+                          overflow={!AdminData.LocalContentState ? 'hidden' : ''}
+                          textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
+                          whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                        >
                           {element?.pharmacy?.address || '-'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
@@ -170,7 +192,12 @@ const BoardContent = observer(() => {
                       width={`${CategoryList[4].width}%`}
                     >
                       <DataElementContentComponent justifyContent="center">
-                        <DataElementContentTextComponent>
+                        <DataElementContentTextComponent
+                          lineHeight={!AdminData.LocalContentState ? '38px' : '38px'}
+                          overflow={!AdminData.LocalContentState ? 'hidden' : ''}
+                          textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
+                          whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                        >
                           {element?.riders?.quick?.[1]?.name || '-'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
@@ -181,7 +208,12 @@ const BoardContent = observer(() => {
                       width={`${CategoryList[5].width}%`}
                     >
                       <DataElementContentComponent justifyContent="center">
-                        <DataElementContentTextComponent>
+                        <DataElementContentTextComponent
+                          lineHeight={!AdminData.LocalContentState ? '38px' : '38px'}
+                          overflow={!AdminData.LocalContentState ? 'hidden' : ''}
+                          textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
+                          whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                        >
                           {element?.riders?.quick?.[2]?.name || '-'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
@@ -192,7 +224,12 @@ const BoardContent = observer(() => {
                       width={`${CategoryList[6].width}%`}
                     >
                       <DataElementContentComponent justifyContent="center">
-                        <DataElementContentTextComponent>
+                        <DataElementContentTextComponent
+                          lineHeight={!AdminData.LocalContentState ? '38px' : '38px'}
+                          overflow={!AdminData.LocalContentState ? 'hidden' : ''}
+                          textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
+                          whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                        >
                           {element?.riders?.quick?.[3]?.name || '-'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
@@ -203,7 +240,12 @@ const BoardContent = observer(() => {
                       width={`${CategoryList[7].width}%`}
                     >
                       <DataElementContentComponent justifyContent="center">
-                        <DataElementContentTextComponent>
+                        <DataElementContentTextComponent
+                          lineHeight={!AdminData.LocalContentState ? '38px' : '38px'}
+                          overflow={!AdminData.LocalContentState ? 'hidden' : ''}
+                          textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
+                          whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                        >
                           {element?.riders?.sameDayDelivery?.[1]?.name || '-'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
@@ -214,7 +256,12 @@ const BoardContent = observer(() => {
                       width={`${CategoryList[8].width}%`}
                     >
                       <DataElementContentComponent justifyContent="center">
-                        <DataElementContentTextComponent>
+                        <DataElementContentTextComponent
+                          lineHeight={!AdminData.LocalContentState ? '38px' : '38px'}
+                          overflow={!AdminData.LocalContentState ? 'hidden' : ''}
+                          textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
+                          whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                        >
                           {element?.riders?.sameDayDelivery?.[2]?.name || '-'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
@@ -225,7 +272,12 @@ const BoardContent = observer(() => {
                       width={`${CategoryList[9].width}%`}
                     >
                       <DataElementContentComponent justifyContent="center">
-                        <DataElementContentTextComponent>
+                        <DataElementContentTextComponent
+                          lineHeight={!AdminData.LocalContentState ? '38px' : '38px'}
+                          overflow={!AdminData.LocalContentState ? 'hidden' : ''}
+                          textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
+                          whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                        >
                           {element?.riders?.sameDayDelivery?.[3]?.name || '-'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
@@ -236,7 +288,12 @@ const BoardContent = observer(() => {
                       width={`${CategoryList[10].width}%`}
                     >
                       <DataElementContentComponent justifyContent="center">
-                        <DataElementContentTextComponent>
+                        <DataElementContentTextComponent
+                          lineHeight={!AdminData.LocalContentState ? '38px' : '38px'}
+                          overflow={!AdminData.LocalContentState ? 'hidden' : ''}
+                          textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
+                          whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                        >
                           {element?.riders?.parcel?.[1]?.name || '-'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
@@ -247,7 +304,12 @@ const BoardContent = observer(() => {
                       width={`${CategoryList[11].width}%`}
                     >
                       <DataElementContentComponent justifyContent="center">
-                        <DataElementContentTextComponent>
+                        <DataElementContentTextComponent
+                          lineHeight={!AdminData.LocalContentState ? '38px' : '38px'}
+                          overflow={!AdminData.LocalContentState ? 'hidden' : ''}
+                          textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
+                          whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                        >
                           {element?.riders?.parcel?.[2]?.name || '-'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
@@ -258,7 +320,12 @@ const BoardContent = observer(() => {
                       width={`${CategoryList[12].width}%`}
                     >
                       <DataElementContentComponent justifyContent="center">
-                        <DataElementContentTextComponent>
+                        <DataElementContentTextComponent
+                          lineHeight={!AdminData.LocalContentState ? '38px' : '38px'}
+                          overflow={!AdminData.LocalContentState ? 'hidden' : ''}
+                          textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
+                          whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                        >
                           {element?.riders?.parcel?.[3]?.name || '-'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>

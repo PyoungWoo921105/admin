@@ -63,7 +63,7 @@ import { ConvertDate } from 'libraries/conversion/ConvertDate';
 import { ConvertCommaNumber } from 'libraries/conversion/ConvertCommaNumber';
 
 const ProcessMedicineLog = observer(() => {
-  const { MedicineData } = useStore();
+  const { MedicineData, AdminData } = useStore();
 
   useEffect(() => {
     GetCurrentTime();
@@ -144,7 +144,12 @@ const ProcessMedicineLog = observer(() => {
                           width={`${CategoryList[0].width}%`}
                         >
                           <DataElementContentComponent justifyContent="center">
-                            <DataElementContentTextComponent>
+                            <DataElementContentTextComponent
+                              lineHeight={!AdminData.LocalContentState ? '38px' : '38px'}
+                              overflow={!AdminData.LocalContentState ? 'hidden' : ''}
+                              textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
+                              whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                            >
                               {element?.hanldingType || '-'}
                             </DataElementContentTextComponent>
                           </DataElementContentComponent>
@@ -233,7 +238,12 @@ const ProcessMedicineLog = observer(() => {
                           width={`${CategoryList[2].width}%`}
                         >
                           <DataElementContentComponent justifyContent="center">
-                            <DataElementContentTextComponent>
+                            <DataElementContentTextComponent
+                              lineHeight={!AdminData.LocalContentState ? '38px' : '38px'}
+                              overflow={!AdminData.LocalContentState ? 'hidden' : ''}
+                              textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
+                              whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                            >
                               {element?.pharmacyName || '-'}
                             </DataElementContentTextComponent>
                           </DataElementContentComponent>
@@ -244,7 +254,12 @@ const ProcessMedicineLog = observer(() => {
                           width={`${CategoryList[3].width}%`}
                         >
                           <DataElementContentComponent justifyContent="center">
-                            <DataElementContentTextComponent>
+                            <DataElementContentTextComponent
+                              lineHeight={!AdminData.LocalContentState ? '38px' : '38px'}
+                              overflow={!AdminData.LocalContentState ? 'hidden' : ''}
+                              textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
+                              whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                            >
                               {element?.recieveWay || '-'}
                             </DataElementContentTextComponent>
                           </DataElementContentComponent>
@@ -255,7 +270,12 @@ const ProcessMedicineLog = observer(() => {
                           width={`${CategoryList[4].width}%`}
                         >
                           <DataElementContentComponent justifyContent="center">
-                            <DataElementContentTextComponent>
+                            <DataElementContentTextComponent
+                              lineHeight={!AdminData.LocalContentState ? '38px' : '38px'}
+                              overflow={!AdminData.LocalContentState ? 'hidden' : ''}
+                              textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
+                              whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                            >
                               {element?.payAmount
                                 ? `${ConvertCommaNumber(element?.payAmount.toString())}원`
                                 : '-'}
@@ -268,7 +288,12 @@ const ProcessMedicineLog = observer(() => {
                           width={`${CategoryList[5].width}%`}
                         >
                           <DataElementContentComponent justifyContent="center">
-                            <DataElementContentTextComponent>
+                            <DataElementContentTextComponent
+                              lineHeight={!AdminData.LocalContentState ? '38px' : '38px'}
+                              overflow={!AdminData.LocalContentState ? 'hidden' : ''}
+                              textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
+                              whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                            >
                               {element?.handledBy
                                 ? element?.handledBy.indexOf('admin') !== -1
                                   ? `관리자${element?.handledBy.replace('admin', '')}`
@@ -293,7 +318,12 @@ const ProcessMedicineLog = observer(() => {
                           width={`${CategoryList[6].width}%`}
                         >
                           <DataElementContentComponent justifyContent="center">
-                            <DataElementContentTextComponent>
+                            <DataElementContentTextComponent
+                              lineHeight={!AdminData.LocalContentState ? '38px' : '38px'}
+                              overflow={!AdminData.LocalContentState ? 'hidden' : ''}
+                              textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
+                              whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                            >
                               {element?.handledDateTime
                                 ? ConvertDate(element?.handledDateTime)
                                 : '-'}

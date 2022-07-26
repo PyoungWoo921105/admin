@@ -28,6 +28,8 @@ import {
   GlobalNavigationBarShowContentImageComponent,
   LocalNavigationBarShowContentImageFrame,
   LocalNavigationBarShowContentImageComponent,
+  LocalContentShowContentImageFrame,
+  LocalContentShowContentImageComponent,
   GlobalNavigationBarShortCutFrame,
   GlobalNavigationBarShortCutComponent,
   GlobalNavigationBarShortCutTextComponent,
@@ -182,6 +184,18 @@ const GlobalNavigationBar = observer(() => {
                 }
               />
             </GlobalNavigationBarShowContentImageFrame>
+            <LocalContentShowContentImageFrame
+              onClick={() => {
+                // eslint-disable-next-line no-unused-expressions
+                AdminData.LocalContentState === false
+                  ? AdminData.setLocalContentState(true)
+                  : AdminData.setLocalContentState(false);
+              }}
+            >
+              <LocalContentShowContentImageComponent
+                src={AdminData.LocalContentState === false ? PlusIcon : MinusIcon}
+              />
+            </LocalContentShowContentImageFrame>
             <LocalNavigationBarShowContentImageFrame
               onClick={() => {
                 // eslint-disable-next-line no-unused-expressions
