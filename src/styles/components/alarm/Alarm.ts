@@ -20,8 +20,9 @@ from {transform: translateX(100%);}
 `;
 export const AlarmComponent = styled.div<CustomProps>`
   animation: ${AlarmComponentAnimation} 1s;
-  background-color: ${props => (props.backgroundColor ? props.backgroundColor : '#ffffff')};
+  background-color: ${props => (props.backgroundColor ? props.backgroundColor : 'transparent')};
   border-radius: 10px 10px 10px 10px;
+  cursor: ${props => (props.cursor ? props.cursor : '')};
   height: fit-content;
   margin-bottom: 20px;
   min-height: ${props => (props.minHeight ? props.minHeight : '')};
@@ -33,12 +34,12 @@ export const AlarmComponent = styled.div<CustomProps>`
 export const AlarmTopFrame = styled.div<CustomProps>`
   align-items: ${props => (props.alignItems ? props.alignItems : '')};
   background-color: ${props => (props.backgroundColor ? props.backgroundColor : 'transparent')};
-  border-radius: 10px 10px 0px 0px;
+  border-radius: ${props => (props.borderRadius ? props.borderRadius : '')};
   display: flex;
   flex-direction: row;
   justify-content: ${props => (props.justifyContent ? props.justifyContent : '')};
   min-height: ${props => (props.minHeight ? props.minHeight : '')};
-  padding: 0px 30px 0px 30px;
+  padding: 10px 30px 10px 30px;
 `;
 export const AlarmTopComponent = styled.div<CustomProps>`
   align-items: ${props => (props.alignItems ? props.alignItems : '')};
@@ -72,11 +73,14 @@ export const AlarmTopTitleTextComponent = styled.span<CustomProps>`
   font-size: 13px;
   font-style: normal;
   font-weight: normal;
+  line-height: ${props => (props.lineHeight ? props.lineHeight : '')};
 `;
 export const AlarmTopExitComponent = styled.div<CustomProps>`
   cursor: pointer;
   height: 20px;
   margin: 0px 0px 0px 10px;
+  min-height: 20px;
+  min-width: 20px;
   width: 20px;
 `;
 export const AlarmTopExitImageComponent = styled.img<CustomProps>`
@@ -84,17 +88,17 @@ export const AlarmTopExitImageComponent = styled.img<CustomProps>`
   width: 100%;
 `;
 /*  */
-export const AlarmMiddleFrame = styled.div<CustomProps>`
+export const AlarmBottomFrame = styled.div<CustomProps>`
   align-items: ${props => (props.alignItems ? props.alignItems : '')};
   background-color: ${props => (props.backgroundColor ? props.backgroundColor : 'transparent')};
-  border-radius: 0px 0px 10px 10px;
+  border-radius: ${props => (props.borderRadius ? props.borderRadius : '')};
   display: flex;
   flex-direction: row;
   justify-content: ${props => (props.justifyContent ? props.justifyContent : '')};
   min-height: ${props => (props.minHeight ? props.minHeight : '')};
-  padding: 0px 30px 0px 30px;
+  padding: 10px 30px 10px 30px;
 `;
-export const AlarmMiddleComponent = styled.div<CustomProps>`
+export const AlarmBottomComponent = styled.div<CustomProps>`
   align-items: ${props => (props.alignItems ? props.alignItems : '')};
   display: flex;
   flex-direction: ${props => (props.flexDirection ? props.flexDirection : '')};
@@ -104,7 +108,7 @@ export const AlarmMiddleComponent = styled.div<CustomProps>`
   position: relative;
   width: 100%;
 `;
-export const AlarmMiddleContentFrame = styled.div<CustomProps>`
+export const AlarmBottomContentFrame = styled.div<CustomProps>`
   align-items: ${props => (props.alignItems ? props.alignItems : '')};
   display: flex;
   flex-direction: ${props => (props.flexDirection ? props.flexDirection : '')};
@@ -112,7 +116,7 @@ export const AlarmMiddleContentFrame = styled.div<CustomProps>`
   justify-content: ${props => (props.justifyContent ? props.justifyContent : '')};
   width: 100%;
 `;
-export const AlarmMiddleContentComponent = styled.div<CustomProps>`
+export const AlarmBottomContentComponent = styled.div<CustomProps>`
   align-items: ${props => (props.alignItems ? props.alignItems : '')};
   display: flex;
   flex-direction: ${props => (props.flexDirection ? props.flexDirection : '')};
@@ -120,10 +124,11 @@ export const AlarmMiddleContentComponent = styled.div<CustomProps>`
   justify-content: ${props => (props.justifyContent ? props.justifyContent : '')};
   width: 100%;
 `;
-export const AlarmMiddleContentTextComponent = styled.span<CustomProps>`
+export const AlarmBottomContentTextComponent = styled.span<CustomProps>`
   color: ${props => (props.color ? props.color : '')};
   font-family: 'Spoqa Han Sans Neo';
   font-size: 13px;
   font-style: normal;
   font-weight: normal;
+  line-height: ${props => (props.lineHeight ? props.lineHeight : '')};
 `;

@@ -23,7 +23,7 @@ import { PostAuthAdminLogIn } from 'services/admin/login/PostAuthAdminLogIn';
 import Alarm from 'view/alarm/Alarm';
 
 const RootPage = observer(() => {
-  const { CommonData, AdminData } = useStore();
+  const { CommonData, AdminData /* , AlarmData */ } = useStore();
 
   const history = useHistory();
 
@@ -74,6 +74,56 @@ const RootPage = observer(() => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  /* useEffect(() => {
+    AlarmData.setAlarmListData([
+      {
+        ID: '1',
+        Code: '',
+        Title: '타이틀 1',
+        TitleDesign: { backGroundColor: 'red', color: 'white' },
+
+        Descriptions: ['컨텐츠 1', '컨텐츠 2'],
+        DescriptionsDesign: { backGroundColor: 'blue', color: '' },
+
+        Seconds: 3,
+      },
+      {
+        ID: '2',
+        Code: '',
+        Title: '타이틀 2',
+        TitleDesign: { backGroundColor: 'red', color: 'white' },
+
+        Descriptions: ['컨텐츠 1', '컨텐츠 2'],
+        DescriptionsDesign: { backGroundColor: 'blue', color: '' },
+
+        Seconds: 10,
+      },
+      {
+        ID: '3',
+        Code: '',
+        Title: '타이틀 3',
+        TitleDesign: { backGroundColor: 'red', color: 'white' },
+
+        Descriptions: ['컨텐츠 1', '컨텐츠 2'],
+        DescriptionsDesign: { backGroundColor: 'blue', color: '' },
+
+        Seconds: 5,
+      },
+      {
+        ID: '4',
+        Code: '',
+        Title: '타이틀 4',
+        TitleDesign: { backGroundColor: 'red', color: 'white' },
+
+        Descriptions: ['컨텐츠 1', '컨텐츠 2'],
+        DescriptionsDesign: { backGroundColor: 'blue', color: '' },
+
+        Seconds: 100,
+      },
+    ]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); */
 
   return (
     <RootFrame>
