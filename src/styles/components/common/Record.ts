@@ -124,7 +124,7 @@ export const DataElementFrame = styled.div<CustomProps>`
   width: 100%;
 `;
 export const DataElementComponent = styled.div<CustomProps>`
-  align-items: center;
+  align-items: ${props => (props.alignItems ? props.alignItems : '')};
   background-color: ${props => (props.backgroundColor ? props.backgroundColor : '')};
   display: flex;
   flex-direction: row;
