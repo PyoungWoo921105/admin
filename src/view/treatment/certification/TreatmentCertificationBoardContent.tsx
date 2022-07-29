@@ -56,7 +56,7 @@ const BoardContent = observer(() => {
   const CategoryList = [
     { title: '인증 코드', width: 120 },
     { title: '인증 요청 일시', width: 140 },
-    { title: '인증 상태', width: 110 },
+    { title: '인증 상태', width: 130 },
     { title: '병원 이름', width: 90 },
     { title: '환자 이름', width: 90 },
     { title: '환자 전화번호', width: 120 },
@@ -141,6 +141,7 @@ const BoardContent = observer(() => {
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentButtonComponent
+                          minWidth="110px"
                           backgroundColor={
                             element?.status === 'wait-register'
                               ? 'rgb(255, 192, 0)'

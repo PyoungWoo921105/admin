@@ -72,7 +72,7 @@ const ProcessDeliveryLog = observer(() => {
   /* 카테고리 */
   const CategoryList = [
     { title: '분류', width: 90 },
-    { title: '상태', width: 120 },
+    { title: '상태', width: 130 },
     { title: '배달 주소', width: 140 },
     { title: '배송 업체 이름', width: 120 },
     { title: '처리자 이름', width: 120 },
@@ -156,6 +156,7 @@ const ProcessDeliveryLog = observer(() => {
                         >
                           <DataElementContentComponent justifyContent="center">
                             <DataElementContentButtonComponent
+                              minWidth="110px"
                               backgroundColor={
                                 element?.status === '방문 대기'
                                   ? 'rgb(255,64,64)'

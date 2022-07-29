@@ -58,7 +58,7 @@ const BoardContent = observer(() => {
   /* 카테고리 */
   const CategoryList = [
     { title: '방문/배달 코드', width: 120 },
-    { title: '방문/배달 상태', width: 110 },
+    { title: '방문/배달 상태', width: 130 },
     { title: '약 수령 방법', width: 90 },
     { title: '전체 소요 시간', width: 90 },
     { title: '배송 업체 이름', width: 90 },
@@ -149,6 +149,7 @@ const BoardContent = observer(() => {
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentButtonComponent
+                          minWidth="110px"
                           backgroundColor={
                             element?.status === '방문 대기'
                               ? 'rgb(255,64,64)'

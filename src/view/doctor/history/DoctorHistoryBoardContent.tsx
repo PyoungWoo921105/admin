@@ -55,8 +55,8 @@ const BoardContent = observer(() => {
   const CategoryList = [
     { title: '의사 코드', width: 120 },
     { title: '의사 이름', width: 90 },
-    { title: '등록 상태', width: 110 },
-    { title: '운영 상태', width: 110 },
+    { title: '등록 상태', width: 130 },
+    { title: '운영 상태', width: 130 },
     { title: '의사 전화번호', width: 120 },
     { title: '진료과', width: 200 },
     { title: '질환', width: 200 },
@@ -142,6 +142,7 @@ const BoardContent = observer(() => {
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentButtonComponent
+                          minWidth="110px"
                           backgroundColor={
                             element?.state === '진료 가능'
                               ? 'rgb(112,173,71)'
@@ -176,6 +177,7 @@ const BoardContent = observer(() => {
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentButtonComponent
+                          minWidth="110px"
                           backgroundColor={
                             element?.registerState === '활성'
                               ? 'rgb(112,173,71)'

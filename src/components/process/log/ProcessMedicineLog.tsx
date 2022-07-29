@@ -73,7 +73,7 @@ const ProcessMedicineLog = observer(() => {
   /* 카테고리 */
   const CategoryList = [
     { title: '분류', width: 90 },
-    { title: '상태', width: 120 },
+    { title: '상태', width: 130 },
     { title: '약국 이름', width: 120 },
     { title: '약 수령 방법', width: 105 },
     { title: '결제 금액', width: 90 },
@@ -161,6 +161,7 @@ const ProcessMedicineLog = observer(() => {
                         >
                           <DataElementContentComponent justifyContent="center">
                             <DataElementContentButtonComponent
+                              minWidth="110px"
                               backgroundColor={
                                 element?.status === '접수 대기'
                                   ? 'rgb(0,0,0)'

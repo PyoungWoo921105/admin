@@ -56,7 +56,7 @@ const BoardContent = observer(() => {
   const CategoryList = [
     { title: '진료 코드', width: 120 },
     { title: '생성 일시', width: 140 },
-    { title: '진료 상태', width: 110 },
+    { title: '진료 상태', width: 130 },
     { title: '병원 이름', width: 90 },
     { title: '의사 이름', width: 90 },
     { title: '회원 이름', width: 90 },
@@ -162,6 +162,7 @@ const BoardContent = observer(() => {
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentButtonComponent
+                          minWidth="110px"
                           backgroundColor={
                             element?.status === '접수 대기'
                               ? 'rgb(0,0,0)'

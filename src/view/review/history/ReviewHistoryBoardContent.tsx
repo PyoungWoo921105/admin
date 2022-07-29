@@ -56,17 +56,17 @@ const BoardContent = observer(() => {
     { title: '리뷰 코드', width: 120 },
     { title: '진료 코드', width: 120 },
     { title: '리뷰 작성 일시', width: 140 },
-    { title: '리뷰 상태', width: 110 },
+    { title: '리뷰 상태', width: 130 },
     { title: '병원 이름', width: 90 },
     { title: '의사 이름', width: 90 },
     { title: '환자 이름', width: 90 },
     { title: '리뷰 내용', width: 90 },
     { title: '리뷰 점수', width: 90 },
-    { title: '리뷰 불만 사항 상태', width: 90 },
-    { title: '리뷰 블라인드 상태', width: 90 },
+    { title: '리뷰 불만 사항 상태', width: 130 },
+    { title: '리뷰 블라인드 상태', width: 130 },
     { title: '리뷰 블라인드 일시', width: 140 },
-    { title: '리뷰 공개 상태', width: 90 },
-    { title: '리뷰 댓글 상태', width: 90 },
+    { title: '리뷰 공개 상태', width: 130 },
+    { title: '리뷰 댓글 상태', width: 130 },
     { title: '리뷰 댓글 블라인드 일시', width: 140 },
   ];
 
@@ -164,6 +164,7 @@ const BoardContent = observer(() => {
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentButtonComponent
+                          minWidth="110px"
                           backgroundColor={
                             element?.reviewStatus === '정상'
                               ? 'rgb(112,173,71)'
@@ -279,6 +280,7 @@ const BoardContent = observer(() => {
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentButtonComponent
+                          minWidth="110px"
                           backgroundColor={
                             element?.hasNegative === true
                               ? 'rgb(192,0,0)'
@@ -305,6 +307,7 @@ const BoardContent = observer(() => {
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentButtonComponent
+                          minWidth="110px"
                           backgroundColor={
                             element?.blind === ''
                               ? 'rgb(112,173,71)'
@@ -365,6 +368,7 @@ const BoardContent = observer(() => {
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentButtonComponent
+                          minWidth="110px"
                           backgroundColor={
                             element?.isPublic === true
                               ? 'rgb(112,173,71)'
@@ -391,6 +395,7 @@ const BoardContent = observer(() => {
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentButtonComponent
+                          minWidth="110px"
                           backgroundColor={
                             element?.hasReply === true
                               ? 'rgb(112,173,71)'

@@ -176,7 +176,7 @@ export const DataElementContentButtonComponent = styled.button<CustomProps>`
   font-weight: normal;
   justify-content: center;
   min-height: 30px;
-  min-width: 80px;
+  min-width: ${props => (props.minWidth ? props.minWidth : '')};
   overflow: hidden;
   padding: 0px 10px 0px 10px;
   text-overflow: ellipsis;

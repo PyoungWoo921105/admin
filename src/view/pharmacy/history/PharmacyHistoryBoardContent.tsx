@@ -56,15 +56,15 @@ const BoardContent = observer(() => {
   const CategoryList = [
     { title: '약국 코드', width: 120 },
     { title: '약국 이름', width: 90 },
-    { title: '등록 상태', width: 110 },
-    { title: '운영 상태', width: 110 },
+    { title: '등록 상태', width: 130 },
+    { title: '운영 상태', width: 130 },
     { title: '약국 주소', width: 260 },
     { title: '약국 전화번호', width: 120 },
     { title: '약국 운영 시간 (점심 시간)', width: 140 },
-    { title: '스티커/봉투', width: 90 },
+    { title: '스티커/봉투', width: 130 },
     { title: '접수 대기 건', width: 90 },
     { title: '연계 병원 이름', width: 90 },
-    { title: '연계 병원 운영 상태', width: 110 },
+    { title: '연계 병원 운영 상태', width: 130 },
   ];
 
   return (
@@ -145,6 +145,7 @@ const BoardContent = observer(() => {
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentButtonComponent
+                          minWidth="110px"
                           backgroundColor={
                             element?.registerState === '활성'
                               ? 'rgb(112,173,71)'
@@ -179,6 +180,7 @@ const BoardContent = observer(() => {
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentButtonComponent
+                          minWidth="110px"
                           backgroundColor={
                             element?.state === '조제 가능'
                               ? 'rgb(112,173,71)'
@@ -272,6 +274,7 @@ const BoardContent = observer(() => {
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentButtonComponent
+                          minWidth="110px"
                           backgroundColor={
                             element?.numMedicineBags > 50 && element?.numStickers > 50
                               ? 'rgb(112,173,71)'
@@ -334,6 +337,7 @@ const BoardContent = observer(() => {
                     >
                       <DataElementContentComponent justifyContent="center">
                         <DataElementContentButtonComponent
+                          minWidth="110px"
                           backgroundColor={
                             element?.hospitalState === '진료 가능'
                               ? 'rgb(112,173,71)'
