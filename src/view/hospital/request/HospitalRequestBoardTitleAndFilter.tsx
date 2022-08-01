@@ -95,7 +95,7 @@ import { GetCurrentTime } from 'libraries/time/GetCurrentTime';
 import { ConvertCommaNumber } from 'libraries/conversion/ConvertCommaNumber';
 /*  */
 const BoardTitleAndFilter = observer(() => {
-  const { CommonData, AdminData, HospitalData } = useStore();
+  const { CommonData, AdminData, HospitalData, AlarmData } = useStore();
   /* 필터 스위치 */
   const onChangeFilterSwitchFlag = () => {
     AdminData.setFilterSwitchFlag(!AdminData.FilterSwitchFlag);
@@ -472,9 +472,6 @@ const BoardTitleAndFilter = observer(() => {
       regHospitalPhoneNum: null || HospitalPhoneNumber,
       isRegistered: RequestHospitalLinkState[0] === '전체' ? null : TempRequestHospitalLinkState[0],
 
-      size: 20,
-      from: HospitalData.PageNavigator ? (HospitalData.PageNavigator - 1) * 20 : undefined,
-
       /* size: 20,
       from: HospitalData.PageNavigator ? (HospitalData.PageNavigator - 1) * 20 : undefined, */
     };
@@ -503,7 +500,6 @@ const BoardTitleAndFilter = observer(() => {
     AlarmNotificationState,
     CommonData,
     EndInquiryPeriod,
-    HospitalData.PageNavigator,
     HospitalName,
     HospitalPhoneNumber,
     PatientAddress,
@@ -546,6 +542,26 @@ const BoardTitleAndFilter = observer(() => {
         };
         CommonData.setPopUpData(PopUpData);
         CommonData.setPopUpFlag(true);
+      } else {
+        GetCurrentTime();
+        AlarmData.pushAlarmListData({
+          ID: `PUSH_ADMIN_HOSPITAL_ADDITION_NOTIFICATION_${CommonData.CurrentTime.substring(
+            0,
+            14
+          )}`,
+          Code: '',
+          Title: '병원 추가 요청 알림 발송',
+          TitleDesign: { backGroundColor: '#00B264', color: '#FFFFFF' },
+
+          Descriptions: [
+            `추가 요청 코드 ${PostAdminHospitalAdditionNotificationData.codeList.join(
+              `, `
+            )}(으)로 병원 추가 요청 알림이 발송되었습니다.`,
+          ],
+          DescriptionsDesign: { backGroundColor: '#00B264', color: '#FFFFFF' },
+
+          Seconds: 10,
+        });
       }
     } else {
       const MetaError = response as {
@@ -564,7 +580,7 @@ const BoardTitleAndFilter = observer(() => {
       CommonData.setPopUpData(PopUpData);
       CommonData.setPopUpFlag(true);
     }
-  }, [CommonData, HospitalData.AdminHospitalAdditionNotificationData]);
+  }, [AlarmData, CommonData, HospitalData.AdminHospitalAdditionNotificationData]);
 
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-floating-promises

@@ -56,10 +56,10 @@ const BoardContent = observer(() => {
     { title: '선택', width: 60 },
     { title: '추가 요청 코드', width: 120 },
     { title: '환자 코드', width: 120 },
+    { title: '추가 요청 일시', width: 140 },
     { title: '추가 요청 병원 이름', width: 120 },
     { title: '병원 위치 (시/도)', width: 120 },
     { title: '병원 위치 (시/군/구)', width: 120 },
-    { title: '추가 요청 일시', width: 140 },
     { title: '환자 주소', width: 260 },
     { title: '알림 발송 여부', width: 120 },
     { title: '알림 동의 여부', width: 120 },
@@ -139,6 +139,7 @@ const BoardContent = observer(() => {
                           onChange={() =>
                             onChangeAdminHospitalAdditionNotificationData({ element })
                           }
+                          disabled={!(element.registeredHospital?.code && element.isAgreeNoti)}
                         />
                       </DataElementContentComponent>
                     </DataElementContentFrame>
@@ -154,8 +155,6 @@ const BoardContent = observer(() => {
                           textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
                           whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
                           wordBreak={!AdminData.LocalContentState ? '' : 'break-word'}
-                          color="blue"
-                          cursor="pointer"
                         >
                           {element?.code || '-'}
                         </DataElementContentTextComponent>
@@ -191,7 +190,7 @@ const BoardContent = observer(() => {
                           whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
                           wordBreak={!AdminData.LocalContentState ? '' : 'break-word'}
                         >
-                          {element?.hospital?.name || '-'}
+                          {element?.createdAt ? ConvertDate(element?.createdAt) : '-'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
                     </DataElementContentFrame>
@@ -208,7 +207,7 @@ const BoardContent = observer(() => {
                           whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
                           wordBreak={!AdminData.LocalContentState ? '' : 'break-word'}
                         >
-                          {element?.hospital?.sido || '-'}
+                          {element?.hospital?.name || '-'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
                     </DataElementContentFrame>
@@ -224,8 +223,13 @@ const BoardContent = observer(() => {
                           textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
                           whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
                           wordBreak={!AdminData.LocalContentState ? '' : 'break-word'}
+                          color={element?.hospital?.sido ? '#00B264' : ''}
+                          cursor={element?.hospital?.sido ? 'pointer' : ''}
+                          onClick={() =>
+                            navigator.clipboard.writeText(element?.hospital?.sido || '')
+                          }
                         >
-                          {element?.hospital?.sigungu || '-'}
+                          {element?.hospital?.sido || '-'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
                     </DataElementContentFrame>
@@ -241,8 +245,13 @@ const BoardContent = observer(() => {
                           textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
                           whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
                           wordBreak={!AdminData.LocalContentState ? '' : 'break-word'}
+                          color={element?.hospital?.sigungu ? '#00B264' : ''}
+                          cursor={element?.hospital?.sigungu ? 'pointer' : ''}
+                          onClick={() =>
+                            navigator.clipboard.writeText(element?.hospital?.sigungu || '')
+                          }
                         >
-                          {element?.createdAt ? ConvertDate(element?.createdAt) : '-'}
+                          {element?.hospital?.sigungu || '-'}
                         </DataElementContentTextComponent>
                       </DataElementContentComponent>
                     </DataElementContentFrame>
@@ -258,6 +267,31 @@ const BoardContent = observer(() => {
                           textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
                           whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
                           wordBreak={!AdminData.LocalContentState ? '' : 'break-word'}
+                          color={
+                            element?.address?.jibunAddress ||
+                            element?.address?.roadAddress ||
+                            element.address?.detailedAddress
+                              ? '#00B264'
+                              : ''
+                          }
+                          cursor={
+                            element?.address?.jibunAddress ||
+                            element?.address?.roadAddress ||
+                            element.address?.detailedAddress
+                              ? 'pointer'
+                              : ''
+                          }
+                          onClick={() =>
+                            navigator.clipboard.writeText(
+                              element?.address?.jibunAddress
+                                ? `${element?.address?.jibunAddress} ${element?.address?.detailedAddress}`
+                                : element?.address?.roadAddress
+                                ? `${element?.address?.roadAddress} ${element?.address?.detailedAddress}`
+                                : element?.address?.detailedAddress
+                                ? element?.address?.detailedAddress
+                                : ''
+                            )
+                          }
                         >
                           {element?.address?.jibunAddress
                             ? `${element?.address?.jibunAddress} ${element?.address?.detailedAddress}`
