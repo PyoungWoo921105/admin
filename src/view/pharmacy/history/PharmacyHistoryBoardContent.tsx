@@ -218,6 +218,9 @@ const BoardContent = observer(() => {
                           textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
                           whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
                           wordBreak={!AdminData.LocalContentState ? '' : 'break-word'}
+                          color={element?.address ? '#00B264' : ''}
+                          cursor={element?.address ? 'pointer' : ''}
+                          onClick={() => navigator.clipboard.writeText(element?.address || '')}
                         >
                           {element?.address || '-'}
                         </DataElementContentTextComponent>
@@ -235,6 +238,17 @@ const BoardContent = observer(() => {
                           textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
                           whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
                           wordBreak={!AdminData.LocalContentState ? '' : 'break-word'}
+                          color={element?.phoneNum ? '#00B264' : ''}
+                          cursor={element?.phoneNum ? 'pointer' : ''}
+                          onClick={() =>
+                            navigator.clipboard.writeText(
+                              element?.phoneNum
+                                ? AllowNumber(element?.phoneNum)
+                                  ? ConvertContactNumber(AllowNumber(element?.phoneNum))
+                                  : element?.phoneNum
+                                : ''
+                            )
+                          }
                         >
                           {element?.phoneNum
                             ? AllowNumber(element?.phoneNum)
