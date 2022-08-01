@@ -19,14 +19,18 @@ export interface AlarmElementDataType {
 }
 
 export interface AlarmDataType {
-  AlarmListData: [] | AlarmElementDataType[];
+  AlarmListData: AlarmElementDataType[];
   setAlarmListData: (e: [] | AlarmElementDataType[]) => void;
+  pushAlarmListData: (e: AlarmElementDataType) => void;
 }
 
 const AlarmData = observable<AlarmDataType>({
   AlarmListData: [],
   setAlarmListData(e: [] | AlarmElementDataType[]) {
     this.AlarmListData = e;
+  },
+  pushAlarmListData(e: AlarmElementDataType) {
+    this.AlarmListData.push(e);
   },
 });
 

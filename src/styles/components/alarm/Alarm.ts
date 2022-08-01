@@ -7,6 +7,7 @@ import styled, { keyframes } from 'styled-components';
 import { CustomProps } from 'styles/interface/CustomProps';
 
 export const AlarmFrame = styled.div`
+  align-items: end;
   display: flex;
   flex-direction: column;
   position: fixed;
@@ -29,6 +30,7 @@ export const AlarmComponent = styled.div<CustomProps>`
   min-width: ${props => (props.minWidth ? props.minWidth : '')};
   position: relative;
   transition: transform 10s ease-in-out;
+  width: fit-content;
 `;
 /*  */
 export const AlarmTopFrame = styled.div<CustomProps>`
