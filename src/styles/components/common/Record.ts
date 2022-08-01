@@ -163,6 +163,7 @@ export const DataElementContentTextComponent = styled.span<CustomProps>`
   overflow: ${props => (props.overflow ? props.overflow : '')};
   text-overflow: ${props => (props.textOverflow ? props.textOverflow : '')};
   white-space: ${props => (props.whiteSpace ? props.whiteSpace : '')};
+  word-break: ${props => (props.wordBreak ? props.wordBreak : '')};
 `;
 export const DataElementContentButtonComponent = styled.button<CustomProps>`
   align-items: center;

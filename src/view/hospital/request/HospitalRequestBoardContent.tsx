@@ -153,6 +153,7 @@ const BoardContent = observer(() => {
                           overflow={!AdminData.LocalContentState ? 'hidden' : ''}
                           textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
                           whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                          wordBreak={!AdminData.LocalContentState ? '' : 'break-word'}
                           color="blue"
                           cursor="pointer"
                         >
@@ -171,6 +172,7 @@ const BoardContent = observer(() => {
                           overflow={!AdminData.LocalContentState ? 'hidden' : ''}
                           textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
                           whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                          wordBreak={!AdminData.LocalContentState ? '' : 'break-word'}
                         >
                           {element?.patient?.code || '-'}
                         </DataElementContentTextComponent>
@@ -187,6 +189,7 @@ const BoardContent = observer(() => {
                           overflow={!AdminData.LocalContentState ? 'hidden' : ''}
                           textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
                           whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                          wordBreak={!AdminData.LocalContentState ? '' : 'break-word'}
                         >
                           {element?.hospital?.name || '-'}
                         </DataElementContentTextComponent>
@@ -203,6 +206,7 @@ const BoardContent = observer(() => {
                           overflow={!AdminData.LocalContentState ? 'hidden' : ''}
                           textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
                           whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                          wordBreak={!AdminData.LocalContentState ? '' : 'break-word'}
                         >
                           {element?.hospital?.sido || '-'}
                         </DataElementContentTextComponent>
@@ -219,6 +223,7 @@ const BoardContent = observer(() => {
                           overflow={!AdminData.LocalContentState ? 'hidden' : ''}
                           textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
                           whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                          wordBreak={!AdminData.LocalContentState ? '' : 'break-word'}
                         >
                           {element?.hospital?.sigungu || '-'}
                         </DataElementContentTextComponent>
@@ -235,6 +240,7 @@ const BoardContent = observer(() => {
                           overflow={!AdminData.LocalContentState ? 'hidden' : ''}
                           textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
                           whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                          wordBreak={!AdminData.LocalContentState ? '' : 'break-word'}
                         >
                           {element?.createdAt ? ConvertDate(element?.createdAt) : '-'}
                         </DataElementContentTextComponent>
@@ -251,6 +257,7 @@ const BoardContent = observer(() => {
                           overflow={!AdminData.LocalContentState ? 'hidden' : ''}
                           textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
                           whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                          wordBreak={!AdminData.LocalContentState ? '' : 'break-word'}
                         >
                           {element?.address?.jibunAddress
                             ? `${element?.address?.jibunAddress} ${element?.address?.detailedAddress}`
@@ -273,6 +280,7 @@ const BoardContent = observer(() => {
                           overflow={!AdminData.LocalContentState ? 'hidden' : ''}
                           textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
                           whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                          wordBreak={!AdminData.LocalContentState ? '' : 'break-word'}
                         >
                           {!element?.isSendNoti ? '-' : 'O'}
                         </DataElementContentTextComponent>
@@ -289,6 +297,7 @@ const BoardContent = observer(() => {
                           overflow={!AdminData.LocalContentState ? 'hidden' : ''}
                           textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
                           whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                          wordBreak={!AdminData.LocalContentState ? '' : 'break-word'}
                         >
                           {!element?.isAgreeNoti ? '-' : 'O'}
                         </DataElementContentTextComponent>
@@ -305,6 +314,7 @@ const BoardContent = observer(() => {
                           overflow={!AdminData.LocalContentState ? 'hidden' : ''}
                           textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
                           whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                          wordBreak={!AdminData.LocalContentState ? '' : 'break-word'}
                         >
                           {element?.registeredHospital?.name || '-'}
                         </DataElementContentTextComponent>
@@ -321,6 +331,7 @@ const BoardContent = observer(() => {
                           overflow={!AdminData.LocalContentState ? 'hidden' : ''}
                           textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
                           whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                          wordBreak={!AdminData.LocalContentState ? '' : 'break-word'}
                         >
                           {!element?.registeredHospital?.code ? '-' : 'O'}
                         </DataElementContentTextComponent>

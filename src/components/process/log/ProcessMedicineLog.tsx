@@ -149,6 +149,7 @@ const ProcessMedicineLog = observer(() => {
                               overflow={!AdminData.LocalContentState ? 'hidden' : ''}
                               textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
                               whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                              wordBreak={!AdminData.LocalContentState ? '' : 'break-word'}
                             >
                               {element?.hanldingType || '-'}
                             </DataElementContentTextComponent>
@@ -244,6 +245,7 @@ const ProcessMedicineLog = observer(() => {
                               overflow={!AdminData.LocalContentState ? 'hidden' : ''}
                               textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
                               whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                              wordBreak={!AdminData.LocalContentState ? '' : 'break-word'}
                             >
                               {element?.pharmacyName || '-'}
                             </DataElementContentTextComponent>
@@ -260,6 +262,7 @@ const ProcessMedicineLog = observer(() => {
                               overflow={!AdminData.LocalContentState ? 'hidden' : ''}
                               textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
                               whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                              wordBreak={!AdminData.LocalContentState ? '' : 'break-word'}
                             >
                               {element?.recieveWay || '-'}
                             </DataElementContentTextComponent>
@@ -276,6 +279,7 @@ const ProcessMedicineLog = observer(() => {
                               overflow={!AdminData.LocalContentState ? 'hidden' : ''}
                               textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
                               whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                              wordBreak={!AdminData.LocalContentState ? '' : 'break-word'}
                             >
                               {element?.payAmount
                                 ? `${ConvertCommaNumber(element?.payAmount.toString())}원`
@@ -294,6 +298,7 @@ const ProcessMedicineLog = observer(() => {
                               overflow={!AdminData.LocalContentState ? 'hidden' : ''}
                               textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
                               whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                              wordBreak={!AdminData.LocalContentState ? '' : 'break-word'}
                             >
                               {element?.handledBy
                                 ? element?.handledBy.indexOf('admin') !== -1
@@ -324,6 +329,7 @@ const ProcessMedicineLog = observer(() => {
                               overflow={!AdminData.LocalContentState ? 'hidden' : ''}
                               textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
                               whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                              wordBreak={!AdminData.LocalContentState ? '' : 'break-word'}
                             >
                               {element?.handledDateTime
                                 ? ConvertDate(element?.handledDateTime)

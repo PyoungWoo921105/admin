@@ -12,7 +12,7 @@ export const ProcessLogFrame = styled.div<CustomProps>`
   height: 100%;
   overflow-x: overlay;
   overflow-y: overlay;
-  padding: 0px 0px 0px 0px;
+  padding: 10px 0px 10px 0px;
   width: 100%;
 `;
 export const ProcessLogTypeComponent = styled.div<CustomProps>`

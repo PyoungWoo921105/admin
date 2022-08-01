@@ -111,6 +111,7 @@ const BoardContent = observer(() => {
                           overflow={!AdminData.LocalContentState ? 'hidden' : ''}
                           textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
                           whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                          wordBreak={!AdminData.LocalContentState ? '' : 'break-word'}
                           color="blue"
                           cursor="pointer"
                         >
@@ -129,6 +130,7 @@ const BoardContent = observer(() => {
                           overflow={!AdminData.LocalContentState ? 'hidden' : ''}
                           textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
                           whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                          wordBreak={!AdminData.LocalContentState ? '' : 'break-word'}
                         >
                           {element?.createdAt ? ConvertDate(element?.createdAt) : '-'}
                         </DataElementContentTextComponent>
@@ -188,6 +190,7 @@ const BoardContent = observer(() => {
                           overflow={!AdminData.LocalContentState ? 'hidden' : ''}
                           textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
                           whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                          wordBreak={!AdminData.LocalContentState ? '' : 'break-word'}
                         >
                           {element?.hospital?.name || '-'}
                         </DataElementContentTextComponent>
@@ -204,6 +207,7 @@ const BoardContent = observer(() => {
                           overflow={!AdminData.LocalContentState ? 'hidden' : ''}
                           textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
                           whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                          wordBreak={!AdminData.LocalContentState ? '' : 'break-word'}
                         >
                           {element?.patient?.name || '-'}
                         </DataElementContentTextComponent>
@@ -220,6 +224,7 @@ const BoardContent = observer(() => {
                           overflow={!AdminData.LocalContentState ? 'hidden' : ''}
                           textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
                           whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                          wordBreak={!AdminData.LocalContentState ? '' : 'break-word'}
                         >
                           {element?.receptionInfo?.phoneNum
                             ? AllowNumber(element?.receptionInfo?.phoneNum)
@@ -240,6 +245,7 @@ const BoardContent = observer(() => {
                           overflow={!AdminData.LocalContentState ? 'hidden' : ''}
                           textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
                           whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                          wordBreak={!AdminData.LocalContentState ? '' : 'break-word'}
                         >
                           {element?.receptionInfo?.jibunAddress
                             ? `${element?.receptionInfo?.jibunAddress} ${element?.receptionInfo?.detailedAddress}`

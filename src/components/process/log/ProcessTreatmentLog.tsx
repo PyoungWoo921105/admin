@@ -149,6 +149,7 @@ const ProcessTreatmentLog = observer(() => {
                               overflow={!AdminData.LocalContentState ? 'hidden' : ''}
                               textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
                               whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                              wordBreak={!AdminData.LocalContentState ? '' : 'break-word'}
                             >
                               {element?.hanldingType || '-'}
                             </DataElementContentTextComponent>
@@ -240,6 +241,7 @@ const ProcessTreatmentLog = observer(() => {
                               overflow={!AdminData.LocalContentState ? 'hidden' : ''}
                               textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
                               whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                              wordBreak={!AdminData.LocalContentState ? '' : 'break-word'}
                             >
                               {!element?.hasPrescription ? '-' : 'O'}
                             </DataElementContentTextComponent>
@@ -256,6 +258,7 @@ const ProcessTreatmentLog = observer(() => {
                               overflow={!AdminData.LocalContentState ? 'hidden' : ''}
                               textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
                               whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                              wordBreak={!AdminData.LocalContentState ? '' : 'break-word'}
                             >
                               {!element?.isPrescriptionChanged ? '-' : 'O'}
                             </DataElementContentTextComponent>
@@ -272,6 +275,7 @@ const ProcessTreatmentLog = observer(() => {
                               overflow={!AdminData.LocalContentState ? 'hidden' : ''}
                               textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
                               whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                              wordBreak={!AdminData.LocalContentState ? '' : 'break-word'}
                             >
                               {element?.extraDocsCount ? `${element?.extraDocsCount}개` : '-'}
                             </DataElementContentTextComponent>
@@ -288,6 +292,7 @@ const ProcessTreatmentLog = observer(() => {
                               overflow={!AdminData.LocalContentState ? 'hidden' : ''}
                               textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
                               whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                              wordBreak={!AdminData.LocalContentState ? '' : 'break-word'}
                             >
                               {!element?.allowsGenericSubstitution ? '-' : 'O'}
                             </DataElementContentTextComponent>
@@ -304,6 +309,7 @@ const ProcessTreatmentLog = observer(() => {
                               overflow={!AdminData.LocalContentState ? 'hidden' : ''}
                               textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
                               whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                              wordBreak={!AdminData.LocalContentState ? '' : 'break-word'}
                             >
                               {element?.payAmount
                                 ? `${ConvertCommaNumber(element?.payAmount.toString())}원`
@@ -322,6 +328,7 @@ const ProcessTreatmentLog = observer(() => {
                               overflow={!AdminData.LocalContentState ? 'hidden' : ''}
                               textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
                               whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                              wordBreak={!AdminData.LocalContentState ? '' : 'break-word'}
                             >
                               {element?.handledBy
                                 ? element?.handledBy.indexOf('admin') !== -1
@@ -352,6 +359,7 @@ const ProcessTreatmentLog = observer(() => {
                               overflow={!AdminData.LocalContentState ? 'hidden' : ''}
                               textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
                               whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                              wordBreak={!AdminData.LocalContentState ? '' : 'break-word'}
                             >
                               {element?.handledDateTime
                                 ? ConvertDate(element?.handledDateTime)

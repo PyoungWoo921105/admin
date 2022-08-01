@@ -130,6 +130,7 @@ const BoardContent = observer(() => {
                           overflow={!AdminData.LocalContentState ? 'hidden' : ''}
                           textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
                           whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                          wordBreak={!AdminData.LocalContentState ? '' : 'break-word'}
                           color="blue"
                           cursor="pointer"
                           onClick={() => onClickProcessPopUp({ element })}
@@ -149,6 +150,7 @@ const BoardContent = observer(() => {
                           overflow={!AdminData.LocalContentState ? 'hidden' : ''}
                           textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
                           whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                          wordBreak={!AdminData.LocalContentState ? '' : 'break-word'}
                         >
                           {element?.requestedDateTime
                             ? ConvertDate(element?.requestedDateTime)
@@ -246,6 +248,7 @@ const BoardContent = observer(() => {
                           overflow={!AdminData.LocalContentState ? 'hidden' : ''}
                           textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
                           whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                          wordBreak={!AdminData.LocalContentState ? '' : 'break-word'}
                         >
                           {element?.pharmacy?.name || '-'}
                         </DataElementContentTextComponent>
@@ -262,6 +265,7 @@ const BoardContent = observer(() => {
                           overflow={!AdminData.LocalContentState ? 'hidden' : ''}
                           textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
                           whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                          wordBreak={!AdminData.LocalContentState ? '' : 'break-word'}
                         >
                           {element?.hospital?.name || '-'}
                         </DataElementContentTextComponent>
@@ -278,6 +282,7 @@ const BoardContent = observer(() => {
                           overflow={!AdminData.LocalContentState ? 'hidden' : ''}
                           textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
                           whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                          wordBreak={!AdminData.LocalContentState ? '' : 'break-word'}
                         >
                           {element?.doctor?.name || '-'}
                         </DataElementContentTextComponent>
@@ -294,6 +299,7 @@ const BoardContent = observer(() => {
                           overflow={!AdminData.LocalContentState ? 'hidden' : ''}
                           textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
                           whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                          wordBreak={!AdminData.LocalContentState ? '' : 'break-word'}
                         >
                           {element?.patient?.applicantName || '-'}
                         </DataElementContentTextComponent>
@@ -310,6 +316,7 @@ const BoardContent = observer(() => {
                           overflow={!AdminData.LocalContentState ? 'hidden' : ''}
                           textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
                           whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                          wordBreak={!AdminData.LocalContentState ? '' : 'break-word'}
                         >
                           {element?.patient?.name || '-'}
                         </DataElementContentTextComponent>
@@ -326,6 +333,7 @@ const BoardContent = observer(() => {
                           overflow={!AdminData.LocalContentState ? 'hidden' : ''}
                           textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
                           whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                          wordBreak={!AdminData.LocalContentState ? '' : 'break-word'}
                         >
                           {element?.receptionCategory || '-'}
                         </DataElementContentTextComponent>
@@ -342,6 +350,7 @@ const BoardContent = observer(() => {
                           overflow={!AdminData.LocalContentState ? 'hidden' : ''}
                           textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
                           whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                          wordBreak={!AdminData.LocalContentState ? '' : 'break-word'}
                         >
                           {element?.payAmount ? `${ConvertCommaNumber(element?.payAmount)}원` : '-'}
                         </DataElementContentTextComponent>
@@ -358,6 +367,7 @@ const BoardContent = observer(() => {
                           overflow={!AdminData.LocalContentState ? 'hidden' : ''}
                           textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
                           whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                          wordBreak={!AdminData.LocalContentState ? '' : 'break-word'}
                         >
                           {element?.deliveryType || '-'}
                         </DataElementContentTextComponent>
@@ -374,6 +384,7 @@ const BoardContent = observer(() => {
                           overflow={!AdminData.LocalContentState ? 'hidden' : ''}
                           textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
                           whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                          wordBreak={!AdminData.LocalContentState ? '' : 'break-word'}
                         >
                           {element?.deliveryList && element?.deliveryList.length !== 0
                             ? element?.deliveryList.map(deliveryCode => deliveryCode).join(', ')

@@ -144,6 +144,7 @@ const ProcessDeliveryLog = observer(() => {
                               overflow={!AdminData.LocalContentState ? 'hidden' : ''}
                               textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
                               whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                              wordBreak={!AdminData.LocalContentState ? '' : 'break-word'}
                             >
                               {element?.hanldingType || '-'}
                             </DataElementContentTextComponent>
@@ -231,6 +232,7 @@ const ProcessDeliveryLog = observer(() => {
                               overflow={!AdminData.LocalContentState ? 'hidden' : ''}
                               textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
                               whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                              wordBreak={!AdminData.LocalContentState ? '' : 'break-word'}
                             >
                               {element?.address
                                 ? element?.detailedAddress
@@ -251,6 +253,7 @@ const ProcessDeliveryLog = observer(() => {
                               overflow={!AdminData.LocalContentState ? 'hidden' : ''}
                               textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
                               whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                              wordBreak={!AdminData.LocalContentState ? '' : 'break-word'}
                             >
                               {element?.riderName || '-'}
                             </DataElementContentTextComponent>
@@ -267,6 +270,7 @@ const ProcessDeliveryLog = observer(() => {
                               overflow={!AdminData.LocalContentState ? 'hidden' : ''}
                               textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
                               whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                              wordBreak={!AdminData.LocalContentState ? '' : 'break-word'}
                             >
                               {element?.handledBy
                                 ? element?.handledBy.indexOf('admin') !== -1
@@ -297,6 +301,7 @@ const ProcessDeliveryLog = observer(() => {
                               overflow={!AdminData.LocalContentState ? 'hidden' : ''}
                               textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
                               whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                              wordBreak={!AdminData.LocalContentState ? '' : 'break-word'}
                             >
                               {element?.reason || '-'}
                             </DataElementContentTextComponent>
@@ -313,6 +318,7 @@ const ProcessDeliveryLog = observer(() => {
                               overflow={!AdminData.LocalContentState ? 'hidden' : ''}
                               textOverflow={!AdminData.LocalContentState ? 'ellipsis' : ''}
                               whiteSpace={!AdminData.LocalContentState ? 'nowrap' : ''}
+                              wordBreak={!AdminData.LocalContentState ? '' : 'break-word'}
                             >
                               {element?.handledDateTime
                                 ? ConvertDate(element?.handledDateTime)
