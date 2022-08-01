@@ -185,7 +185,8 @@ export const LogInBottomButtonComponent = styled.button<CustomProps>`
   background-color: ${props => (props.backgroundColor ? props.backgroundColor : '')};
   border: none;
   border-radius: 10px 10px 10px 10px;
-  color: ${props => (props.color ? props.color : '#ffffff')};
+  box-sizing: border-box;
+  color: ${props => (props.color ? props.color : '')};
   cursor: pointer;
   display: flex;
   flex-direction: row;
