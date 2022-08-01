@@ -223,7 +223,7 @@ const BoardContent = observer(() => {
                           wordBreak={!AdminData.LocalContentState ? '' : 'break-word'}
                           color={element?.address ? '#00B264' : ''}
                           cursor={element?.address ? 'pointer' : ''}
-                          onClick={() => navigator.clipboard.writeText(element?.address || '-')}
+                          onClick={() => navigator.clipboard.writeText(element?.address || '')}
                         >
                           {element?.address || '-'}
                         </DataElementContentTextComponent>
@@ -249,7 +249,7 @@ const BoardContent = observer(() => {
                                 ? AllowNumber(element?.phoneNum)
                                   ? ConvertContactNumber(AllowNumber(element?.phoneNum))
                                   : element?.phoneNum
-                                : '-'
+                                : ''
                             )
                           }
                         >
